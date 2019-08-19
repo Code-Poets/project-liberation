@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pipeline'
 ]
 
 MIDDLEWARE = [
@@ -122,4 +123,35 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'pipeline.finders.PipelineFinder',
+]
+
+PIPELINE = {
+    "CSS_COMPRESSOR": 'pipeline.compressors.yuglify.YuglifyCompressor',
+    "JS_COMPRESSOR": 'pipeline.compressors.yuglify.YuglifyCompressor',
+    'STYLESHEETS': {
+        'main': {
+            'source_filenames': (
+                '*.sass',
+            ),
+            'output_filename': 'css/main.css',
+        },
+    },
+    'JAVASCRIPT': {
+        'main': {
+            'source_filenames': (
+                '*.js',
+            ),
+            'output_filename': 'js/main.js'
+        }
+    },
+    'COMPILERS': ('pipeline.compilers.sass.SASSCompiler',)
+}
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
