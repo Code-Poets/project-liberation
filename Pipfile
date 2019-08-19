@@ -17,6 +17,7 @@ pytest-django = "*"
 Django = "*"
 psycopg2 = "*"
 django-pipeline = "*"
+django-hamlpy = "*"
 
 [requires]
 python_version = "3.6"
