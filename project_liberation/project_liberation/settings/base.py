@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []  # type: List
 # Application definition
 
 INSTALLED_APPS = [
+    'main_page.apps.MainPageConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
