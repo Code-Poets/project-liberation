@@ -15,9 +15,10 @@ pytest-django = "*"
 
 [packages]
 Django = "*"
-psycopg2 = "*"
+psycopg2 = "==2.7.5"
+psycopg2-binary = "==2.7.7"
 django-pipeline = "*"
 django-hamlpy = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
