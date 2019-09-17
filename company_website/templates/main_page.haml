@@ -1,10 +1,13 @@
-{% include "main_page/main_screen.haml" %}
+{% include "main_page/head.haml" %}
+
+{% load pipeline %}
+{% load static %}
+{% stylesheet 'main' %}
+
+.content-page
+
 {% include "main_page/menu.haml" %}
-{% include "main_page/technologies.haml" %}
-{% include "main_page/services.haml" %}
-{% include "main_page/portfolio.haml" %}
-{% include "main_page/about_us.haml" %}
-{% include "main_page/testimonials.haml" %}
-{% include "main_page/ready_to_work_with_us.haml" %}
-{% include "main_page/map_navigator.haml" %}
-{% include "main_page/footer.haml" %}
+
+{% include "main_page/main_screen.haml" %}
+
+{% include "main_page/scripts.haml" %}
