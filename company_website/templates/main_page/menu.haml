@@ -1,2 +1,29 @@
-%br
-  menu
+{% load static %}
+
+%nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.nb-hidden
+    .cp-navi.hidden
+    .navbar-brand
+
+    %button.navbar-toggler#menuButton.navbar-toggler-icon{:type =>"button", :data-toggle => "collapse", :data-target => "#navbarToggleMenu", :aria-controls => "navbarSupportedContent", :aria-expanded => "false", :aria-label => "Toggle navigation"}
+
+    .collapse.navbar-collapse#navbarToggleMenu
+        %a.logo1.hidden{:href=> "#"}
+            %img{:src => "{% static 'main_page/images/menu/code_poets_logo_menu_color.png' %}"}
+        %a.logo2.visible{:href=> "#"}
+            %img{:src => "{% static 'main_page/images/menu/code_poets_logo_menu_white.png' %}"}
+        %ul.navbar-nav.ml-auto
+            %li.nav-item.margin.collapsed-nav
+                %a.nav-link{:href => "#"} Home
+            %li.nav-item.margin.collapsed-nav
+                %a.nav-link{:href => "#"} About us
+            %li.nav-item.margin.collapsed-nav
+                %a.nav-link{:href => "#"} Services
+            %li.nav-item.margin.collapsed-nav
+                %a.nav-link{:href => "#"} How we work
+            %li.nav-item.margin.collapsed-nav
+                %a.nav-link{:href => "#"} Projects
+            .estimate-triangle-left.hidden-xs
+            %li.nav-item.estimate.collapsed-nav
+                %a.nav-link{:href => "#"}
+                    %span.estimate-project Estimate Project
+            .estimate-triangle-right.hidden-xs

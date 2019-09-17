@@ -1,0 +1,196 @@
+@import "partials/set_initials"
+@import "partials/constants"
+
+.cp-navi
+	position: absolute
+	height: 70px
+	width: 100%
+	background: url('/static/main_page/images/menu/menu_background.png') no-repeat
+	background-position: -130px 0
+	background-size: auto 90px
+	background-color: $blue-color
+	z-index: 1
+
+.cp-navi.visible
+	height: 60px
+
+.hidden, .visible
+	-webkit-transition: $slow-animation
+	-moz-transition: $slow-animation
+	-ms-transition: $slow-animation
+	-o-transition: $slow-animation
+	transition: $slow-animation
+
+.hidden
+	img
+		-moz-transition: $slow-animation
+		-ms-transition: $slow-animation
+		-o-transition: $slow-animation
+		transition: $slow-animation
+
+.visible
+	img
+		-moz-transition: $slow-animation
+		-ms-transition: $slow-animation
+		-o-transition: $slow-animation
+		transition: $slow-animation
+
+.hidden
+	opacity: 0
+
+	img
+		height: 40px
+
+.visible
+	opacity: 1
+
+	@media only screen and (max-width: $lg-screen-size)
+		opacity: 0
+
+.navbar
+	padding-left: 0
+	padding-right: 0
+	padding-bottom: 0
+
+	.collapse
+		z-index: 15
+
+.navbar.nb-visible
+	padding-top: 0
+	height: 60px
+	-webkit-transition: $slow-animation
+	-moz-transition: $slow-animation
+	-ms-transition: $slow-animation
+	-o-transition: $slow-animation
+	transition: $slow-animation
+
+.navbar.nb-hidden
+	padding-top: 30px
+	height: 60px
+	-webkit-transition: $slow-animation
+	-moz-transition: $slow-animation
+	-ms-transition: $slow-animation
+	-o-transition: $slow-animation
+	transition: $slow-animation
+
+li.nav-item.margin
+	margin-top: 10px
+	margin-left: 10px
+	margin-right: 10px
+	font-size: 14px
+	font-weight: 700
+
+.logo1, .logo2
+	position: absolute
+	top: 10px
+	left: 30px
+	z-index: 3
+
+.logo1.visible img
+	margin-top: -5px
+	height: 50px
+	width: auto
+
+.logo1.hidden img
+	height: 66px
+	width: auto
+	margin-top: 5px
+
+.logo2.visible img
+	margin-top: 5px
+	height: 66px
+	width: auto
+
+.logo2.hidden img
+	margin-top: -5px
+	height: 50px
+	width: auto
+
+.estimate-triangle-left
+	width: 0
+	height: 60px
+	border-top: 30px solid transparent
+	border-right: 30px solid $orange-color
+	border-bottom: 30px solid transparent
+	margin-left: 10px
+
+.estimate-triangle-right
+	border-top: 30px solid $orange-color
+	border-right: 30px solid #FF6C17
+	border-bottom: 30px solid $orange-color
+
+.navbar-dark .navbar-nav .nav-link
+	color: $white-color
+	font-weight: 700
+
+.nav-item
+	.nav-link
+		color: $white-color
+
+	.nav-link:hover
+		color: $white-color
+		opacity: 0.8
+
+.nav-item.estimate
+	background-color: $orange-color
+	padding: 0 5px
+	height: 60px
+	font-size: 16px
+
+	a
+		margin-top: 10px
+
+	.nav-link
+		color: $blue-color
+
+	.nav-link:hover
+		color: $hovered-blue-color
+
+.navbar-toggler
+	background: $orange-color
+	position: fixed
+	top: 10px
+	right: 10px
+	z-index: 30
+
+.content-page
+	position: fixed
+	z-index: -100
+	top: 0
+	bottom: 0
+	right: 0
+	left: 0
+
+.disable-fields
+	z-index: 150
+	background-color: black
+	opacity: 0.7
+
+@media screen and (max-width: $lg-screen-size)
+	nav.navbar
+		width: 80vw
+		right: 0
+		left: unset
+
+	ul.navbar-nav
+		padding: 8vh 4vw
+		text-align: center
+		height: content-box
+
+	.estimate-triangle-left, .estimate-triangle-right
+		display: none
+
+	.estimate
+		background-color: unset
+
+	.estimate-project
+		padding: 15px
+		background: $orange-color
+
+	#navbarToggleMenu
+		background: $blue-color
+		margin-top: -20px
+
+	#menuButton
+		width: 2.3em
+		height: 2.3em
