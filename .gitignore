@@ -127,3 +127,7 @@ Desktop.ini
 
 # Project Liberation static files
 /project_liberation/project_liberation/static/*
+
+# Project Liberation page images
+*.jpg
+*.png
