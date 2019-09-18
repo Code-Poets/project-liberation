@@ -1,2 +1,18 @@
-%br
-  technologies
+{% load static %}
+
+.container
+    .row.tech-img
+        .col-lg-4.flex-wrapp.justify-content-center.nopadding{:data-aos => "zoom-in"}
+            %img.technology{:src => "{% static 'main_page/images/technologies/angular.png' %}", :alt => "angular"}
+            %img.technology{:src => "{% static 'main_page/images/technologies/python.png' %}", :alt => "python"}
+            %img.technology{:src => "{% static 'main_page/images/technologies/django.png' %}", :alt => "django"}
+        .col-lg-4.flex-wrapp.justify-content-center.nopadding{:data-aos => "zoom-in" }
+            %img.technology{:src => "{% static 'main_page/images/technologies/css.png' %}", :alt => "css"}
+            %img.technology{:src => "{% static 'main_page/images/technologies/html.png' %}", :alt => "html"}
+            %img.technology{:src => "{% static 'main_page/images/technologies/javascript.png' %}", :alt => "javascript"}
+        .col-lg-4.flex-wrapp.justify-content-center.nopadding{:data-aos => "zoom-in" }
+            %img.technology{:src => "{% static 'main_page/images/technologies/java.png' %}", :alt => "java"}
+            %img.technology{:src => "{% static 'main_page/images/technologies/typescript.png' %}", :alt => "typescript"}
+            %img.technology{:src => "{% static 'main_page/images/technologies/kubernetes.png' %}", :alt => "kubernetes"}
+    .row
+        .hr-line
