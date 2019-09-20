@@ -12,3 +12,8 @@ class MainPageView(TemplateView):
         context_data = super().get_context_data(**kwargs)
         context_data["google_api_key"] = settings.GOOGLE_API_KEY
         return context_data
+
+
+class TeamIntroductionPageView(TemplateView):
+
+    template_name = "team_introduction_page.haml"
