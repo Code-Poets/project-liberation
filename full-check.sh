@@ -4,9 +4,8 @@ printf "=============== VIRTUAL ENVIRONMENT PACKAGES CHECKS ================\n"
 ./check-environment-packages.sh
 printf "\n"
 
-
 printf "=================== DJANGO CONFIGURATION CHECKS ====================\n"
-python project_liberation/manage.py check
+python manage.py check
 printf "\n"
 
 printf "=========================== CODING STYLE ===========================\n"
