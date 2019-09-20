@@ -1,0 +1,16 @@
+{% include "common_partials/head.haml" %}
+
+%script{:crossorigin => "anonymous",
+    :integrity => "sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=",
+    :src => "https://code.jquery.com/jquery-3.4.1.slim.min.js"}
+
+{% load pipeline %}
+{% stylesheet 'css_reset' %}
+{% stylesheet 'common' %}
+{% javascript 'common' %}
+{% stylesheet 'team_introduction' %}
+{% javascript 'team_introduction' %}
+
+{% include "common_partials/menu.haml" %}
+{% include "team_introduction_page_partials/company_introduction.haml" %}
+{% include "common_partials/footer.haml" %}

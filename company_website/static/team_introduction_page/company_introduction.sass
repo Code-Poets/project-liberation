@@ -1,0 +1,568 @@
+$about-us-page-width: 1200px
+$yellow-color: #FFC03D
+$orange-color: #F06D1F
+$red-color: #D74142
+$default-border-radius-in-px: 15px
+$default-border-radius-in-vw: 1.5vw
+$default-padding-in-px: 25px
+$default-padding-in-vw: 2vw
+$square-side-length-in-px: 65px
+$square-side-length-in-vw: 5.2vw
+@import "../common/partials/_constants.sass"
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap&subset=latin-ext')
+
+body
+
+    text-indent: 0
+    margin: 0 0
+    line-height: unset
+
+    .row
+        margin: 0
+
+    .about-us-page
+        margin: $default-padding-in-vw
+        max-width: $about-us-page-width
+        color: white
+        text-align: center
+        font-family: "Open Sans", sans-serif
+        -webkit-font-smoothing: antialiased
+
+        @media only screen and (min-width: 991px)
+            margin: 9vw $default-padding-in-vw $default-padding-in-vw $default-padding-in-vw
+        @media only screen and (min-width: $about-us-page-width)
+            margin: 110px auto $default-padding-in-px auto
+
+        img
+            border-radius: $default-border-radius-in-vw
+            @media only screen and (min-width: $about-us-page-width)
+                border-radius: $default-border-radius-in-px
+            width: auto
+            height: auto
+            max-width: 100%
+
+        .left-container
+            padding-left: 0
+            padding-right: $default-padding-in-vw
+            width: auto
+            height: auto
+            max-width: 100%
+            max-height: 100%
+
+            @media only screen and (min-width: $about-us-page-width)
+                padding-right: $default-padding-in-px
+
+        .right-container
+            padding: 0
+            width: auto
+            height: auto
+            max-width: 100%
+            max-height: 100%
+
+        .outer-text-div
+            position: relative
+            width: 100%
+            max-height: 100%
+            text-align: center
+            border-radius: $default-border-radius-in-vw
+            @media only screen and (min-width: $about-us-page-width)
+                border-radius: $default-border-radius-in-px
+
+        .inner-text-div
+            display: inline-block
+            max-height: 100%
+            padding: calc(2 * #{$default-padding-in-vw})
+            @media only screen and (min-width: $about-us-page-width)
+                padding: calc(2 * #{$default-padding-in-px})
+            .topic
+                font-weight: 700
+                font-size: 3.5vw
+                width: 100%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 44px
+
+            .text-row
+                font-weight: 600
+                padding-top: 2.5vw
+                width: 100%
+                height: auto
+                max-height: 100%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    padding-top: 35px
+
+            .description
+                text-align: justify
+                margin: 0
+                font-size: 1.7vw
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 19px
+
+        .inner-left-container
+            position: relative
+
+            .square
+                position: absolute
+                width: $square-side-length-in-vw
+                height: $square-side-length-in-vw
+                margin-top: $default-padding-in-vw
+                right: $default-padding-in-vw
+                border-radius: 1.5vw
+
+                @media only screen and (min-width: $about-us-page-width)
+                    border-radius: $default-border-radius-in-px
+                    right: $default-padding-in-px
+                    margin-top: $default-padding-in-px
+                    width: $square-side-length-in-px
+                    height: $square-side-length-in-px
+
+        .overlayed-image
+            position: relative
+            left: 0
+            top: -7.2vw
+            max-width: 100%
+
+            @media only screen and (min-width: $about-us-page-width)
+                top: -90px
+
+        .who-we-are-part
+            background-color: $blue
+            border-radius: $default-border-radius-in-vw
+            @media only screen and (min-width: $about-us-page-width)
+                border-radius: $default-border-radius-in-px
+
+            p
+                margin: 0 0
+                padding: 1vw 0
+
+                @media only screen and (min-width: $about-us-page-width)
+                    padding: 10px 0
+
+            .who-we-are-text-row
+                font-weight: 400
+
+            .hidden
+                display: none
+
+            .read-more-less
+                position: absolute
+                right: calc(2 * #{$default-padding-in-vw})
+                bottom: calc(2 * #{$default-padding-in-vw})
+                font-size: 1.4vw
+                cursor: pointer
+
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 15px
+                    right: calc(2 * #{$default-padding-in-px})
+                    bottom: calc(2 * #{$default-padding-in-px})
+
+        .our-values-part
+            padding-top: $default-padding-in-vw
+
+            @media only screen and (min-width: $about-us-page-width)
+                padding-top: $default-padding-in-px
+
+            .image_1
+                object-fit: cover
+                object-position: 0 100%
+                width: 100%
+                height: 100%
+
+            .outer-our-values-text-div
+                background-color: $bright-blue
+                height: 35%
+
+            .inner-our-values-text-div
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%,-50%)
+                white-space: nowrap
+                padding: 0
+
+            .our-values-topic
+                font-size: 4.5vw
+
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 55px
+
+            .image_2
+                margin-top: $default-padding-in-vw
+                width: 100%
+                height: 65%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    margin-top: $default-padding-in-px
+
+            .left-column
+                flex: 0 0 61%
+                height: calc(40vw + 2vw)
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: calc(475px + #{$default-padding-in-px})
+
+            .right-column
+                flex: 0 0 39%
+                height: 40vw
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: 475px
+
+        .understand-part
+            padding-top: $default-padding-in-vw
+
+            @media only screen and (min-width: $about-us-page-width)
+                padding-top: $default-padding-in-px
+
+            .outer-understand-text-div
+                background-color: $yellow-color
+                max-height: 100%
+                height: 100%
+
+            .inner-understand-text-div
+                padding: 4.1vw
+                @media only screen and (min-width: $about-us-page-width)
+                    padding: 50px
+
+            .understand-part-description
+                font-size: 2.5vw
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 30px
+
+            .image_3
+                height: 29vw
+                object-fit: cover
+                object-position: 50% 50%
+                width: 100%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: 350px
+
+            .yellow-square
+                background-color: $yellow-color
+
+            .left-column
+                flex: 0 0 43%
+                height: calc(29vw + 2vw + #{$square-side-length-in-vw})
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: calc(350px + #{$default-padding-in-px} + #{$square-side-length-in-px})
+
+            .right-column
+                flex: 0 0 57%
+                height: calc(29vw + #{$default-padding-in-vw} + #{$square-side-length-in-vw})
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: calc(350px + #{$default-padding-in-px} + #{$square-side-length-in-px})
+
+        .understand-part-2
+            padding-top: $default-padding-in-vw
+
+            @media only screen and (min-width: $about-us-page-width)
+                padding-top: $default-padding-in-px
+
+            .left-column
+                height: 44vw
+                flex: 0 0 calc(100% - calc(100% - 43% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw})))
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: 530px
+                    flex: 0 0 calc(100% - calc(100% - 43% + (#{$square-side-length-in-px} + #{$default-padding-in-px})))
+
+            .right-column
+                height: 44vw
+                flex: 0 0 calc(100% - 43% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw}))
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: 530px
+                    flex: 0 0 calc(100% - 43% + (#{$square-side-length-in-px} + #{$default-padding-in-px}))
+
+            .image_4
+                object-fit: cover
+                object-position: 0 100%
+                width: 100%
+                height: calc(44vw + #{$default-padding-in-vw} + #{$square-side-length-in-vw})
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: calc(530px + #{$default-padding-in-px} + #{$square-side-length-in-px})
+
+            .image_5
+                height: 44vw
+                width: 100%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: 530px
+
+        .deliver-part
+            padding-top: $default-padding-in-vw
+
+            @media only screen and (min-width: $about-us-page-width)
+                padding-top: $default-padding-in-px
+
+            .deliver-text-div
+                background-color: #88BB3C
+
+            .inner-deliver-text-div
+                padding: 4.1vw
+                @media only screen and (min-width: $about-us-page-width)
+                    padding: 50px
+
+            .deliver-part-description
+                font-size: 2.7vw
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 30px
+
+        .improve-part
+            padding-top: $default-padding-in-vw
+
+            @media only screen and (min-width: $about-us-page-width)
+                padding-top: $default-padding-in-px
+
+            .image_6
+                height: 33vw
+                width: 100%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: 400px
+
+            .improve-text-div
+                background-color: $orange-color
+                margin-top: $default-padding-in-vw
+                height: 33vw
+
+                @media only screen and (min-width: $about-us-page-width)
+                    margin-top: $default-padding-in-px
+                    height: 400px
+
+            .inner-improve-text-div
+                padding: 4.1vw
+                @media only screen and (min-width: $about-us-page-width)
+                    padding: 50px
+
+            .improve-part-description
+                font-size: 2.3vw
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 28px
+
+            .orange-square
+                background-color: $orange-color
+
+            .left-column
+                flex: 0 0 51%
+
+            .right-column
+                flex: 0 0 49%
+
+            .image_7
+                width: 100%
+                height: calc(2 * 33vw + 2 * #{$default-padding-in-vw} + #{$square-side-length-in-vw})
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: calc(2 * 400px + 2 * #{$default-padding-in-px} + #{$square-side-length-in-px})
+
+        .be-honest-part
+            padding-top: $default-padding-in-vw
+
+            @media only screen and (min-width: $about-us-page-width)
+                padding-top: $default-padding-in-px
+
+            .be-honest-text-div
+                background-color: $blue
+                margin-top: $default-padding-in-vw
+                height: 33vw
+
+                @media only screen and (min-width: $about-us-page-width)
+                    margin-top: $default-padding-in-px
+                    height: 400px
+
+            .image_9
+                object-fit: cover
+                object-position: 0 100%
+                width: 100%
+                height: 37.5vw
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: 450px
+
+            .inner-be-honest-text-div
+                padding: 4.1vw
+                @media only screen and (min-width: $about-us-page-width)
+                    padding: 50px
+
+            .be-honest-part-description
+                font-size: 2.4vw
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 30px
+
+            .left-column
+                flex: 0 0 calc(100% - calc(100% - 51% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw})))
+
+                @media only screen and (min-width: $about-us-page-width)
+                    flex: 0 0 calc(100% - calc(100% - 51% + (#{$square-side-length-in-px} + #{$default-padding-in-px})))
+
+            .right-column
+                height: calc(33vw + 37.5vw + #{$default-padding-in-vw})
+                flex: 0 0 calc(100% - 51% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw}))
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: calc(400px + 450px + #{$default-padding-in-px})
+                    flex: 0 0 calc(100% - 51% + (#{$square-side-length-in-px} + #{$default-padding-in-px}))
+
+            .runmageddon-image
+                object-fit: cover
+                object-position: 0 100%
+                width: 100%
+                height: calc(33vw + 37.5vw + #{$default-padding-in-vw})
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: calc(400px + 450px + #{$default-padding-in-px})
+
+            .blue-square
+                background-color: $blue
+                top: calc(33vw + 37.5vw - #{$square-side-length-in-vw})
+
+                @media only screen and (min-width: $about-us-page-width)
+                    top: calc(400px + 450px - #{$square-side-length-in-px})
+
+        .be-honest-part-2
+            padding-top: $default-padding-in-vw
+            height: 44.6vw
+
+            @media only screen and (min-width: $about-us-page-width)
+                padding-top: $default-padding-in-px
+                height: 537px
+
+            .image_10
+                object-fit: cover
+                object-position: 50% 50%
+                width: 100%
+                height: 23.9vw
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: 288px
+
+            .image_11
+                margin-top: $default-padding-in-vw
+                object-fit: cover
+                object-position: 0 100%
+                width: 100%
+                height: 23.9vw
+
+                @media only screen and (min-width: $about-us-page-width)
+                    margin-top: $default-padding-in-px
+                    height: 288px
+
+            .image_12
+                object-fit: cover
+                object-position: 0 100%
+                width: 100%
+                height: calc(2 * 23.9vw - #{$square-side-length-in-vw})
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: calc(2 * 288px - #{$square-side-length-in-px})
+
+            .left-column
+                flex: 0 0 calc(100% - calc(100% - calc(100% - calc(100% - 51% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw}))) + (#{$default-padding-in-vw} + #{$square-side-length-in-vw})))
+
+                @media only screen and (min-width: $about-us-page-width)
+                    flex: 0 0 calc(100% - calc(100% - calc(100% - calc(100% - 51% + (#{$square-side-length-in-px} + #{$default-padding-in-px}))) + (#{$square-side-length-in-px} + #{$default-padding-in-px})))
+
+            .right-column
+                flex: 0 0 calc(100% - calc(100% - calc(100% - 51% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw}))) + (#{$default-padding-in-vw} + #{$square-side-length-in-vw}))
+
+                @media only screen and (min-width: $about-us-page-width)
+                    flex: 0 0 calc(100% - calc(100% - calc(100% - 51% + (#{$square-side-length-in-px} + #{$default-padding-in-px}))) + (#{$square-side-length-in-px} + #{$default-padding-in-px}))
+
+        .self-organized-part
+            padding-top: $default-padding-in-vw
+
+            @media only screen and (min-width: $about-us-page-width)
+                padding-top: $default-padding-in-px
+
+            .self-organized-text-div
+                background-color: $bright-blue
+
+            .image_13
+                height: 37vw
+                width: 100%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: 442px
+
+            .image_14
+                height: calc(37vw + #{$square-side-length-in-vw} + #{$default-padding-in-vw})
+                width: 100%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: calc(442px + 65px + 25px)
+
+            .inner-self-organized-text-div
+                padding: 4.1vw
+                @media only screen and (min-width: $about-us-page-width)
+                    padding: 50px
+
+            .self-organized-part-description
+                font-size: 2.2vw
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 28px
+
+            .left-column
+                padding-top: $default-padding-in-vw
+                flex: 0 0 50%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    padding-top: $default-padding-in-px
+
+            .right-column
+                padding-top: $default-padding-in-vw
+                flex: 0 0 50%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    padding-top: $default-padding-in-px
+
+            .red-square
+                background-color: $red-color
+
+        .self-organized-part-2
+            height: 36vw
+            padding-top: $default-padding-in-vw
+
+            @media only screen and (min-width: $about-us-page-width)
+                padding-top: $default-padding-in-px
+                height: 435px
+
+            .self-organized-2-text-div
+                background-color: $red-color
+                height: 100%
+
+            .self-organized-overlayed-image
+                object-fit: cover
+                object-position: 0 100%
+                width: 100%
+                height: 41.2vw
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: 500px
+
+            .inner-self-organized-part-2-text-div
+                padding: 4.1vw
+                @media only screen and (min-width: $about-us-page-width)
+                    padding: 50px
+
+            .self-organized-part-2-description
+                font-size: 2.4vw
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 30px
+
+            .left-column
+                flex: 0 0 calc(100% - calc(100% - 50% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw})))
+
+                @media only screen and (min-width: $about-us-page-width)
+                    flex: 0 0 calc(100% - calc(100% - 50% + (#{$square-side-length-in-px} + #{$default-padding-in-px})))
+
+            .right-column
+                flex: 0 0 calc(100% - 50% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw}))
+
+                @media only screen and (min-width: $about-us-page-width)
+                    flex: 0 0 calc(100% - 50% + (#{$square-side-length-in-px} + #{$default-padding-in-px}))

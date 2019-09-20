@@ -150,6 +150,12 @@ PIPELINE = {
             ),
             'output_filename': 'css/main.css',
         },
+        'team_introduction': {
+            'source_filenames': (
+                'team_introduction_page/*.sass',
+            ),
+            'output_filename': 'css/team_introduction.css',
+        },
         'css_reset': {
             'source_filenames': (
                 'css_reset.sass',
@@ -175,6 +181,12 @@ PIPELINE = {
                 'common/scripts/*.js',
             ),
             'output_filename': 'js/common.js',
+        },
+        'team_introduction': {
+            'source_filenames': (
+                'team_introduction_page/scripts/*.js',
+            ),
+            'output_filename': 'js/team_introduction.js',
         },
     },
     'COMPILERS': ('pipeline.compilers.sass.SASSCompiler',)
