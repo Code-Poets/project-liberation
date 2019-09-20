@@ -1,0 +1,110 @@
+@import "partials/constants"
+
+.container.services-container
+	.row
+		.title
+			margin-top: $container-title-template-margin
+			color: $blue-color
+			font-weight: 700
+
+	.row.services-row
+		margin: 0 $container-content-margin
+		padding: 10px 0
+
+		.services-description
+			padding-top: 13px
+			text-align: justify
+			font-size: 88%
+
+			.text-description
+				margin-top: -8px
+				font-size: 78%
+				text-align: justify
+
+		.text-header, .learn-more
+			font-size: 91%
+			text-align: center
+			font-weight: 700
+			color: $blue-color
+
+		.learn-more
+			padding-bottom: 5px
+			font-size: 90%
+
+		.service-box-aos:hover
+			opacity: 0.8
+
+		a, a:hover
+			color: black
+			line-height: 1.2rem
+			text-decoration: none
+
+.service-box
+	border-radius: 5px
+	text-align: center
+
+	.service-box-img
+		border: 1px solid transparent
+		border-radius: 10px
+		margin-bottom: 5px
+
+		img
+			width: 105px
+
+.service-box-img-green
+	background-color: #88BD40
+
+.service-box-img-red
+	background-color: #D5502F
+
+.service-box-img-orange
+	background-color: #FFC03C
+
+.service-box-img-blue
+	background-color: #3877BC
+
+.service-box-green
+	background-color: #CFE8AD
+
+.service-box-red
+	background-color: #EAC4BB
+
+.service-box-orange
+	background-color: #FEDF9E
+
+.service-box-blue
+	background-color: #CAD6E3
+
+.row-line
+	.hr-line
+		margin-top: $container-row-line-margin
+
+@media screen and (min-width: 1200px)
+	.services-container
+		.services-row
+			.service-box
+				width: 125%
+
+			.services-description
+				width: 115%
+				line-height: 15px
+
+				.text-description
+					padding-left: 25px
+					width: 105%
+
+				.text-header
+					padding-left: 18px
+					width: 108%
+
+			.right-row
+				margin-left: 5px
+
+			.left-row
+				margin-right: 5px
+
+@media only screen and (max-width: $sm-screen-size)
+	.services-container
+		.services-row
+			.last-in-row
+				margin-top: 40px

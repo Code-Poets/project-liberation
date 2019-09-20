@@ -1,2 +1,62 @@
-%br
-  services
+{% load static %}
+
+.container.services-container
+    .row
+        .col-md-12.text-center.section-title
+            %h3.title SERVICES
+    .row.services-row
+        .col-md-6{:data-aos => "fade-up"}
+            %a{:href => "#"}
+                %span
+                    .row.left-row
+                        .col-xl-5
+                            .service-box.service-box-green
+                                .service-box-img.service-box-img-green
+                                    %img{:src => "{% static 'main_page/images/services/web_application_development.png' %}"}
+                                %p.learn-more Learn more
+                        .col-xl-6
+                            .services-description
+                                %p.text-header Web Application Development
+                                %p.text-description We understand your needs and are able to deliver scalable web application solutions based on frontend and backend technologies.
+        .col-md-6.last-in-row{:data-aos => "fade-up"}
+            %a{:href => "#"}
+                %span
+                    .row.right-row
+                        .col-xl-5
+                            .service-box.service-box-red
+                                .service-box-img.service-box-img-red
+                                    %img{:src => "{% static 'main_page/images/services/rapid_mvp_development.png' %}"}
+                                %p.learn-more Learn more
+                        .col-xl-6
+                            .services-description
+                                %p.text-header Rapid MVP Development
+                                %p.text-description With Minimum Viable Product it’s possible to deliver a project within a very limited time frame & budget.
+    .row.services-row
+        .col-md-6{:data-aos => "fade-up"}
+            %a{:href => "#"}
+                %span
+                    .row.left-row
+                        .col-xl-5
+                            .service-box.service-box-orange
+                                .service-box-img.service-box-img-orange
+                                    %img{:src => "{% static 'main_page/images/services/blockchain_development.png' %}"}
+                                %p.learn-more Learn more
+                        .col-xl-6
+                            .services-description
+                                %p.text-header Blockchain Development
+                                %p.text-description Our experience in real-life Blockchain-based business solutions allows us to understand the challenges of Blockchain development and deliver a working product to market.
+        .col-md-6.last-in-row{:data-aos => "fade-up"}
+            %a{:href => "#"}
+                %span
+                    .row.right-row
+                        .col-xl-5
+                            .service-box.service-box-blue
+                                .service-box-img.service-box-img-blue
+                                    %img{:src => "{% static 'main_page/images/services/machine_learning.png' %}"}
+                                %p.learn-more Learn more
+                        .col-xl-6
+                            .services-description
+                                %p.text-header Machine Learning
+                                %p.text-description The current growth in IT is heavily driven by Machine Learning, from the automotive industry to computer graphics. We can help you understand the potential ways.
+    .row.row-line
+        .hr-line
