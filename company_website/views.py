@@ -3,4 +3,4 @@ from django.views.generic import TemplateView
 
 class MainPageView(TemplateView):
 
-    template_name = "main.haml"
+    template_name = "main_page.haml"
