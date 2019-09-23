@@ -1,2 +1,48 @@
+{% load static %}
+
+%img.feather{:src=> "{% static 'main_page/images/background/feather_red_pale.png' %}"}
+.container.portfolio-container
+    .row.portfolio
+        .col-md-12.text-center.section-title
+            %h3 PROJECTS
+    .row.portfolio
+        .col-md-12.col-lg-6.custom-paddings
+            %a{:href => "#"}
+                .project-box.project-merck-box{:data-aos => "fade-up"}
+                    .project-box-desc.project-merck-box-desc.justify-content-end
+                        %img.logo-merck{:src => "{% static 'main_page/images/projects/merck/merck_logo.png' %}"}
+                        %h6 SYNTHIA™
+                        %p.text-merck Retrosynthesis software allowing to analyze tens of thousands of pathways for known and novel molecules against your search criteria and quickly go from imagining what’s possible to testing what’s probable.
+        .col-md-12.col-lg-6.custom-paddings
+            %a{:href => "#"}
+                .project-box.project-golem-box{:data-aos => "fade-up"}
+                    .project-box-desc.project-golem-box-desc.justify-content-end
+                        %img.logo-golem{:src => "{% static 'main_page/images/projects/golem/golem_logo.png' %}"}
+                        %h6 CONCENT
+                        %p.text-golem Network reliability service for Golem – open source, decentralized supercomputer used for a wide variety of tasks, from CGI rendering, through machine learning to scientific computing.
+    .row.portfolio
+        .col-md-12.col-lg-3.custom-paddings
+            %a{:href => "#"}
+                .project-box.project-polish-lody-box.justify-content-center{:data-aos => "fade-up"}
+                    .project-polish-lody-box-desc
+                        %img.logo-polish-lody{:src => "{% static 'main_page/images/projects/polish_lody/polish_lody_logo.png' %}"}
+                        %h6 WEB DEVELOPMENT
+                        %p.text-polish-lody Custom HRMS web application: administration, payroll, employee self-service, time & HR management.
+        .col-md-12.col-lg-6.custom-paddings
+            %a{:href => "#"}
+                .project-box.project-rubin-box.justify-content-center{:data-aos => "fade-up"}
+                    .project-rubin-box-desc
+                        %span.image
+                            %img.logo-rubin{:src => "{% static 'main_page/images/projects/rubin_anders/rubin_anders_logo_white_stripe.png' %}"}
+                        %h6 DATA ANALYSIS
+                        %p.text-rubin-anders Internal use system for Rubin/Anders Scientific Inc.
+        .col-md-12.col-lg-3.custom-paddings
+            %a{:href => "#"}
+                .project-box.project-altenberg-box.justify-content-center{:data-aos => "fade-up"}
+                    .project-altenberg-box-desc
+                        %img.logo-altenberg{:src => "{% static 'main_page/images/projects/altenberg/altenberg_logo.png' %}"}
+                        %h6 WEB DEVELOPMENT
+                        %p.text-altenberg High load server configuration, monitoring & performance tests, implementation of landing pages and custom scripting.
+    .row.row-line.additional-paddings
+        .hr-line
 %br
-  portfolio

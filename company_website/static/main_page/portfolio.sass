@@ -1,0 +1,130 @@
+@import "partials/constants"
+
+.feather
+	width: 14vw
+	position: absolute
+	margin-top: -5vw
+	padding-left: 15px
+	opacity: 0.5
+	@media screen and (max-width: 1200px)
+		margin-top: 0
+
+.portfolio-container
+	a, a span h4
+		text-decoration: none
+
+	.row .section-title
+		h3
+			color: $blue-color
+			font-weight: 700
+			margin-top: $container-title-template-margin-top
+			margin-bottom: $container-title-template-margin-bottom
+
+	.row.portfolio
+		margin: 0 $container-content-margin
+
+		.project-box
+			min-height: 205px
+			max-height: 205px
+			width: 100%
+			border-radius: 7px
+			font-size: 0.6em
+			color: white
+			line-height: 110%
+
+			h6
+				font-size: 15px
+
+			&:hover
+				opacity: 0.7
+
+		.project-merck-box
+			background-image: url("images/projects/merck/merck_background_part_left.png"), url("images/projects/merck/merck_background_part_bottom.png")
+			background-position: top left, bottom 0 right 25%
+			background-size: 45%, 40%
+			background-repeat: no-repeat, no-repeat
+			background-color: #513290
+
+			.logo-merck
+				margin-bottom: 20px
+				width: 150px
+
+			.project-merck-box-desc
+				width: 73%
+				text-align: right
+				float: right
+				padding: 5%
+
+			@media only screen and (max-width: 1199px)
+				background-size: 55%, 40%
+
+		.project-golem-box
+			background-color: #181ea9
+			background-image: url("images/projects/golem/golem_background_part.png")
+			background-position: top left
+			background-size: 45%
+			background-repeat: no-repeat
+
+			.project-golem-box-desc
+				width: 78%
+				text-align: right
+				float: right
+				padding: 5%
+
+				.logo-golem
+					margin-bottom: 20px
+					width: 130px
+
+		.project-polish-lody-box
+			background-image: url("images/projects/polish_lody/polish_lody_background.png")
+			background-position: cover
+			background-size: 100% 100%
+			background-repeat: no-repeat
+			text-align: center
+			color: black
+
+			.project-polish-lody-box-desc
+				margin: auto
+				width: 82%
+
+				.logo-polish-lody
+					width: 70px
+					margin: 10px 5px 18px
+
+		.project-rubin-box
+			background-image: url("images/projects/rubin_anders/rubin_anders_background.png")
+			background-position: cover
+			background-size: 100% 100%
+			background-repeat: no-repeat
+			text-align: center
+
+			.project-rubin-box-desc
+				.image
+					.logo-rubin
+						margin-top: 20px
+						margin-bottom: 36px
+						width: 100%
+
+				.text-rubin-anders
+					padding: 0 5%
+
+		.project-altenberg-box
+			background-image: url("images/projects/altenberg/altenberg_background_opacity.png"), linear-gradient(to bottom right, #612D86, #B53C95)
+			background-position: cover
+			background-size: 100% 100%
+			background-repeat: no-repeat
+			text-align: center
+
+			.project-altenberg-box-desc
+				width: 80%
+				margin: 0 10%
+
+				.logo-altenberg
+					width: 100px
+					margin: 8% 10% 8px
+
+		.custom-paddings
+			padding: 5px
+
+	.additional-paddings
+		padding-top: $additional-paddings-size
