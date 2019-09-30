@@ -128,3 +128,99 @@
 
 	.additional-paddings
 		padding-top: $additional-paddings-size
+
+@media only screen and (max-width: $lg-screen-size)
+	.feather
+		display: none
+
+	.portfolio-container
+		.row.portfolio
+			.custom-paddings
+				padding: 15px 5px
+
+			.project-box
+				min-height: 300px
+				font-size: 0.8rem
+
+			.project-merck-box
+				.project-merck-box-desc
+					background-size: 45%, 40%
+
+			.project-golem-box-desc, .project-merck-box-desc
+				padding: 8%
+
+			.project-polish-lody-box
+				.project-polish-lody-box-desc
+					.logo-polish-lody
+						margin: 20px 10px 25px
+
+@media only screen and (max-width: $sm-screen-size)
+	.portfolio-container
+		.row.portfolio
+			.project-box
+				font-size: 0.7rem
+				max-height: 36vh
+
+			.project-merck-box
+				background-image: url("images/projects/merck/merck_background_mobile.png"), url("images/projects/merck/merck_background_part_bottom.png")
+				background-size: 100% 100%, 45%
+				background-position: top, bottom  right 50px
+
+				.project-merck-box-desc
+					width: 90%
+					text-align: center
+					padding: 6% 8% 5%
+
+					.logo-merck
+						float: right
+						width: 50%
+					h6
+						margin: 120px 20px 10px auto
+
+					.text-synthia
+						margin-right: 20px
+
+			.project-golem-box
+				background-image: url("images/projects/golem/golem_background_full.png")
+				background-position: center 5px
+				background-size: 80%
+				background-repeat: no-repeat
+
+				.project-golem-box-desc
+					width: 100%
+					text-align: center
+
+					h6
+						margin-top: 10px
+						margin-bottom: 10px
+
+					.logo-golem
+						margin-top: 5%
+						margin-left: 5%
+						margin-bottom: 10%
+						max-width: 180px
+						width: 50vw
+
+			.project-polish-lody-box, .project-altenberg-box
+				.project-polish-lody-box-desc, .project-altenberg-box-desc
+					.logo-polish-lody, .logo-altenberg
+						width: 30vw
+						max-width: 150px
+
+@media only screen and (max-width: $mobile-devices-size)
+	.portfolio-container
+		.row.portfolio
+			.project-merck-box
+				.project-merck-box-desc
+					width: 80%
+
+					h6
+						margin: 100px 20px 10px auto
+
+			.project-golem-box
+				.project-golem-box-desc
+					h6
+						margin-top: 25px
+
+			.project-altenberg-box, .project-rubin-box, .project-polish-lody-box
+				padding: 7% 0
