@@ -187,3 +187,143 @@
 
 	.additional-paddings
 		padding-top: $additional-paddings-size
+
+@media only screen and (max-width: $md-screen-size)
+	.feather
+		display: none
+
+	.mobile-hidden-projects
+		overflow: hidden
+		height: auto
+		max-height: 0
+		transition: max-height 2s ease-out
+
+	.toggle-projects
+		transition: max-height 2s ease-out
+		max-height: $hidden-projects-on-mobile-devices * ($max-height-box + 150px)
+
+	.portfolio-container
+		.row.portfolio.show-more-button
+			.more-projects
+				display: initial
+				font-size: 16px
+				color: white
+				padding: 15px 32px
+				margin: 40px auto 0
+				width: fit-content
+				background: #8ABD3B
+				border: none
+
+		.row.portfolio
+			.custom-paddings
+				padding: 15px 0
+
+			.project-box
+				margin: 0 auto
+				width: 100%
+				max-width: 400px
+				height: 120vw
+				max-height: $max-height-box
+				min-height: 300px
+				font-size: 1.2rem
+
+			.project-golem-box-desc, .project-merck-box-desc
+				padding: 8%
+
+			.project-merck-box
+				.merck-left-background
+					display: none
+
+				.merck-background-mobile
+					display: initial
+					position: absolute
+					width: 100%
+					height: 100%
+					border-radius: inherit
+
+				.project-merck-box-desc
+					width: 90%
+					text-align: center
+					padding: 3vh 8% 5%
+
+					.logo-merck
+						padding: 2%
+						float: right
+						width: 40vw
+						max-width: 180px
+
+					.project-name
+						margin: 70% 20px 10px auto
+
+					.text-synthia
+						margin-right: 20px
+
+			.project-golem-box
+				.golem-background
+					display: none
+
+				.golem-background-mobile
+					display: initial
+					position: absolute
+					margin: 5% auto
+					width: 100%
+					z-index: -1
+
+				.project-golem-box-desc
+					width: 100%
+					text-align: center
+					z-index: 1
+
+					.project-name
+						margin-top: 10%
+						margin-bottom: 10px
+
+					.logo-golem
+						margin-top: 20%
+						margin-left: 5%
+						margin-bottom: 10%
+						max-width: 280px
+						width: 60vw
+
+			.project-polish-lody-box, .project-altenberg-box
+				.project-polish-lody-box-desc, .project-altenberg-box-desc
+					margin: 0 auto
+
+					.logo-polish-lody, .logo-altenberg
+						margin: 10% 0 20%
+						width: 50vw
+						max-width: 200px
+
+			.project-rubin-box
+				.rubin-anders-background
+					position: absolute
+					object-fit: cover
+					width: 100%
+					height: 100%
+					border-radius: inherit
+					z-index: -1
+
+				.project-rubin-box-desc
+					padding-top: 60%
+					text-align: center
+
+					.logo-rubin
+						position: absolute
+						object-fit: contain
+						width: 180%
+						left: -40%
+						top: 8%
+
+		.additional-paddings
+			padding-top: 60px
+
+@media only screen and (max-width: 380px)
+	.portfolio-container
+		.row.portfolio
+			.project-box
+				font-size: 0.95rem
+
+			.project-merck-box
+					.project-merck-box-desc
+						.project-name
+							margin: 65% 20px 20px auto
