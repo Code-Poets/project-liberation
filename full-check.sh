@@ -4,6 +4,10 @@ printf "=============== VIRTUAL ENVIRONMENT PACKAGES CHECKS ================\n"
 ./check-environment-packages.sh
 printf "\n"
 
+printf "===============DOWNLOAD AND ADD IMAGES TO DJANGO ===================\n"
+./download-and-add-images-to-django.sh
+printf "\n"
+
 printf "=================== DJANGO CONFIGURATION CHECKS ====================\n"
 python manage.py check
 printf "\n"
