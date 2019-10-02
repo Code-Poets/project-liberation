@@ -10,6 +10,13 @@ from django.db.models import PositiveSmallIntegerField
 from sorl.thumbnail import ImageField
 
 
+class Testimonial(models.Model):
+    name = CharField(max_length=32)
+    position = CharField(max_length=64)
+    quote = CharField(max_length=300)
+    image = ImageField(default=None, blank=True, upload_to=settings.TESTIMONIAL_PHOTOS_STORAGE)
+
+
 class Employees(models.Model):
     name = CharField(max_length=50)
     position = CharField(max_length=50)
