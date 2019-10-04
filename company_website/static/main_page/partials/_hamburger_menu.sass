@@ -1,0 +1,67 @@
+@import "constants"
+
+.hamburger
+	position: fixed
+	top: -50px
+	right: 0
+	margin: 10px 15px
+	padding: 10px
+	z-index: 1001
+	background: transparent
+	border: none
+
+	&:focus
+		outline: 0
+
+	@media only screen and (max-width: $md-screen-size)
+		-webkit-transition: all .6s ease-in-out
+		-moz-transition: all .6s ease-in-out
+		-ms-transition: all .6s ease-in-out
+		-o-transition: all .6s ease-in-out
+		transition: all .6s ease-in-out
+		transform: translateY(50px) rotate(360deg)
+
+	.hamburger-box
+		width: 34px
+		height: 20px
+		display: inline-block
+		position: relative
+
+		.hamburger-inner
+			@include hamburger-line
+
+			left: 0
+			top: 50%
+			transform: translateY(-50%)
+			-webkit-transition: all .3s .1s ease-in-out
+			-moz-transition: all .3s .1s ease-in-out
+			-ms-transition: all .3s .1s ease-in-out
+			-o-transition: all .3s .1s ease-in-out
+			transition: all .3s .1s ease-in-out
+
+		.hamburger-inner::before, .hamburger-inner::after
+			@include hamburger-line
+
+			left: 0
+			content: ''
+			-webkit-transition: all .3s .2s ease-in-out
+			-moz-transition: all .3s .2s ease-in-out
+			-ms-transition: all .3s .2s ease-in-out
+			-o-transition: all .3s .2s ease-in-out
+			transition: all .3s .2s ease-in-out
+
+		.hamburger-inner::before
+			top: -10px
+
+		.hamburger-inner::after
+			top: 10px
+
+.hamburger-active
+	.hamburger-box
+		.hamburger-inner
+			background-color: transparent
+
+			&::before
+				transform: translateY(10px) rotate(135deg)
+			&::after
+				transform: translateY(-10px) rotate(-135deg)
