@@ -1,4 +1,5 @@
 {% load static %}
+{% load pipeline %}
 
 %script{:type => "text/javascript",
 		:src => "https://code.jquery.com/jquery-3.4.1.js",
@@ -15,6 +16,4 @@
 		:integrity => "sha384-wziAfh6b/qT+3LrqebF9WeK4+J5sehS6FA10J1t3a866kJ/fvU5UwofWnQyzLtwu",
 		:crossorigin => "anonymous"}
 
-%script{:type => "text/javascript", :src => "{% static 'main_page/scripts/menu_functionality.js' %}"}
-
-%script{:type => "text/javascript", :src => "{% static 'main_page/scripts/aos_init.js' %}"}
+{% javascript 'main' %}
