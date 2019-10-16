@@ -132,3 +132,6 @@ Desktop.ini
 *.jpg
 *.jpeg
 *.png
+
+# Node package manager dependencies
+/node_modules
