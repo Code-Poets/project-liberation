@@ -1,0 +1,24 @@
+{
+  "name": "project-liberation",
+  "version": "0.1.0",
+  "description": "Packages needed for proper application work.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Code-Poets/project-liberation.git"
+  },
+  "author": "Karol Beker <karol.beker@codepoets.it>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Code-Poets/project-liberation/issues"
+  },
+  "homepage": "https://github.com/Code-Poets/project-liberation#readme",
+  "dependencies": {
+    "sass": "^1.23.0",
+    "uglify-es": "^3.3.9",
+    "yuglify": "^2.0.0"
+  }
+}
