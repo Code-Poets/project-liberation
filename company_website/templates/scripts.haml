@@ -1,6 +1,18 @@
-%script{
-    :type => "text/javascript",
+{% load static %}
+
+%script{:type => "text/javascript",
+		:src => "https://code.jquery.com/jquery-3.4.1.js",
+		:integrity => "sha384-mlceH9HlqLp7GMKHrj5Ara1+LvdTZVMx4S1U43/NxCvAkzIo8WJ0FE7duLel3wVo",
+		:crossorigin => "anonymous"}
+
+%script{:type => "text/javascript",
     :src => "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",
     :integrity => "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM",
-    :crossorigin => "anonymous"
-}
+    :crossorigin => "anonymous"}
+
+%script{:type => "text/javascript",
+		:src => "https://unpkg.com/aos@2.3.1/dist/aos.js",
+		:integrity => "sha384-wziAfh6b/qT+3LrqebF9WeK4+J5sehS6FA10J1t3a866kJ/fvU5UwofWnQyzLtwu",
+		:crossorigin => "anonymous"}
+
+%script{:type => "text/javascript", :src => "{% static 'main_page/scripts/menu_functionality.js' %}"}
