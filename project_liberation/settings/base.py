@@ -141,7 +141,7 @@ PIPELINE = {
     "CSS_COMPRESSOR": 'pipeline.compressors.yuglify.YuglifyCompressor',
     "JS_COMPRESSOR": 'pipeline.compressors.uglifyjs.UglifyJSCompressor',
     "YUGLIFY_BINARY": os.path.join(BASE_DIR, '../node_modules/.bin/yuglify'),
-    "YUI_BINARY": os.path.join(BASE_DIR, '../node_modules/.bin/uglifyjs'),
+    "UGLIFYJS_BINARY": os.path.join(BASE_DIR, '../node_modules/.bin/uglifyjs'),
     "SASS_BINARY": os.path.join(BASE_DIR, '../node_modules/.bin/sass'),
     'STYLESHEETS': {
         'main': {
