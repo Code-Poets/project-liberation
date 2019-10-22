@@ -198,6 +198,12 @@ PIPELINE = {
             ),
             'output_filename': 'css/how_we_work.css'
         },
+        'estimate_project': {
+            'source_filenames': (
+                'estimate_project/*.sass',
+            ),
+            'output_filename': 'css/estimate_project.css',
+        },
     },
     'JAVASCRIPT': {
         'main': {
@@ -211,6 +217,12 @@ PIPELINE = {
                 'common/scripts/*.js',
             ),
             'output_filename': 'js/common.js',
+        },
+        'estimate_project': {
+            'source_filenames': (
+                'estimate_project/scripts/*.js',
+            ),
+            'output_filename': 'js/estimate_project.js',
         },
         'team_introduction': {
             'source_filenames': (

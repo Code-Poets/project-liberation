@@ -1,0 +1,27 @@
+{% include "common_partials/head.haml" %}
+{% load pipeline %}
+{% stylesheet 'common' %}
+{% stylesheet 'estimate_project' %}
+
+.overlay
+
+{% include "common_partials/menu.haml" %}
+
+{% include "estimate_project/top_description.haml" %}
+
+
+
+
+
+{% include "estimate_project/estimate_project_form.haml" %}
+
+{% include "common_partials/footer.haml" %}
+
+
+{% include "common_partials/scripts.haml" %}
+
+{% javascript 'estimate_project' %}
+
+
+
+

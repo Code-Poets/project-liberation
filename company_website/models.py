@@ -51,3 +51,42 @@ class Employees(models.Model):
         if not isinstance(self.order, int):
             self.order = self._get_lowest_available_order_number()
         super().save()
+
+
+class ProjectToEstimate(models.Model):
+    creation_date = models.DateField(auto_now_add=True)
+
+    name = models.CharField(max_length=60)
+    email = models.EmailField(max_length=60)
+    country = models.CharField(max_length=60, blank=True)
+    idea_description = models.TextField(max_length=10000)
+    nda_required = models.BooleanField(blank=True, null=True)
+    privacy_policy_accepted = models.BooleanField(default=False)
+    #
+    # Optional (hidden) section
+    I_want_to = (("build", "Build something new"), ("improve", "Improve existing project"))
+    build_or_improve = models.CharField(max_length=15, choices=I_want_to, blank=True, null=True)
+
+    budget_choices = (
+        ("-8", "up to $8.000"),
+        ("8-25", "$8.000 - $25.000"),
+        ("25-100", "$25.000 - $100.000"),
+        ("100+", "$100.000+"),
+    )
+    monthly_bugdet = models.CharField(max_length=15, choices=budget_choices, blank=True, null=True)
+
+    time_choices = (("-3", "up to 3 months"), ("3-6", "3-6 months"), ("6+", "6+ months"))
+    project_time = models.CharField(max_length=15, choices=time_choices, blank=True, null=True)
+
+    design_choices = ((True, "Yes"), (False, "No"))
+    design_product = models.BooleanField(choices=design_choices, blank=True, null=True)
+
+    company_info_choices = (
+        ("Google", "Google"),
+        ("Clutch", "Clutch.com"),
+        ("Friend", "Friend"),
+        ("Social Media", "Social Media"),
+        ("Tech Event", "Tech Event"),
+        ("Other", "Other"),
+    )
+    company_info_origin = models.CharField(max_length=20, choices=company_info_choices, blank=True, null=True)

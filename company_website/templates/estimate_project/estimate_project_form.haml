@@ -1,0 +1,117 @@
+{% load static %}
+
+
+.container.estimate-form
+  %form{:method => "post", :id => "formABC"}
+    {% csrf_token %}
+    .row
+      .col-md-6.col-12
+        .input-fields-container
+
+          .input-field
+            {{form.name}}
+            .label-container
+              .estimate-triangle-left-label
+                Name *
+
+
+          .input-field
+            {{form.email}}
+            .label-container
+              .estimate-triangle-left-label
+                E-mail *
+
+          .input-field
+            {{form.country}}
+            .label-container
+              .estimate-triangle-left-label
+                Country
+
+          .nda
+            Do you need NDA?
+            .switch-field
+              {% for field in form.nda_required %}
+                .select-box{:id => "nda_#{forloop.counter}"}
+                  {{ field }}
+                {% endfor %}
+
+          .additional-questions
+            Need more precise estimation?
+            .add-button{:id => "add_questions"}
+              Show additional questions
+
+
+      .col-md-6.col-12
+        .text-input
+          .top-label
+            Describe your idea *
+          .contener
+            %textarea{:class => "area", :id => "id_idea_description", :name => "idea_description", :cols => "40", :rows => "10", :maxlength => "10000"}
+            %img.feather-background.lazyload{:src => "{% static 'estimate_project/images/feather_horizontal.png' %}"}
+        .submit-container
+          .privacy-check-box
+            {{form.privacy_policy_accepted}}
+            I have read and accept our
+            %a{:href => 'https://codepoets.it/privacy-and-cookie-policy/'}  Privacy Policy
+          <input type="submit" value="Estimate Project" class="estimate-button" id="btnSubmit">
+
+    .row
+      .hide-add-questions
+        .hide-button{:id => "hide_questions"}
+          Hide questions
+
+    .row
+      .col-md-6.col-12
+        .bottom-containers
+          .single-container
+            .select-container
+              I want to
+              .switch-field
+                {% for field in form.build_or_improve %}
+                  .select-box{:id => "build_or_improve_#{forloop.counter}"}
+                    {{ field }}
+                  {% endfor %}
+
+            .select-container
+              What is your monthly budget?
+              .switch-field
+                {% for field in form.monthly_bugdet %}
+                  .monthly-budget{:id => "monthly_bugdet_#{forloop.counter}"}
+                    {{ field }}
+                  {% endfor %}
+
+
+            .select-container
+              How much time do you have?
+              .switch-field
+                {% for field in form.project_time %}
+                  .monthly-budget{:id => "project_time_#{forloop.counter}"}
+                    {{ field }}
+                  {% endfor %}
+
+
+      .col-md-6.col-12
+        .bottom-containers
+          .single-container
+            .select-container
+              Do you want us to design your product?
+              .switch-field
+                {% for field in form.design_product %}
+                  .monthly-budget{:id => "design_product_#{forloop.counter}"}
+                    {{ field }}
+                  {% endfor %}
+
+            .select-container
+              How did you find us?
+              .switch-field
+                {% for field in form.company_info_origin %}
+                  .monthly-budget{:id => "company_info_origin_#{forloop.counter}"}
+                    {{ field }}
+                  {% endfor %}
+
+          .submit-container-bottom
+            .privacy-check-box-bottom
+              {{form.privacy_policy_accepted}}
+              I have read and accept our
+              %a{:href => 'https://codepoets.it/privacy-and-cookie-policy/'}  Privacy Policy
+              %input{:type => "submit", :value => "Estimate Project", :class => "estimate-button", :id => "btnSubmitbottom"}

@@ -1,0 +1,355 @@
+@import "../common/partials/set_initials"
+@import "../main_page/section_separator"
+@import "../common/partials/constants"
+
+.container.estimate-container
+	background: $blue-color
+	margin: 0
+	width: 100%
+	max-width: 100%
+
+	.row
+		margin: 0 auto
+		color: $orange-color
+		margin-bottom: 5vw
+		width: 100%
+
+		.section-title
+			text-align: left
+			border-left: solid 20px $orange-color
+			margin-top: 10vh
+
+			.title
+				font-weight: 700
+				font-size: 3vh
+				margin-top: -0.5vw
+				margin-bottom: 1vw
+
+			.estimate-description
+				font-weight: 600
+				font-size: 2vh
+
+.container.estimate-form
+	border-radius: 15px
+	font-size: 2vh
+	font-weight: 600
+	color: $blue-color
+
+
+	.input-fields-container
+		height: auto
+
+		.input-field
+			margin: 0 0 1.8vw 0
+			text-align: inherit
+			width: 100%
+			position: relative
+			height: 2.2vw
+
+			#id_name, #id_email, #id_country
+				position: absolute
+				width: 100%
+				height: inherit
+				border-radius: 15px
+				border: 2px solid lightgrey
+
+			.label-container
+				position: absolute
+				right: 0
+				height: inherit
+
+				.estimate-triangle-left-label
+					width: 7vw
+					background-color: $orange-color
+					border-radius: 0 15px 15px 0
+					text-align: center
+					vertical-align: middle
+					height: inherit
+					position: relative
+					display: flex
+					justify-content: center
+					align-items: center
+
+					&::after
+						content: ""
+						transform: rotate(90deg)
+						height: 2.5vw
+						border-top: 20px solid $orange-color
+						border-right: 1.25vw solid transparent
+						border-left: 1.25vw solid transparent
+						position: absolute
+						left: -2.5vw
+
+	.nda
+		color: $dark-grey
+		text-align: center
+		height: 6vw
+		margin-bottom: 3vw
+
+		.switch-field
+			margin: 1vw
+			color: $medium-grey
+			font-weight: 500
+			font-size: 1.7vh
+
+			.select-box
+				position: relative
+				cursor: pointer
+				border: 2px solid lightgrey
+				text-align: center
+				width: 20%
+				margin-left: 2%
+				margin-right: 2%
+				display: inline-block
+				border-radius: 15px
+				height: 2vw
+
+
+				label
+					width: 100%
+					z-index: 1
+					cursor: pointer
+					height: 2vw
+					margin: auto
+					display: flex
+					justify-content: center
+					align-items: center
+					margin-top: -1%
+
+				#id_nda_required_0, #id_nda_required_1[type="radio"]
+					display: none
+					position: absolute
+					width: 100%
+					height: 100%
+					background-color: red
+					z-index: -1
+
+
+	.hide-add-questions
+		alignment: center
+		text-align: center
+		width: 100%
+		display: none
+
+
+		.hide-button
+			alignment: center
+			text-align: center
+			font-weight: 500
+			font-size: 1.7vh
+			color: $medium-grey
+			position: relative
+			cursor: pointer
+			border: 2px solid lightgrey
+			width: 20%
+			margin-left: 40%
+			margin-top: 1vw
+			border-radius: 15px
+			height: 2vw
+			display: flex
+			justify-content: center
+			align-items: center
+
+	.additional-questions
+		color: $dark-grey
+		height: 10vw
+		text-align: center
+
+		.add-button
+			font-weight: 500
+			font-size: 1.7vh
+			color: $medium-grey
+			position: relative
+			cursor: pointer
+			border: 2px solid lightgrey
+			text-align: center
+			width: 40%
+			margin-top: 1vw
+			margin-left: 30%
+			border-radius: 10px
+			height: 2vw
+			display: flex
+			justify-content: center
+			align-items: center
+
+	.text-input
+		height: 18vw
+		width: 100%
+		border-radius: 15px
+		border: 2px solid lightgrey
+
+
+		.top-label
+			background-color: $orange-color
+			height: 2.2vw
+			width: 100%
+			text-align: center
+			//vertical-align: center
+			border-radius: 13px 13px 0 0
+			display: flex
+			justify-content: center
+			align-items: center
+
+
+		.contener
+			position: relative
+
+			.area
+				width: 100%
+				height: 100%
+				object-fit: contain
+				background: none
+				z-index: 2
+
+			.feather-background
+				position: absolute
+				top: 0
+				left: 0
+				display: block
+				opacity: 0.2
+				width: 100%
+				height: 100%
+
+		#id_idea_description
+			border-radius: 15px
+			height: 14.5vw
+			border: 0
+			color: $dark-grey
+			position: relative
+			width: 100%
+			resize: none
+
+
+
+
+	.submit-container
+		width: 100%
+		height: 10vw
+		background: white
+		.privacy-check-box
+			font-weight: 500
+			color: $medium-grey
+			margin-left: 10%
+			margin-top: 2vw
+
+		.estimate-button
+			background: #4858C1
+			width: 70%
+			margin-top: 1vw
+			margin-left: 10%
+			margin-right: 10%
+			height: 5vw
+			color: white
+			font-weight: 700
+			font-size: 2.5vh
+			border-radius: 25px
+
+	.bottom-containers
+		display: none
+		height: auto
+
+		.single-container
+			height: inherit
+			margin-top: inherit
+
+			.select-container
+				font-size: 2vh
+				font-weight: 600
+				color: $dark-grey
+				text-align: center
+				height: auto
+				margin-top: 2vw
+				margin-bottom: 1vw
+
+				.switch-field
+					color: $medium-grey
+					font-weight: 500
+					font-size: 1.7vh
+					margin: 1vw
+
+					.select-box
+						position: relative
+						cursor: pointer
+						border: 2px solid lightgrey
+						text-align: center
+						width: 50%
+						margin-left: 25%
+						margin-top: 0.5vw
+						border-radius: 15px
+						height: 2vw
+
+						label
+							width: 100%
+							z-index: 1
+							cursor: pointer
+							height: 2vw
+							margin: auto
+							display: flex
+							justify-content: center
+							align-items: center
+							margin-top: -1%
+
+						#id_build_or_improve_0, #id_build_or_improve_1[type="radio"]
+							position: absolute
+							width: 100%
+							height: 100%
+							left: 400px
+							z-index: -1
+							display: none
+
+				.monthly-budget
+					border: 2px solid lightgrey
+					text-align: center
+					border-radius: 15px
+					height: 2vw
+					width: 30%
+					cursor: pointer
+					display: inline-block
+					margin: 0.5vw 2% 0
+
+					label
+						width: 100%
+						z-index: 1
+						cursor: pointer
+						height: 2vw
+						display: flex
+						justify-content: center
+						align-items: center
+						margin-top: -1%
+
+
+						#id_monthly_bugdet_0, #id_monthly_bugdet_1, #id_monthly_bugdet_2, #id_monthly_bugdet_3,
+						#id_project_time_0, #id_project_time_1, #id_project_time_2, #id_company_info_origin_0, #id_company_info_origin_1,
+						#id_company_info_origin_2, #id_company_info_origin_3, #id_company_info_origin_4,
+						#id_company_info_origin_5, #id_design_product_0, #id_design_product_1[type="radio"]
+							position: absolute
+							//border-radius: 400px
+							width: 100%
+							height: 100%
+							left: 400px
+							z-index: -1
+							display: none
+
+
+.submit-container-bottom
+	margin-top: 1vw
+	width: 100%
+	height: 10vw
+	background: white
+
+
+	.estimate-button
+		background: #4858C1
+		width: 90%
+		margin-top: 1vw
+		height: 5vw
+		color: white
+		font-weight: 700
+		font-size: 2.5vh
+		border-radius: 25px
+
+	.privacy-check-box-bottom
+		font-weight: 500
+		color: $medium-grey
+		margin-left: 20%
+		margin-top: 2vw
