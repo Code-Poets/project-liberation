@@ -2,7 +2,7 @@
 
 .container-fluid.px-0
     #content.jumbo.d-flex
-        %img.background-img{:alt=>"Codepoets software", :src => "{% static 'main_page/images/main_screen/slide.jpg' %}"}
+        %img.background-img.lazyload{:alt=>"Codepoets software", :data-src => "{% static 'main_page/images/main_screen/slide.jpg' %}"}
         .container-fluid
             .text-box-blue
                 %span.main-screen-text WE DELIVER SOFTWARE THAT MATTERS
