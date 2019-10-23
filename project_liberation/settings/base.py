@@ -150,6 +150,18 @@ PIPELINE = {
             ),
             'output_filename': 'css/main.css',
         },
+        'css_reset': {
+            'source_filenames': (
+                'css_reset.sass',
+            ),
+            'output_filename': 'css/css_reset.css',
+        },
+        'common': {
+            'source_filenames': (
+                'common/*.sass',
+            ),
+            'output_filename': 'css/common.css',
+        },
     },
     'JAVASCRIPT': {
         'main': {
@@ -157,7 +169,13 @@ PIPELINE = {
                 'main_page/scripts/*.js',
             ),
             'output_filename': 'js/main.js'
-        }
+        },
+        'common': {
+            'source_filenames': (
+                'common/scripts/*.js',
+            ),
+            'output_filename': 'js/common.js',
+        },
     },
     'COMPILERS': ('pipeline.compilers.sass.SASSCompiler',)
 }
