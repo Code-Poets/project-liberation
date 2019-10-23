@@ -1,9 +1,12 @@
 @import "../common/partials/constants"
 
+$xs-breakpoint: 379px
+$xxs-breakpoint: 363px
 
 .background-image
     position: absolute
     z-index: -1
+    max-width: 100%
 
 .ready-to-work-with-us
     font-family: $font-family
@@ -30,15 +33,17 @@
         vertical-align: middle
         height: 66
         width: 317
+        max-width: 100%
         border-radius: .6rem
 
         &:hover
             background-color: $blue-highlight
             border-color: $blue-highlight
 
-    .row
+    .content_section
         max-width: 100%
         margin: 0
+        margin-bottom: 50px
 
         .backdrop
             max-width: 521px
@@ -53,17 +58,27 @@
                 height: 100%
                 opacity: 0.5
 
+            @media only screen and (max-width: $xxs-breakpoint)
+                .background-image
+                    margin-top: -86px
+
             .estimate-project
                 width: 371px
                 height: 268px
+                max-width: 100%
                 padding: $ready-to-work-with-us-estimate-project-offset 0
                 text-align: left
                 float: right
 
                 .background-image
                     margin-top: (-$ready-to-work-with-us-estimate-project-offset)
-                    height: inherit
+                    height: auto
+                    max-height: 268px
                     opacity: 1
+
+                @media only screen and (max-width: $xs-breakpoint)
+                    .background-image
+                        margin-top: -31px
 
                 .estimate-project-button-wrapper
                     margin-left: -14px
@@ -78,9 +93,19 @@
                     margin-top: 16px
                     margin-left: -10px
 
+                @media only screen and (max-width: $xxs-breakpoint)
+                    .tell-us-about-you
+                        margin-top: 8px
+                        font-size: 13px
+
         @media only screen and (max-width: $lg-breakpoint)
             .backdrop
                 float: none
+
+        @media only screen and (max-width: $xxs-breakpoint)
+            .backdrop
+                padding: 86px 0 0 0
+                min-height: 389px
 
         .meet-ceo
             padding-top: 60px
