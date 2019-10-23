@@ -1,18 +1,21 @@
-{% include "head.haml" %}
+{% include "common_partials/head.haml" %}
 {% load pipeline %}
 {% stylesheet 'main' %}
+{% stylesheet 'common' %}
 
 .overlay
 
-{% include "main_page/menu.haml" %}
-{% include "main_page/main_screen.haml" %}
-{% include "main_page/technologies.haml" %}
-{% include "main_page/services.haml" %}
-{% include "main_page/portfolio.haml" %}
-{% include "main_page/about_us.haml" %}
-{% include "main_page/testimonials.haml" %}
-{% include "main_page/ready_to_work_with_us.haml" %}
-{% include "main_page/map_navigator.haml" %}
-{% include "main_page/footer.haml" %}
+{% include "common_partials/menu.haml" %}
+{% include "main_page_partials/main_screen.haml" %}
+{% include "main_page_partials/technologies.haml" %}
+{% include "main_page_partials/services.haml" %}
+{% include "main_page_partials/portfolio.haml" %}
+{% include "main_page_partials/about_us.haml" %}
+{% include "main_page_partials/testimonials.haml" %}
+{% include "main_page_partials/ready_to_work_with_us.haml" %}
+{% include "main_page_partials/map_navigator.haml" %}
+{% include "common_partials/footer.haml" %}
 
-{% include "scripts.haml" %}
+{% include "common_partials/scripts.haml" %}
+
+{% javascript 'main' %}
