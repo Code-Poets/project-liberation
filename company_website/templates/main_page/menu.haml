@@ -1,13 +1,24 @@
 {% load static %}
+{% load variable_tag %}
 
-%nav.navbar.navbar-expand.fixed-top.navbar-dark.nb-hidden.navbar-animation
-    .cp-navi.hidden
+{% if request.resolver_match.url_name == "main_page" %}
+    {% define_variable "nb-hidden" as navbar_visibility_class %}
+    {% define_variable "visible" as menu_unscrolled_visibility %}
+    {% define_variable "hidden" as menu_scrolled_visibility %}
+{% else %}
+    {% define_variable "nb-visible" as navbar_visibility_class %}
+    {% define_variable "hidden" as menu_unscrolled_visibility %}
+    {% define_variable "visible" as menu_scrolled_visibility %}
+{% endif %}
+
+%nav.navbar.navbar-expand.fixed-top.navbar-dark.navbar-animation{:class => "{{ navbar_visibility_class }}"}
+    .cp-navi{:class => "{{ menu_scrolled_visibility }}"}
         %img.background-img{:alt=>"Codepoets background menu", :src => "{% static 'main_page/images/menu/menu_background.png' %}"}
 
     .navbar-collapse
-        %a.logo1.hidden{:href=> "#"}
+        %a.logo1{:href=> "#", :class => "{{ menu_scrolled_visibility }}" }
             %img.codepoets-logo{:src => "{% static 'main_page/images/menu/code_poets_logo_menu_color.png' %}", :alt => "Codepoets logo"}
-        %a.logo2.visible{:href=> "#"}
+        %a.logo2{:href=> "#", :class => "{{ menu_unscrolled_visibility }}"}
             %img.codepoets-logo{:src => "{% static 'main_page/images/menu/code_poets_logo_menu_white.png' %}", :alt => "Codepoets logo"}
         %ul.navbar-nav.ml-auto.menu
             %li.nav-item.margin
@@ -25,7 +36,6 @@
                 %a.nav-link{:href => "#"}
                     %span.estimate-project Estimate Project
             .estimate-triangle-right.hidden-xs
-
 %button.navbar-toggler.hamburger{:type =>"button", :aria-expanded => "false", :aria-controls => "menu"}
     %span.hamburger-box
         %span.hamburger-inner
