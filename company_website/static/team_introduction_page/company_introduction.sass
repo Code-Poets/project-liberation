@@ -1,2 +1,94 @@
 @import "../common/partials/_constants.sass"
 
+body
+
+    text-indent: 0
+    margin: 0 0
+    line-height: unset
+
+    .row
+        margin: 0
+
+    .about-us-page
+        margin: $default-padding-in-vw
+        max-width: $about-us-page-width
+        color: white
+        text-align: center
+        font-family: "Open Sans", sans-serif
+        -webkit-font-smoothing: antialiased
+
+        @media only screen and (min-width: 991px)
+            margin: 9vw $default-padding-in-vw $default-padding-in-vw $default-padding-in-vw
+        @media only screen and (min-width: $about-us-page-width)
+            margin: $top-margin-with-menu auto $default-padding-in-px auto
+        .outer-text-div
+            position: relative
+            width: 100%
+            max-height: 100%
+            text-align: center
+            border-radius: $default-border-radius-in-vw
+            @media only screen and (min-width: $about-us-page-width)
+                border-radius: $default-border-radius-in-px
+
+        .inner-text-div
+            display: inline-block
+            max-height: 100%
+            padding: calc(2 * #{$default-padding-in-vw})
+            @media only screen and (min-width: $about-us-page-width)
+                padding: calc(2 * #{$default-padding-in-px})
+            .topic
+                font-weight: 700
+                font-size: 3.5vw
+                width: 100%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 44px
+
+            .text-row
+                font-weight: 600
+                padding-top: 2.5vw
+                width: 100%
+                height: auto
+                max-height: 100%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    padding-top: 35px
+
+            .description
+                text-align: justify
+                margin: 0
+                font-size: 1.7vw
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 19px
+
+        .who-we-are-part
+            background-color: $blue
+            border-radius: $default-border-radius-in-vw
+            @media only screen and (min-width: $about-us-page-width)
+                border-radius: $default-border-radius-in-px
+
+            p
+                margin: 0 0
+                padding: 1vw 0
+
+                @media only screen and (min-width: $about-us-page-width)
+                    padding: 10px 0
+
+            .who-we-are-text-row
+                font-weight: 400
+
+            .hidden
+                display: none
+
+            .read-more-less
+                position: absolute
+                right: calc(2 * #{$default-padding-in-vw})
+                bottom: calc(2 * #{$default-padding-in-vw})
+                font-size: 1.4vw
+                cursor: pointer
+
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 15px
+                    right: calc(2 * #{$default-padding-in-px})
+                    bottom: calc(2 * #{$default-padding-in-px})
+
