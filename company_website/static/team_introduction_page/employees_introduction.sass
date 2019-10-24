@@ -1,0 +1,82 @@
+@import "../common/partials/_constants.sass"
+
+body
+    text-indent: 0
+    margin: 0 0
+    line-height: unset
+    font-family: "Open Sans", sans-serif
+
+
+    .employees-intruduction
+        max-width: $about-us-page-width
+        margin: $separation-margin-between-introductions-in-vw auto $default-padding-in-px auto
+
+        @media only screen and (min-width: $about-us-page-width)
+            margin: $separation-margin-between-introductions-in-px auto $default-padding-in-px auto
+
+        .text-div
+            text-align: center
+            font-size: 3.5vw
+            font-weight: 700
+            color: $blue
+
+            @media only screen and (min-width: $about-us-page-width)
+                font-size: 44px
+
+        .bosses-images
+            text-align: center
+            width: 100%
+
+            .boss-name
+                padding-top: 7px
+                font-size: 30px
+
+            .boss-position
+                font-size: 15px
+                color: #11202A
+
+        .employee
+            height: 368px
+            width: 200px
+
+        .person
+            display: inline-block
+            margin: 25px 15px
+            position: relative
+
+        .boss
+            height: 468px
+            width: 267px
+
+            @media only screen and (max-width: 714px)
+                margin: 25px
+
+        .front-image:hover
+            opacity: 0
+
+        .back-image:hover
+            opacity: 1
+
+        .front-image
+            opacity: 1
+            transition: opacity 0.4s cubic-bezier(.84,.12,1,.79)
+
+        .back-image
+            top: 0
+            left: 0
+            position: absolute
+            opacity: 0
+            transition: opacity 0.2s cubic-bezier(.84,.12,1,.79)
+
+        .employees-images
+            margin: auto
+            text-align: center
+
+            .employee-name
+                padding-top: 7px
+                font-size: 30px
+                color: #3D4952
+
+            .employee-position
+                font-size: 15px
+                color: #3D4952
