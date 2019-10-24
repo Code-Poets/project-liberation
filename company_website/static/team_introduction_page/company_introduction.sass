@@ -21,6 +21,33 @@ body
             margin: 9vw $default-padding-in-vw $default-padding-in-vw $default-padding-in-vw
         @media only screen and (min-width: $about-us-page-width)
             margin: $top-margin-with-menu auto $default-padding-in-px auto
+
+        img
+            border-radius: $default-border-radius-in-vw
+            @media only screen and (min-width: $about-us-page-width)
+                border-radius: $default-border-radius-in-px
+            width: auto
+            height: auto
+            max-width: 100%
+
+        .left-container
+            padding-left: 0
+            padding-right: $default-padding-in-vw
+            width: auto
+            height: auto
+            max-width: 100%
+            max-height: 100%
+
+            @media only screen and (min-width: $about-us-page-width)
+                padding-right: $default-padding-in-px
+
+        .right-container
+            padding: 0
+            width: auto
+            height: auto
+            max-width: 100%
+            max-height: 100%
+
         .outer-text-div
             position: relative
             width: 100%
@@ -91,4 +118,56 @@ body
                     font-size: 15px
                     right: calc(2 * #{$default-padding-in-px})
                     bottom: calc(2 * #{$default-padding-in-px})
+
+        .our-values-part
+            padding-top: $default-padding-in-vw
+
+            @media only screen and (min-width: $about-us-page-width)
+                padding-top: $default-padding-in-px
+
+            .image_1
+                object-fit: cover
+                object-position: 0 100%
+                width: 100%
+                height: 100%
+
+            .outer-our-values-text-div
+                background-color: $bright-blue
+                height: 35%
+
+            .inner-our-values-text-div
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%,-50%)
+                white-space: nowrap
+                padding: 0
+
+            .our-values-topic
+                font-size: 4.5vw
+
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 55px
+
+            .image_2
+                margin-top: $default-padding-in-vw
+                width: 100%
+                height: 65%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    margin-top: $default-padding-in-px
+
+            .left-column
+                flex: 0 0 61%
+                height: calc(40vw + 2vw)
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: calc(475px + #{$default-padding-in-px})
+
+            .right-column
+                flex: 0 0 39%
+                height: 40vw
+
+                @media only screen and (min-width: $about-us-page-width)
+                    height: 475px
 
