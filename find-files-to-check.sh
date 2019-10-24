@@ -1,7 +1,8 @@
 #!/bin/bash -e
 
-find . -type f                  			\
-    -not -path "./project_liberation/settings/*" 	\
-    -not -path "*/migrations/*"             		\
-    -not -name "manage.py"     				\
-    -name "*.py"                            		\
+find ${BASH_SOURCE%/*}                                            \
+    -type f                                                       \
+    -not -path "${BASH_SOURCE%/*}/project_liberation/settings/*"  \
+    -not -path "*/migrations/*"                                   \
+    -not -name "manage.py"                                        \
+    -name "*.py"

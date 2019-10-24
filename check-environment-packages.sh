@@ -1,16 +1,33 @@
 #!/bin/bash -e
 
-if [[ -z "$VIRTUAL_ENV" ]]
-then
+# This is setup to disable warning "Pipenv found itself running within a virtual environment, so it will automatically use that environment, instead of creating its own for any project"
+export PIPENV_VERBOSITY=-1
+
+# Run pipenv virtual environment
+virtualenv_path="$(
+    cd  ${BASH_SOURCE%/*}/
+    echo "$(pipenv --venv)"
+)"
+
+if [ -z $virtualenv_path ]; then
     RED_COLOR='\033[0;31m'
     GREEN_COLOR='\033[0;32m'
     NO_COLOR='\033[0m'
-    printf "${RED_COLOR}Script must be run with activated virtualenv!\n${NO_COLOR}You can activate shell by: ${GREEN_COLOR}pipenv shell\n"
+    printf "${NO_COLOR}You can create virtualenv by using command: ${GREEN_COLOR}pipenv install --dev\n"
     exit 1
+
 fi
 
-pipenv uninstall --all
+if [ -z $VIRTUAL_ENV ]; then
+    source $virtualenv_path/bin/activate
+fi
 
-pipenv install --dev --clear
+(
+    cd ${BASH_SOURCE%/*}/
+    pipenv uninstall --all
+    pipenv install --dev --clear
+    pipenv check
+)
 
-pipenv check
+# Disable pipenv virtual environment
+exit

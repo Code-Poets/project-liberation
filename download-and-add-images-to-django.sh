@@ -7,10 +7,10 @@ NGINX_ENDPOINT_WITH_IMAGE_PACKAGE="download-image-package"
 PACKAGE_NAME="project-liberation.zip"
 PACKAGE_PATH="${BASH_SOURCE%/*}/$PACKAGE_NAME"
 
-find                 \
-    .                \
-    -name images     \
-    -type d          \
+find                  \
+    ${BASH_SOURCE%/*} \
+    -name images      \
+    -type d           \
     -exec rm -r {} +
 
 curl                                                               \
