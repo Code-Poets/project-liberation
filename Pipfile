@@ -21,6 +21,8 @@ psycopg2 = "==2.7.5"
 psycopg2-binary = "==2.7.7"
 django-pipeline = "*"
 django-hamlpy = "*"
+sorl-thumbnail = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"
