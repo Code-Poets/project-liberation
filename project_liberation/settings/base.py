@@ -31,17 +31,20 @@ ALLOWED_HOSTS = []  # type: List
 # Application definition
 
 INSTALLED_APPS = [
-    'company_website.apps.CompanyWebsiteConfig',
-    'project_liberation.apps.ProjectLiberationConfig',
+    # Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 3rd party
     'pipeline',
     'hamlpy',
     'sorl.thumbnail',
+    # project-liberation
+    'company_website.apps.CompanyWebsiteConfig',
+    'project_liberation.apps.ProjectLiberationConfig',
 ]
 
 MIDDLEWARE = [
