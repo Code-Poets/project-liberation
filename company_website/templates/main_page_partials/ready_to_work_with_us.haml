@@ -5,9 +5,9 @@
     %h2.section-title
         Ready to work with us?
 
-    .row
+    .row.content_section
         .col-lg-6.col-12
-            .backdrop
+            .backdrop{:data-aos => "fade-up"}
                 %img.background-image.lazyload{:data-src => "{% static 'main_page/images/ready_to_work_with_us/estimate_project/feather_polygon.png' %}"}
                 .estimate-project
                     %img.background-image.lazyload{:data-src => "{% static 'main_page/images/ready_to_work_with_us/estimate_project/estimate_project_background_shape.png' %}"}
@@ -19,7 +19,7 @@
                         %br
                         We will contact you within 24h.
         .col-lg-6.col-12
-            .meet-ceo.text-center
+            .meet-ceo.text-center{:data-aos => "fade-up"}
                 .image-cropper
                     %img.lazyload{:data-src => "{% static 'main_page/images/ready_to_work_with_us/adrian.jpg' %}"}
                 %span.contact-label
