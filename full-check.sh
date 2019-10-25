@@ -21,7 +21,7 @@ printf "=============================== LINT ===============================\n"
 printf "\n"
 
 printf "========================= MYPY STATIC TYPE CHECKER =================\n"
-mypy --config-file=mypy.ini project_liberation/
+mypy --config-file=mypy.ini .
 printf "\n"
 
 printf "========================= UNIT TESTS WITH COVERAGE =================\n"
