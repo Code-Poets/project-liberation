@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pipeline',
     'hamlpy',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [
@@ -197,3 +198,4 @@ STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 
 # A key for Google API, necessary for accessing the map on the mainpage.
 # GOOGLE_API_KEY = ''
+MEDIA_URL = '/media/'
