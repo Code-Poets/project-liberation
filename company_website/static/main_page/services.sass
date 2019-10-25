@@ -3,7 +3,7 @@
 .container.services-container
 	.row
 		.title
-			margin: $container-title-template-margin 0 $container-title-template-margin-bottom
+			margin: $container-title-template-margin auto $container-title-template-margin-bottom
 			color: $blue-color
 			font-weight: 700
 
@@ -15,6 +15,10 @@
 
 		@media only screen and (max-width: $extra-large-services-size)
 			font-size: 100%
+
+		@media only screen and (min-width: $extra-large-services-size)
+			.right-section-text
+				margin-left: 15px
 
 		.box
 			margin-bottom: 15px
@@ -67,8 +71,8 @@
 
 			@media only screen and (min-width: $extra-large-services-size)
 				.web-application-header
-					width: 110%
-					margin-left: calc(-12% + 1vw)
+					width: 116%
+					margin-left: calc(-12.5% + 1vw)
 
 			.service-box-green
 				background-color: $service-green-box-color
