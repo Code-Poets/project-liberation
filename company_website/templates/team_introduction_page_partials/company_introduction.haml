@@ -1,0 +1,129 @@
+{% load static %}
+
+.about-us-page
+    .who-we-are-part.row
+        .outer-text-div
+            .inner-text-div
+                .topic-row
+                    .topic.who-we-are-topic
+                        WHO ARE WE?
+                .text-row.who-we-are-text-row
+                    %p.description
+                        For us software is like poetry. Knowing the language is not enough to create it.
+                        It's the way of thinking that makes the difference and a better language could only enhance but not substitute good abilities.
+                    %p.description.hidden
+                        We know the language and we know how to use it in an efficient way. And we choose Django - a Python framework that can be a very powerful tool when used by the right people.
+                        Developing high quality software within the specified time limit could be a difficult task.
+                        That's why we're here. To fulfill this task for you.
+                    %p.description.hidden
+                        We've got experience in working with both small companies and big corporations.
+                        We also have proven track of successful cooperations with remote clients.
+                        We cover full software development life cycle: from the initial identification of business requirements to testing, deployment and maintenance.
+                    %p.description.hidden
+                        We specialize in web application development, rapid MVP development, Machine Learning and Blockchain development.
+                    %p.description.hidden
+                        We are also travelers, mountain lovers, Brazilian jiu-jitsu practitioners, professional badminton players, amazing cooks and cool people to work with. ;)
+                    .read-more-less.read-less.hidden
+                        Read less
+                    .read-more-less.read-more
+                        Read more...
+    .our-values-part.row
+        .left-container.left-column
+            %img.lazyload.image_1{:data-src => "{% static 'team_introduction_page/images/image_1.jpg' %}", :alt => "Code Poets team"}
+        .right-container.right-column
+            .outer-text-div.outer-our-values-text-div
+                .inner-text-div.inner-our-values-text-div
+                    .topic.our-values-topic OUR VALUES
+            %img.lazyload.image_2{:data-src => "{% static 'team_introduction_page/images/image_2.jpg' %}", :alt => "Our values"}
+    .understand-part.row
+        .left-container.inner-left-container.left-column
+            %img.lazyload.image_3{:data-src => "{% static 'team_introduction_page/images/image_3.jpg' %}", :alt => "Code Poets brazilian jiu jitsu team"}
+            .square.yellow-square
+        .right-container.right-column
+            .outer-text-div.outer-understand-text-div
+                .inner-text-div.inner-understand-text-div
+                    .topic-row
+                        .topic UNDERSTAND
+                    .text-row
+                        %p.description.understand-part-description
+                            We dig deep to understand your business, goals and requirements.
+                            We need to create partnership and be understanding to each other in order to provide the best solutions.
+    .understand-part-2.row
+        .left-container.left-column
+            %img.lazyload.overlayed-image.image_4{:data-src => "{% static 'team_introduction_page/images/image_4.jpg' %}", :alt => "Animal friendly"}
+        .right-container.right-column
+            %img.lazyload.image_5{:data-src => "{% static 'team_introduction_page/images/image_5.jpg' %}", :alt => "Code Poets common dinner"}
+    .deliver-part.row
+        .outer-text-div.deliver-text-div
+            .inner-text-div.inner-deliver-text-div
+                .topic-row
+                    .topic DELIVER
+                .text-row
+                    %p.description.deliver-part-description
+                        We have smart and experienced people onboard.
+                        We are committed to delivering scalable and exgendable, high-quality sofware.
+                        Always on time.
+    .improve-part.row
+        .left-container.inner-left-container.left-column
+            %img.lazyload.image_6{:data-src => "{% static 'team_introduction_page/images/image_6.jpg' %}", :alt => "Code Poets feather background"}
+            .outer-text-div.improve-text-div
+                .inner-text-div.inner-improve-text-div
+                    .topic-row
+                        .topic IMPROVE
+                    .text-row
+                        .description.improve-part-description
+                            Our brains hate being idle.
+                            Passionate about our work, we are constantly moving forward, innovating and improving.
+                            We think that it is the key to success.
+            .square.orange-square
+        .right-container.right-column
+            %img.lazyload.image_7{:data-src => "{% static 'team_introduction_page/images/image_7.jpg' %}", :alt => "Code Poets ladies day"}
+    .be-honest-part.row
+        .left-container.inner-left-container.left-column
+            %img.lazyload.overlayed-image.runmageddon-image{:data-src => "{% static 'team_introduction_page/images/image_8.jpg' %}", :alt => "Code Poets runmageddon"}
+            .square.blue-square
+        .right-container.right-column
+            %img.lazyload.image_9{:data-src => "{% static 'team_introduction_page/images/image_9.jpg' %}", :alt => "Code Poets west office"}
+            .outer-text-div.be-honest-text-div
+                .inner-text-div.inner-be-honest-text-div
+                    .topic-row
+                        .topic
+                            BE HONEST
+                    .text-row
+                        %p.description.be-honest-part-description
+                            Transparency and good communication are essential in achieving the best results and solving problems.
+                            We are hones with you and we expect you to be honest with us.
+    .be-honest-part-2.row
+        .left-container.left-column
+            .overlayed-image
+                %img.lazyload.image_10{:data-src => "{% static 'team_introduction_page/images/image_10.jpg' %}", :alt => "Code Poets east office"}
+                %img.lazyload.image_11{:data-src => "{% static 'team_introduction_page/images/image_11.jpg' %}", :alt => "Strong team"}
+        .right-container.right-column
+            %img.lazyload.image_12{:data-src => "{% static 'team_introduction_page/images/image_12.jpg' %}", :alt => "Code Poets playroom"}
+    .self-organized-part.row
+        .outer-text-div.self-organized-text-div
+            .inner-text-div.inner-self-organized-text-div
+                .topic-row
+                    .topic
+                        SELF-ORGANIZE
+                .text-row
+                    %p.description.self-organized-part-description
+                        We're Agile supporters and we believe in teamwork.
+                        We are sure that no one will arrange the process, projects and even the company better than its members.
+        .left-container.col-6.inner-left-container.left-column
+            %img.lazyload.image_13{:data-src => "{% static 'team_introduction_page/images/image_13.jpg' %}", :alt => "Code Poets mountain journey"}
+            .square.red-square
+        .right-container.col-6.right-column
+            %img.lazyload.image_14{:data-src => "{% static 'team_introduction_page/images/image_14.jpg' %}", :alt => "Code Poets fat thursday"}
+    .self-organized-part-2.row
+        .left-container.left-column
+            %img.lazyload.overlayed-image.self-organized-overlayed-image{:data-src => "{% static 'team_introduction_page/images/image_15.jpg' %}", :alt => "Code Poets hot dog"}
+        .right-container.right-column
+            .outer-text-div.self-organized-2-text-div
+                .inner-text-div.inner-self-organized-part-2-text-div
+                    .topic-row
+                        .topic
+                            FEEL GOOD
+                    .text-row
+                        %p.description.self-organized-part-2-description
+                            Maybe we don't save the world while working on the projects but we always remember that at the same time we can fell good, have fun, make friends and drink good coffee.
