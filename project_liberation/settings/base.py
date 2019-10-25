@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []  # type: List
 
 INSTALLED_APPS = [
     'company_website.apps.CompanyWebsiteConfig',
+    'project_liberation.apps.ProjectLiberationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -181,3 +182,6 @@ PIPELINE = {
 }
 
 STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+
+# A key for Google API, necessary for accessing the map on the mainpage.
+# GOOGLE_API_KEY = ''
