@@ -7,7 +7,7 @@
         .bosses-images
             {% for boss in bosses %}
                 .person.boss
-                    {% thumbnail boss.front_image "267x400" as  front_image %}
+                    {% thumbnail boss.front_image "267x400" as front_image %}
                     {% thumbnail boss.back_image "267x400" as back_image %}
                         .person-container
                             %img.lazyload.front-image{:data-src => "{{ front_image.url }}"}
