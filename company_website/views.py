@@ -2,14 +2,15 @@ from typing import Any
 
 from django.conf import settings
 from django.views.generic import ListView
-from django.views.generic import TemplateView
 
 from company_website.models import Employees
+from company_website.models import Testimonial
 
 
-class MainPageView(TemplateView):
+class MainPageView(ListView):
 
     template_name = "main_page.haml"
+    model = Testimonial
 
     def get_context_data(self, **kwargs: Any) -> dict:
         context_data = super().get_context_data(**kwargs)
