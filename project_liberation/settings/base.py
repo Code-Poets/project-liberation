@@ -143,9 +143,9 @@ STATICFILES_FINDERS = [
 ]
 
 PIPELINE = {
-    "CSS_COMPRESSOR": 'pipeline.compressors.yuglify.YuglifyCompressor',
+    "CSS_COMPRESSOR": 'pipeline.compressors.cssmin.CSSMinCompressor',
     "JS_COMPRESSOR": 'pipeline.compressors.uglifyjs.UglifyJSCompressor',
-    "YUGLIFY_BINARY": os.path.join(BASE_DIR, '../node_modules/.bin/yuglify'),
+    "CSSMIN_BINARY": os.path.join(BASE_DIR, '../node_modules/.bin/cssmin'),
     "UGLIFYJS_BINARY": os.path.join(BASE_DIR, '../node_modules/.bin/uglifyjs'),
     "SASS_BINARY": os.path.join(BASE_DIR, '../node_modules/.bin/sass'),
     'STYLESHEETS': {

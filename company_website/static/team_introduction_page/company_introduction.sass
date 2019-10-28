@@ -452,16 +452,16 @@ body
                     height: calc(2 * 288px - #{$square-side-length-in-px})
 
             .left-column
-                flex: 0 0 calc(100% - calc(100% - calc(100% - calc(100% - 51% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw}))) + (#{$default-padding-in-vw} + #{$square-side-length-in-vw})))
+                flex: 0 0 calc(100% - (100% - (100% - (100% - 51% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw} + #{$default-padding-in-vw} + #{$square-side-length-in-vw})))))
 
                 @media only screen and (min-width: $about-us-page-width)
-                    flex: 0 0 calc(100% - calc(100% - calc(100% - calc(100% - 51% + (#{$square-side-length-in-px} + #{$default-padding-in-px}))) + (#{$square-side-length-in-px} + #{$default-padding-in-px})))
+                    flex: 0 0 calc(100% - (100% - (100% - (100% - 51% + (#{$square-side-length-in-px} + #{$default-padding-in-px} + (#{$square-side-length-in-px} + #{$default-padding-in-px}))))))
 
             .right-column
-                flex: 0 0 calc(100% - calc(100% - calc(100% - 51% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw}))) + (#{$default-padding-in-vw} + #{$square-side-length-in-vw}))
+                flex: 0 0 calc(100% - (100% - (100% - 51% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw} + (#{$default-padding-in-vw} + #{$square-side-length-in-vw})))))
 
                 @media only screen and (min-width: $about-us-page-width)
-                    flex: 0 0 calc(100% - calc(100% - calc(100% - 51% + (#{$square-side-length-in-px} + #{$default-padding-in-px}))) + (#{$square-side-length-in-px} + #{$default-padding-in-px}))
+                    flex: 0 0 calc(100% - (100% - (100% - 51% + (#{$square-side-length-in-px} + #{$default-padding-in-px} + (#{$square-side-length-in-px} + #{$default-padding-in-px})))))
 
         .self-organized-part
             padding-top: $default-padding-in-vw
