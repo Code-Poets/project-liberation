@@ -2,6 +2,7 @@ from typing import Any
 from typing import List
 from typing import Optional
 
+from django.conf import settings
 from django.db import models
 from django.db.models import BooleanField
 from django.db.models import CharField
@@ -12,8 +13,8 @@ from sorl.thumbnail import ImageField
 class Employees(models.Model):
     name = CharField(max_length=50)
     position = CharField(max_length=50)
-    front_image = ImageField(default=None, blank=True)
-    back_image = ImageField(default=None, blank=True)
+    front_image = ImageField(default=None, blank=True, upload_to=settings.COMPANY_EMPLOYEES_STORAGE)
+    back_image = ImageField(default=None, blank=True, upload_to=settings.COMPANY_EMPLOYEES_STORAGE)
     boss = BooleanField(default=False)
     order = PositiveSmallIntegerField(unique=True, blank=True)
 

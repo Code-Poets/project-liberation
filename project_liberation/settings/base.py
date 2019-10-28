@@ -202,3 +202,5 @@ STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 # A key for Google API, necessary for accessing the map on the mainpage.
 # GOOGLE_API_KEY = ''
 MEDIA_URL = '/media/'
+COMPANY_EMPLOYEES_STORAGE = 'company_employees_storage'
+MEDIA_ROOT = os.path.join(BASE_DIR, "storage")
