@@ -204,3 +204,4 @@ STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 MEDIA_URL = '/media/'
 COMPANY_EMPLOYEES_STORAGE = 'company_employees_storage'
 MEDIA_ROOT = os.path.join(BASE_DIR, "storage")
+TESTIMONIAL_PHOTOS_STORAGE = "testimonials/customers-profile-pictures"

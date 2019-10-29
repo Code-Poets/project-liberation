@@ -1,2 +1,37 @@
-%br
-  testimonials
+{% load static %}
+
+.testimonials
+    {% include "main_page_partials/section_separator.haml" %}
+    %h2.section_title
+        Testimonials
+
+    .container{:data-aos => "fade-up"}
+        .slideshow
+            %input.nav-button-prev.lazyload{:type => "image", :data-src => "{% static 'main_page/images/testimonials/testimonials_arrow_left.png' %}"}
+            .slides.owl-carousel.owl-theme
+                {% for testimonial in object_list %}
+                    .testimonial.item
+                        %img.background-image.owl-lazy{:data-src => "{% static 'main_page/images/testimonials/testimonials_background.png' %}"}
+                        .profile-picture
+                            .image-cropper
+                                %img.owl-lazy{:data-src =>"{{ testimonial.image.url }}"}
+                        .opinion-section
+                            %img.quote-mark.owl-lazy{:width => "45px", :height => "39px", :data-src => "{% static 'main_page/images/testimonials/quote_mark_left.png' %}"}
+                            .text-area
+                                %span.review
+                                    {{ testimonial.quote }}
+                                .signature
+                                    %span.name
+                                        {{ testimonial.name }}
+                                    %span.position
+                                        {{ testimonial.position }}
+                            %img.quote-mark.owl-lazy{:data-src => "{% static 'main_page/images/testimonials/quote_mark_right.png' %}"}
+                {% endfor %}
+            %input.nav-button-next.lazyload{:type => "image", :data-src => "{% static 'main_page/images/testimonials/testimonials_arrow_right.png' %}"}
+        .custom-dots-container
+            %input.nav-button-prev.lazyload{:type => "image", :data-src => "{% static 'main_page/images/testimonials/testimonials_arrow_left.png' %}"}
+            %ul.custom-dots-bar
+                {% for testimonial in object_list %}
+                    %li.custom-dot
+                {% endfor %}
+            %input.nav-button-next.lazyload{:type => "image", :data-src => "{% static 'main_page/images/testimonials/testimonials_arrow_right.png' %}"}

@@ -1,0 +1,255 @@
+@import "partials/constants"
+
+$nav-button-width: 54px
+$testimonial-max-width: 1164px
+$testimonial-breakpoint: calc($nav-button-width * 2 + $testimonial-max-width + 1px)
+$nav-button-breakpoint: 1294px
+$testimonial-text-breakpoint: 980px
+$testimonial-text-breakpoint-2: 549px
+
+.background-image
+    position: absolute
+    z-index: -1
+
+.testimonials
+    font-family: $font-family
+    font-weight: 400
+    max-width: $max-section-width
+    margin: auto
+
+    @keyframes highlight
+        50%
+            opacity: 0.5
+        100%
+            opacity: 1
+
+    .flash
+        animation: highlight 0.25s
+
+    .nav-button
+        width: 54px
+        height: 51px
+        margin: auto
+
+        &:focus
+            outline: none
+
+    .section_title
+        text-align: center
+        text-transform: uppercase
+        color: $dark-blue
+        font-size: 2.2rem
+        font-weight: 700
+        margin-bottom: 2rem
+
+    .container
+        padding: 0
+        margin: 0
+        max-width: $max-section-width
+        width: 100%
+        align-items: center
+
+        .slideshow
+            display: flex
+
+            .nav-button
+                width: 54px
+                height: 51px
+                margin: auto
+
+                &-prev
+                    @extend .nav-button
+                    margin-left: 0
+                    float: left
+
+                &-next
+                    @extend .nav-button
+                    float: right
+                    margin-right: 0
+
+                &:focus
+                    outline: none
+
+            @media only screen and (max-width: $nav-button-breakpoint)
+                    .nav-button
+                        display: none
+
+            .slides
+                float: None
+                margin: auto
+                max-width: 1172px
+
+                .testimonial
+                    max-width: 1164px
+                    min-height: 309px
+                    height: 100%
+                    border-radius: 1.5rem
+                    position: relative
+                    overflow: hidden
+                    display: flex
+                    padding: 6% 5.5% 6% 3%
+                    margin: 0 4px
+                    background-color: $blue
+
+                    .background-image
+                        width: 100%
+                        height: auto
+                        bottom: 0
+                        left: 0
+                        z-index: 0
+
+                    .profile-picture
+                        position: relative
+
+                        .image-cropper
+                            width: 140px
+                            height: 140px
+                            position: relative
+                            overflow: hidden
+                            border-radius: 50%
+                            margin: 0 auto
+
+                            img
+                                display: inline
+                                margin: 0 auto
+                                height: auto
+                                width: 100%
+
+                    .opinion-section
+                        display: flex
+                        position: relative
+                        text-align: center
+                        margin-left: 5.1%
+                        float: right
+
+                        .quote-mark
+                            width: 45px
+                            height: 39px
+
+                        .text-area
+                            margin: -6 30 0
+                            font-size: 21px
+                            line-height: 27px
+                            position: relative
+
+                            .review
+                                margin-top: -1px
+                                color: white
+
+                            .signature
+                                display: grid
+                                position: relative
+                                margin-top: 25px
+                                text-align: right
+                                color: $orange
+
+                                .name
+                                    font-weight: 700
+
+                                .position
+                                    font-size: 16px
+
+                @media only screen and (max-width: $testimonial-text-breakpoint)
+                    .testimonial
+                        min-height: 0
+                        padding: 9% 4.5% 6% 5%
+
+                        .profile-picture
+                            .image-cropper
+                                width: 100px
+                                height: 100px
+
+                        .opinion-section
+                            margin-left: 2%
+
+                            .quote-mark
+                                display: none
+
+                            .text-area
+                                font-size: 16px
+                                text-align: justify
+                                line-height: 1.4
+                                margin: -6px 6% 0
+
+                                .signature
+                                    margin-top: 20px
+
+                                    .position
+                                        font-size: 12px
+
+                @media only screen and (max-width: $testimonial-text-breakpoint-2)
+                    .testimonial
+                        padding: 7% 3% 6.5%
+                        display: block
+
+                        .background-image
+                            max-width: 658px
+                            width: 658px
+                            height: 57%
+                            bottom: -22px
+
+
+                        .profile-picture
+                            .image-cropper
+                                width: 100px
+                                height: 100px
+                                margin-bottom: 7%
+
+                        .opinion-section
+                            margin: 0
+
+                            .text-area
+                                margin-top: 0px
+
+                                .signature
+                                    .name
+                                        font-size: 18px
+                                    .position
+                                        font-size: 14px
+
+        .custom-dots-container
+            margin-top: 14px
+            text-align: center
+            margin-bottom: 36px
+
+            .nav-button
+                display: none
+                height: 35px
+                width: 37px
+                margin: 0 20
+
+                &-prev
+                    @extend .nav-button
+
+                &-next
+                    @extend .nav-button
+
+            .custom-dots-bar
+                display: inline-block
+                margin: auto
+                padding: 0
+
+                .custom-dot
+                    height: 15px
+                    width: 15px
+                    background-color: $testimonial-dots-blue
+                    border-radius: 50%
+                    display: inline-block
+                    margin: 8px
+                    transition: width 0.5s, height 0.5s, margin 0.5s
+
+                    &.active, &:hover
+                        height: 25px
+                        width: 25px
+                        margin: 3px 8px
+
+            @media only screen and (max-width: $nav-button-breakpoint)
+                    .nav-button
+                        display: inline-block
+
+.owl-dots
+    position: absolute
+    width: -webkit-fill-available
+
+.owl-stage
+    display: flex
