@@ -1,27 +1,16 @@
-{% include "common_partials/head.haml" %}
+{% extends "base.haml" %}
 {% load pipeline %}
-{% stylesheet 'main' %}
-{% stylesheet 'common' %}
 
-.overlay
-
-{% include "common_partials/menu.haml" %}
-{% include "main_page_partials/main_screen.haml" %}
-{% include "main_page_partials/technologies.haml" %}
-{% include "main_page_partials/services.haml" %}
-{% include "main_page_partials/portfolio.haml" %}
-{% include "main_page_partials/about_us.haml" %}
-{% include "main_page_partials/testimonials.haml" %}
-{% include "main_page_partials/ready_to_work_with_us.haml" %}
-{% include "main_page_partials/map_navigator.haml" %}
-
-{% include "common_partials/footer.haml" %}
-
-{% include "common_partials/scripts.haml" %}
-
-{% javascript 'main' %}
-
-/ A call to the Google API which has to be performed after map_navigator.js has been loaded, because of the callback.
-%script{:async => "",
-        :defer => "",
-		:src => "https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap"}
+{% block content %}
+    {% stylesheet 'main' %}
+    {% include "main_page_partials/main_screen.haml" %}
+    {% include "main_page_partials/technologies.haml" %}
+    {% include "main_page_partials/services.haml" %}
+    {% include "main_page_partials/portfolio.haml" %}
+    {% include "main_page_partials/about_us.haml" %}
+    {% include "main_page_partials/testimonials.haml" %}
+    {% include "main_page_partials/ready_to_work_with_us.haml" %}
+    {% include "main_page_partials/map_navigator.haml" %}
+    {% include "main_page_partials/scripts.haml" %}
+    {% javascript 'main' %}
+{% endblock %}
