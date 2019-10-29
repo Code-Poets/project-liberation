@@ -1,4 +1,4 @@
-function initMap() {
+window.initMap = function initMap() {
     var position = {lat: 51.1013288, lng: 17.027990499999987};
     var styles = [
         {
