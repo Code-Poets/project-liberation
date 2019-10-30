@@ -16,9 +16,9 @@
         %img.background-img.lazyload{:alt=>"Codepoets background menu", :data-src => "{% static 'common/images/menu/menu_background.png' %}"}
 
     .navbar-collapse
-        %a.logo1{:href=> "#", :class => "{{ menu_scrolled_visibility }}" }
+        %a.logo1{:href=> "{% url 'main_page' %}#home", :class => "{{ menu_scrolled_visibility }}" }
             %img.codepoets-logo.lazyload{:data-src => "{% static 'common/images/menu/code_poets_logo_menu_color.png' %}", :alt => "Codepoets logo"}
-        %a.logo2{:href=> "#", :class => "{{ menu_unscrolled_visibility }}"}
+        %a.logo2{:href=> "{% url 'main_page' %}#home", :class => "{{ menu_unscrolled_visibility }}"}
             %img.codepoets-logo.lazyload{:data-src => "{% static 'common/images/menu/code_poets_logo_menu_white.png' %}", :alt => "Codepoets logo"}
         %ul.navbar-nav.ml-auto.menu
             %li.nav-item.margin
@@ -42,6 +42,8 @@
 
 %nav.navbar-mobile.navigation
     .menu-mobile
+        %a{:href => "{% url 'main_page' %}#home"}
+            %img.codepoets-logo-mobile.lazyload{:data-src => "{% static 'common/images/menu/code_poets_logo_menu_white.png' %}", :alt => "Codepoets logo"}
         %ul.navbar-nav.ml-auto.menu
             %li.nav-item.margin.mobile-nav
                 %a.nav-link.mobile-link{:href => "{% url 'main_page' %}#home"} Home
