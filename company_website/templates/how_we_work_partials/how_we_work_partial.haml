@@ -30,6 +30,28 @@
             %p.paragraph-description
                 %em.sentence “If you think good design is expensive, you should look at the cost of bad design.” Ralf Speth
             %p.paragraph-description Selecting the right pricing contract is a vital step when outsourcing software development. In Code Poets we offer you a choice – you can choose between time & materials and fixed price. Let’s have a look at the advantages and disadvantages of each model.
+    .row.fourth-description-row
+        .col-md.description-column
+            %strong TIME & MATERIALS
+            %p.paragraph-description You will be charged for the number of hours spent on a specific project, plus costs of materials. Total cost of a project depends on the actual effort made towards the development. Main advantage is flexibility and opportunity to adjust requirements, shift directions and replace features. You will be given full transparency of work done in a sprint via reviews, sprint boards and regular releases.
+            %ul.time-materials-ul
+                %li Long-term projects
+                %li Developing a startup
+                %li Projects that require flexibility and have unclear scope
+                %li Projects in which you’re not sure about final functionalities
+                %li Working with legacy code
+        .placeholder
+        .col-md.description-column
+            %strong FIXED-PRICE
+            %p A fixed-price contract is based on an estimate of the amount of work that needs to be done. This model ensures that the project will be delivered within a specific timeframe and budget. It can be a good choice in cases when you know exactly what you want to create and know all the requirements and specifications. You have to be able to share your clear vision of the product.
+            %ul.fixed-price-ul
+                %li Projects with very clear requirements
+                %li Small projects with limited functionality
+                %li MVP developing
+                %li Projects with strictly determined deadlines and budget
+
+    .row.time-materials-fixed-price-graph
+        {% include "how_we_work_partials/time_materials_fixed_price_graph.haml" %}
 
 .imgModal.modal
     .modal-container
