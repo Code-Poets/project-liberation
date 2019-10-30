@@ -2,6 +2,8 @@
 
 %img.feather.lazyload{:data-src => "{% static 'main_page/images/background/feather_red_pale.png' %}", :alt => "Code Poets feather background"}
 .container.portfolio-container{:id => "project"}
+    .row
+        {% include "main_page_partials/section_separator.haml" %}
     .row.portfolio.title
         .col-md-12.text-center.section-title
             %h1.section PROJECTS
@@ -53,5 +55,4 @@
                         %p.description.text-altenberg High load server configuration, monitoring & performance tests, implementation of landing pages and custom scripting.
     .row.portfolio.show-more-button
         %input.more-projects{:type => "button", :value => "Show more"}
-    .row.row-line.additional-paddings
-        .hr-line
+    .row

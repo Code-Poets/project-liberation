@@ -3,21 +3,21 @@
 %img.feather.feather-yellow.lazyload{:data-src=> "{% static 'main_page/images/background/feather_yellow.png' %}", :alt => "Code Poets feather background"}
 .container.about-us-container{:id => "about-us"}
     .row
+        {% include "main_page_partials/section_separator.haml" %}
+    .row
         .col-md-12.text-center.section-title
             %h1.title ABOUT US
     .row.about-us-row
-        .col-lg-6.about-us-col
+        .col-lg-6.about-us-col{:data-aos => "fade-up"}
             %a{:href => "{% url 'team_introduction' %}"}
-                .about-us-box{:data-aos => "fade-up"}
+                .about-us-box
                     .about-us-image-box
                         %img.about-us-image.img-bottom.lazyload{:data-src => "{% static 'main_page/images/about_code_poets/about_us.jpg' %}", :alt => "About Codepoets"}
                     %h3.description Team
 
-        .col-lg-6.about-us-col
+        .col-lg-6.about-us-col{:data-aos => "fade-up"}
             %a{:href => "#"}
-                .how-we-work-box{:data-aos => "fade-up"}
+                .how-we-work-box
                     .about-us-image-box
                         %img.about-us-image.img-top.lazyload{:data-src => "{% static 'main_page/images/about_code_poets/how_we_work.jpg' %}", :alt => "How we work in Codepoets"}
                     %h3.description How we work
-    .row.row-line
-        .hr-line
