@@ -65,3 +65,107 @@
 				width: 100%
 				height: 100%
 
+	.images
+		.left-image, .right-image
+			position: absolute
+			object-fit: cover
+			object-position: 40%
+			width: 100%
+			height: 100%
+			padding: 7px
+			cursor: pointer
+
+		.agile-images
+			margin-top: 50px
+			padding: 0
+			height: 32vw
+			max-height: 463px
+
+			&:hover
+				opacity: 0.5
+
+			@media only screen and (max-width: $row-breakpoint)
+				max-height: unset
+				height: 55vw
+
+
+	.third-description-row
+		margin-top: 50px
+
+		.should-know-header
+			margin-top: 60px
+			color: $should-know-header-color
+
+		.should-know-description
+			padding-left: 0
+			margin-left: 7px
+			margin-bottom: 20px
+
+			li
+				margin-left: 1em
+
+		.pricing-contract-header
+			text-align: center
+			margin-top: 50px
+			color: $header-color
+
+		.paragraph-description
+			margin: 0.85em auto
+
+.modal
+	display: none
+	position: fixed
+	z-index: 1031
+	padding-top: 50px
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	overflow: auto
+	background-color: rgb(0,0,0)
+	background-color: rgba(0,0,0,0.9)
+
+	.modal-container
+		position: relative
+		margin: auto
+		width: fit-content
+		max-width: 65vw
+		max-height: calc(100% - 50px)
+
+		@media only screen and (max-width: $img-popup-breakpoint)
+			margin-top: 10%
+			max-width: 85vw
+
+		.modal-content
+			width: 80%
+			max-width: 65vw
+			margin: 0 auto
+			animation-name: zoom
+			animation-duration: 0.8s
+
+			@media only screen and (max-width: $img-popup-breakpoint)
+				width: 100%
+				max-width: 85vw
+
+		@keyframes zoom
+			from
+				transform: scale(0)
+			to
+				transform: scale(1)
+
+		.close
+			position: absolute
+			top: -40px
+			right: 7%
+			color: $close_color
+			font-size: 40px
+			font-weight: bold
+			transition: 0.3s
+
+			@media only screen and (max-width: $img-popup-breakpoint)
+				right: 0
+
+			&:hover, &:focus
+				color: $close-color-hover
+				text-decoration: none
+				cursor: pointer
