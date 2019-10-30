@@ -1,3 +1,5 @@
+{% load static %}
+
 %link{:rel => "stylesheet",
     :type => "text/css",
     :href => "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
@@ -20,3 +22,5 @@
 %script{:crossorigin => "anonymous",
     :integrity => "sha384-nlrs3si5rOD/addU3n17Afs9LxtGF07YymT7pMXukLKkKavC6gFxVWQSVLav9TKa",
     :src => "https://unpkg.com/lazysizes@5.1.1/lazysizes.js"}
+
+%link{:rel => "shortcut icon", :href => "{% static 'common/images/favicon.ico' %}"}
