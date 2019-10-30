@@ -1,0 +1,67 @@
+@import "../common/partials/constants"
+@import "partials/hotspot_styles"
+@import "partials/time_materials_fixed_price_graph"
+
+.container.how-we-work
+	margin: 110px auto 0
+	max-width: 1310px
+	padding: 0 50px
+
+	@media only screen and (max-width: $md-screen-size)
+		margin: 25px auto 0
+		padding: 0
+		max-width: 85%
+
+	.row
+		text-align: justify
+		margin-left: 0
+		margin-right: 0
+
+		.main-title
+			text-align: center
+			margin: 0 auto
+			max-width: 60%
+			padding-left: 0
+			padding-right: 0
+
+			@media only screen and (max-width: $row-breakpoint)
+				max-width: 100%
+
+		.how-we-work-title
+			margin: auto
+			color: $header-color
+			font-size: 34px
+
+		.mid-section
+			margin: auto
+			max-width: 60%
+			padding-right: 0
+			padding-left: 0
+
+			@media only screen and (max-width: $row-breakpoint)
+				max-width: 100%
+
+	.first-description-row, .second-description-row
+
+			@media only screen and (max-width: $row-breakpoint)
+				max-width: 100%
+
+			.paragraph-description
+				margin: 0.85em 0
+
+	.images-scrum
+		max-height: 400px
+		height: 32vw
+		width: 100%
+		margin: 50px 0
+
+		.scrum-col
+			padding: 0
+
+			.scrum
+				z-index: -1
+				position: absolute
+				object-fit: contain
+				width: 100%
+				height: 100%
+
