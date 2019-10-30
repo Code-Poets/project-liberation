@@ -1,0 +1,9 @@
+{% extends "base.haml" %}
+{% load pipeline %}
+
+{% block content %}
+{% stylesheet 'common' %}
+{% stylesheet 'how_we_work' %}
+{% include "how_we_work_partials/how_we_work_partial.haml" %}
+{% javascript 'how_we_work' %}
+{% endblock %}

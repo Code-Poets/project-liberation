@@ -16,8 +16,8 @@
                     %h3.description Team
 
         .col-lg-6.about-us-col{:data-aos => "fade-up"}
-            %a{:href => "#"}
-                .how-we-work-box
+            %a{:href => "{% url 'how_we_work' %}"}
+                .how-we-work-box{:data-aos => "fade-up"}
                     .about-us-image-box
                         %img.about-us-image.img-top.lazyload{:data-src => "{% static 'main_page/images/about_code_poets/how_we_work.jpg' %}", :alt => "How we work in Codepoets"}
                     %h3.description How we work

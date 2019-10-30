@@ -1,7 +1,8 @@
 from typing import Any
 
 from django.conf import settings
-from django.views.generic import ListView, TemplateView
+from django.views.generic import ListView
+from django.views.generic import TemplateView
 
 from company_website.models import Employees
 from company_website.models import Testimonial
