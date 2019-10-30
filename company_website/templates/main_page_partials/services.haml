@@ -1,6 +1,8 @@
 {% load static %}
 
 .container.services-container{:id => 'services'}
+    .row.row-line
+        {% include "main_page_partials/section_separator.haml" %}
     .row.service.row
         %h1.title SERVICES
     .row.services-row
@@ -61,5 +63,3 @@
                             .services-description
                                 %p.text-header.full-screen Machine Learning
                                 %p.text-description The current growth in IT is heavily driven by Machine Learning, from the automotive industry to computer graphics. We can help you understand the potential ways.
-    .row.row-line
-        .hr-line
