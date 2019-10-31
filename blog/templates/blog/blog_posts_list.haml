@@ -19,7 +19,7 @@
 
                     .row.info-section
                         .info-section
-                            {% thumbnail blog_article.specific.author.front_image "45x45" as image %}
+                            {% thumbnail blog_article.specific.author.front_image "400x400" as image %}
                                 %img.main-img.lazyload{:data-src => "{{ image.url }}"}
                             {% endthumbnail %}
                             .auto-name-and-category

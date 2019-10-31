@@ -11,7 +11,7 @@
                     .main-article-title {{ page.get_last_article.title }}
             .row
                 .info-section
-                    {% thumbnail page.get_last_article.specific.author.front_image "45x45" as image %}
+                    {% thumbnail page.get_last_article.specific.author.front_image "400x400" as image %}
                         %img.main-img.lazyload{:data-src => "{{ image.url }}"}
                     {% endthumbnail %}
                     .auto-name-and-category
