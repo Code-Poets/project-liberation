@@ -86,7 +86,9 @@ class BlogArticlePage(Page):
     ]
 
     def get_proper_url(self):
-        return f"{self.get_parent().title.replace(' ', '-').lower()}/{self.title.replace(' ', '-').lower()}"
+        category_url = self.url.split("/")[-2]
+        article_url = self.url.split("/")[-1]
+        return f"{category_url}/{article_url}"
 
     def get_menu_categories(self):
         return self.get_parent().get_parent().get_children().filter(live=True, show_in_menus=True)
