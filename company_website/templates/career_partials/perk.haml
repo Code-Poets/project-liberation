@@ -1,0 +1,7 @@
+{% load static %}
+.perk
+    %img.image.lazyload{data-src: "{% static image %}"}
+    .name
+        {{ name }}
+    .benefit
+        {{ benefit }}

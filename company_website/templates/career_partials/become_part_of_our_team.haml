@@ -1,0 +1,32 @@
+{% load static %}
+.become-part-of-our-team
+    {% include "common_partials/section_header.haml" with title="Become part of our team." subtext="Check out our latest open positions" %}
+    .button-wrapper
+        %a.btn.btn-default.join_us_button{:href => "/"}
+            Click here
+    .container.contact
+        .row.no-margin{:data-aos => "fade-up"}
+            .col-12.col-xl-6.item_1
+                .cropped
+                    %image.photo.lazyload{:data-src => "{% static 'career/images/photos/interview.jpg' %}"}
+            .col-12.col-xl-6.item_2
+                .cropped
+                    .promo
+                        .text-top
+                            If there is currently no job
+                            %br
+                            offer that fits you
+                        .text-middle
+                            %a.contact_us{href: "/"}
+                                Contact us
+                            .underscore
+                            anyway
+                        .text-bottom
+                            We are always looking
+                            %br
+                            for
+                            %b
+                                talented people
+                            to
+                            %b
+                                join us!
