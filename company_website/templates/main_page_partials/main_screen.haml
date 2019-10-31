@@ -2,7 +2,9 @@
 
 .container-fluid.px-0.main-screen{:id => "home"}
     #content.jumbo.d-flex
-        %img.background-img.lazyload{:alt=>"Codepoets software", :data-src => "{% static 'main_page/images/main_screen/slide.jpg' %}"}
+        .mobile-logo
+            %img.codepoets-mobile.lazyload{:alt => "Codepoets logo", :data-src => "{% static 'common/images/menu/code_poets_logo_menu_white.png' %}"}
+        %img.background-img.lazyload{:alt => "Codepoets software", :data-src => "{% static 'main_page/images/main_screen/slide.jpg' %}"}
         .container-fluid
             .text-box-blue
                 %span.main-screen-text WE DELIVER SOFTWARE THAT MATTERS
