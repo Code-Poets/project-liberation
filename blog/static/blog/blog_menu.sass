@@ -1,24 +1,88 @@
 @import "../../../company_website/static/common/partials/set_initials"
 @import "../../../company_website/static/common/partials/constants"
+$row-height: 30px
+$search-bar-height: 30px
+$padding: 5px
 
-.blog_menu
+
+.blog_menu_desktop
     margin-top: 61px
+    position: sticky
+    background-color: $blue
+    top: 61px
+
+    @media only screen and (max-width: 991px)
+        display: none
+
     .outer-row
         background: $blue
-        height: 49px
         position: relative
 
-    a
-        color: white
-        font-size: 13px
     .row
-        padding: 15px
+        height: calc(#{$row-height} + 2 * #{$padding})
+        padding: 5px 0
         margin: 0
-        text-align: center
         justify-content: center
 
     .category
-        padding: 0 8px
-    .border-div
-        border-right: 1px solid white
+        height: 18px
+        padding: 6px 0
 
+        .border-div
+            padding: 0 8px
+            border-right: 1px solid white
+
+.blog_menu_mobile
+    background: $blue
+    margin: 0 auto
+    text-align: center
+
+    @media only screen and (min-width: 992px)
+        display: none
+
+    .row
+        margin: auto
+        display: block
+
+    .separator
+        padding: 10px
+
+    .centered-div
+        margin: 0 auto
+
+.search-bar
+    height: $row-height
+    padding: 0 8px
+    padding-left: 0.5vw
+    position: relative
+    width: calc(250px + 10px)
+
+    @media only screen and (min-width: 1450px)
+        padding-left: 1vw
+        width: calc(250px + 1vw)
+
+    @media only screen and (min-width: 1900px)
+        padding-left: 100px
+        width: calc(250px + 100px)
+
+    input
+        height: $search-bar-height
+        background-color: $blue
+        color: white
+        width: 250px
+        border: 1px solid white
+        border-radius: 10px
+        padding-left: 10px
+
+    ::placeholder
+        color: white
+
+    .search-icon
+        height: $search-bar-height
+        position: absolute
+        right: 0
+        top: 0
+
+.link
+    color: white
+    font-size: 13px
