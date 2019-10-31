@@ -210,6 +210,12 @@ PIPELINE = {
             ),
             'output_filename': 'css/career.css',
         },
+        'blog_posts_list': {
+            'source_filenames': (
+                'blog_posts_list/*.sass',
+            ),
+            'output_filename': 'css/blog_posts_list.css',
+        },
     },
     'JAVASCRIPT': {
         'main': {
