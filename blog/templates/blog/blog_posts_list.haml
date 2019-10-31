@@ -1,0 +1,45 @@
+{% load wagtailcore_tags %}
+{% load thumbnail %}
+{% load blog_tag %}
+{% load wagtailimages_tags %}
+
+.blog-posts-list
+
+    %h1 GŁÓWNY ARTYKUŁ
+    %h3
+        %a{:href => "{% blog_url page.get_last_article.specific.get_proper_url %}"} {{ page.get_last_article.title }}
+    %h3 {{ page.get_last_article.specific.date }}
+    %h3 {% image page.get_last_article.specific.cover_photo width-200 %}
+    %h3 {% image page.get_last_article.specific.article_photo width-200 %}
+    %h3 {{ page.get_last_article.specific.intro }}
+    %h3 {{ page.get_last_article.specific.body|richtext }}
+    {% thumbnail page.get_last_article.specific.author.front_image "27x40" as image %}
+        %img.lazyload{:data-src => "{{ image.url }}"}
+    {% endthumbnail %}
+    %h3 {{ page.get_last_article.specific.author.name }}
+    %h3 {{ page.get_last_article.specific.read_time }}
+    %h3
+        %a{:href => "{% blog_url page.get_last_article.specific.get_category.specific.title %}"} {{ page.get_last_article.specific.get_category.specific.title }}
+    %br
+    %br
+
+
+    %h1 POZOSTAŁE ARTYKUŁY
+    {% for blog_article in page.get_rest_articles %}
+        %h3
+            %a{:href => "{% blog_url blog_article.specific.get_proper_url %}"} {{ blog_article.specific.title }}
+        %h3 {{ blog_article.specific.date }}
+        %h3 {% image blog_article.specific.cover_photo width-200 %}
+        %h3 {% image blog_article.specific.article_photo width-200 %}
+        %h3 {{ blog_article.specific.intro }}
+        %h3 {{ blog_article.specific.body|richtext }}
+        {% thumbnail blog_article.specific.author.front_image "27x40" as image %}
+            %img.lazyload{:data-src => "{{ image.url }}"}
+        {% endthumbnail %}
+        %h3 {{ blog_article.specific.author.name }}
+        %h3 {{ blog_article.specific.read_time }}
+        %h3
+            %a{:href => "{% blog_url blog_article.specific.get_category.specific.title %}"} {{ blog_article.specific.get_category.specific.title }}
+        %br
+        %br
+    {% endfor %}

@@ -38,11 +38,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Wagtail
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.contrib.modeladmin',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
+    'modelcluster',
+    'taggit',
     # 3rd party
     'pipeline',
     'hamlpy',
     'sorl.thumbnail',
     # project-liberation
+    'blog.apps.BlogConfig',
     'company_website.apps.CompanyWebsiteConfig',
     'project_liberation.apps.ProjectLiberationConfig',
 ]
@@ -55,6 +71,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'project_liberation.urls'
@@ -173,6 +192,12 @@ PIPELINE = {
             ),
             'output_filename': 'css/common.css',
         },
+        'blog': {
+            'source_filenames': (
+                'blog/*.sass',
+            ),
+            'output_filename': 'css/blog.css',
+        },
     },
     'JAVASCRIPT': {
         'main': {
@@ -203,5 +228,11 @@ STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 # GOOGLE_API_KEY = ''
 MEDIA_URL = '/media/'
 COMPANY_EMPLOYEES_STORAGE = 'company_employees_storage'
-MEDIA_ROOT = os.path.join(BASE_DIR, "storage")
 TESTIMONIAL_PHOTOS_STORAGE = "testimonials/customers-profile-pictures"
+MEDIA_ROOT = os.path.join(BASE_DIR, "../storage")
+
+# Wagtail setting variables
+WAGTAIL_SITE_NAME = 'blog'
+WAGTAIL_APPEND_SLASH = False
+
+WAGTAILIMAGES_MAX_UPLOAD_SIZE = 25 * 1024 * 1024
