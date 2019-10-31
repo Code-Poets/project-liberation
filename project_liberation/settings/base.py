@@ -230,6 +230,12 @@ PIPELINE = {
             ),
             'output_filename': 'js/how_we_work.js'
         },
+        'blog_post': {
+            'source_filenames': (
+                'blog_post/scripts/*.js',
+            ),
+            'output_filename': 'js/blog_post.js'
+        },
     },
     'COMPILERS': ('pipeline.compilers.sass.SASSCompiler',)
 }
