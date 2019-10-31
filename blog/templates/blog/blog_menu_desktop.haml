@@ -1,0 +1,17 @@
+{% load static %}
+{% load pipeline %}
+{% stylesheet 'blog' %}
+{% load blog_tag %}
+
+.blog_menu_desktop
+    .row
+        .category
+            %a.link.border-div{:href => "{% blog_url '' %}"} All Articles
+        {% for category in page.get_menu_categories %}
+            .category
+                %a.link.border-div{:href => "{% blog_url category.title %}"} {{ category }}
+        {% endfor %}
+        .search-bar
+            %form{:action => "/blog/search/", :method => "get", :role => "search"}
+                %input{:name => "phrase", :type => "text", :placeholder => "Search...", :autocomplete => "on"}
+                %img.search-icon{:src => "{% static 'blog/images/search.png' %}"}

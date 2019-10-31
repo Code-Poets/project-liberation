@@ -2,6 +2,7 @@
 {% load wagtailcore_tags %}
 
 {% block content %}
-    {% include 'blog/blog_menu.haml' %}
+    {% include 'blog/blog_menu_desktop.haml' %}
     {% include 'blog/category_posts.haml' %}
+    {% include 'blog/blog_menu_mobile.haml' %}
 {% endblock %}
