@@ -1,0 +1,448 @@
+@import "../../common/partials/constants"
+.container.how-we-work
+	.row.time-materials-fixed-price-graph
+		@media only screen and (max-width: 650px)
+			margin: 0
+		.graph
+			padding: 0
+			margin: 50px auto 100px
+			min-width: 806px
+			max-width: 806px
+
+			@media only screen and (max-width: $graph-950-breakpoint)
+				min-width: unset
+
+			@media only screen and (max-width: $sm-screen-size)
+				max-width: 100%
+
+			.row.title
+
+				.col-3
+					margin: auto 0
+					width: 20%
+					text-align: center
+					font-size: 24px
+					font-weight: 700
+					padding: 0
+					color: #005B97
+
+					@media only screen and (max-width: $graph-950-breakpoint)
+						font-size: 20px
+
+					@media only screen and (max-width: $graph-950-breakpoint)
+						font-size: 18px
+
+					@media only screen and (max-width: 502px)
+						font-size: 3.5vw
+
+				.left
+					text-align: right
+
+
+				.right
+					text-align: left
+
+				.col-5
+					margin: auto
+					padding: 0 5%
+					@media only screen and (max-width: $graph-850-breakpoint)
+						padding: 0 9%
+					@media only screen and (max-width: 400px)
+
+					.row
+						margin: 0
+
+						.arrow-left
+							margin: auto 0
+							position: relative
+							display: inherit
+							width: 35%
+							height: 15px
+							background-image: linear-gradient(to right, $color-arrow-blue, $color-arrow-white)
+
+							&::after
+								content: ''
+								position: absolute
+								width: 0
+								height: 0
+								border-top: solid 25px $color-arrow-blue
+								border-left: solid 15px transparent
+								border-right: solid 15px transparent
+								transform: rotate(90deg)
+								left: -25px
+								top: -30%
+
+							@media only screen and (max-width: $graph-850-breakpoint)
+								height: 10px
+
+								&::after
+									top: -6.5%
+									left: -15px
+									border-left-width: 10px
+									border-top-width: 10px
+									border-right-width: 10px
+
+							@media only screen and (max-width: $graph-590-breakpoint)
+
+						.mid-line
+							width: 30%
+							height: 15px
+							background-color: $color-arrow-white
+							margin: auto 0
+
+							@media only screen and (max-width: $graph-850-breakpoint)
+								height: 10px
+
+						.arrow-right
+							margin: auto 0
+							position: relative
+							display: inherit
+							width: 35%
+							height: 15px
+							max-height: 15px
+							background-image: linear-gradient(to right, $color-arrow-white, $color-arrow-blue)
+
+							&::after
+								content: ''
+								position: absolute
+								width: 0
+								height: 0
+								border-top: solid 25px $color-arrow-blue
+								border-left: solid 15px transparent
+								border-right: solid 15px transparent
+								transform: rotate(-90deg)
+								right: -25px
+								top: -30%
+
+							@media only screen and (max-width: $graph-850-breakpoint)
+								height: 10px
+
+								&::after
+									right: -15px
+									border-left-width: 10px
+									border-top-width: 10px
+									border-right-width: 10px
+									top: -6.5%
+
+			.row.graph-section
+				margin-top: 10px
+				position: relative
+
+				.col-3.left
+					margin: auto 0
+					padding: 0
+
+					.small-container
+						display: inline-block
+						position: relative
+						width: 45px
+						height: 45px
+						text-align: center
+
+						@media only screen and (max-width: $graph-850-breakpoint)
+							width: 35px
+							height: 35px
+
+						@media only screen and (max-width: $graph-590-breakpoint)
+							height: 25px
+							width: 25px
+
+						.plus-div, .minus-div
+							position: absolute
+							top: 0
+							left: 0
+							width: inherit
+							height: inherit
+							border-radius: 100px
+							border: solid 9px transparent
+
+							@media only screen and (max-width: $graph-850-breakpoint)
+								border-width: 6px
+
+							@media only screen and (max-width: $graph-590-breakpoint)
+								border-width: 5px
+
+						.inner-plus, .inner-minus
+							color: $graph-green-color
+							position: absolute
+							top: 0
+							left: 0
+							width: inherit
+							height: inherit
+							font-weight: 700
+							font-size: 36px
+							line-height: 45px
+
+							@media only screen and (max-width: $graph-850-breakpoint)
+								font-size: 28px
+								line-height: 35px
+
+							@media only screen and (max-width: $graph-590-breakpoint)
+								font-size: 18px
+								line-height: 25px
+
+					.high-flexibility-container, .instant-start-container, .high-product-quality-container
+						.plus-div
+							border-color: $graph-green-color
+
+						.inner-plus
+							color: $graph-green-color
+
+					.dynamic-work-scope-container, .cost-transparency-container
+						.plus-div
+							border-color: $graph-blue-color
+
+						.inner-plus
+							color: $graph-blue-color
+
+					.low-budget-control-container
+						.minus-div
+							border-color: $graph-grey-color
+
+						.inner-minus
+							.minus-img
+								z-index: -1
+								width: 35px
+								margin-top: 10%
+
+								@media only screen and (max-width: $graph-850-breakpoint)
+									width: 25px
+
+								@media only screen and (max-width: $graph-590-breakpoint)
+									width: 15px
+									margin-top: 17%
+
+					.line
+						display: inline-block
+						position: absolute
+						width: 104%
+						height: 12px
+						top: 37%
+						left: 44px
+
+						@media only screen and (max-width: $graph-850-breakpoint)
+							height: 7px
+							left: 34px
+							width: 106%
+
+						@media only screen and (max-width: $graph-590-breakpoint)
+							height: 5px
+							left: 24px
+							width: 110%
+
+						.description-container
+							position: relative
+							margin-top: 15%
+							font-size: 11px
+							font-weight: 700
+							color: $blue-font-color
+							padding: 0 8%
+
+							@media only screen and (max-width: $graph-850-breakpoint)
+								font-size: 1.2vw
+								padding: 0 6%
+								margin-right: 8%
+								margin-top: 8%
+
+							@media only screen and (max-width: $graph-590-breakpoint)
+								margin-top: 12%
+								font-size: 1.4vw
+
+					.high-flexibility, .instant-start, .high-product-quality
+						background: $graph-green-color
+
+					.dynamic-work-scope, .cost-transparency
+						background: $graph-blue-color
+
+					.low-budget-control
+						background: $graph-grey-color
+
+				.col-5
+					margin: 0 auto
+
+					.div-title
+						width: 100%
+						margin: 0
+
+						.inner-title
+							font-weight: 600
+							padding: 15px 20px
+							font-size: 20px
+							text-align: center
+							border-radius: 100px
+							-webkit-box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.75)
+							-moz-box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.75)
+							box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.75)
+							border: solid 13px transparent
+
+							@media only screen and (max-width: $graph-850-breakpoint)
+								font-size: 1.6vw
+								border-width: 7px
+								padding: 10px 15px
+
+							@media only screen and (max-width: $graph-590-breakpoint)
+								font-size: 1.8vw
+								border-width: 5px
+								padding: 10px 10px
+
+							@media only screen and (max-width: 413px)
+								padding: 10px 0
+
+
+						.high-flexibility, .instant-start, .high-product-quality
+							color: $graph-green-color
+							border-color: $graph-green-color
+
+						.predictability, .strict-deadlines
+							color: $graph-yellow-color
+							border-color: $graph-yellow-color
+
+						.dynamic-work-scope, .cost-transparency
+							color: $graph-blue-color
+							border-color: $graph-blue-color
+
+						.precise-final-cost, .little-client-involvement
+							color: $graph-red-color
+							border-color: $graph-red-color
+
+						.less-control, .low-budget-control, .less-flexibility, .long-meticulous-planning
+							color: $graph-grey-color
+							border-color: $graph-grey-color
+
+						.long-meticulous-planning
+							padding: 0 5px
+
+							@media only screen and (max-width: $graph-850-breakpoint)
+								padding: 10px 0
+
+							@media only screen and (max-width: 430px)
+								padding: 5px 0
+
+				.col-3.right
+					margin: auto 0
+					padding: 0
+					text-align: right
+
+					.small-container
+						display: inline-block
+						position: relative
+						width: 45px
+						height: 45px
+						text-align: center
+
+						@media only screen and (max-width: $graph-850-breakpoint)
+							width: 35px
+							height: 35px
+
+						@media only screen and (max-width: $graph-590-breakpoint)
+								width: 25px
+								height: 25px
+
+						.plus-div, .minus-div
+							position: absolute
+							top: 0
+							right: 0
+							width: inherit
+							height: inherit
+							border-radius: 100px
+							border: solid 9px transparent
+
+							@media only screen and (max-width: $graph-850-breakpoint)
+								border-width: 6px
+
+							@media only screen and (max-width: $graph-590-breakpoint)
+								border-width: 5px
+
+						.inner-plus, .inner-minus
+							position: absolute
+							top: 0
+							right: 0
+							width: inherit
+							height: inherit
+							font-weight: 700
+							font-size: 36px
+							line-height: 45px
+
+							@media only screen and (max-width: $graph-850-breakpoint)
+								font-size: 28px
+								line-height: 35px
+
+							@media only screen and (max-width: $graph-590-breakpoint)
+								font-size: 18px
+								line-height: 25px
+
+					.predictability-container, .strict-deadlines-container
+						.plus-div
+							border-color: $graph-yellow-color
+
+						.inner-plus
+							color: $graph-yellow-color
+
+					.precise-final-cost-container, .little-client-involvement-container
+						.plus-div
+							border-color: $graph-red-color
+
+						.inner-plus
+							color: $graph-red-color
+
+					.less-control-container, .less-flexibility-container, .long-meticulous-planning-container
+						.minus-div
+							border-color: $graph-grey-color
+
+						.inner-minus
+							.minus-img
+								z-index: -1
+								width: 35px
+								margin-top: 10%
+
+								@media only screen and (max-width: $graph-850-breakpoint)
+									width: 25px
+
+								@media only screen and (max-width: $graph-590-breakpoint)
+									width: 15px
+									margin-top: 17%
+
+					.line
+						position: absolute
+						height: 12px
+						top: 37%
+						right: 44px
+						width: 104%
+
+						@media only screen and (max-width: $graph-850-breakpoint)
+							height: 7px
+							right: 34px
+							width: 106%
+
+						@media only screen and (max-width: $graph-590-breakpoint)
+							width: 110%
+							height: 5px
+							right: 24px
+
+						.description-container
+							text-align: justify
+							position: relative
+							margin-top: 15%
+							font-size: 11px
+							font-weight: 700
+							color: #153AA0
+							padding: 0 8%
+
+							@media only screen and (max-width: $graph-850-breakpoint)
+								font-size: 1.2vw
+								padding: 0 6%
+								margin-left: 8%
+								margin-top: 8%
+
+							@media only screen and (max-width: $graph-590-breakpoint)
+								margin-top: 12%
+								font-size: 1.4vw
+
+					.predictability, .strict-deadlines
+						background: $graph-yellow-color
+
+					.precise-final-cost, .little-client-involvement
+						background: $graph-red-color
+
+					.less-control, .less-flexibility, .long-meticulous-planning
+						background: $graph-grey-color

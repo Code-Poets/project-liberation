@@ -1,0 +1,183 @@
+@import "../common/partials/constants"
+@import "partials/hotspot_styles"
+@import "partials/time_materials_fixed_price_graph"
+
+.container.how-we-work
+	margin: 110px auto 0
+	max-width: 1310px
+	padding: 0 50px
+
+	@media only screen and (max-width: $md-screen-size)
+		margin: 25px auto 0
+		padding: 0
+		max-width: 85%
+
+	.row
+		text-align: justify
+		margin-left: 0
+		margin-right: 0
+
+		.main-title
+			text-align: center
+			margin: 0 auto
+			max-width: 60%
+			padding-left: 0
+			padding-right: 0
+
+			@media only screen and (max-width: $row-breakpoint)
+				max-width: 100%
+
+		.how-we-work-title
+			margin: auto
+			color: $header-color
+			font-size: 34px
+
+		.mid-section
+			margin: auto
+			max-width: 60%
+			padding-right: 0
+			padding-left: 0
+
+			@media only screen and (max-width: $row-breakpoint)
+				max-width: 100%
+
+	.first-description-row, .second-description-row
+
+			@media only screen and (max-width: $row-breakpoint)
+				max-width: 100%
+
+			.paragraph-description
+				margin: 0.85em 0
+
+	.images-scrum
+		max-height: 400px
+		height: 32vw
+		width: 100%
+		margin: 50px 0
+
+		.scrum-col
+			padding: 0
+
+			.scrum
+				z-index: -1
+				position: absolute
+				object-fit: contain
+				width: 100%
+				height: 100%
+
+	.images
+		.left-image, .right-image
+			position: absolute
+			object-fit: cover
+			object-position: 40%
+			width: 100%
+			height: 100%
+			padding: 7px
+			cursor: pointer
+
+		.agile-images
+			margin-top: 50px
+			padding: 0
+			height: 32vw
+			max-height: 463px
+
+			&:hover
+				opacity: 0.5
+
+			@media only screen and (max-width: $row-breakpoint)
+				max-height: unset
+				height: 55vw
+
+
+	.third-description-row
+		margin-top: 50px
+
+		.should-know-header
+			margin-top: 60px
+			color: $should-know-header-color
+
+		.should-know-description
+			padding-left: 0
+			margin-left: 7px
+			margin-bottom: 20px
+
+			li
+				margin-left: 1em
+
+		.pricing-contract-header
+			text-align: center
+			margin-top: 50px
+			color: $header-color
+
+		.paragraph-description
+			margin: 0.85em auto
+
+	.fourth-description-row
+		padding: 50px 0
+
+		.description-column
+			padding: 0
+
+	.placeholder
+		width: 6%
+
+		@media only screen and (max-width: $row-breakpoint)
+			display: none
+
+.modal
+	display: none
+	position: fixed
+	z-index: 1031
+	padding-top: 50px
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	overflow: auto
+	background-color: rgb(0,0,0)
+	background-color: rgba(0,0,0,0.9)
+
+	.modal-container
+		position: relative
+		margin: auto
+		width: fit-content
+		max-width: 65vw
+		max-height: calc(100% - 50px)
+
+		@media only screen and (max-width: $img-popup-breakpoint)
+			margin-top: 10%
+			max-width: 85vw
+
+		.modal-content
+			width: 80%
+			max-width: 65vw
+			margin: 0 auto
+			animation-name: zoom
+			animation-duration: 0.8s
+
+			@media only screen and (max-width: $img-popup-breakpoint)
+				width: 100%
+				max-width: 85vw
+
+		@keyframes zoom
+			from
+				transform: scale(0)
+			to
+				transform: scale(1)
+
+		.close
+			position: absolute
+			top: -40px
+			right: 7%
+			color: $close_color
+			font-size: 40px
+			font-weight: bold
+			transition: 0.3s
+
+			@media only screen and (max-width: $img-popup-breakpoint)
+				right: 0
+
+			&:hover, &:focus
+				color: $close-color-hover
+				text-decoration: none
+				cursor: pointer

@@ -2,6 +2,7 @@ from typing import Any
 
 from django.conf import settings
 from django.views.generic import ListView
+from django.views.generic import TemplateView
 
 from company_website.models import Employees
 from company_website.models import Testimonial
@@ -28,3 +29,8 @@ class TeamIntroductionPageView(ListView):
         context_data["bosses"] = self.get_queryset().filter(boss=True).order_by("order")
         context_data["employees"] = self.get_queryset().filter(boss=False).order_by("order")
         return context_data
+
+
+class HowWeWorkView(TemplateView):
+
+    template_name = "how_we_work_page.haml"

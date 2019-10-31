@@ -1,0 +1,197 @@
+@import "animations"
+@import "../../common/partials/constants"
+
+.container.how-we-work
+	.hotspot-mobile-devices
+		display: none
+
+	.images-scrum
+		.scrum-col
+			position: relative
+
+			.scrum
+				animation: fadeIn 1s 0.3s
+				opacity: 0
+				animation-fill-mode: forwards
+
+			.hotspot.sprint-planning
+				z-index: 10
+				
+			.hotspot
+				position: absolute
+				cursor: pointer
+				opacity: 0
+
+				@media only screen and (min-width: $md-screen-size)
+					&:hover
+
+						.show-tooltip
+							z-index: 100
+
+							.hotspot-description
+								visibility: visible
+								opacity: 1
+								transform: translateY(0)
+
+				.show-tooltip
+					font-size: 14px
+					z-index: 2
+
+					.hotspot-description
+						bottom: 150%
+						left: 50%
+						margin-left: -125px
+						position: absolute
+						visibility: hidden
+						opacity: 0
+						width: 250px
+						border-radius: 10px
+						border: solid 1px #4c88bf
+						padding: 10px
+						text-align: justify
+						background-color: white
+						transform: translateY(-10px)
+						transition: all 0.5s ease
+
+						&::after
+							content: ""
+							position: absolute
+							top: 100%
+							left: 50%
+							margin-left: -5px
+							width: 10px
+							height: 10px
+							border-right: solid 1px $hotspot-pulse-color
+							border-bottom: solid 1px $hotspot-pulse-color
+							transform: rotate(45deg)
+							margin-top: -5px
+							background: white
+
+						.title
+							font-size: 16px
+							color: $hotspot-pulse-color
+							text-align: center
+
+					.increment-description
+						left: -270%
+
+						&::after
+							left: 81%
+
+			.product-backlog
+				top: 20%
+				left: 18%
+				animation: show 1s 1s 1
+				animation-fill-mode: forwards
+
+			.sprint-planning
+				top: 48.7%
+				left: 29%
+				animation: show 1s 1s 1
+				animation-fill-mode: forwards
+
+			.sprint-backlog
+				top: 32.5%
+				left: 38.6%
+				animation: show 1s 1.2s 1
+				animation-fill-mode: forwards
+
+			.sprint-retrospective
+				top: 32.5%
+				left: 50.3%
+				animation: show 1s 1.3s 1
+				animation-fill-mode: forwards
+
+			.scrum-team
+				top: 93.7%
+				left: 56.5%
+				animation: show 1s 1.4s 1
+				animation-fill-mode: forwards
+
+				@media only screen and (max-width: $md-screen-size)
+					top: 89%
+
+			.daily-scrum
+				top: 26.6%
+				left: 67.7%
+				animation: show 1s 1.4s 1
+				animation-fill-mode: forwards
+
+			.sprint-review
+				top: 48.7%
+				left: 77%
+				animation: show 1s 1.5s 1
+				animation-fill-mode: forwards
+
+			.increment
+				top: 43.9%
+				left: 95.5%
+				animation: show 1s 1.6s 1
+				animation-fill-mode: forwards
+
+			.pulse
+				width: 24px
+				height: 24px
+				border-radius: 100px
+				animation: pulse 1.5s infinite
+
+				@media only screen and (max-width: $md-screen-size)
+					width: 18px
+					height: 18px
+
+					.show-tooltip
+						.hotspot-description
+							display: none
+
+				@media only screen and (max-width: $hotspot-size-breakpoint)
+					width: 12px
+					height: 12px
+
+				.inner-info
+					width: inherit
+					height: inherit
+
+	@media only screen and (max-width: $md-screen-size)
+		.hotspot-mobile-devices
+			padding-bottom: 50px
+			display: block
+
+			.scrum-metolody-container
+				font-size: 13px
+				position: relative
+				padding: 15px 0 0
+
+				.hotspot-mobile
+					position: absolute
+					top: 37px
+
+				.tooltip-mobile
+					padding: 15px
+					text-align: justify
+					margin-left: 60px
+					border-radius: 4px
+					border: solid 1px $hotspot-pulse-color
+
+					@media only screen and (max-width: $hotspot-size-breakpoint)
+						margin-left: 45px
+
+					&::after
+						content: ""
+						position: absolute
+						top: 50px
+						left: 0
+						margin-left: 55px
+						width: 10px
+						height: 10px
+						border-right: solid 1px $hotspot-pulse-color
+						border-bottom: solid 1px $hotspot-pulse-color
+						transform: rotate(135deg)
+						margin-top: -5px
+						background: white
+
+						@media only screen and (max-width: $hotspot-size-breakpoint)
+							margin-left: 40px
+
+					.title-mobile
+						color: $hotspot-pulse-color
+						text-align: center

@@ -17,7 +17,6 @@ from typing import List
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 ALLOWED_HOSTS = []  # type: List
-
 
 # Application definition
 
@@ -99,7 +97,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project_liberation.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -114,7 +111,6 @@ DATABASES = {
         # 'PORT':     '',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -134,7 +130,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -147,7 +142,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -198,6 +192,12 @@ PIPELINE = {
             ),
             'output_filename': 'css/blog.css',
         },
+        'how_we_work': {
+            'source_filenames': (
+                'how_we_work/how_we_work.sass',
+            ),
+            'output_filename': 'css/how_we_work.css'
+        },
     },
     'JAVASCRIPT': {
         'main': {
@@ -217,6 +217,12 @@ PIPELINE = {
                 'team_introduction_page/scripts/*.js',
             ),
             'output_filename': 'js/team_introduction.js',
+        },
+        'how_we_work': {
+            'source_filenames': (
+                'how_we_work/scripts/*.js',
+            ),
+            'output_filename': 'js/how_we_work.js'
         },
     },
     'COMPILERS': ('pipeline.compilers.sass.SASSCompiler',)
