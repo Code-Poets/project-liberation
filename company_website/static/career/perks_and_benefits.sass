@@ -1,0 +1,163 @@
+@import "../common/partials/constants"
+
+.perks-and-benefits
+    position: relative
+
+    .feather
+        width: 217px
+        height: 402px
+        position: absolute
+        top: -93
+        right: 3.6%
+
+    @media only screen and (max-width: 1392px)
+        .feather
+            height: 322px
+            width: auto
+            top: -36px
+
+    @media only screen and (max-width: 922px)
+        .feather
+            display: none
+
+    .container
+        max-width: $career-container-max-width
+        padding: 0 $career-container-horizontal-padding
+
+    $section-description-background-color: $orange-color
+    $section-description-text-color: $blue-color
+
+    @import "../common/partials/section_header"
+
+    .grid-content
+        margin-top: 84px
+        margin-bottom: 80px
+
+        .no-padding
+            padding: 0px
+
+        .custom-col-padding
+            padding: 1.3%
+
+        .space
+            height: 296px
+            width: 1.67vw
+
+            &-row
+                @extend .space
+                width: 100%
+                height: 1.67vw
+
+            &-pair
+                @extend .space
+
+            &-item
+                @extend .space
+
+        .row
+            display: flex
+            justify-content: center
+
+            &-odd
+                @extend .row
+
+            &-even
+                @extend .row
+
+
+        .pair
+            display: flex
+            justify-content: center
+
+            &-odd
+                @extend .pair
+
+            &-even
+                @extend .pair
+
+            .cropped
+                width: 267px
+                height: 296px
+                border-radius: 22px
+                position: relative
+                overflow: hidden
+
+                .photo
+                    display: inline
+                    margin: 0 auto
+                    height: 100%
+                    width: auto
+
+                .border
+                    height: 100%
+                    width: 100%
+                    box-sizing: border-box
+                    border: 1px solid
+                    border-radius: inherit
+                    overflow: hidden
+
+                    &-orange
+                        @extend .border
+                        border-color: $orange-color
+
+                    &-blue
+                        @extend .border
+                        border-color: $blue-color
+
+        @media only screen and (max-width: 1202px)
+            .space
+                height: 296px
+                width: 32px
+
+                &-row
+                    height: 32px
+
+                &-pair
+                    width: 100%
+                    height: 32px
+
+            .row
+                display: grid
+
+                &-odd
+                    .pair-even
+                        direction: rtl
+
+                        .cropped
+                            direction: ltr
+
+                &-even
+                    .pair-odd
+                        direction: rtl
+
+                        .cropped
+                            direction: ltr
+
+        @media only screen and (max-width: 640px)
+            .space-item
+                width: 100%
+                height: 32px
+
+            .pair
+                display: grid
+
+            .row-even
+                .pair
+                    .item_1
+                        order: 3
+
+                    .space-item
+                        order: 2
+
+                    .item_2
+                        order: 1
+
+    @media only screen and (max-width: 399px)
+        .section-header
+            .content-wrapper
+                .section-description-contents
+                    .section-description-text
+                        .title
+                            font-size: 3.6rem
+                        .subtext
+                            font-size: 2rem

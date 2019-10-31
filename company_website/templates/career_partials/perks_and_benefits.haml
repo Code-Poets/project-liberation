@@ -1,0 +1,73 @@
+{% load static %}
+.perks-and-benefits
+    {% include "common_partials/section_header.haml" with title="Perks & Benefits" subtext="of working with Code Poets" %}
+    %image.feather.lazyload{:data-src => "{% static 'career/images/feather_blue.png' %}"}
+    .container
+        .grid-content
+            .row-odd
+                .pair-odd
+                    .cropped.item_1{:data-aos => "fade-up"}
+                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/clock.jpg' %}"}
+                    .space-item
+                    .cropped.item_2{:data-aos => "fade-up"}
+                        .border-orange
+                            {% include "career_partials/perk.haml" with name="Flexible hours" benefit="Early bird or a night owl? Feel free to work when you are the most productive." image="career/images/time.png" %}
+                .space-pair
+                .pair-even
+                    .cropped.item_1{:data-aos => "fade-up"}
+                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/health.jpg' %}"}
+                    .space-item
+                    .cropped.item_2{:data-aos => "fade-up"}
+                        .border-blue
+                            {% include "career_partials/perk.haml" with name="Private health care" benefit="We care about you! Stay healthy with our healthcare plan." image="career/images/health.png" %}
+            .space-row
+            .row-even
+                .pair-odd
+                    .cropped.item_1{:data-aos => "fade-up"}
+                        .border-blue
+                            {% include "career_partials/perk.haml" with name="Remote working" benefit="Home, office or a sunny beach? For us it doesn't matter where you are but what you do." image="career/images/home.png" %}
+                    .space-item
+                    .cropped.item_2{:data-aos => "fade-up"}
+                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/remote.jpg' %}"}
+                .space-pair
+                .pair-even
+                    .cropped.item_1{:data-aos => "fade-up"}
+                        .border-orange
+                            {% include "career_partials/perk.haml" with name="Language lessons" benefit="Improve your English with our native speaker teachers." image="career/images/language.png" %}
+                    .space-item
+                    .cropped.item_2{:data-aos => "fade-up"}
+                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/lessons.jpg' %}"}
+            .space-row
+            .row-odd
+                .pair-odd
+                    .cropped.item_1{:data-aos => "fade-up"}
+                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/sport.jpg' %}"}
+                    .space-item
+                    .cropped.item_2{:data-aos => "fade-up"}
+                        .border-orange
+                            {% include "career_partials/perk.haml" with name="Multisport" benefit="Stay fit! Enjoy the benefits of more than 4000 sport facilities in Poland." image="career/images/gym.png" %}
+                .space-pair
+                .pair-even
+                    .cropped.item_1{:data-aos => "fade-up"}
+                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/office.jpg' %}"}
+                    .space-item
+                    .cropped.item_2{:data-aos => "fade-up"}
+                        .border-blue
+                            {% include "career_partials/perk.haml" with name="Office" benefit="Enjoy office in the city center, complete with a playroom, coffee station, bike parking and more." image="career/images/office.png" %}
+            .space-row
+            .row-even
+                .pair-odd
+                    .cropped.item_1{:data-aos => "fade-up"}
+                        .border-orange
+                            {% include "career_partials/perk.haml" with name="Lunch & Learn" benefit="Internal weekly trainings connected with delicious food." image="career/images/lunch.png" %}
+                    .space-item
+                    .cropped.item_2{:data-aos => "fade-up"}
+                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/techtalk.jpg' %}"}
+                .space-pair
+                .pair-even
+                    .cropped.item_1{:data-aos => "fade-up"}
+                        .border-blue
+                            {% include "career_partials/perk.haml" with name="Growth budget" benefit="We give you an opportunity to expand your knowledge - pick your conference or training." image="career/images/growth.png" %}
+                    .space-item
+                    .cropped.item_2{:data-aos => "fade-up"}
+                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/conference.jpg' %}"}

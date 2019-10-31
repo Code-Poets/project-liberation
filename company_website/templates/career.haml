@@ -1,0 +1,15 @@
+{% extends "base.haml" %}
+{% load pipeline %}
+
+{% block extra_head %}
+    {% stylesheet 'career' %}
+{% endblock %}
+
+{% block content %}
+    {% include "career_partials/become_part_of_our_team.haml" %}
+    {% include "career_partials/perks_and_benefits.haml" %}
+{% endblock %}
+
+{% block extra_script %}
+    {% javascript 'career' %}
+{% endblock %}

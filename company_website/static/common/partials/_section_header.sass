@@ -1,0 +1,47 @@
+@import "constants"
+
+$section-description-total-height: 248px !default
+$section-description-content-height: 198px !default
+$section-description-text-offset: 16px !default
+$section-description-vertical-padding: calc(#{$section-description-total-height} - #{$section-description-content-height} - #{$section-description-text-offset})
+$section-description-background-color: $blue-color !default
+$section-description-text-color: $orange-color !default
+
+.section-header
+    background: $section-description-background-color
+    width: 100%
+    max-width: 100%
+    min-height: $section-description-total-height
+    padding: $section-description-vertical-padding 0
+    overflow: hidden
+
+    .content-wrapper
+        height: inherit
+
+        .section-description-contents
+            display: flex
+            min-height: calc(#{$section-description-content-height}  - #{$section-description-vertical-padding} + #{$section-description-text-offset})
+            position: relative
+
+            .section-description-bar
+                height: calc(100% + #{$section-description-vertical-padding} - #{$section-description-text-offset})
+                width: 18px
+                background-color: $section-description-text-color
+                margin-bottom: auto
+                position: absolute
+                top: calc(#{$section-description-content-height} + #{$section-description-text-offset} - #{$section-description-total-height})
+                left: 0
+
+            .section-description-text
+                text-align: left
+                color: $section-description-text-color
+                margin-top: auto
+                margin-left: calc(18px + 2.5vw)
+
+                .title
+                    font-size: 5rem
+                    font-weight: 700
+
+                .subtext
+                    font-size: 2.4rem
+                    margin-left: 3.5px

@@ -2,11 +2,18 @@
 {% load pipeline %}
 {% stylesheet 'common' %}
 
+{% block extra_head %}
+{% endblock %}
+
 .overlay
 {% include "common_partials/menu.haml" %}
-{% include "common_partials/scripts.haml" %}
 
 {% block content %}
 {% endblock %}
 
 {% include "common_partials/footer.haml" %}
+
+{% include "common_partials/scripts.haml" %}
+
+{% block extra_script %}
+{% endblock %}
