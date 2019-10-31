@@ -34,3 +34,8 @@ class TeamIntroductionPageView(ListView):
 class HowWeWorkView(TemplateView):
 
     template_name = "how_we_work_page.haml"
+
+
+class CareerPageView(TemplateView):
+
+    template_name = "career.haml"

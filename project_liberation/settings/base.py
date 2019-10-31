@@ -204,6 +204,12 @@ PIPELINE = {
             ),
             'output_filename': 'css/how_we_work.css'
         },
+        'career': {
+            'source_filenames': (
+                'career/*.sass',
+            ),
+            'output_filename': 'css/career.css',
+        },
     },
     'JAVASCRIPT': {
         'main': {
