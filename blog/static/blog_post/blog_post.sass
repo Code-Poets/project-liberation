@@ -1,0 +1,87 @@
+$post-width-in-px: 800px
+$post-width-in-vw: 90vw
+$dark-blue: #03428c
+$dark-grey: #404852
+$orange: #F06D1F
+$author-image-size: 50px
+$width-to-change-details: 500px
+
+
+.post-container
+    margin-top: 1px
+    .article-photo
+        width: 100%
+        height: 30vw
+
+    .article-details
+        margin-bottom: 20px
+        position: relative
+        .row
+            margin: 0
+
+        .post-title
+            font-size: 35px
+            color: $dark-blue
+            font-weight: 600
+            margin-bottom: 10px
+
+        .author-image
+            border-radius: 50%
+            width: $author-image-size
+            height: $author-image-size
+            object-fit: cover
+            object-position: 0 0
+            margin-right: 10px
+
+        .author-details
+            margin: auto 0
+
+        .author-name
+            color: $dark-blue
+            font-weight: 700
+            font-size: 15px
+
+        .author-position
+            font-size: 10px
+            color: $dark-grey
+            font-weight: 700
+
+        .rest-information-row
+            position: relative
+            width: calc(#{$post-width-in-vw} - #{$author-image-size} - 10px)
+            @media only screen and (min-width: $post-width-in-px)
+                width: calc(#{$post-width-in-px} - #{$author-image-size} - 10px)
+
+        .rest-details
+            font-size: 10px
+            position: absolute
+            right: 0
+
+            .inline-display
+                display: inline-block
+
+            .read-time
+                padding: 0 20px
+                @media only screen and (max-width: $width-to-change-details)
+                    padding: 0 3px
+
+            .category
+                color: $orange
+                display: inline-block
+                font-weight: 800
+        .more-details-desktop-look
+            @media only screen and (max-width: $width-to-change-details)
+                display: none
+        .more-details-mobile-look
+            display: block
+            @media only screen and (min-width: $width-to-change-details)
+                display: none
+            .inner-more-details-mobile-look
+                position: relative
+
+    .post-body
+        width: 90vw
+        margin: 2vw auto
+        @media only screen and (min-width: $post-width-in-px)
+            width: $post-width-in-px
+            margin: 25px auto

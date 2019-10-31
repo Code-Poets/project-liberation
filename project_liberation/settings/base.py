@@ -192,6 +192,12 @@ PIPELINE = {
             ),
             'output_filename': 'css/blog.css',
         },
+        'blog_post': {
+            'source_filenames': (
+                'blog_post/*.sass',
+            ),
+            'output_filename': 'css/blog_post.css',
+        },
         'how_we_work': {
             'source_filenames': (
                 'how_we_work/how_we_work.sass',
