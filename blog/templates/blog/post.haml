@@ -2,20 +2,41 @@
 {% load thumbnail %}
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
+{% load pipeline %}
+{% stylesheet 'blog_post' %}
 
-%h3
-    %a{:href => "{% blog_url page.specific.get_proper_url %}"} {{ article.specific.title }}
-%h3 {{ page.specific.date }}
-%h3 {% image page.specific.cover_photo width-200 %}
-%h3 {% image page.specific.page_photo width-200 %}
-%h3 {{ page.specific.intro }}
-%h3 {{ page.specific.body|richtext }}
-{% thumbnail page.specific.author.front_image "27x40" as image %}
-    %img.lazyload{:data-src => "{{ image.url }}"}
-{% endthumbnail %}
-%h3 {{ page.specific.author.name }}
-%h3 {{ page.specific.read_time }}
-%h3
-    %a{:href => "{% blog_url article.specific.get_category.specific.title %}"} {{ page.specific.get_category.specific.title }}
-%br
-%br
+
+.post-container
+    .page-photo
+        {% image page.specific.article_photo  fill-1920x550 as photo %}
+        %img.article-photo.lazyload{:data-src => "{{ photo.url }}", :width => "{{ photo.width }}", :height => "{{ photo.height }}"}
+    .post-body
+        .article-details
+            .row.post-title
+                {{ page.specific.title }}
+            .row
+                {% thumbnail page.specific.author.front_image "400x400" as image %}
+                    %img.lazyload.author-image{:data-src => "{{ image.url }}"}
+                {% endthumbnail %}
+                .author-details
+                    .author-name {{ page.specific.author.name }}
+                    .row.rest-information-row
+                        .author-position {{ page.specific.author.position }}
+                        .rest-details.more-details-desktop-look
+                            %a.category.inline-display{:href => "{% blog_url article.specific.get_category.specific.title %}"} {{ page.specific.get_category.specific.title }}
+                            .read-time.inline-display {{ page.specific.read_time }} min read
+                            .date.inline-display {{ page.specific.date }}
+                    .row.more-details-mobile-look
+                        .rest-details.inner-more-details-mobile-look
+                            %a.category.inline-display{:href => "{% blog_url article.specific.get_category.specific.title %}"} {{ page.specific.get_category.specific.title }}
+                            .read-time.inline-display {{ page.specific.read_time }} min read
+                            .date.inline-display {{ page.specific.date }}
+        .article-content
+            {{ page.specific.body|richtext }}
+
+        .comment-section{:id => "disqus_thread"}
+            %script{:type => "text/javascript"}
+                var blog_page_url = {{ request.build_absolute_uri }}
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+{% javascript 'blog_post' %}

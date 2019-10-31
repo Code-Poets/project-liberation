@@ -192,6 +192,12 @@ PIPELINE = {
             ),
             'output_filename': 'css/blog.css',
         },
+        'blog_post': {
+            'source_filenames': (
+                'blog_post/*.sass',
+            ),
+            'output_filename': 'css/blog_post.css',
+        },
         'how_we_work': {
             'source_filenames': (
                 'how_we_work/how_we_work.sass',
@@ -223,6 +229,12 @@ PIPELINE = {
                 'how_we_work/scripts/*.js',
             ),
             'output_filename': 'js/how_we_work.js'
+        },
+        'blog_post': {
+            'source_filenames': (
+                'blog_post/scripts/*.js',
+            ),
+            'output_filename': 'js/blog_post.js'
         },
     },
     'COMPILERS': ('pipeline.compilers.sass.SASSCompiler',)
