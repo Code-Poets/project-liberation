@@ -97,3 +97,14 @@ $(document).ready(function () {
     checkWidth();
     $(window).resize(checkWidth);
 });
+
+var $root = $('html, body');
+$('a.nav-link').click(function () {
+    var str = $.attr(this, 'href')
+    if (str.indexOf("#") == 1) {
+        $root.animate({
+            scrollTop: $(str.substring(1)).offset().top
+        }, 500);
+        return false;
+    }
+});
