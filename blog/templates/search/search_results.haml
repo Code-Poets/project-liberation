@@ -1,34 +1,55 @@
+{% extends "base.haml" %}
+{% load blog_tag %}
+{% load thumbnail %}
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load pipeline %}
 
-{% block title %}Search{% if search_results %} results{% endif %}{% endblock %}
 
 {% block content %}
-    <h1>
-        Search results
-    </h1>
+    {% include 'blog/blog_menu_desktop.haml' %}
+    {% stylesheet 'blog_posts_list' %}
+    .container.blog-posts-list
+        .posts-container
+            .row.rest-posts
+                {% for blog_article in search_results %}
+                    .col-md-6.article-text-container{:class => "{% if not forloop.counter|divisibleby:'2' %}grey-background{% endif %}"}
+                        .row.title
+                            %a.main-article-url{:href => "{% blog_url blog_article.specific.get_proper_url %}"}
+                                .main-article-title {{ blog_article.specific.title }}
 
-    {% if search_results %}
-    <p>You searched{% if search_query %} for “{{ search_query }}”{% endif %}</p>
-        <ul>
-            {% for result in search_results %}
-                <li>
-                    <h4>
-                        {% if result.specific.content_type.model == "blogpage" %}
-                            Blog post:
-                        {% elif result.specific.content_type.model == "locationpage" %}
-                            Location:
-                        {% else %}
-                            Bread
-                        {% endif %}
-                        <a href="{% pageurl result.specific %}">{{ result.specific }}</a>
-                    </h4>
-                        {% if result.specific.search_description %}{{ result.specific.search_description|safe }}{% endif %}
-                </li>
-            {% endfor %}
-        </ul>
-    {% elif search_query %}
-        No results found
-    {% else %}
-        You didn’t search for anything!
-    {% endif %}
-{% endblock content %}
+                        .row.info-section
+                            .info-section
+                                {% thumbnail blog_article.specific.author.front_image "400x400" as image %}
+                                    %img.main-img.lazyload{:data-src => "{{ image.url }}"}
+                                {% endthumbnail %}
+                                .auto-name-and-category
+                                    .container-section
+                                        .author-name
+                                            {{ blog_article.specific.author.name }}
+                                        .category
+                                            %a.category-anchor{:href => "{% blog_url blog_article.specific.get_category.specific.title %}"}
+                                                {{ blog_article.specific.get_category.specific.title }}
+                                .read-time
+                                    {{ blog_article.specific.read_time }} min read
+                                .date
+                                    {{ blog_article.specific.date }}
+
+                        .row.article-img-container
+                            %a.image-url{:href => "{% blog_url blog_article.specific.get_proper_url %}"}
+                                {% image blog_article.specific.cover_photo fill-1200x628 %}
+
+                        .row.intro-row
+                            .intro-container
+                                {{ blog_article.specific.intro }} [...]
+                            .read-more
+                                %a.read-more-url{:href => "{% blog_url blog_article.specific.get_proper_url %}"}
+                                    %span.more Read more
+
+                    {% if forloop.counter|divisibleby:"2" %}
+                        .row.separator
+                            %hr.line
+                    {% endif %}
+                {% endfor %}
+    {% include 'blog/blog_menu_mobile.haml' %}
+{% endblock %}

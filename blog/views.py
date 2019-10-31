@@ -4,6 +4,7 @@ from wagtail.core.models import Page
 from wagtail.search.models import Query
 
 from blog.models import BlogArticlePage
+from blog.models import BlogIndexPage
 
 
 def search(request):
@@ -21,5 +22,7 @@ def search(request):
         search_results = Page.objects.none()
 
     return render(
-        request, "search/search_results.haml", {"search_query": search_query, "search_results": search_results}
+        request,
+        "search/search_results.haml",
+        {"search_query": search_query, "search_results": search_results, "page": BlogIndexPage.objects.all().last()},
     )
