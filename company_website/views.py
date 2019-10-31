@@ -39,3 +39,8 @@ class HowWeWorkView(TemplateView):
 class CareerPageView(TemplateView):
 
     template_name = "career.haml"
+
+
+class PrivacyAndPolicyView(TemplateView):
+
+    template_name = "privacy_and_policy_page.haml"
