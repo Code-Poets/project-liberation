@@ -1,0 +1,23 @@
+{% load blog_tag %}
+{% load thumbnail %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% for article in page.get_children %}
+    %h3
+        %a{:href => "{% blog_url article.specific.get_proper_url %}"} {{ article.specific.title }}
+    %h3 {{ article.specific.date }}
+    %h3 {% image article.specific.cover_photo width-200 %}
+    %h3 {% image article.specific.article_photo width-200 %}
+    %h3 {{ article.specific.intro }}
+    %h3 {{ article.specific.body|richtext }}
+    {% thumbnail article.specific.author.front_image "27x40" as image %}
+        %img.lazyload{:data-src => "{{ image.url }}"}
+    {% endthumbnail %}
+    %h3 {{ article.specific.author.name }}
+    %h3 {{ article.specific.read_time }}
+    %h3
+        %a{:href => "{% blog_url article.specific.get_category.specific.title %}"} {{ article.specific.get_category.specific.title }}
+    %br
+    %br
+{% endfor %}

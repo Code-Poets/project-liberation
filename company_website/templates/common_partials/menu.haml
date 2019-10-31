@@ -29,6 +29,8 @@
                 %a.nav-link{:href => "{% url 'main_page' %}#about-us"} About Us
             %li.nav-item.margin
                 %a.nav-link{:href => "{% url 'main_page' %}#contact-us"} Contact Us
+            %li.nav-item.margin
+                %a.nav-link{:href => "{% url 'blog:company-blog:wagtail_serve' '' %}"} Blog
             .estimate-triangle-left.hidden-xs
             %li.nav-item.estimate
                 %a.nav-link{:href => "#"}
@@ -51,6 +53,8 @@
                 %a.nav-link.mobile-link{:href => "{% url 'main_page' %}#about-us"} About Us
             %li.nav-item.margin.mobile-nav
                 %a.nav-link.mobile-link{:href => "{% url 'main_page' %}#contact-us"} Contact Us
+            %li.nav-item.margin.mobile-nav
+                %a.nav-link.mobile-link{:href => "{% url 'blog:company-blog:wagtail_serve' '' %}"} Blog
             %li.nav-item.estimate.mobile-nav
                 %a.nav-link.mobile-link.estimate{:href => "#"}
                     %span.mobile.estimate-project Estimate Project

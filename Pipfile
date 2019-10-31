@@ -24,6 +24,7 @@ django-pipeline = "*"
 django-hamlpy = "*"
 sorl-thumbnail = "*"
 pillow = "*"
+wagtail = "*"
 
 [requires]
 python_version = "3.7"
