@@ -1,0 +1,159 @@
+@import "partials/main_article"
+
+.container
+    max-width: 1310px
+    margin: 0 auto
+    padding: 50px
+    display: flex
+
+    @media only screen and (max-width: 767px)
+        padding: 0
+        margin: 0
+
+    .row.separator
+        width: 100%
+        margin: 0 auto
+
+        .line
+            width: 95%
+
+            @media only screen and (max-width: 834px)
+                display: none
+
+    @media only screen and (max-width: 1079px)
+        display: block
+
+    .popular-articles
+        display: flex
+        width: 100%
+
+        @media only screen and (max-width: 1079px)
+            height: 100px
+
+    .posts-container
+        .rest-posts
+
+            @media only screen and (max-width: 767px)
+                .grey-background
+                    background-color: #F0F3F7
+                    padding: 30px 0
+
+            .article-text-container
+                @media only screen and (max-width: 767px)
+                    margin: 10px 0
+
+                .intro-row
+                    .intro-container
+                        color: #B1B0B5
+                        text-align: justify
+
+                    .read-more
+                        margin-top: 5px
+
+                        @media only screen and (max-width: 767px)
+                            margin: 5px auto 0
+
+                        .read-more-url
+                            .more
+                                font-size: 13px
+                                font-weight: 700
+                                color: #FB6729
+                                text-decoration: underline
+
+                                @media only screen and (max-width: 767px)
+                                    font-size: 15px
+
+                .article-img-container
+                    position: relative
+                    margin-bottom: 10px
+                    .image-url
+
+                        img
+                            transition: all 1s ease
+                            border-radius: 25px
+                            top: 0
+                            left: 0
+                            bottom: 0
+                            margin: auto 0
+                            height: auto
+                            width: 100%
+                        &:hover
+                            img
+                                opacity: 0.4
+
+                .row.title
+                    display: -webkit-box
+                    -webkit-line-clamp: 2
+                    -webkit-box-orient: vertical
+                    overflow: hidden
+                    text-overflow: ellipsis
+                    height: 70px
+                    max-height: 70px
+
+                    @media only screen and (max-width: 767px)
+                        text-align: center
+                        width: 100%
+
+                .row.info-section
+                    margin-bottom: 10px
+
+                .row
+                    margin-left: 0
+                    margin-right: 0
+
+                    .main-article-url
+                        margin-bottom: 5px
+                        color: #003272
+                        font-size: 22px
+                        font-weight: 700
+
+                    .info-section
+                        position: relative
+                        height: 50px
+                        width: 100%
+
+                        .main-img
+                            margin: auto
+                            position: absolute
+                            top: 0
+                            bottom: 0
+                            border-radius: 100px
+
+                        .auto-name-and-category
+                            height: 45px
+                            margin: auto 140px auto 55px
+
+                            .container-section
+                                .author-name
+                                    position: absolute
+                                    top: 5px
+                                    color: #003272
+                                    font-size: 16px
+                                    font-weight: 600
+
+                                .category
+                                    width: calc(100% - 55px)
+                                    position: absolute
+                                    bottom: 3px
+                                    font-size: 10px
+
+                                    .category-anchor
+                                        color: #FB6729
+                                        text-decoration: underline
+                                        font-weight: 600
+
+                        .read-time
+                            position: absolute
+                            color: #B6B6B8
+                            right: 65px + 9.5px
+                            bottom: 3px
+                            font-size: 9.5px
+
+                        .date
+                            position: absolute
+                            width: fit-content
+                            max-width: 65px
+                            right: 0
+                            bottom: 3px
+                            font-size: 9.5px
+                            font-weight: 400
