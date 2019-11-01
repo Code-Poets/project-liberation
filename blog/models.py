@@ -49,6 +49,9 @@ class BlogIndexPage(Page):
     def get_menu_categories(self):
         return self.get_children().filter(live=True, show_in_menus=True)
 
+    def get_popular_articles(self):
+        return BlogArticlePage.objects.all().order_by("-views")[:3]
+
 
 class BlogArticlePage(Page):
     template = "blog_post.haml"
@@ -81,6 +84,7 @@ class BlogArticlePage(Page):
         FieldPanel("body", classname="full"),
         FieldPanel("author"),
         FieldPanel("read_time"),
+        FieldPanel("views"),
         ImageChooserPanel("cover_photo"),
         ImageChooserPanel("article_photo"),
     ]
@@ -92,3 +96,11 @@ class BlogArticlePage(Page):
 
     def get_menu_categories(self):
         return self.get_parent().get_parent().get_children().filter(live=True, show_in_menus=True)
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        # increase page view counter
+        context["page"].views += 1
+        context["page"].full_clean()
+        context["page"].save()
+        return context
