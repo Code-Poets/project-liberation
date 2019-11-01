@@ -35,7 +35,7 @@
                 %a.nav-link{:href => "{% url 'blog:company-blog:wagtail_serve' '' %}"} Blog
             .estimate-triangle-left.hidden-xs
             %li.nav-item.estimate
-                %a.nav-link{:href => "#"}
+                %a.nav-link{:href => "estimate_project"}
                     %span.estimate-project Estimate Project
             .estimate-triangle-right.hidden-xs
 %button.navbar-toggler.hamburger{:type =>"button", :aria-expanded => "false", :aria-controls => "menu"}
@@ -60,5 +60,5 @@
             %li.nav-item.margin.mobile-nav
                 %a.nav-link.mobile-link{:href => "{% url 'blog:company-blog:wagtail_serve' '' %}"} Blog
             %li.nav-item.estimate.mobile-nav
-                %a.nav-link.mobile-link.estimate{:href => "#"}
+                %a.nav-link.mobile-link.estimate{:href => "estimate_project"}
                     %span.mobile.estimate-project Estimate Project

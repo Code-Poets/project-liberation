@@ -1,9 +1,13 @@
 from typing import Any
 
 from django.conf import settings
+from django.contrib import messages
+from django.urls import reverse_lazy
+from django.views.generic import FormView
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 
+from company_website.forms import ProjectToEstimateForm
 from company_website.models import Employees
 from company_website.models import Testimonial
 
@@ -44,3 +48,18 @@ class CareerPageView(TemplateView):
 class PrivacyAndPolicyView(TemplateView):
 
     template_name = "privacy_and_policy_page.haml"
+
+
+class EstimateProjectView(FormView):
+    template_name = "estimate_project.haml"
+    form_class = ProjectToEstimateForm
+
+    def form_valid(self, form):
+        messages.success(self.request, "Profile details updated.")
+        form.save()
+
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        print()
+        return reverse_lazy("estimate_project")
