@@ -9,4 +9,5 @@ urlpatterns = [
     url(r"^team-introduction/$", views.TeamIntroductionPageView.as_view(), name="team_introduction"),
     url(r"^how-we-work/$", views.HowWeWorkView.as_view(), name="how_we_work"),
     url(r"^career/$", views.CareerPageView.as_view(), name="career"),
+    url(r"^privacy-and-policy/$", views.PrivacyAndPolicyView.as_view(), name="privacy_and_policy"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -216,6 +216,12 @@ PIPELINE = {
             ),
             'output_filename': 'css/blog_posts_list.css',
         },
+        'privacy_and_policy': {
+            'source_filenames': (
+                'privacy_and_policy/privacy_and_policy.sass',
+            ),
+            'output_filename': 'css/privacy_and_policy.css'
+        },
     },
     'JAVASCRIPT': {
         'main': {
