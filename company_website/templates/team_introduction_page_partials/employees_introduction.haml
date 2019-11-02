@@ -4,7 +4,7 @@
 .employees-intruduction
     .text-div OUR TEAM
     .team-images
-        .bosses-images
+        .bosses-images{:data-aos => "fade-in"}
             {% for boss in bosses %}
                 .person.boss
                     {% thumbnail boss.front_image "267x400" as front_image %}
@@ -17,7 +17,7 @@
                     {% endthumbnail %}
                     {% endthumbnail %}
             {% endfor %}
-        .employees-images
+        .employees-images{:data-aos => "fade-in"}
             {% for employee in employees %}
                 {% thumbnail employee.front_image "200x300" as front_image %}
                 {% thumbnail employee.back_image "200x300" as back_image %}
