@@ -1,0 +1,169 @@
+{% load static %}
+
+{% with privacy_and_policy_link="/" %}
+
+.container.estimate-form
+  %form{:method => "post", :id => "formABC"}
+    {% csrf_token %}
+    .row
+      .col-md-6.col-12.custom-col-padding
+        .input-fields-container
+
+          .input-field
+            {{form.name}}
+            .label-container
+              .estimate-triangle-left-label
+                Name *
+
+
+          .input-field
+            {{form.email}}
+            .label-container
+              .estimate-triangle-left-label
+                E-mail *
+
+          .input-field
+            {{form.country}}
+            .label-container
+              .estimate-triangle-left-label
+                Country
+
+          .nda
+            Do you need NDA?
+            .switch-field
+              {% for field in form.nda_required %}
+                .select-box{:id => "nda_#{forloop.counter}"}
+                  {{ field }}
+                {% endfor %}
+          .desktop-display
+            .additional-questions
+              .label
+                Need more precise estimation?
+              .add-button
+                Show additional questions
+
+
+      .col-md-6.col-12.custom-col-padding
+        .text-input
+          .top-label
+            Describe your idea *
+          .contener
+            %textarea{:class => "area", :id => "id_idea_description", :name => "idea_description", :cols => "40", :rows => "10", :maxlength => "10000"}
+            %img.feather-background.lazyload{:src => "{% static 'estimate_project/images/feather_horizontal.png' %}"}
+
+        .mobile-display
+          .additional-questions
+            .add-button
+              Show additional questions
+
+        .submit-container
+          .privacy-check-box
+            .
+              {{form.privacy_policy_accepted}}
+              I have read and accepted our
+              %a{:href => '{{ privacy_and_policy_link }}'}  Privacy Policy
+            %input.custom-button{:type => "submit", :value => "Estimate Project", :class => "estimate-button", :id => "btnSubmit"}
+
+    .row
+      .hide-add-questions
+        .hide-button{:id => "hide_questions"}
+          Hide questions
+
+    .row
+      .col-md-6.col-12.custom-col-padding
+        .bottom-containers
+          .single-container
+            .select-container.i-want-to
+              I want to
+              .switch-field
+                {% for field in form.build_or_improve %}
+                  .select-box{:id => "build_or_improve_#{forloop.counter}"}
+                    {{ field }}
+                  {% endfor %}
+
+            .select-container.what-is-budget
+              What is your monthly budget?
+              .switch-field
+                {% for field in form.monthly_bugdet %}
+                  {% if not forloop.counter|divisibleby:2 %}
+                  <span class="button-pair">
+                    .monthly-budget{:id => "monthly_bugdet_#{forloop.counter}"}
+                      {{ field }}
+                    {% if forloop.last %}
+                  </span>
+                    {% endif %}
+                  {% else %}
+                    .monthly-budget{:id => "monthly_bugdet_#{forloop.counter}"}
+                      {{ field }}
+                  </span>
+                  {% endif %}
+                {% endfor %}
+
+
+            .select-container.how-much-time
+              How much time do you have?
+              .switch-field
+                {% for field in form.project_time %}
+                  {% if not forloop.counter|divisibleby:2 %}
+                  <span class="button-pair">
+                    .monthly-budget{:id => "project_time_#{forloop.counter}"}
+                      {{ field }}
+                    {% if forloop.last %}
+                  </span>
+                    {% endif %}
+                  {% else %}
+                    .monthly-budget{:id => "project_time_#{forloop.counter}"}
+                      {{ field }}
+                  </span>
+                  {% endif %}
+                {% endfor %}
+
+
+      .col-md-6.col-12.custom-col-padding
+        .bottom-containers
+          .single-container
+            .select-container.do-you-want-design
+              Do you want us to design your product?
+              .switch-field
+                {% for field in form.design_product %}
+                  {% if not forloop.counter|divisibleby:2 %}
+                  <span class="button-pair">
+                    .monthly-budget{:id => "design_product_#{forloop.counter}"}
+                      {{ field }}
+                    {% if forloop.last %}
+                  </span>
+                    {% endif %}
+                  {% else %}
+                    .monthly-budget{:id => "design_product_#{forloop.counter}"}
+                      {{ field }}
+                  </span>
+                  {% endif %}
+                {% endfor %}
+
+            .select-container.how-did-you-find
+              How did you find us?
+              .switch-field
+                {% for field in form.company_info_origin %}
+                  {% if not forloop.counter|divisibleby:2 %}
+                  <span class="button-pair">
+                    .monthly-budget{:id => "company_info_origin_#{forloop.counter}"}
+                      {{ field }}
+                    {% if forloop.last %}
+                  </span>
+                    {% endif %}
+                  {% else %}
+                    .monthly-budget{:id => "company_info_origin_#{forloop.counter}"}
+                      {{ field }}
+                  </span>
+                  {% endif %}
+                {% endfor %}
+
+          .submit-container-bottom
+            .privacy-check-box-bottom
+              .
+                {{form.privacy_policy_accepted}}
+                I have read and accepted our
+                %a{:href => '{{ privacy_and_policy }}'}  Privacy Policy
+              %input.custom-button{:type => "submit", :value => "Estimate Project", :class => "estimate-button", :id => "btnSubmitbottom"}
+
+{% endwith %}
