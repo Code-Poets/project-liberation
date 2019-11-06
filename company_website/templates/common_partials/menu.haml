@@ -3,22 +3,15 @@
 
 {% if request.resolver_match.url_name == "main_page" %}
     {% define_variable "nb-hidden" as navbar_visibility_class %}
-    {% define_variable "visible" as menu_unscrolled_visibility %}
-    {% define_variable "hidden" as menu_scrolled_visibility %}
 {% else %}
     {% define_variable "nb-visible" as navbar_visibility_class %}
-    {% define_variable "hidden" as menu_unscrolled_visibility %}
-    {% define_variable "visible" as menu_scrolled_visibility %}
+    {% define_variable "scrolled" as menu_scrolled %}
+    {% define_variable "background-change" as background_visibility %}
 {% endif %}
 
 %nav.navbar.navbar-expand.fixed-top.navbar-dark.navbar-animation{:class => "{{ navbar_visibility_class }}"}
-    .cp-navi{:class => "{{ menu_scrolled_visibility }}"}
-        %img.background-img.lazyload{:alt=>"Codepoets background menu", :data-src => "{% static 'common/images/menu/menu_background.png' %}"}
-
-    .navbar-collapse
-        %a.logo1{:href=> "{% url 'main_page' %}#home", :class => "{{ menu_scrolled_visibility }}" }
-            %img.codepoets-logo.lazyload{:data-src => "{% static 'common/images/menu/code_poets_logo_menu_color.png' %}", :alt => "Codepoets logo"}
-        %a.logo2{:href=> "{% url 'main_page' %}#home", :class => "{{ menu_unscrolled_visibility }}"}
+    .navbar-collapse{:class => "{{ background_visibility }}"}
+        %a.logo{:href=> "{% url 'main_page' %}#home", :class => "{{ menu_scrolled }}"}
             %img.codepoets-logo.lazyload{:data-src => "{% static 'common/images/menu/code_poets_logo_menu_white.png' %}", :alt => "Codepoets logo"}
         %ul.navbar-nav.ml-auto.menu
             %li.nav-item.margin
@@ -34,8 +27,8 @@
             %li.nav-item.margin
                 %a.nav-link{:href => "{% url 'blog:company-blog:wagtail_serve' '' %}"} Blog
             .estimate-triangle-left.hidden-xs
-            %li.nav-item.estimate
-                %a.nav-link{:href => "estimate_project"}
+            %a.nav-link.estimate-anchor{:href => "estimate_project"}
+                %li.nav-item.estimate
                     %span.estimate-project Estimate Project
             .estimate-triangle-right.hidden-xs
 %button.navbar-toggler.hamburger{:type =>"button", :aria-expanded => "false", :aria-controls => "menu"}
@@ -59,6 +52,6 @@
                 %a.nav-link.mobile-link{:href => "{% url 'career' %}"} Career
             %li.nav-item.margin.mobile-nav
                 %a.nav-link.mobile-link{:href => "{% url 'blog:company-blog:wagtail_serve' '' %}"} Blog
-            %li.nav-item.estimate.mobile-nav
-                %a.nav-link.mobile-link.estimate{:href => "estimate_project"}
+            %a.nav-link.mobile-link.estimate{:href => "estimate_project"}
+                %li.nav-item.estimate.mobile-nav
                     %span.mobile.estimate-project Estimate Project

@@ -3,229 +3,243 @@
 @import "partials/hamburger_menu"
 
 .overlay
-	position: fixed
-	z-index: -100
-	top: 0
-	right: 0
-	left: 0
-	height: 100vh
-	width: 100%
+    position: fixed
+    z-index: -100
+    top: 0
+    right: 0
+    left: 0
+    height: 100vh
+    width: 100%
+    cursor: pointer
 
 .disable-fields
-	z-index: 999
-	background-color: black
-	opacity: 0.7
+    z-index: 999
+    background-color: black
+    opacity: 0.7
 
 .navbar-mobile
-	display: none
+    display: none
 
 .navbar.nb-visible
-	padding-top: 0
+    padding-top: 0
 
 .navbar.nb-hidden
-	padding-top: 30px
+    padding-top: 30px
 
 .navbar
-	min-width: 991px
-	height: 60px
-	padding-left: 0
-	padding-right: 0
-	padding-bottom: 0
-	-webkit-transition: $slow-animation
-	-moz-transition: $slow-animation
-	-ms-transition: $slow-animation
-	-o-transition: $slow-animation
-	transition: $slow-animation
+    min-width: 991px
+    height: 60px
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 0
+    -webkit-transition: $slow-animation
+    -moz-transition: $slow-animation
+    -ms-transition: $slow-animation
+    -o-transition: $slow-animation
+    transition: $slow-animation
 
-	.hidden, .visible
-		-webkit-transition: $fast-animation
-		-moz-transition: $fast-animation
-		-ms-transition: $fast-animation
-		-o-transition: $fast-animation
-		transition: $fast-animation
+    .collapse, .navbar-collapse
+        z-index: 15
 
-	.hidden
-		opacity: 0
+    .navbar-collapse.background-change
+        background-color: $blue-color
+        border-bottom: solid 1px white
+        -webkit-transition: $fast-animation
+        -moz-transition: $fast-animation
+        -ms-transition: $fast-animation
+        -o-transition: $fast-animation
+        transition: $fast-animation
 
-	.visible
-		opacity: 1
+    .navbar-collapse
+        width: 100%
+        -webkit-transition: $fast-animation
+        -moz-transition: $fast-animation
+        -ms-transition: $fast-animation
+        -o-transition: $fast-animation
+        transition: $fast-animation
 
-		@media only screen and (max-width: $md-screen-size)
-			opacity: 0
+        .logo
+            position: absolute
+            top: 10px
+            left: 30px
+            z-index: 3
+            height: 66px
+            width: auto
+            margin-top: 5px
 
-	.collapse, .navbar-collapse
-		z-index: 15
+            .codepoets-logo
+                -webkit-transition: $logo-make-bigger-animation
+                -moz-transition: $logo-make-bigger-animation
+                -ms-transition: $logo-make-bigger-animation
+                -o-transition: $logo-make-bigger-animation
+                transition: $logo-make-bigger-animation
+                height: 66px
+                width: auto
+                margin-top: 5px
 
-	.cp-navi
-		position: absolute
-		height: 60px
-		width: 100%
-		background-color: $blue-color
+                @media only screen and (max-width: 1090px)
+                    height: 45px
+                    margin-top: 11px
+                    -webkit-transition: $slow-animation
+                    -moz-transition: $slow-animation
+                    -ms-transition: $slow-animation
+                    -o-transition: $slow-animation
+                    transition: $slow-animation
 
-		.background-img
-			width: 100%
-			height: inherit
-			padding-right: 40%
+        .logo.scrolled
+            .codepoets-logo
+                margin-top: -5px
+                height: 45px
+                width: auto
+                -webkit-transition: $logo-animation
+                -moz-transition: $logo-animation
+                -ms-transition: $logo-animation
+                -o-transition: $logo-animation
+                transition: $logo-animation
 
-	.cp-navi.visible
-		height: 60px
+                @media only screen and (max-width: 1090px)
+                    -webkit-transition: $slow-animation
+                    -moz-transition: $slow-animation
+                    -ms-transition: $slow-animation
+                    -o-transition: $slow-animation
+                    transition: $slow-animation
 
-	.navbar-collapse
-		.hidden, .visible
-			.codepoets-logo
-				-webkit-transition: $logo-animation
-				-moz-transition: $logo-animation
-				-ms-transition: $logo-animation
-				-o-transition: $logo-animation
-				transition: $logo-animation
-		.logo1, .logo2
-			position: absolute
-			top: 10px
-			left: 30px
-			z-index: 3
-			-webkit-transition: all .5s .2s ease-in-out
-			-moz-transition: all .5s .2s ease-in-out
-			-ms-transition: all .5s .2s ease-in-out
-			-o-transition: all .5s .2s ease-in-out
-			transition: all .5s .2s ease-in-out
+        .menu
+            li.nav-item.margin
+                margin-top: 6px
+                margin-left: 10px
+                margin-right: 10px
+                font-size: 18px
 
-		.logo1.visible, .logo2.hidden
-			.codepoets-logo
-				margin-top: -5px
-				height: 50px
-				width: auto
+                @media only screen and (max-width: 1090px)
+                    margin-left: 8px
+                    margin-right: 8px
 
-		.logo1.hidden, .logo2.visible
-			.codepoets-logo
-				height: 66px
-				width: auto
-				margin-top: 5px
+                .nav-link
+                    color: $white-color
+                    font-weight: 500
 
-		.menu
-			li.nav-item.margin
-				margin-top: 10px
-				margin-left: 10px
-				margin-right: 10px
-				font-size: 14px
-				font-weight: 700
+                .nav-link.margin, .nav-link.mobile-link
+                    color: $white-color
 
-				.nav-link
-					color: $white-color
-					font-weight: 700
+                .nav-link:hover
+                    opacity: 0.8
 
-				.nav-link.margin, .nav-link.mobile-link
-					color: $white-color
+                .nav-link:focus
+                    color: $white-color
 
-				.nav-link:hover
-					opacity: 0.8
+            .nav-link.estimate-anchor
+                color: $blue-color
+                font-weight: 600
+                padding: 0
 
-				.nav-link:focus
-					color: $white-color
+                .nav-item.estimate
+                    background-color: $orange-color
+                    height: 60px
+                    font-size: 20px
+                    padding: 12px
 
-			.nav-item.estimate
-				background-color: $orange-color
-				padding: 0 5px
-				height: 60px
-				font-size: 16px
+                    .estimate-project
+                        vertical-align: middle
 
-				.nav-link
-					margin-top: 9px
-					color: $blue-color
-					font-weight: 700
+            &:hover
+                color: $hovered-blue-color
 
-				.nav-link:hover
-					color: $hovered-blue-color
+            .estimate-triangle-left
+                width: 0
+                height: 60px
+                border-top: 30px solid transparent
+                border-right: 30px solid $orange-color
+                border-bottom: 30px solid transparent
+                margin-left: 10px
 
-			.estimate-triangle-left
-				width: 0
-				height: 60px
-				border-top: 30px solid transparent
-				border-right: 30px solid $orange-color
-				border-bottom: 30px solid transparent
-				margin-left: 10px
-
-			.estimate-triangle-right
-				height: 60px
-				border-top: 30px solid $orange-color
-				border-right: 30px solid #FF6C17
-				border-bottom: 30px solid $orange-color
+            .estimate-triangle-right
+                height: 60px
+                border-top: 30px solid $orange-color
+                border-right: 30px solid #FF6C17
+                border-bottom: 30px solid $orange-color
 
 @media screen and (max-width: $md-screen-size)
-	.navbar
-		display: none
+    .navbar
+        display: none
 
-	.navbar-mobile
-		position: fixed
-		right: -260px
-		top: 0
-		display: table
-		z-index: 1000
+    .navbar-mobile
+        position: fixed
+        right: -260px
+        top: 0
+        display: table
+        z-index: 1000
 
-	.navigation
-		height: 100%
-		width: 260px
-		background: $blue-color
-		-webkit-transition: all .5s ease-in-out
-		-moz-transition: all .5s ease-in-out
-		-ms-transition: all .5s ease-in-out
-		-o-transition: all .5s ease-in-out
-		transition: all .5s ease-in-out
+    .navigation
+        height: 100%
+        width: 260px
+        background: $blue-color
+        -webkit-transition: all .5s ease-in-out
+        -moz-transition: all .5s ease-in-out
+        -ms-transition: all .5s ease-in-out
+        -o-transition: all .5s ease-in-out
+        transition: all .5s ease-in-out
 
 
-		.menu-mobile
-			position: relative
-			scrollbar-width: none
-			overflow-y: auto
-			height: 100vh
-			width: inherit
-			text-align: center
+        .menu-mobile
+            position: relative
+            scrollbar-width: none
+            overflow-y: auto
+            height: 100vh
+            width: inherit
+            text-align: center
 
-			&::-webkit-scrollbar
-				width: 0 !important
+            &::-webkit-scrollbar
+                width: 0 !important
 
-			.codepoets-logo-mobile
-				position: absolute
-				top: 15px
-				right: 84px
-				width: 150px
+            .codepoets-logo-mobile
+                position: absolute
+                top: 15px
+                right: 84px
+                width: 150px
 
-			.menu
-				padding-top: 30%
-				padding-bottom: 30%
-				-ms-overflow-y: scroll
-				vertical-align: middle
-				text-align: center
+            .menu
+                padding-top: 30%
+                padding-bottom: 30%
+                -ms-overflow-y: scroll
+                vertical-align: middle
+                text-align: center
 
-				.mobile-nav
-					font-weight: 600
-					margin-top: 0
-					height: unset
-					padding: 15px 0
-					margin-left: 10px
-					margin-right: 10px
-					font-size: 14px
+                .mobile-nav
+                    font-weight: 600
+                    margin-top: 0
+                    height: unset
+                    padding: 15px 0
+                    margin-left: 10px
+                    margin-right: 10px
+                    font-size: 14px
 
-					.nav-link
-						margin-top: 0
+                    .nav-link
+                        margin-top: 0
 
-					.nav-link.mobile-link
-						color: $white-color
+                    .nav-link.mobile-link
+                        color: $white-color
 
-						&:hover
-							opacity: 0.8
+                        &:hover
+                            opacity: 0.8
 
-				.nav-item.estimate.mobile-nav
-					background-color: $orange-color
-					padding: 0 5px
-					height: 60px
-					font-size: 16px
-					font-weight: 700
+                .nav-link.mobile-link
+                    margin-top: 9px
+                    color: $blue-color
 
-					.nav-link
-						margin-top: 9px
-						color: $blue-color
+                    .nav-item.estimate.mobile-nav
+                        background-color: $orange-color
+                        padding: 15px
+                        height: 60px
+                        font-size: 16px
+                        font-weight: 700
 
-					.nav-link:hover
-						color: $hovered-blue-color
-	.navigation-active
-		transform: translateX(-260px)
+                        .mobile
+                            vertical-align: middle
+
+
+                &:hover
+                    color: $hovered-blue-color
+
+    .navigation-active
+        transform: translateX(-260px)
