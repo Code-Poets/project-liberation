@@ -1,79 +1,87 @@
 @import "../common/partials/constants"
 .container-fluid
-	.jumbo
-		width: 100%
-		height: 110vh
+    .jumbo
+        width: 100%
+        height: 110vh
+        position: relative
 
-		.mobile-logo
-			display: none
-			position: absolute
-			z-index: 1
-			left: 0
-			right: 0
-			margin: 10px auto
-			text-align: center
-			@media only screen and (max-width: $md-screen-size)
-				display: initial
+        .mobile-logo
+            display: none
+            position: absolute
+            z-index: 1
+            left: 0
+            right: 0
+            margin: 10px auto
+            text-align: center
+            @media only screen and (max-width: $md-screen-size)
+                display: initial
 
-			.codepoets-mobile
-				width: 200px
-				@media only screen and (max-width: 374px)
-					padding-top: 2px
-					width: 160px
+            .codepoets-mobile
+                width: 200px
+                @media only screen and (max-width: 374px)
+                    padding-top: 2px
+                    width: 160px
 
-		.background-img
-			width: inherit
-			object-fit: cover
-			object-position: 48.5% 0
+        .background-img
+            width: inherit
+            object-fit: cover
+            object-position: 48.5% 0
 
-		.container-fluid
-			display: table
-			padding-left: 30px
-			margin-left: auto
-			margin-right: 0
-			margin-top: 27vh
-			width: 68%
-			min-width: fit-content
-			min-width: -moz-min-content
-			position: absolute
-			font-size: 4vw
+        .container-fluid
+            display: table
+            padding-left: 30px
+            margin-left: auto
+            margin-right: 0
+            margin-top: 27vh
+            width: 68%
+            min-width: fit-content
+            min-width: -moz-min-content
+            position: absolute
+            font-size: 4vw
+            left: 0
 
-			@media only screen and (max-width: $md-screen-size)
-				font-size: 5vw
+            @media only screen and (max-width: $md-screen-size)
+                font-size: 5vw
 
-			@media only screen and (max-width: $sm-screen-size)
-				font-size: 6vw
-				padding: 0
-				width: 100%
-				min-width: 100%
-				margin-top: 30vh
+            @media only screen and (max-width: $sm-screen-size)
+                font-size: 6vw
+                padding: 0
+                width: 100%
+                min-width: 100%
+                margin-top: 30vh
 
-			.text-box-blue, .text-box-orange
-				text-align: center
-				border-radius: 11px
-				width: fit-content
-				width:  -moz-min-content
-				padding: 15px 40px
-				margin-right: 0
-				margin-left: auto
-				white-space: nowrap
-				font-weight: 700
+            .text-box-blue, .text-box-orange
+                text-align: center
+                border-radius: 11px
+                width: fit-content
+                width: -moz-min-content
+                margin-right: 0
+                margin-left: auto
+                white-space: nowrap
 
-				@media only screen and (max-width: $md-screen-size)
-					border-radius: 9px
+                @media only screen and (max-width: $md-screen-size)
+                    border-radius: 9px
 
-				@media only screen and (max-width: $sm-screen-size)
-					padding: 2% 2%
-					margin: auto
-					border-radius: 7px
+                @media only screen and (max-width: $sm-screen-size)
+                    padding: 2% 2%
+                    margin: auto
+                    border-radius: 7px
 
-			.text-box-blue
-				background-color: $blue-color
-				font-size: 0.75em
-				color: $orange-color
+            .text-box-blue
+                padding: 5px 50px
+                background-color: $blue-color
+                font-size: 0.8em
+                color: $orange-color
+                font-weight: 700
+                @media only screen and (max-width: $sm-screen-size)
+                    padding: 2% 2%
 
-			.text-box-orange
-				margin-top: 17px
-				background-color: $orange-color
-				color: $blue-color
-				font-size: 0.4em
+            .text-box-orange
+                padding: 15px 50px
+                margin-top: 17px
+                background-color: $orange-color
+                color: $blue-color
+                font-size: 0.4em
+                font-weight: 600
+                @media only screen and (max-width: $sm-screen-size)
+                    padding: 2% 2%
