@@ -1,24 +1,16 @@
 function navScroll() {
     var scroll = $(window).scrollTop();
     if (scroll >= 100) {
-        $(".cp-navi").addClass("visible");
-        $(".cp-navi").removeClass("hidden");
-        $(".logo1").addClass("visible");
-        $(".logo1").removeClass("hidden");
-        $(".logo2").addClass("hidden");
-        $(".logo2").removeClass("visible");
+        $(".logo").addClass("scrolled");
         $(".navbar").addClass("nb-visible");
         $(".navbar").removeClass("nb-hidden");
+        $(".navbar-collapse").addClass("background-change");
 
     } else {
-        $(".cp-navi").addClass("hidden");
-        $(".cp-navi").removeClass("visible");
-        $(".logo1").addClass("hidden");
-        $(".logo1").removeClass("visible");
-        $(".logo2").addClass("visible");
-        $(".logo2").removeClass("hidden");
+        $(".logo").removeClass("scrolled");
         $(".navbar").removeClass("nb-visible");
         $(".navbar").addClass("nb-hidden");
+        $(".navbar-collapse").removeClass("background-change");
     }
 }
 
@@ -100,7 +92,7 @@ $(document).ready(function () {
 
 var $root = $('html, body');
 $('a.nav-link').click(function () {
-    var str = $.attr(this, 'href')
+    var str = $.attr(this, 'href');
     if (str.indexOf("#") == 1) {
         $root.animate({
             scrollTop: $(str.substring(1)).offset().top
