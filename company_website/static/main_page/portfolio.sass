@@ -1,326 +1,325 @@
 @import "../common/partials/constants"
 
 .feather
-	width: 14vw
-	position: absolute
-	margin-top: -4.5vw
-	padding-left: 15px
-	opacity: 0.95
+    width: 14vw
+    position: absolute
+    margin-top: -4.5vw
+    padding-left: 15px
+    opacity: 0.95
 
-	@media screen and (max-width: 1200px)
-		margin-top: 0
+    @media screen and (max-width: 1200px)
+        margin-top: 0
 
 .portfolio-container
-	a, a span
-		text-decoration: none
+    a, a span
+        text-decoration: none
 
-	.row .section-title
-		.section
-			color: $blue-color
-			font-weight: 700
-			margin-top: $container-title-template-margin
-			margin-bottom: $container-title-template-margin-bottom - 5px
+    .row .section-title
+        .section
+            color: $blue-color
+            font-weight: 700
+            margin-top: $container-title-template-margin
+            margin-bottom: $container-title-template-margin-bottom - 5px
 
-	.row.portfolio.show-more-button
-		.more-projects
-			display: none
+    .row.portfolio.show-more-button
+        .more-projects
+            display: none
 
-	.row.portfolio
-		margin: 0 5px
-		font-size: 1vw
+    .row.portfolio
+        margin: 0 5px
+        font-size: 1vw
 
-		.project-box
-			height: 15vw
-			width: 100%
-			border-radius: 10px
-			font-size: 0.8em
-			color: white
-			min-height: 180px
+        .project-box
+            height: 15vw
+            width: 100%
+            border-radius: 10px
+            font-size: 0.8em
+            color: white
+            min-height: 180px
+            position: relative
 
-			.project-name
-				font-size: 1.4em
-				font-weight: 500
+            .project-name
+                font-size: 1.4em
+                font-weight: 500
 
-			.description
-				font-size: 0.83em
+            .description
+                font-size: 0.83em
 
-				@media screen and (min-width: $md-screen-size) and (max-width: 1200px)
-					margin-top: 4%
-					font-size: 1em
+                @media screen and (min-width: $md-screen-size) and (max-width: 1200px)
+                    margin-top: 4%
+                    font-size: 1em
 
-			&:hover
-				opacity: 0.7
+            &:hover
+                opacity: 0.7
 
-		.project-merck-box
-			background-color: #513290
+        .project-merck-box
+            background-color: #513290
 
-			.merck-left-background
-				position: absolute
-				width: 100%
-				height: 100%
-				object-fit: contain
-				object-position: left
-				border-top-left-radius: inherit
-				border-bottom-left-radius: inherit
 
-			.merck-bottom-background
-				position: absolute
-				width: 40%
-				bottom: 0
-				right: 18%
-				object-fit: contain
-				object-position: center
-				z-index: -1
+            .merck-left-background
+                position: absolute
+                width: 100%
+                height: 100%
+                object-fit: contain
+                object-position: left
+                border-top-left-radius: inherit
+                border-bottom-left-radius: inherit
 
-				@media only screen and (max-width: $md-screen-size)
-					width: 55%
-					right: 12%
+            .merck-bottom-background
+                position: absolute
+                width: 40%
+                bottom: 0
+                right: 18%
+                object-fit: contain
+                object-position: center
 
-			.merck-background-mobile
-				display: none
+                @media only screen and (max-width: $md-screen-size)
+                    width: 55%
+                    right: 12%
 
-			.logo-merck
-				margin-bottom: 20px
-				width: 10.5vw
+            .merck-background-mobile
+                display: none
 
-			.project-merck-box-desc
-				width: 73%
-				text-align: right
-				float: right
-				padding: 5%
+            .logo-merck
+                margin-bottom: 20px
+                width: 10.5vw
 
-			@media only screen and (max-width: 1199px)
-				background-size: 55%, 40%
+            .project-merck-box-desc
+                width: 73%
+                text-align: right
+                float: right
+                padding: 5%
 
-		.project-golem-box
-			background-color: #181ea9
+            @media only screen and (max-width: 1199px)
+                background-size: 55%, 40%
 
-			.golem-background
-				position: absolute
-				width: auto
-				height: 100%
-				object-position: left
-				border-top-left-radius: inherit
-				border-bottom-left-radius: inherit
-				z-index: -1
+        .project-golem-box
+            background-color: #181ea9
 
-			.golem-background-mobile
-				display: none
+            .golem-background
+                position: absolute
+                width: auto
+                height: 100%
+                object-position: left
+                border-top-left-radius: inherit
+                border-bottom-left-radius: inherit
 
-			.project-golem-box-desc
-				width: 79%
-				text-align: right
-				float: right
-				padding: 4% 4% 0
-				z-index: 1
+            .golem-background-mobile
+                display: none
 
-				.logo-golem
-					margin-bottom: 20px
-					width: 10.5vw
-					z-index: 1
+            .project-golem-box-desc
+                width: 79%
+                text-align: right
+                float: right
+                padding: 4% 4% 0
+                z-index: 1
 
-		.project-polish-lody-box
-			color: $polish-lody-font-color
+                .logo-golem
+                    margin-bottom: 20px
+                    width: 10.5vw
+                    z-index: 1
 
-			.polish-lody-background
-				position: absolute
-				width: 100%
-				height: 100%
-				z-index: -1
-				border-radius: inherit
+        .project-polish-lody-box
+            color: $polish-lody-font-color
 
-			.project-polish-lody-box-desc
-				text-align: center
-				margin: auto
-				width: 70%
+            .polish-lody-background
+                position: absolute
+                width: 100%
+                height: 100%
+                z-index: -1
+                border-radius: inherit
 
-				.logo-polish-lody
-					width: 5.7vw
-					margin: 10px 5px 18px
+            .project-polish-lody-box-desc
+                text-align: center
+                margin: auto
+                width: 70%
 
-		.project-rubin-box
-			.rubin-anders-background
-				position: absolute
-				width: 100%
-				height: 100%
-				border-radius: inherit
-				z-index: -1
+                .logo-polish-lody
+                    width: 5.7vw
+                    margin: 10px 5px 18px
 
-			.project-rubin-box-desc
-				vertical-align: middle
-				text-align: center
+        .project-rubin-box
+            .rubin-anders-background
+                position: absolute
+                width: 100%
+                height: 100%
+                border-radius: inherit
+                z-index: -1
 
-				.logo-rubin
-					margin-left: -1px
-					margin-top: 10%
-					margin-bottom: 10%
-					width: 101%
+            .project-rubin-box-desc
+                vertical-align: middle
+                text-align: center
 
-				.text-rubin-anders
-					padding: 0 5%
+                .logo-rubin
+                    margin-left: -1px
+                    margin-top: 10%
+                    margin-bottom: 10%
+                    width: 101%
 
-		.project-altenberg-box
-			background-image: $portfolio-altenberg-gradient-color
+                .text-rubin-anders
+                    padding: 0 5%
 
-			.altenberg-background
-				opacity: 0.6
-				position: absolute
-				height: 100%
-				width: 100%
-				object-position: center
-				border-radius: inherit
+        .project-altenberg-box
+            background-image: $portfolio-altenberg-gradient-color
 
-				z-index: -1
+            .altenberg-background
+                opacity: 0.6
+                position: absolute
+                height: 100%
+                width: 100%
+                object-position: center
+                border-radius: inherit
 
-			.project-altenberg-box-desc
-				padding-top: 5%
-				text-align: center
-				width: 75%
-				margin: 0 10%
+            .project-altenberg-box-desc
+                padding-top: 5%
+                text-align: center
+                width: 75%
+                margin: 0 10%
 
-				.logo-altenberg
-					width: 6.8vw
-					margin-bottom: 10%
+                .logo-altenberg
+                    width: 6.8vw
+                    margin-bottom: 10%
 
-		.custom-paddings
-			padding: 0.5vw
+        .custom-paddings
+            padding: 0.5vw
 
 @media only screen and (max-width: $md-screen-size)
-	.feather
-		display: none
+    .feather
+        display: none
 
-	.mobile-hidden-projects
-		overflow: hidden
-		height: auto
-		max-height: 0
-		transition: max-height 2s ease-out
+    .mobile-hidden-projects
+        overflow: hidden
+        height: auto
+        max-height: 0
+        transition: max-height 2s ease-out
 
-	.toggle-projects
-		transition: max-height 2s ease-out
-		max-height: $hidden-projects-on-mobile-devices * ($max-height-box + 150px)
+    .toggle-projects
+        transition: max-height 2s ease-out
+        max-height: $hidden-projects-on-mobile-devices * ($max-height-box + 150px)
 
-	.portfolio-container
-		.row.portfolio.show-more-button
-			.more-projects
-				display: initial
-				font-size: 16px
-				color: white
-				padding: 15px 32px
-				margin: 40px auto 0
-				width: fit-content
-				background: #8ABD3B
-				border: none
+    .portfolio-container
+        .row.portfolio.show-more-button
+            .more-projects
+                display: initial
+                font-size: 16px
+                color: white
+                padding: 15px 32px
+                margin: 40px auto 0
+                width: fit-content
+                background: #8ABD3B
+                border: none
 
-		.row.portfolio
-			.custom-paddings
-				padding: 15px 0
+        .row.portfolio
+            .custom-paddings
+                padding: 15px 0
 
-			.project-box
-				margin: 0 auto
-				width: 100%
-				max-width: 400px
-				height: 120vw
-				max-height: $max-height-box
-				min-height: 300px
-				font-size: 1.2rem
+            .project-box
+                margin: 0 auto
+                width: 100%
+                max-width: 400px
+                height: 120vw
+                max-height: $max-height-box
+                min-height: 300px
+                font-size: 1.2rem
 
-			.project-golem-box-desc, .project-merck-box-desc
-				padding: 8%
+            .project-golem-box-desc, .project-merck-box-desc
+                padding: 8%
 
-			.project-merck-box
-				.merck-left-background
-					display: none
+            .project-merck-box
+                .merck-left-background
+                    display: none
 
-				.merck-background-mobile
-					display: initial
-					position: absolute
-					width: 100%
-					height: 100%
-					border-radius: inherit
+                .merck-background-mobile
+                    display: initial
+                    position: absolute
+                    width: 100%
+                    height: 100%
+                    border-radius: inherit
 
-				.project-merck-box-desc
-					width: 90%
-					text-align: center
-					padding: 3vh 8% 5%
+                .project-merck-box-desc
+                    width: 90%
+                    text-align: center
+                    padding: 3vh 8% 5%
 
-					.logo-merck
-						padding: 2%
-						float: right
-						width: 40vw
-						max-width: 180px
+                    .logo-merck
+                        padding: 2%
+                        float: right
+                        width: 40vw
+                        max-width: 180px
 
-					.project-name
-						margin: 70% 20px 10px auto
+                    .project-name
+                        margin: 70% 20px 10px auto
 
-					.text-synthia
-						margin-right: 20px
+                    .text-synthia
+                        margin-right: 20px
 
-			.project-golem-box
-				.golem-background
-					display: none
+            .project-golem-box
+                .golem-background
+                    display: none
 
-				.golem-background-mobile
-					display: initial
-					position: absolute
-					margin: 5% auto
-					width: 100%
-					z-index: -1
+                .golem-background-mobile
+                    display: initial
+                    position: absolute
+                    margin: 5% auto
+                    width: 100%
+                    z-index: 4
 
-				.project-golem-box-desc
-					width: 100%
-					text-align: center
-					z-index: 1
+                .project-golem-box-desc
+                    width: 100%
+                    text-align: center
+                    z-index: 5
+                    position: absolute
 
-					.project-name
-						margin-top: 10%
-						margin-bottom: 10px
+                    .project-name
+                        margin-top: 10%
+                        margin-bottom: 10px
 
-					.logo-golem
-						margin-top: 20%
-						margin-left: 5%
-						margin-bottom: 10%
-						max-width: 280px
-						width: 60vw
+                    .logo-golem
+                        margin-top: 20%
+                        margin-left: 5%
+                        margin-bottom: 10%
+                        max-width: 280px
+                        width: 60vw
 
-			.project-polish-lody-box, .project-altenberg-box
-				.project-polish-lody-box-desc, .project-altenberg-box-desc
-					margin: 0 auto
+            .project-polish-lody-box, .project-altenberg-box
+                .project-polish-lody-box-desc, .project-altenberg-box-desc
+                    margin: 0 auto
 
-					.logo-polish-lody, .logo-altenberg
-						margin: 10% 0 20%
-						width: 50vw
-						max-width: 200px
+                    .logo-polish-lody, .logo-altenberg
+                        margin: 10% 0 20%
+                        width: 50vw
+                        max-width: 200px
 
-			.project-rubin-box
-				.rubin-anders-background
-					position: absolute
-					object-fit: cover
-					width: 100%
-					height: 100%
-					border-radius: inherit
-					z-index: -1
+            .project-rubin-box
+                .rubin-anders-background
+                    position: absolute
+                    object-fit: cover
+                    width: 100%
+                    height: 100%
+                    border-radius: inherit
+                    z-index: -1
 
-				.project-rubin-box-desc
-					padding-top: 60%
-					text-align: center
+                .project-rubin-box-desc
+                    padding-top: 60%
+                    text-align: center
 
-					.logo-rubin
-						position: absolute
-						object-fit: contain
-						width: 180%
-						left: -40%
-						top: 8%
+                    .logo-rubin
+                        position: absolute
+                        object-fit: contain
+                        width: 180%
+                        left: -40%
+                        top: 8%
 
-		.additional-paddings
-			padding-top: 60px
+        .additional-paddings
+            padding-top: 60px
 
 @media only screen and (max-width: 380px)
-	.portfolio-container
-		.row.portfolio
-			.project-box
-				font-size: 0.95rem
+    .portfolio-container
+        .row.portfolio
+            .project-box
+                font-size: 0.95rem
 
-			.project-merck-box
-					.project-merck-box-desc
-						.project-name
-							margin: 65% 20px 20px auto
+            .project-merck-box
+                .project-merck-box-desc
+                    .project-name
+                        margin: 65% 20px 20px auto
