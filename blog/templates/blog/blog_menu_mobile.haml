@@ -7,9 +7,7 @@
     .outer-column
         .row.separator
             .search-bar.centered-div
-                %form{:action => "/blog/search/", :method => "get", :role => "search"}
-                    %input{:name => "phrase", :type => "text", :placeholder => "Search...", :autocomplete => "on"}
-                    %img.search-icon{:src => "{% static 'blog/images/search.png' %}"}
+                {% include 'blog/partials/search_form.haml' %}
         .row.separator
             %a.link{:href => "{% blog_url '' %}"} All Articles
         {% for category in page.get_menu_categories %}

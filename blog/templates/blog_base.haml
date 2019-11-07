@@ -1,0 +1,9 @@
+{% extends "base.haml" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+    {% include 'blog/blog_menu_desktop.haml' %}
+    {% block blog_content %}
+    {% endblock %}
+    {% include 'blog/blog_menu_mobile.haml' %}
+{% endblock %}
