@@ -1,7 +1,7 @@
 {% load static %}
 
 .about-us-page
-    .who-we-are-part.row{:data-aos => "zoom-in-up"}
+    .who-we-are-part.row{:data-aos => "fade-up"}
         .outer-text-div
             .inner-text-div
                 .topic-row
@@ -27,20 +27,20 @@
                         Read less
                     .read-more-less.read-more
                         Read more...
-    .our-values-part.row{:data-aos => "zoom-in-up"}
-        .left-container.left-column
+    .our-values-part.row
+        .left-container.left-column{:data-aos => "fade-up"}
             %img.lazyload.image_1{:data-src => "{% static 'team_introduction_page/images/image_1.jpg' %}", :alt => "Code Poets team"}
         .right-container.right-column
-            .outer-text-div.outer-our-values-text-div
+            .outer-text-div.outer-our-values-text-div{:data-aos => "fade-up"}
                 .inner-text-div.inner-our-values-text-div
                     .topic.our-values-topic OUR VALUES
-            %img.lazyload.image_2{:data-src => "{% static 'team_introduction_page/images/image_2.jpg' %}", :alt => "Our values"}
-    .understand-part.row{:data-aos => "zoom-in-up"}
+            %img.lazyload.image_2{:data-src => "{% static 'team_introduction_page/images/image_2.jpg' %}", :alt => "Our values", :data-aos => "fade-up"}
+    .understand-part.row
         .left-container.inner-left-container.left-column
-            %img.lazyload.image_3{:data-src => "{% static 'team_introduction_page/images/image_3.jpg' %}", :alt => "Code Poets brazilian jiu jitsu team"}
-            .square.yellow-square
+            %img.lazyload.image_3{:data-src => "{% static 'team_introduction_page/images/image_3.jpg' %}", :alt => "Code Poets brazilian jiu jitsu team", :data-aos => "fade-up"}
+            .square.yellow-square{:data-aos => "fade-up"}
         .right-container.right-column
-            .outer-text-div.outer-understand-text-div
+            .outer-text-div.outer-understand-text-div{:data-aos => "fade-up"}
                 .inner-text-div.inner-understand-text-div
                     .topic-row
                         .topic UNDERSTAND
@@ -48,12 +48,12 @@
                         %p.description.understand-part-description
                             We dig deep to understand your business, goals and requirements.
                             We need to create partnership and be understanding to each other in order to provide the best solutions.
-    .understand-part-2.row{:data-aos => "zoom-in-up"}
-        .left-container.left-column
+    .understand-part-2.row
+        .left-container.left-column{:data-aos => "fade-up"}
             %img.lazyload.overlayed-image.image_4{:data-src => "{% static 'team_introduction_page/images/image_4.jpg' %}", :alt => "Animal friendly"}
-        .right-container.right-column
+        .right-container.right-column{:data-aos => "fade-up"}
             %img.lazyload.image_5{:data-src => "{% static 'team_introduction_page/images/image_5.jpg' %}", :alt => "Code Poets common dinner"}
-    .deliver-part.row{:data-aos => "zoom-in-up"}
+    .deliver-part.row{:data-aos => "fade-up"}
         .outer-text-div.deliver-text-div
             .inner-text-div.inner-deliver-text-div
                 .topic-row
@@ -63,10 +63,10 @@
                         We have smart and experienced people onboard.
                         We are committed to delivering scalable and exgendable, high-quality sofware.
                         Always on time.
-    .improve-part.row{:data-aos => "zoom-in-up"}
+    .improve-part.row
         .left-container.inner-left-container.left-column
-            %img.lazyload.image_6{:data-src => "{% static 'team_introduction_page/images/image_6.jpg' %}", :alt => "Code Poets feather background"}
-            .outer-text-div.improve-text-div
+            %img.lazyload.image_6{:data-src => "{% static 'team_introduction_page/images/image_6.jpg' %}", :alt => "Code Poets feather background", :data-aos => "fade-up"}
+            .outer-text-div.improve-text-div{:data-aos => "fade-up"}
                 .inner-text-div.inner-improve-text-div
                     .topic-row
                         .topic IMPROVE
@@ -75,16 +75,16 @@
                             Our brains hate being idle.
                             Passionate about our work, we are constantly moving forward, innovating and improving.
                             We think that it is the key to success.
-            .square.orange-square
+            .square.orange-square{:data-aos => "fade-up"}
         .right-container.right-column
-            %img.lazyload.image_7{:data-src => "{% static 'team_introduction_page/images/image_7.jpg' %}", :alt => "Code Poets ladies day"}
-    .be-honest-part.row{:data-aos => "zoom-in-up"}
+            %img.lazyload.image_7{:data-src => "{% static 'team_introduction_page/images/image_7.jpg' %}", :alt => "Code Poets ladies day", :data-aos => "fade-up"}
+    .be-honest-part.row
         .left-container.inner-left-container.left-column
-            %img.lazyload.overlayed-image.runmageddon-image{:data-src => "{% static 'team_introduction_page/images/image_8.jpg' %}", :alt => "Code Poets runmageddon"}
-            .square.blue-square
+            %img.lazyload.overlayed-image.runmageddon-image{:data-src => "{% static 'team_introduction_page/images/image_8.jpg' %}", :alt => "Code Poets runmageddon", :data-aos => "fade-up"}
+            .square.blue-square{:data-aos => "fade-up"}
         .right-container.right-column
-            %img.lazyload.image_9{:data-src => "{% static 'team_introduction_page/images/image_9.jpg' %}", :alt => "Code Poets west office"}
-            .outer-text-div.be-honest-text-div
+            %img.lazyload.image_9{:data-src => "{% static 'team_introduction_page/images/image_9.jpg' %}", :alt => "Code Poets west office", :data-aos => "fade-up"}
+            .outer-text-div.be-honest-text-div{:data-aos => "fade-up"}
                 .inner-text-div.inner-be-honest-text-div
                     .topic-row
                         .topic
@@ -93,15 +93,15 @@
                         %p.description.be-honest-part-description
                             Transparency and good communication are essential in achieving the best results and solving problems.
                             We are hones with you and we expect you to be honest with us.
-    .be-honest-part-2.row{:data-aos => "zoom-in-up"}
+    .be-honest-part-2.row
         .left-container.left-column
             .overlayed-image
-                %img.lazyload.image_10{:data-src => "{% static 'team_introduction_page/images/image_10.jpg' %}", :alt => "Code Poets east office"}
-                %img.lazyload.image_11{:data-src => "{% static 'team_introduction_page/images/image_11.jpg' %}", :alt => "Strong team"}
+                %img.lazyload.image_10{:data-src => "{% static 'team_introduction_page/images/image_10.jpg' %}", :alt => "Code Poets east office", :data-aos => "fade-up"}
+                %img.lazyload.image_11{:data-src => "{% static 'team_introduction_page/images/image_11.jpg' %}", :alt => "Strong team", :data-aos => "fade-up"}
         .right-container.right-column
-            %img.lazyload.image_12{:data-src => "{% static 'team_introduction_page/images/image_12.jpg' %}", :alt => "Code Poets playroom"}
-    .self-organized-part.row{:data-aos => "zoom-in-up"}
-        .outer-text-div.self-organized-text-div
+            %img.lazyload.image_12{:data-src => "{% static 'team_introduction_page/images/image_12.jpg' %}", :alt => "Code Poets playroom", :data-aos => "fade-up"}
+    .self-organized-part.row
+        .outer-text-div.self-organized-text-div{:data-aos => "fade-up"}
             .inner-text-div.inner-self-organized-text-div
                 .topic-row
                     .topic
@@ -111,15 +111,15 @@
                         We're Agile supporters and we believe in teamwork.
                         We are sure that no one will arrange the process, projects and even the company better than its members.
         .left-container.col-6.inner-left-container.left-column
-            %img.lazyload.image_13{:data-src => "{% static 'team_introduction_page/images/image_13.jpg' %}", :alt => "Code Poets mountain journey"}
-            .square.red-square
+            %img.lazyload.image_13{:data-src => "{% static 'team_introduction_page/images/image_13.jpg' %}", :alt => "Code Poets mountain journey", :data-aos => "fade-up"}
+            .square.red-square{:data-aos => "fade-up"}
         .right-container.col-6.right-column
-            %img.lazyload.image_14{:data-src => "{% static 'team_introduction_page/images/image_14.jpg' %}", :alt => "Code Poets fat thursday"}
-    .self-organized-part-2.row{:data-aos => "zoom-in-up"}
+            %img.lazyload.image_14{:data-src => "{% static 'team_introduction_page/images/image_14.jpg' %}", :alt => "Code Poets fat thursday", :data-aos => "fade-up"}
+    .self-organized-part-2.row
         .left-container.left-column
-            %img.lazyload.overlayed-image.self-organized-overlayed-image{:data-src => "{% static 'team_introduction_page/images/image_15.jpg' %}", :alt => "Code Poets hot dog"}
+            %img.lazyload.overlayed-image.self-organized-overlayed-image{:data-src => "{% static 'team_introduction_page/images/image_15.jpg' %}", :alt => "Code Poets hot dog", :data-aos => "fade-up"}
         .right-container.right-column
-            .outer-text-div.self-organized-2-text-div
+            .outer-text-div.self-organized-2-text-div{:data-aos => "fade-up"}
                 .inner-text-div.inner-self-organized-part-2-text-div
                     .topic-row
                         .topic

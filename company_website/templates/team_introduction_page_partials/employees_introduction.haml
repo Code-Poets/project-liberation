@@ -4,9 +4,9 @@
 .employees-intruduction
     .text-div OUR TEAM
     .team-images
-        .bosses-images{:data-aos => "fade-in"}
+        .bosses-images
             {% for boss in bosses %}
-                .person.boss
+                .person.boss{:data-aos => "fade-in"}
                     {% thumbnail boss.front_image "267x400" as front_image %}
                     {% thumbnail boss.back_image "267x400" as back_image %}
                         .person-container
@@ -17,11 +17,11 @@
                     {% endthumbnail %}
                     {% endthumbnail %}
             {% endfor %}
-        .employees-images{:data-aos => "fade-in"}
+        .employees-images
             {% for employee in employees %}
                 {% thumbnail employee.front_image "200x300" as front_image %}
                 {% thumbnail employee.back_image "200x300" as back_image %}
-                    .person.employee
+                    .person.employee{:data-aos => "fade-in"}
                         .person-container
                             %img.lazyload.front-image{:data-src => "{{ front_image.url }}"}
                             %img.lazyload.back-image{:data-src => "{{ back_image.url }}"}
