@@ -54,12 +54,12 @@ class EstimateProjectView(FormView):
     template_name = "estimate_project.haml"
     form_class = ProjectToEstimateForm
 
-    def form_valid(self, form):
+    def form_valid(self, form: ProjectToEstimateForm) -> bool:
         messages.success(self.request, "Profile details updated.")
         form.save()
 
         return super().form_valid(form)
 
-    def get_success_url(self):
+    def get_success_url(self) -> str:
         print()
         return reverse_lazy("estimate_project")

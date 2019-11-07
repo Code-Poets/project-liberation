@@ -49,7 +49,7 @@ class BlogIndexPage(Page):
     def get_menu_categories(self):
         return self.get_children().filter(live=True, show_in_menus=True)
 
-    def get_popular_articles(self):
+    def get_popular_articles(self):  # pylint: disable=no-self-use
         return BlogArticlePage.objects.all().order_by("-views")[:3]
 
 

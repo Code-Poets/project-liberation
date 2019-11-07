@@ -7,8 +7,6 @@ from company_website.models import ProjectToEstimate
 
 
 class ProjectToEstimateForm(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
 
     nda_choices = ((True, "Yes"), (False, "No"))
     nda_required = forms.ChoiceField(choices=nda_choices, widget=forms.RadioSelect(), required=False)
@@ -49,9 +47,9 @@ class ProjectToEstimateForm(ModelForm):
 
     success_url = reverse_lazy("")
 
-    def form_valid(self, form):
+    def form_valid(self, form: "ProjectToEstimateForm") -> bool:
         form.save()
         return super().form_valid(form)
 
-    def get_success_url(self):  # pylint: disable: no-self-use
+    def get_success_url(self) -> str:  # pylint: disable=no-self-use
         return reverse("")
