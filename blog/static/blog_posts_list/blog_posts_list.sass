@@ -27,9 +27,6 @@ $dark-blue: #03428c
         display: block
 
     .popular-articles
-        display: flex
-        width: 100%
-
         @media only screen and (max-width: 1079px)
             display: none
 
@@ -39,10 +36,22 @@ $dark-blue: #03428c
             padding-bottom: 25px
             font-size: 18px
 
-        .popular-article
-            margin-bottom: 30px
-            border-left:  2px solid $dark-blue
-            padding-left: 5px
+        .article-wrapper
+            width: 100%
+            position: relative
+            overflow: auto
+            .popular-article-border
+                margin: 12px 0
+                position: absolute
+                border-left:  2px solid $dark-blue
+                float: left
+                width: 1%
+                height: calc(100% - (30px + 12px * 2))
+            .popular-article
+                margin-bottom: 30px
+                padding-left: 10px
+                width: 99%
+
 
         .title
             color: $dark-blue
@@ -67,6 +76,8 @@ $dark-blue: #03428c
 
                 .article-read-time
                     padding-right: 20px
+                    @media only screen and (max-width: 1200px)
+                        display: none
 
             .category
                 color: $orange
