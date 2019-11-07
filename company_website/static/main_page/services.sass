@@ -35,7 +35,10 @@
                     border: 1px solid transparent
                     border-radius: 8px
                     margin-bottom: 5px
-                        
+
+                    @media only screen and (max-width: $extra-large-services-size)
+                        margin-bottom: 10px
+
                     .service-img
                         padding: 0 16%
                         width: 12vw
@@ -55,6 +58,8 @@
                     font-size: 0.80em
                     text-align: justify
 
+                    @media only screen and (max-width: $sm-screen-size)
+                        margin-top: 0
 
             .text-header
                 text-align: center
