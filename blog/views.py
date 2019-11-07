@@ -23,6 +23,6 @@ def search(request):
 
     return render(
         request,
-        "search/search_results.haml",
+        "blog_post_search_results.haml",
         {"search_query": search_query, "search_results": search_results, "page": BlogIndexPage.objects.all().last()},
     )

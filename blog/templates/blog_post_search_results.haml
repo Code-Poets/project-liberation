@@ -1,0 +1,26 @@
+{% extends "base.haml" %}
+{% load blog_tag %}
+{% load thumbnail %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load pipeline %}
+
+
+{% block content %}
+    {% include 'blog/blog_menu_desktop.haml' %}
+    {% stylesheet 'blog_posts_list' %}
+    .container.blog-posts-list
+        {% if search_results %}
+            .col-md-12.posts-container
+                .row.rest-posts
+                    {% include 'blog/partials/article_list.haml' with article_list=search_results %}
+
+        {% else %}
+            .no-articles-div
+                .nothing-found-text
+                    Nothing Found
+                .no-matched-criteria-text
+                    Sorry, no posts matched your criteria
+        {% endif %}
+    {% include 'blog/blog_menu_mobile.haml' %}
+{% endblock %}

@@ -8,47 +8,10 @@
 
 .container.blog-posts-list
     {% if page.get_children %}
-        .posts-container
+        .col-md-12.posts-container
             .row.rest-posts
-                {% for blog_article in page.get_children %}
-                    .col-md-6.article-text-container{:class => "{% if not forloop.counter|divisibleby:'2' %}grey-background{% endif %}"}
-                        .row.title
-                            %a.main-article-url{:href => "{% blog_url blog_article.specific.get_proper_url %}"}
-                                .main-article-title {{ blog_article.specific.title }}
+                {% include 'blog/partials/article_list.haml' with article_list=page.get_children %}
 
-                        .row.info-section
-                            .info-section
-                                {% thumbnail blog_article.specific.author.front_image "400x400" as image %}
-                                    %img.main-img.lazyload{:data-src => "{{ image.url }}"}
-                                {% endthumbnail %}
-                                .auto-name-and-category
-                                    .container-section
-                                        .author-name
-                                            {{ blog_article.specific.author.name }}
-                                        .category
-                                            %a.category-anchor{:href => "{% blog_url blog_article.specific.get_category.specific.title %}"}
-                                                {{ blog_article.specific.get_category.specific.title }}
-                                .read-time
-                                    {{ blog_article.specific.read_time }} min read
-                                .date
-                                    {{ blog_article.specific.date }}
-
-                        .row.article-img-container
-                            %a.image-url{:href => "{% blog_url blog_article.specific.get_proper_url %}"}
-                                {% image blog_article.specific.cover_photo fill-1200x628 %}
-
-                        .row.intro-row
-                            .intro-container
-                                {{ blog_article.specific.intro }} [...]
-                            .read-more
-                                %a.read-more-url{:href => "{% blog_url blog_article.specific.get_proper_url %}"}
-                                    %span.more Read more
-
-                    {% if forloop.counter|divisibleby:"2" %}
-                        .row.separator
-                            %hr.line
-                    {% endif %}
-                {% endfor %}
     {% else %}
         .no-articles-div
             .nothing-found-text
