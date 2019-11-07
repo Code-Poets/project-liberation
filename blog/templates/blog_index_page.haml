@@ -1,8 +1,5 @@
-{% extends "base.haml" %}
-{% load wagtailcore_tags %}
+{% extends "blog_base.haml" %}
 
-{% block content %}
-    {% include 'blog/blog_menu_desktop.haml' %}
+{% block blog_content %}
     {% include 'blog/blog_posts_list.haml' %}
-    {% include 'blog/blog_menu_mobile.haml' %}
 {% endblock %}
