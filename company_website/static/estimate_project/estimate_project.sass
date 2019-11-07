@@ -300,6 +300,12 @@ form
         .estimate-button
             margin-top: 17px
 
+        .estimate-button:disabled,
+        .estimate-button.disabled
+            border-color: $light-grey
+            background-color: $light-grey
+            cursor: no-drop
+
     .bottom-containers
         display: none
         height: auto
@@ -369,20 +375,26 @@ form
         .select-box
             font-size: 13px
 
-.submit-container-bottom
-    text-align: center
-    width: 100%
-    height: auto
-    background: white
+    .submit-container-bottom
+        text-align: center
+        width: 100%
+        height: auto
+        background: white
 
-    .privacy-check-box-bottom
-        margin-top: 31px
-        font-weight: 500
-        font-size: 16px
-        color: $medium-grey
+        .privacy-check-box-bottom
+            margin-top: 31px
+            font-weight: 500
+            font-size: 16px
+            color: $medium-grey
 
-    .estimate-button
-        margin-top: 17px
+        .estimate-button
+            margin-top: 17px
+
+        .estimate-button:disabled,
+        .estimate-button.disabled
+            border-color:  $light-grey
+            background-color:  $light-grey
+            cursor: no-drop
 
 .mobile-display
     display: none
