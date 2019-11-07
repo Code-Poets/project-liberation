@@ -36,6 +36,7 @@
             font-size: 0.8em
             color: white
             min-height: 180px
+            position: relative
 
             .project-name
                 font-size: 1.4em
@@ -53,7 +54,7 @@
 
         .project-merck-box
             background-color: #513290
-            
+
 
             .merck-left-background
                 position: absolute
@@ -71,7 +72,6 @@
                 right: 18%
                 object-fit: contain
                 object-position: center
-                z-index: -1
 
                 @media only screen and (max-width: $md-screen-size)
                     width: 55%
@@ -103,7 +103,6 @@
                 object-position: left
                 border-top-left-radius: inherit
                 border-bottom-left-radius: inherit
-                z-index: -1
 
             .golem-background-mobile
                 display: none
@@ -170,8 +169,6 @@
                 width: 100%
                 object-position: center
                 border-radius: inherit
-
-                z-index: -1
 
             .project-altenberg-box-desc
                 padding-top: 5%
@@ -265,12 +262,13 @@
                     position: absolute
                     margin: 5% auto
                     width: 100%
-                    z-index: -1
+                    z-index: 4
 
                 .project-golem-box-desc
                     width: 100%
                     text-align: center
-                    z-index: 1
+                    z-index: 5
+                    position: absolute
 
                     .project-name
                         margin-top: 10%
