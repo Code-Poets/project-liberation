@@ -55,15 +55,17 @@
             .inner-popular-articles
                 .popular-articles-text POPULAR ARTICLES
                 {% for article in page.get_popular_articles %}
-                    .popular-article
-                        %a.title{:href => "{% blog_url article.specific.get_proper_url %}"} {{ article.specific.title }}
-                        .author by
-                            %strong {{ article.specific.author.name }}
-                        .rest-information.row
-                            %a.category{:href => "{% blog_url article.specific.get_category.specific.title %}"} {{ article.specific.get_category.specific.title }}
-                            .time-and-date.row
-                                .article-read-time {{ article.specific.read_time }} min read
-                                .article-publised-date {{ article.specific.date }}
+                    .article-wrapper
+                        .popular-article-border
+                        .popular-article
+                            %a.title{:href => "{% blog_url article.specific.get_proper_url %}"} {{ article.specific.title }}
+                            .author by
+                                %strong {{ article.specific.author.name }}
+                            .rest-information.row
+                                %a.category{:href => "{% blog_url article.specific.get_category.specific.title %}"} {{ article.specific.get_category.specific.title }}
+                                .time-and-date.row
+                                    .article-read-time {{ article.specific.read_time }} min read
+                                    .article-publised-date {{ article.specific.date }}
                 {% endfor %}
     {% else %}
         .no-articles-div
