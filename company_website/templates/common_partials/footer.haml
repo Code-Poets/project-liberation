@@ -1,83 +1,83 @@
 {% load static %}
-
-.footer.footer-color
-    .container
-        .row.no-margin
-            .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-4.offset-sm-4.col-6.offset-3.custom-col-padding
-                %section.widget.footer-logo
-                    %img.company-logo.lazyload{:data-src => "{% static 'common/images/footer/code_poets_logo_footer_white.png' %}"}
-            .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-4.offset-sm-4.col-6.offset-3.custom-col-padding
-                %section.widget.footer-address
-                    %h3.widgettitle Code Poets sp. z o.o.
-                    .textwidget.custom-html-widget
-                        ul. Józefa Piłsudskiego 49-57
-                        %br
-                        50-032 Wrocław
-                        %br
-                        Poland
-            .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-4.offset-sm-4.col-6.offset-3.custom-col-padding
-                %section.widget.footer-contact
-                    %h3.widgettitle Contact Us
-                    .textwidget.custom-html-widget
-                        .anti-bot-style ti.steopedoc@tcatnoc
-                %section.widget.footer-contact-2
-                    .textwidget
-                        .social-media-container
-                            %a.social-media-link{:href => "https://www.facebook.com/codepoets.it/"}
-                                %img.social-media-logo.lazyload{
-                                    :data-src => "{% static 'common/images/footer/social_icons/facebook_icon.png' %}",
-                                    :alt => "Facebook",
-                                    :target => "_blank"
-                                }
-                            %a.social-media-link{:href => "https://www.instagram.com/codepoets.it/"}
-                                %img.social-media-logo.lazyload{
-                                    :data-src => "{% static 'common/images/footer/social_icons/instagram_icon.png' %}",
-                                    :alt => "Instagram",
-                                    :target => "_blank"
-                                }
-                            %a.social-media-link{:href => "https://www.linkedin.com/company/codepoets/"}
-                                %img.social-media-logo.lazyload{
-                                    :data-src => "{% static 'common/images/footer/social_icons/linkedin_icon.png' %}",
-                                    :alt => "LinkedIn",
-                                    :target => "_blank"
-                                }
-                            %a.social-media-link{:href => "https://clutch.co/profile/code-poets/"}
-                                %img.social-media-logo.lazyload{
-                                    :data-src => "{% static 'common/images/footer/social_icons/clutch_icon.png' %}",
-                                    :alt => "Clutch",
-                                    :target => "_blank"
-                                }
-                            %a.social-media-link{:href => "https://github.com/code-poets/"}
-                                %img.social-media-logo.lazyload{
-                                    :data-src => "{% static 'common/images/footer/social_icons/github_icon.png' %}",
-                                    :alt => "GitHub",
-                                    :target => "_blank"
-                                }
-            .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-4.offset-sm-4.col-6.offset-3.custom-col-padding
-                %section.widget.footer-reviews
-                    .textwidget
-                        %script{:type => "text/javascript", :src => "https://widget.clutch.co/static/js/widget.js"}
-                        .clutch-widget{
-                            :data-url => "https://widget.clutch.co",
-                            :data-widget-type => "2",
-                            :data-height => "100",
-                            :data-darkbg => "1",
-                            :data-clutchcompany-id => "705656"
-                        }
-                            %iframe#iframe-0.04822719047585822.clutch-frame{
-                                :frameborder => "0",
-                                :width => "100%",
-                                :height => "100px",
-                                :scrolling => "no",
-                                :src => "https://widget.clutch.co/widgets/get/2/darkbg?ref_domain=codepoets.it&amp;uid=705656"
+.footer-section
+    .footer.footer-color
+        .container
+            .row.no-margin
+                .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-4.offset-sm-4.col-6.offset-3.custom-col-padding
+                    %section.widget.footer-logo
+                        %img.company-logo.lazyload{:data-src => "{% static 'common/images/footer/code_poets_logo_footer_white.png' %}"}
+                .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-4.offset-sm-4.col-6.offset-3.custom-col-padding
+                    %section.widget.footer-address
+                        %h3.widgettitle Code Poets sp. z o.o.
+                        .textwidget.custom-html-widget
+                            ul. Józefa Piłsudskiego 49-57
+                            %br
+                            50-032 Wrocław
+                            %br
+                            Poland
+                .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-4.offset-sm-4.col-6.offset-3.custom-col-padding
+                    %section.widget.footer-contact
+                        %h3.widgettitle Contact Us
+                        .textwidget.custom-html-widget
+                            .anti-bot-style ti.steopedoc@tcatnoc
+                    %section.widget.footer-contact-2
+                        .textwidget
+                            .social-media-container
+                                %a.social-media-link{:href => "https://www.facebook.com/codepoets.it/"}
+                                    %img.social-media-logo.lazyload{
+                                        :data-src => "{% static 'common/images/footer/social_icons/facebook_icon.png' %}",
+                                        :alt => "Facebook",
+                                        :target => "_blank"
+                                    }
+                                %a.social-media-link{:href => "https://www.instagram.com/codepoets.it/"}
+                                    %img.social-media-logo.lazyload{
+                                        :data-src => "{% static 'common/images/footer/social_icons/instagram_icon.png' %}",
+                                        :alt => "Instagram",
+                                        :target => "_blank"
+                                    }
+                                %a.social-media-link{:href => "https://www.linkedin.com/company/codepoets/"}
+                                    %img.social-media-logo.lazyload{
+                                        :data-src => "{% static 'common/images/footer/social_icons/linkedin_icon.png' %}",
+                                        :alt => "LinkedIn",
+                                        :target => "_blank"
+                                    }
+                                %a.social-media-link{:href => "https://clutch.co/profile/code-poets/"}
+                                    %img.social-media-logo.lazyload{
+                                        :data-src => "{% static 'common/images/footer/social_icons/clutch_icon.png' %}",
+                                        :alt => "Clutch",
+                                        :target => "_blank"
+                                    }
+                                %a.social-media-link{:href => "https://github.com/code-poets/"}
+                                    %img.social-media-logo.lazyload{
+                                        :data-src => "{% static 'common/images/footer/social_icons/github_icon.png' %}",
+                                        :alt => "GitHub",
+                                        :target => "_blank"
+                                    }
+                .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-4.offset-sm-4.col-6.offset-3.custom-col-padding
+                    %section.widget.footer-reviews
+                        .textwidget
+                            %script{:type => "text/javascript", :src => "https://widget.clutch.co/static/js/widget.js"}
+                            .clutch-widget{
+                                :data-url => "https://widget.clutch.co",
+                                :data-widget-type => "2",
+                                :data-height => "100",
+                                :data-darkbg => "1",
+                                :data-clutchcompany-id => "705656"
                             }
-%footer.socket.socket-color
-    .container
-        .row
-            .col-lg-9.col-12
-                %span.copyright
-                    © 2019 Code Poets sp. z o.o. All rights reserved.  | NIP: 8952068133 | KRS: 0000598357 | REGON: 363584646
-            .col-lg-3.col-12
-                %nav.sub-menu-socket
-                    %a.light-grey-link{:href => "{% url 'privacy_and_policy' %}"}
-                        Privacy and Cookie Policy
+                                %iframe#iframe-0.04822719047585822.clutch-frame{
+                                    :frameborder => "0",
+                                    :width => "100%",
+                                    :height => "100px",
+                                    :scrolling => "no",
+                                    :src => "https://widget.clutch.co/widgets/get/2/darkbg?ref_domain=codepoets.it&amp;uid=705656"
+                                }
+    %footer.socket.socket-color
+        .container
+            .row
+                .col-lg-9.col-12
+                    %span.copyright
+                        © 2019 Code Poets sp. z o.o. All rights reserved.  | NIP: 8952068133 | KRS: 0000598357 | REGON: 363584646
+                .col-lg-3.col-12
+                    %nav.sub-menu-socket
+                        %a.light-grey-link{:href => "{% url 'privacy_and_policy' %}"}
+                            Privacy and Cookie Policy
