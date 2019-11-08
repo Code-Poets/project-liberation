@@ -6,100 +6,103 @@
     unicode-bidi: bidi-override
     direction: rtl
 
-.row
-    width: 100%
+.footer-section
+    .row
+        width: 100%
+        width: -moz-fill-available
+        width: -webkit-fill-available
 
-.footer
-    padding: 15px 0 15px 0
-    z-index: 1
-    font-size: 13px
+    .footer
+        padding: 15px 0 15px 0
+        z-index: 1
+        font-size: 13px
 
-    .custom-col-padding
-        padding: 0 2.8%
+        .custom-col-padding
+            padding: 0 2.8%
 
-    .container
-        max-width: 1282px
-        min-height: 160px
-        padding: 0
+        .container
+            max-width: 1282px
+            min-height: 160px
+            padding: 0
 
-    img
-        max-width: 100%
-        height: auto
+        img
+            max-width: 100%
+            height: auto
 
-    .widget
-        padding: 0
-        margin-top: 30px
-        overflow: hidden
-        min-width: 187px
+        .widget
+            padding: 0
+            margin-top: 30px
+            overflow: hidden
+            min-width: 187px
 
-        .company-logo
-            width: 208px
-            height: 68px
+            .company-logo
+                width: 208px
+                height: 68px
 
-        .social-media-container
-            margin-left: 0px
-            margin-top: 15px
+            .social-media-container
+                margin-left: 0px
+                margin-top: 15px
 
-            .social-media-link
-                margin-right: 7px
+                .social-media-link
+                    margin-right: 7px
 
-            .social-media-logo
-                width: 25px
-                height: 25px
+                .social-media-logo
+                    width: 25px
+                    height: 25px
 
-        .clutch-frame
-            display: block
+            .clutch-frame
+                display: block
 
-    .footer-contact-2
-        margin-top: 0
-        margin-bottom: 30px
+        .footer-contact-2
+            margin-top: 0
+            margin-bottom: 30px
 
-    .widgettitle
-        font-weight: 600
-        text-transform: uppercase
-        letter-spacing: 1px
-        font-size: 1.1em
-        color: white
-        margin-top: 5px
-        line-height: 1.1em
-        margin-bottom: 8px
-
-    .no-margin
-        margin: 0
-
-.footer-color
-    background-color: $medium-grey
-    color: $light-grey
-
-.socket
-    font-size: 12px
-    font-family: $font-family
-    margin-top: -1px
-    z-index: 1
-
-    .light-grey-link
-        color: $light-grey
-
-        &:hover
+        .widgettitle
+            font-weight: 600
+            text-transform: uppercase
+            letter-spacing: 1px
+            font-size: 1.1em
             color: white
+            margin-top: 5px
+            line-height: 1.1em
+            margin-bottom: 8px
 
-    .container
-        max-width: 1310px
-        min-height: 51px
-        padding: 15px 50px
-
-        .copyright
-            float: None
-
-        .sub-menu-socket
-            float: Right
+        .no-margin
             margin: 0
 
-        @media only screen and (max-width: $md-screen-size)
+    .footer-color
+        background-color: $medium-grey
+        color: $light-grey
+
+    .socket
+        font-size: 12px
+        font-family: $font-family
+        margin-top: -1px
+        z-index: 1
+
+        .light-grey-link
+            color: $light-grey
+
+            &:hover
+                color: white
+
+        .container
+            max-width: 1310px
+            min-height: 51px
+            padding: 15px 50px
+
+            .copyright
+                float: None
+
             .sub-menu-socket
-                float: Left
+                float: Right
                 margin: 0
 
-.socket-color
-    background-color: $dark-grey
-    color: $light-grey
+            @media only screen and (max-width: $md-screen-size)
+                .sub-menu-socket
+                    float: Left
+                    margin: 0
+
+    .socket-color
+        background-color: $dark-grey
+        color: $light-grey

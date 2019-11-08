@@ -13,21 +13,21 @@ if (!String.prototype.format) {
 window.previous_height =  window.innerHeight
 
 function stick_footer_to_bottom(){
-    footer = $('.socket');
+    footer = $('.footer-section');
     var space_taken = footer.offset()['top'] + footer.height();
 
     if(space_taken <= window.innerHeight){
         var filler = window.innerHeight - space_taken;
-        var margin = $('.footer').css('margin-top')
-        $('.footer').css('margin-top', 'calc({0} + {1}px)'.format(margin, filler));
+        var margin = $('.footer-section').css('margin-top')
+        $('.footer-section').css('margin-top', 'calc({0} + {1}px)'.format(margin, filler));
     }
     else{
-        $('.footer').css('margin-top', '0px');
+        $('.footer-section').css('margin-top', '0px');
         if(window.innerHeight < window.previous_height){
             space_taken = footer.offset()['top'] + footer.height();
             var filler = window.innerHeight - space_taken;
             if(filler > 0){
-                $('.footer').css('margin-top', filler+'px');
+                $('.footer-section').css('margin-top', filler+'px');
             }
         }
     };
