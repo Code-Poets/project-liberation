@@ -11,8 +11,10 @@
             {% include 'blog/blog_posts_list_partials/main_article.haml' %}
 
             %hr.separator
-            .row.rest-posts
+            .row.rest-posts.full-screen-articles
                 {% include 'blog/partials/article_list.haml' with article_list=page.get_rest_articles %}
+            .row.rest-posts.mobile-devices-articles
+                {% include 'blog/partials/article_list.haml' with article_list=page.get_all_categories_articles %}
         .col-md.popular-articles
             .inner-popular-articles
                 .popular-articles-text POPULAR ARTICLES

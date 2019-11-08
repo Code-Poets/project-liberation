@@ -11,6 +11,9 @@
         .main-article-container
             text-align: justify
 
+            @media only screen and (max-width: 767px)
+                display: none
+
             .row.main-row
                 padding-bottom: 10px
                 flex-wrap: wrap-reverse
@@ -27,7 +30,6 @@
                         -webkit-box-orient: vertical
                         overflow: hidden
                         text-overflow: ellipsis
-                        height: 70px
                         max-height: 70px
 
                     .row
@@ -42,10 +44,6 @@
 
                             @media only screen and (max-width: 1079px)
                                 margin-top: 10px
-
-                            @media only screen and (max-width: 767px)
-                                text-align: center
-                                width: 100%
 
                         .info-section
                             position: relative
@@ -110,18 +108,12 @@
                     .read-more
                         margin-top: 5px
 
-                        @media only screen and (max-width: 767px)
-                            margin: 5px auto 0
-
                         .read-more-url
                             .more
                                 font-size: 13px
                                 font-weight: 700
                                 color: #FB6729
                                 text-decoration: underline
-
-                                @media only screen and (max-width: 767px)
-                                    font-size: 15px
 
                 .article-img-container
                     @media only screen and (max-width: 833px)

@@ -40,6 +40,7 @@ $dark-blue: #03428c
             width: 100%
             position: relative
             overflow: auto
+
             .popular-article-border
                 margin: 12px 0
                 position: absolute
@@ -47,6 +48,7 @@ $dark-blue: #03428c
                 float: left
                 width: 1%
                 height: calc(100% - (30px + 12px * 2))
+
             .popular-article
                 margin-bottom: 30px
                 padding-left: 10px
@@ -86,17 +88,27 @@ $dark-blue: #03428c
 
 
     .posts-container
-        .rest-posts
+        @media only screen and (max-width: 767px)
+            padding: 0
 
+        .full-screen-articles
             @media only screen and (max-width: 767px)
+                display: none
+
+        .mobile-devices-articles
+            display: none
+            @media only screen and (max-width: 767px)
+                display: initial
+
+        .rest-posts
+            @media only screen and (max-width: 767px)
+                margin-right: 0
+                margin-left: 0
+
                 .grey-background
                     background-color: #F0F3F7
-                    padding: 30px 0
 
             .article-text-container
-                @media only screen and (max-width: 767px)
-                    margin: 10px 0
-
                 .intro-row
                     .intro-container
                         color: #B1B0B5
@@ -106,7 +118,7 @@ $dark-blue: #03428c
                         margin-top: 5px
 
                         @media only screen and (max-width: 767px)
-                            margin: 5px auto 0
+                            margin: 5px auto 15px
 
                         .read-more-url
                             .more
@@ -146,8 +158,11 @@ $dark-blue: #03428c
                     max-height: 70px
 
                     @media only screen and (max-width: 767px)
+                        margin-top: 20px
+                        margin-bottom: 20px
                         text-align: center
                         width: 100%
+                        height: unset
 
                 .row.info-section
                     margin-bottom: 10px
