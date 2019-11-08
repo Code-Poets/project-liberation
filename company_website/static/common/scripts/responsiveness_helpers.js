@@ -36,4 +36,21 @@ function stick_footer_to_bottom(){
 
 stick_footer_to_bottom()
 
-$(window).resize(function(){stick_footer_to_bottom()});
+function size_testimonials_equally(){
+    $('.testimonial').css('height', 'unset');
+    height = $('.slides').height();
+    $('.testimonial').css('height', height + 'px');
+};
+
+$(document).ready(function() {
+    if($('.testimonial').length){
+        size_testimonials_equally();
+    }
+})
+
+$(window).resize(function(){
+    stick_footer_to_bottom();
+    if($('.testimonial').length){
+        size_testimonials_equally();
+    }
+})
