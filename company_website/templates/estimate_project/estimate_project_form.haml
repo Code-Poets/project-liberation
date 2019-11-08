@@ -48,7 +48,7 @@
           .top-label
             Describe your idea *
           .contener
-            %textarea{:class => "area", :id => "id_idea_description", :name => "idea_description", :cols => "40", :rows => "10", :maxlength => "10000"}
+            {{form.idea_description}}
             %img.feather-background.lazyload{:src => "{% static 'estimate_project/images/feather_horizontal.png' %}"}
 
         .mobile-display
