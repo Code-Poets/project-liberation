@@ -7,7 +7,7 @@
 
 .row.rest-posts
     {% for blog_article in article_list  %}
-        .col-md-6.article-text-container{:class => "{% if not forloop.counter|divisibleby:'2' %}grey-background{% endif %}"}
+        .col-md-6.article-text-container{:class => "{% if forloop.counter|divisibleby:'2' %}grey-background{% endif %}"}
             .row.title
                 %a.main-article-url{:href => "{% blog_url blog_article.specific.get_proper_url %}"}
                     .main-article-title {{ blog_article.specific.title }}
