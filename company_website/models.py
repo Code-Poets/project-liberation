@@ -25,6 +25,9 @@ class Employees(models.Model):
     boss = BooleanField(default=False)
     order = PositiveSmallIntegerField(unique=True, blank=True)
 
+    def __str__(self):
+        return self.name
+
     @staticmethod
     def _get_all_order_numbers() -> List[Optional[int]]:
         employees = Employees.objects.all().order_by("order")
