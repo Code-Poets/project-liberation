@@ -15,6 +15,9 @@ class BlogCategoryPage(Page):
         context = super().get_context(request)
         return context
 
+    def get_children(self):
+        return super().get_children().live()
+
     def get_menu_categories(self):
         return self.get_parent().get_children().filter(live=True, show_in_menus=True)
 
@@ -36,7 +39,7 @@ class BlogIndexPage(Page):
         menu_categories = self.get_menu_categories()
         gathered_articles = []
         for category in menu_categories:
-            gathered_articles.append(Page.objects.child_of(category).exclude(id=_id))
+            gathered_articles.append(Page.objects.child_of(category).filter(live=True).exclude(id=_id))
         if len(gathered_articles) > 0:
             all_articles = gathered_articles[0].union(*gathered_articles[1:])
         else:
