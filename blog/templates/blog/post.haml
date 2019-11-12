@@ -32,7 +32,7 @@
                             .read-time.inline-display {{ page.specific.read_time }} min read
                             .date.inline-display {{ page.specific.date }}
         .article-content
-            {{ page.specific.body|richtext }}
+            {{ page.specific.body }}
 
         .comment-section{:id => "disqus_thread"}
             %script{:type => "text/javascript"}
