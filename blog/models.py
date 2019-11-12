@@ -1,7 +1,12 @@
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import StreamFieldPanel
+from wagtail.core import blocks
+from wagtail.core.blocks import StreamBlock
 from wagtail.core.fields import RichTextField
+from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
+from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
@@ -60,7 +65,7 @@ class BlogArticlePage(Page):
     template = "blog_post.haml"
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
-    body = RichTextField(blank=True)
+    body = StreamField([("paragraph", blocks.RichTextBlock()), ("image", ImageChooserBlock())])
 
     search_fields = Page.search_fields + [index.SearchField("intro"), index.SearchField("body")]
 
@@ -84,7 +89,7 @@ class BlogArticlePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("date"),
         FieldPanel("intro"),
-        FieldPanel("body", classname="full"),
+        StreamFieldPanel("body"),
         FieldPanel("author"),
         FieldPanel("read_time"),
         FieldPanel("views"),
