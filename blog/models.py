@@ -13,6 +13,8 @@ from wagtail.search import index
 
 from company_website.models import Employees
 
+# extend Blog tree
+Page.steplen = 8
 
 class BlogCategoryPage(Page):
     template = "blog_categories_posts.haml"
