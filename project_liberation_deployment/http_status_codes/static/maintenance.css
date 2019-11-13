@@ -1,0 +1,24 @@
+body {
+    background-color: #3877BC;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+}
+
+.container, .image-container {
+    width: 600px;
+}
+
+@media only screen and (max-width: 650px) {
+    .container, .image-container {
+        width: 90vw;
+    }
+}
