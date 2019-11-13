@@ -3,8 +3,6 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core import blocks
-from wagtail.core.blocks import StreamBlock
-from wagtail.core.fields import RichTextField
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.images.blocks import ImageChooserBlock
