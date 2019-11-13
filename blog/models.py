@@ -22,7 +22,7 @@ class BlogCategoryPage(Page):
         return context
 
     def get_children(self):
-        return super().get_children().live()
+        return Page.objects.child_of(self).filter(live=True)
 
     def get_menu_categories(self):
         return self.get_parent().get_children().filter(live=True, show_in_menus=True)
