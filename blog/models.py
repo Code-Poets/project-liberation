@@ -16,6 +16,7 @@ from company_website.models import Employees
 # extend Blog tree
 Page.steplen = 8
 
+
 class BlogCategoryPage(Page):
     template = "blog_categories_posts.haml"
 
@@ -26,8 +27,9 @@ class BlogCategoryPage(Page):
     def get_children(self):
         return Page.objects.child_of(self).filter(live=True)
 
-    def get_menu_categories(self):
-        return self.get_parent().get_children().filter(live=True, show_in_menus=True)
+    @staticmethod
+    def get_menu_categories():
+        return Page.objects.filter(live=True, show_in_menus=True)
 
 
 class BlogIndexPage(Page):
@@ -57,8 +59,9 @@ class BlogIndexPage(Page):
     def get_rest_articles(self):
         return self.get_all_categories_articles(_id=getattr(self.get_last_article(), "id", None))
 
-    def get_menu_categories(self):
-        return self.get_children().filter(live=True, show_in_menus=True)
+    @staticmethod
+    def get_menu_categories():
+        return Page.objects.filter(live=True, show_in_menus=True)
 
     def get_popular_articles(self):  # pylint: disable=no-self-use
         return BlogArticlePage.objects.all().order_by("-views")[:3]
@@ -105,8 +108,9 @@ class BlogArticlePage(Page):
         article_url = self.url.split("/")[-1]
         return f"{category_url}/{article_url}"
 
-    def get_menu_categories(self):
-        return self.get_parent().get_parent().get_children().filter(live=True, show_in_menus=True)
+    @staticmethod
+    def get_menu_categories():
+        return Page.objects.filter(live=True, show_in_menus=True)
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
