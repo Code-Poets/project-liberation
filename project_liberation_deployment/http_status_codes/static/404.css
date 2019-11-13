@@ -1,0 +1,104 @@
+body {
+    background-color: #3877BC;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+}
+
+.desktop, .desktop-image {
+    width: 1600px;
+    margin: 0 auto;
+}
+
+.mobile {
+    display: none;
+}
+
+.redirect-div {
+    text-align: center;
+    color: white;
+    width: 700px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.go-to-main-page, .suggest-text, .go-to-text, .main-page-text {
+    display: inline-block;
+}
+
+.text-and-button-row {
+    margin-top: 10px;
+}
+
+.go-to-main-page {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    background-color: #FFC03D;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.go-to-main-page:visited, .go-to-main-page:hover, .go-to-main-page:active {
+    color: white;
+}
+
+.main-page-text {
+    color: #3877BC;
+}
+
+.text-row {
+    padding: 10px;
+    font-size: 26px;
+}
+
+.code-poets-logo, .logo-image {
+    width: 500px;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 1600px) {
+    .desktop, .desktop-image {
+        width: 100vw;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width: 995px) {
+    .desktop {
+        display: none;
+    }
+    .mobile, .mobile-image {
+        display: block;
+        width: 80vw;
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+    .go-to-main-page {
+        padding: 1vw 2vw;
+        margin-left: 1vw;
+    }
+}
+
+@media only screen and (max-width: 715px) {
+    .redirect-div {
+        width: 100vw;
+    }
+    .text-row {
+        font-size: 3.4vw;
+    }
+    .text-and-button-row {
+        font-size: 2.6vw;
+    }
+    .code-poets-logo, .logo-image {
+        width: 80vw;
+    }
+}
