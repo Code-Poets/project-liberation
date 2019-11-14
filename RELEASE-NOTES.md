@@ -1,3 +1,10 @@
+### v1.1.2
+
+##### Bugfixes
+
+- Bugfix team introduction page ([#121](https://github.com/Code-Poets/project-liberation/pull/121))
+
+
 ### v1.1.1
 
 ##### Bugfixes
