@@ -23,11 +23,11 @@ if [ -z $VIRTUAL_ENV ]; then
 fi
 
 (
-    cd ${BASH_SOURCE%/*}/company_website/
+    cd ${BASH_SOURCE%/*}/
 
-    pytest                              \
-        --cov-report term-missing       \
-        --cov-config ../coverage-config \
+    pytest                            \
+        --cov-report term-missing     \
+        --cov-config coverage-config  \
         --cov=.
     rm .coverage
 )
