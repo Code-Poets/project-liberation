@@ -304,9 +304,11 @@ body
 
         .improve-part
             padding-top: $default-padding-in-vw
+            height: calc(2 * 33vw + 3 * #{$default-padding-in-vw} + #{$square-side-length-in-vw})
 
             @media only screen and (min-width: $about-us-page-width)
                 padding-top: $default-padding-in-px
+                height: calc(2 * 400px + 3 * #{$default-padding-in-px} + #{$square-side-length-in-px})
 
             .image_6
                 height: 33vw
@@ -352,9 +354,11 @@ body
 
         .be-honest-part
             padding-top: $default-padding-in-vw
+            height: calc(33vw + 37.5vw + 2 *#{$default-padding-in-vw})
 
             @media only screen and (min-width: $about-us-page-width)
                 padding-top: $default-padding-in-px
+                height: calc(400px + 450px + 2 * #{$default-padding-in-px})
 
             .be-honest-text-div
                 background-color: $blue
@@ -472,6 +476,22 @@ body
             .self-organized-text-div
                 background-color: $bright-blue
 
+            .inner-self-organized-text-div
+                padding: 4.1vw
+                @media only screen and (min-width: $about-us-page-width)
+                    padding: 50px
+
+            .self-organized-part-description
+                font-size: 2.2vw
+                @media only screen and (min-width: $about-us-page-width)
+                    font-size: 28px
+
+        .self-organized-part-2
+            height: calc(37vw + #{$square-side-length-in-vw} + 2 * #{$default-padding-in-vw})
+
+            @media only screen and (min-width: $about-us-page-width)
+                height: calc(442px + 65px + 2 * 25px)
+
             .image_13
                 height: 37vw
                 width: 100%
@@ -486,22 +506,15 @@ body
                 @media only screen and (min-width: $about-us-page-width)
                     height: calc(442px + 65px + 25px)
 
-            .inner-self-organized-text-div
-                padding: 4.1vw
-                @media only screen and (min-width: $about-us-page-width)
-                    padding: 50px
-
-            .self-organized-part-description
-                font-size: 2.2vw
-                @media only screen and (min-width: $about-us-page-width)
-                    font-size: 28px
-
             .left-column
                 padding-top: $default-padding-in-vw
                 flex: 0 0 50%
 
                 @media only screen and (min-width: $about-us-page-width)
                     padding-top: $default-padding-in-px
+
+                .red-square
+                    background-color: $company-introduction-red-color
 
             .right-column
                 padding-top: $default-padding-in-vw
@@ -510,10 +523,7 @@ body
                 @media only screen and (min-width: $about-us-page-width)
                     padding-top: $default-padding-in-px
 
-            .red-square
-                background-color: $company-introduction-red-color
-
-        .self-organized-part-2
+        .self-organized-part-3
             height: 36vw
             padding-top: $default-padding-in-vw
 
