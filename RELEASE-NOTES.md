@@ -1,3 +1,10 @@
+### v1.1.1
+
+##### Bugfixes
+
+- Bugfix articles order ([#120](https://github.com/Code-Poets/sheetstorm/pull/120))
+
+
 ### v1.1.0
 
 ##### Features
