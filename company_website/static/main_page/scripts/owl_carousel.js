@@ -7,9 +7,10 @@ owl_carousel.owlCarousel({
     autoplay: true,
     autoplayTimeout: 3000,
     autoplayHoverPause: true,
-    margin: 10,
+    margin: 20,
     nav: false,
     dotsContainer: ".custom-dots-bar",
+    smartSpeed: 1000,
 })
 
 function flashOnClick(element) {
