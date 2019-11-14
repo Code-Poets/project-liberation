@@ -25,7 +25,7 @@ class Employees(models.Model):
     boss = BooleanField(default=False)
     order = PositiveSmallIntegerField(unique=True, blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
     @staticmethod

@@ -1,4 +1,6 @@
 # Create your views here.
+from django.core.handlers.wsgi import WSGIRequest
+from django.http import HttpResponse
 from django.shortcuts import render
 from wagtail.core.models import Page
 from wagtail.search.models import Query
@@ -7,7 +9,7 @@ from blog.models import BlogArticlePage
 from blog.models import BlogIndexPage
 
 
-def search(request):
+def search(request: WSGIRequest) -> HttpResponse:
     search_query = request.GET.get("phrase", None)
     if search_query:
         articles_results = BlogArticlePage.objects.live().search(search_query)
