@@ -41,7 +41,7 @@ class BlogIndexPage(Page):
         return super().get_children().live()
 
     def get_last_article(self):
-        return self.get_all_categories_articles().last()
+        return self.get_all_categories_articles().first()
 
     def get_all_categories_articles(self, _id=None):
         menu_categories = self.get_menu_categories()
@@ -52,7 +52,7 @@ class BlogIndexPage(Page):
             all_articles = gathered_articles[0].union(*gathered_articles[1:])
         else:
             all_articles = Page.objects.child_of(self).filter(live=True, show_in_menus=False)
-        return all_articles
+        return all_articles.order_by("-last_published_at")
 
     def get_rest_articles(self):
         return self.get_all_categories_articles(_id=getattr(self.get_last_article(), "id", None))
