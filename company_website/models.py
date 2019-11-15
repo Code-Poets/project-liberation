@@ -16,6 +16,9 @@ class Testimonial(models.Model):
     quote = CharField(max_length=300)
     image = ImageField(default=None, blank=True, upload_to=settings.TESTIMONIAL_PHOTOS_STORAGE)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class Employees(models.Model):
     name = CharField(max_length=50)
