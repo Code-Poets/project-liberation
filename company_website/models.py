@@ -57,6 +57,9 @@ class Employees(models.Model):
 
 
 class ProjectToEstimate(models.Model):
+    def __str__(self) -> str:
+        return f"{self.creation_date} {self.email}"
+
     creation_date = models.DateField(auto_now_add=True)
 
     name = models.CharField(max_length=60)
