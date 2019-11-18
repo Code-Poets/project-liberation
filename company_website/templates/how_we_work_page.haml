@@ -1,9 +1,15 @@
 {% extends "base.haml" %}
 {% load pipeline %}
 
-{% block content %}
+{% block extra_head %}
 {% stylesheet 'common' %}
 {% stylesheet 'how_we_work' %}
+{% endblock %}
+
+{% block content %}
 {% include "how_we_work_partials/how_we_work_partial.haml" %}
+{% endblock %}
+
+{% block extra_script %}
 {% javascript 'how_we_work' %}
 {% endblock %}
