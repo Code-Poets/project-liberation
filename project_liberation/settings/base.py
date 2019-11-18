@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'hamlpy',
     'sorl.thumbnail',
     'raven.contrib.django.raven_compat',
+    'wagtailmarkdown',
     # project-liberation
     'blog.apps.BlogConfig',
     'company_website.apps.CompanyWebsiteConfig',
