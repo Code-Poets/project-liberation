@@ -15,6 +15,7 @@ pytest-cov = "*"
 pytest-django = "*"
 assertpy = "*"
 factory-boy = "*"
+ipdb = "*"
 
 [packages]
 Django = "*"
