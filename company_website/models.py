@@ -16,6 +16,9 @@ class Testimonial(models.Model):
     quote = CharField(max_length=300)
     image = ImageField(default=None, blank=True, upload_to=settings.TESTIMONIAL_PHOTOS_STORAGE)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class Employees(models.Model):
     name = CharField(max_length=50)
@@ -57,6 +60,9 @@ class Employees(models.Model):
 
 
 class ProjectToEstimate(models.Model):
+    def __str__(self) -> str:
+        return f"{self.creation_date} {self.email}"
+
     creation_date = models.DateField(auto_now_add=True)
 
     name = models.CharField(max_length=60)
