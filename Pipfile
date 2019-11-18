@@ -26,6 +26,7 @@ sorl-thumbnail = "*"
 pillow = "*"
 raven = "*"
 wagtail = "*"
+wagtailmarkdown = {editable = true,git = "https://github.com/kbeker/wagtail-markdown.git"}
 
 [requires]
 python_version = "3.7"

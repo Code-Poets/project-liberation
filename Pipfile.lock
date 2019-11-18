@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "055c9c9d406a14b31c78df36ffb339e01e4c6b7e2dd2c97822806f1bb2089edb"
+            "sha256": "e9ca8e7c0c7345f1ff8d281f57aaba91f2edf6ec525030fb92bea54d6d0aeb52"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,13 @@
                 "sha256:808b6ac932dccb0a4126558f7dfdcf41710dd44a4ef497a0bb59a77f9f078e89"
             ],
             "version": "==4.6.0"
+        },
+        "bleach": {
+            "hashes": [
+                "sha256:213336e49e102af26d9cde77dd2d0397afabc5a6bf2fed985dc35b5d1e285a16",
+                "sha256:3fdf7f77adcf649c9911387df51254b813185e32b2c6619f690b593a617e19fa"
+            ],
+            "version": "==3.1.0"
         },
         "certifi": {
             "hashes": [
@@ -108,6 +115,13 @@
                 "sha256:ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"
             ],
             "version": "==2.8"
+        },
+        "markdown": {
+            "hashes": [
+                "sha256:2e50876bcdd74517e7b71f3e7a76102050edec255b3983403f1a63e7c8a41e7a",
+                "sha256:56a46ac655704b91e5b7e6326ce43d5ef72411376588afa1dd90e881b83c7e8c"
+            ],
+            "version": "==3.1.1"
         },
         "pillow": {
             "hashes": [
@@ -300,6 +314,11 @@
             ],
             "index": "pypi",
             "version": "==2.7"
+        },
+        "wagtailmarkdown": {
+            "editable": true,
+            "git": "https://github.com/kbeker/wagtail-markdown.git",
+            "ref": "c95aa13828fafc831f46042ce4eca3a4b1d93d20"
         },
         "webencodings": {
             "hashes": [

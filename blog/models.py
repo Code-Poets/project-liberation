@@ -13,6 +13,7 @@ from wagtail.core.query import PageQuerySet
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
+from wagtailmarkdown.blocks import MarkdownBlock
 
 from company_website.models import Employees
 
@@ -62,7 +63,14 @@ class BlogArticlePage(Page, MixinPageMethods):
     template = "blog_post.haml"
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
-    body = StreamField([("paragraph", blocks.RichTextBlock()), ("table", TableBlock()), ("image", ImageChooserBlock())])
+    body = StreamField(
+        [
+            ("markdown", MarkdownBlock(icon="code")),
+            ("paragraph", blocks.RichTextBlock()),
+            ("table", TableBlock()),
+            ("image", ImageChooserBlock()),
+        ]
+    )
 
     search_fields = Page.search_fields + [index.SearchField("intro"), index.SearchField("body")]
 
