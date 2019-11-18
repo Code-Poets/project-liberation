@@ -1,4 +1,4 @@
-var owl_carousel = $('.owl-carousel')
+var owl_carousel = $(".owl-carousel")
 
 owl_carousel.owlCarousel({
     items: 1,
@@ -32,4 +32,9 @@ $(".nav-button-prev").click(function() {
 
 $(".custom-dots-bar").on("click", "li", function(e) {
     owl_carousel.trigger("to.owl.carousel", [$(this).index(), 300]);
+});
+
+owl_carousel.on("changed.owl.carousel", function(e) {
+    owl_carousel.trigger("stop.owl.autoplay");
+    owl_carousel.trigger("play.owl.autoplay");
 });
