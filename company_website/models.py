@@ -9,6 +9,8 @@ from django.db.models import CharField
 from django.db.models import PositiveSmallIntegerField
 from sorl.thumbnail import ImageField
 
+from company_website.constants import EstimateConstants
+
 
 class Testimonial(models.Model):
     name = CharField(max_length=32)
@@ -59,43 +61,29 @@ class Employees(models.Model):
         super().save()
 
 
-class ProjectToEstimate(models.Model):
+class EstimateProject(models.Model):
     def __str__(self) -> str:
         return f"{self.creation_date} {self.email}"
 
     creation_date = models.DateField(auto_now_add=True)
 
+    # Fields to fill in by client
     name = models.CharField(max_length=60)
     email = models.EmailField(max_length=60)
     country = models.CharField(max_length=60, blank=True)
     idea_description = models.TextField(max_length=10000)
     nda_required = models.BooleanField(blank=True, null=True)
     privacy_policy_accepted = models.BooleanField(default=False)
-    #
+
     # Optional (hidden) section
-    I_want_to = (("build", "Build something new"), ("improve", "Improve existing project"))
-    build_or_improve = models.CharField(max_length=15, choices=I_want_to, blank=True, null=True)
-
-    budget_choices = (
-        ("-8", "up to $8.000"),
-        ("8-25", "$8.000 - $25.000"),
-        ("25-100", "$25.000 - $100.000"),
-        ("100+", "$100.000+"),
+    project_development = models.CharField(
+        max_length=15, choices=EstimateConstants.product_choices, blank=True, null=True
     )
-    monthly_bugdet = models.CharField(max_length=15, choices=budget_choices, blank=True, null=True)
-
-    time_choices = (("-3", "up to 3 months"), ("3-6", "3-6 months"), ("6+", "6+ months"))
-    project_time = models.CharField(max_length=15, choices=time_choices, blank=True, null=True)
-
-    design_choices = ((True, "Yes"), (False, "No"))
-    design_product = models.BooleanField(choices=design_choices, blank=True, null=True)
-
-    company_info_choices = (
-        ("Google", "Google"),
-        ("Clutch", "Clutch.com"),
-        ("Friend", "Friend"),
-        ("Social Media", "Social Media"),
-        ("Tech Event", "Tech Event"),
-        ("Other", "Other"),
+    monthly_bugdet = models.CharField(max_length=15, choices=EstimateConstants.budget_choices, blank=True, null=True)
+    project_duration = models.CharField(
+        max_length=15, choices=EstimateConstants.project_duration_choices, blank=True, null=True
     )
-    company_info_origin = models.CharField(max_length=20, choices=company_info_choices, blank=True, null=True)
+    design_product = models.BooleanField(choices=EstimateConstants.true_false_choices, blank=True, null=True)
+    company_info_origin = models.CharField(
+        max_length=20, choices=EstimateConstants.company_info_origin_choices, blank=True, null=True
+    )
