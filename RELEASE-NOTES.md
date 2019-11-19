@@ -1,3 +1,18 @@
+### v1.2.0
+
+##### Features
+
+- Feature add markdown to blog post ([#127](https://github.com/Code-Poets/project-liberation/pull/127))
+- Feature add unlinked models to admin panel ([#128](https://github.com/Code-Poets/project-liberation/pull/128))
+- Feature Change Blockchain service to Cheminformatic service ([#129](https://github.com/Code-Poets/project-liberation/pull/129))
+
+##### Bugfixes
+
+- Bugfix change directory where script should search tests ([#122](https://github.com/Code-Poets/project-liberation/pull/122))
+- Bugfix add missing type annotations ([#123](https://github.com/Code-Poets/project-liberation/pull/123))
+- Bugfix jQuery issues in how we work page ([#126](https://github.com/Code-Poets/project-liberation/pull/126))
+
+
 ### v1.1.2
 
 ##### Bugfixes
