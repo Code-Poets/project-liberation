@@ -7,10 +7,10 @@
 
 
 .container.blog-posts-list
-    {% if page.get_children %}
+    {% if category_articles %}
         .col-md-12.posts-container
             .row.rest-posts
-                {% include 'blog/partials/article_list.haml' with article_list=page.get_children %}
+                {% include 'blog/partials/article_list.haml' with article_list=category_articles %}
 
     {% else %}
         .no-articles-div

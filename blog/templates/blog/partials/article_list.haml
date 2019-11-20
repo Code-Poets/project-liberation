@@ -22,8 +22,9 @@
                             .author-name
                                 {{ blog_article.specific.author.name }}
                             .category
-                                %a.category-anchor{:href => "{% blog_url blog_article.specific.get_category.specific.title %}"}
-                                    {{ blog_article.specific.get_category.specific.title }}
+                                {% for category in blog_article.get_article_categories %}
+                                    %a.category-anchor{:href => "{% blog_url category.name %}"} {{ category }}
+                                {% endfor %}
                     .read-time
                         {{ blog_article.specific.read_time }} min read
                     .date

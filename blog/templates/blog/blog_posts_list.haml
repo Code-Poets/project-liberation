@@ -6,7 +6,7 @@
 {% stylesheet 'blog_posts_list' %}
 
 .container.blog-posts-list
-    {% if page.get_all_categories_articles %}
+    {% if page.get_all_articles %}
         .col-md-9.posts-container
             {% include 'blog/blog_posts_list_partials/main_article.haml' %}
 
@@ -14,7 +14,7 @@
             .row.rest-posts.full-screen-articles
                 {% include 'blog/partials/article_list.haml' with article_list=page.get_rest_articles %}
             .row.rest-posts.mobile-devices-articles
-                {% include 'blog/partials/article_list.haml' with article_list=page.get_all_categories_articles %}
+                {% include 'blog/partials/article_list.haml' with article_list=page.get_all_articles %}
         .col-md.popular-articles
             .inner-popular-articles
                 .popular-articles-text POPULAR ARTICLES
@@ -26,7 +26,9 @@
                             .author by
                                 %strong {{ article.specific.author.name }}
                             .rest-information.row
-                                %a.category{:href => "{% blog_url article.specific.get_category.specific.title %}"} {{ article.specific.get_category.specific.title }}
+                                {% for category in article.get_article_categories %}
+                                    %a.category{:href => "{% blog_url category.name %}"} {{ category }}
+                                {% endfor %}
                                 .time-and-date.row
                                     .article-read-time {{ article.specific.read_time }} min read
                                     .article-publised-date {{ article.specific.date }}
