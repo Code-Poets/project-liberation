@@ -1,3 +1,11 @@
+### v1.3.0
+
+##### Features
+
+- Feature improve blog app ([#132](https://github.com/Code-Poets/project-liberation/pull/132))
+- Feature change technologies images ([#133](https://github.com/Code-Poets/project-liberation/pull/133))
+
+
 ### v1.2.0
 
 ##### Features
