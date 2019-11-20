@@ -1,4 +1,5 @@
 {% extends "blog_base.haml" %}
+{% block title %}{{page.specific.seo_title}}{% endblock %}
 
 {% block blog_content %}
     {% include 'blog/post.haml' %}

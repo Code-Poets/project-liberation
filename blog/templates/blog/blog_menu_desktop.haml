@@ -3,13 +3,14 @@
 {% stylesheet 'blog' %}
 {% load blog_tag %}
 
+
 .blog_menu_desktop
     .row
         .category
             %a.link.border-div{:href => "{% blog_url '' %}"} All Articles
         {% for category in page.get_menu_categories %}
             .category
-                %a.link.border-div{:href => "{% blog_url category.title %}"} {{ category }}
+                %a.link.border-div{:href => "{% blog_url category.name %}"} {{ category }}
         {% endfor %}
         .search-bar
             {% include 'blog/partials/search_form.haml' %}
