@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     # Wagtail
     'wagtail.contrib.forms',
@@ -380,3 +381,5 @@ WAGTAIL_SITE_NAME = 'blog'
 WAGTAIL_APPEND_SLASH = False
 
 WAGTAILIMAGES_MAX_UPLOAD_SIZE = 25 * 1024 * 1024
+
+SITE_ID = 1
