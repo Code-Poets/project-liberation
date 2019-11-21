@@ -1,3 +1,14 @@
+### v1.4.0
+
+##### Features
+
+- Feature add redirects for old blog posts ([#135](https://github.com/Code-Poets/project-liberation/pull/135))
+
+##### Bugfixes
+
+- Bugfix change `cheminformatic` to `cheminformatics`s ([#134](https://github.com/Code-Poets/project-liberation/pull/134))
+
+
 ### v1.3.0
 
 ##### Features
