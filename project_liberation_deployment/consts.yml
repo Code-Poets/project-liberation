@@ -1,5 +1,6 @@
 home_dir:                             /home/project_liberation
 backup_dir:                          "{{ home_dir }}/backups"
+error_static_files_dir:               "{{ home_dir }}/http_error_static_files"
 image_package_dir:                    "{{ home_dir }}/image-package"
 image_package_name:                   project-liberation.zip
 media_files_dir:                      "{{ home_dir }}/http_media_files"

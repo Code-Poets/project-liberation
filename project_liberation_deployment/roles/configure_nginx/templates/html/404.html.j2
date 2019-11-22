@@ -4,15 +4,15 @@
         <meta charset="UTF-8">
         <title>Ups! Page not found!</title>
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap"/>
-        <link rel="stylesheet" type="text/css" href="static/404.css">
+        <link rel="stylesheet" type="text/css" href="/static-error/404.{{ static_files.results[html_and_css_index].stat.checksum[:14] }}.css">
     </head>
     <body>
         <div class="container">
             <div class="desktop">
-                <img class="desktop-image" src="static/404_desktop_image.png" alt="404"/>
+                <img class="desktop-image" src="/static-error/404_desktop_image.{{ checksum_of_404_desktop_image }}.png" alt="404"/>
             </div>
             <div class="mobile">
-                <img class="mobile-image" src="static/404_mobile_image.png" alt="404"/>
+                <img class="mobile-image" src="/static-error/404_mobile_image.{{ checksum_of_404_mobile_image }}.png" alt="404"/>
             </div>
             <div class="redirect-div">
                 <div class="text-row">
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="code-poets-logo">
-                <img class="logo-image" src="static/cp_logo_1.png" alt="code-poets-logo"/>
+                <img class="logo-image" src="/static-error/cp_logo_1.{{ checksum_of_cp_logo_1 }}.png" alt="code-poets-logo"/>
             </div>
         </div>
     </body>

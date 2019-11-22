@@ -1,0 +1,25 @@
+# The list defines order of indexes
+html_and_css_files:
+  - "500"
+  - "404"
+  - "maintenance"
+
+# The list defines order of indexes
+# It also defines which images will be used on the nginx error pages
+image_files:
+  - "404_desktop_image"
+  - "404_mobile_image"
+  - "500_image"
+  - "cp_logo_1"
+  - "cp_logo_2"
+  - "maintenance"
+
+# The indexes of this variables are depend on order of the image_files list above.
+# image_static_files.results[index].stat.checksum[:14]
+checksum_of_404_desktop_image: "{{ image_static_files.results[0].stat.checksum[:14] }}"
+checksum_of_404_mobile_image:  "{{ image_static_files.results[1].stat.checksum[:14] }}"
+checksum_of_500_image:         "{{ image_static_files.results[2].stat.checksum[:14] }}"
+checksum_of_cp_logo_1:         "{{ image_static_files.results[3].stat.checksum[:14] }}"
+checksum_of_cp_logo_2:         "{{ image_static_files.results[4].stat.checksum[:14] }}"
+checksum_of_maintenance:       "{{ image_static_files.results[5].stat.checksum[:14] }}"
+
