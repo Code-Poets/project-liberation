@@ -1,0 +1,22 @@
+[Unit]
+Description=Project-Liberation Service
+After=network.target
+Before=nginx.service
+After=postgresql.service
+
+[Service]
+Type=simple
+Restart=on-failure
+WorkingDirectory={{ project_liberation_dir }}
+ExecStart={{ home_dir }}/virtualenv/bin/gunicorn project_liberation.wsgi:application  \
+          --name      project_liberation                                              \
+          --user      project_liberation                                              \
+          --group     project_liberation                                              \
+          --workers   3                                                               \
+          --timeout   30                                                              \
+          --bind      127.0.0.1:8000                                                  \
+          --log-level debug                                                           \
+          --log-file  -
+
+[Install]
+WantedBy=multi-user.target
