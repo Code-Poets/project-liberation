@@ -1,0 +1,29 @@
+- become:      yes
+  become_user: project_liberation
+  block:
+    - name: Check if project-liberation repository exist
+      stat:
+        path: "{{ project_liberation_dir }}"
+      register: result
+
+    - name: Check if secret file exist
+      stat:
+        path: "{{ project_liberation_dir }}/project_liberation/settings/secrets/secrets.py"
+      register: secret_file_result
+
+    - fail:
+        msg: "The project-liberation repository must exist before you can migrate database.
+             Please run the deploy.yml playbook with default extra vars \"update_project_liberation_application=yes\" to set up and update project-liberation repository."
+      when: not result.stat.exists
+
+    - fail:
+        msg: "The secret file for project-liberation must exist before you can migrate database.
+             Please run the deploy.yml playbook with extra vars \"update_secret_file=yes\" to upload and update secret file.
+             This additional option also require privileges and using --ask-vault-pass flag"
+      when: not secret_file_result.stat.exists
+
+    - name: Migrate database
+      django_manage:
+          command:    migrate
+          app_path:   "{{ project_liberation_dir }}"
+          virtualenv: "{{ project_liberation_virtualenv_dir }}"

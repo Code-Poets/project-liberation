@@ -1,0 +1,33 @@
+from .production import *
+from .secrets.secrets import (
+    EMAIL_PASSWORD,
+    GOOGLE_API_KEY,
+    SENTRY_DATA_SOURCE_NAME,
+    SECRET_KEY,
+)
+
+ALLOWED_HOSTS = [
+    '{{ project_liberation_ip }}',
+    'codepoets.it',
+]
+
+RAVEN_CONFIG = {
+    'dsn': SENTRY_DATA_SOURCE_NAME,
+}
+
+EMAIL_HOST = "smtp.sendgrid.net"
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = "apikey"
+EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "no-reply@codepoets.it"
+SERVER_EMAIL = "no-reply@codepoets.it"
+
+DATABASES['default']['USER']     = 'postgres'
+DATABASES['default']['PASSWORD'] = ''
+DATABASES['default']['HOST']     = ''
+DATABASES['default']['PORT']     = ''
+
+STATIC_ROOT='{{ static_files_dir }}/'
+MEDIA_ROOT='{{ media_files_dir }}/'
+FILE_UPLOAD_PERMISSIONS = 0o644

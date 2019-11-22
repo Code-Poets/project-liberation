@@ -1,0 +1,23 @@
+- become:      yes
+  become_user: root
+  block:
+    - name: Disable nginx proxy to project-liberation
+      file:
+        path:  /etc/nginx/sites-enabled/project-liberation
+        state: absent
+
+    - name: Enable nginx proxy to maintenance page information
+      file:
+        src:   /etc/nginx/sites-available/maintenance
+        dest:  /etc/nginx/sites-enabled/maintenance
+        state: link
+
+    - name: Restart nginx service
+      service:
+        name:  nginx
+        state: restarted
+
+    - name: Stop project-liberation service
+      service:
+        name:  project-liberation-web
+        state: stopped
