@@ -11,3 +11,13 @@ html, body
 
     a:focus
         outline: none
+
+    .container
+        max-width: unset
+        padding: 0 $container-padding
+        @media only screen and (max-width: $lg-screen-size)
+            padding: 0 12%
+        @media only screen and (max-width: $md-screen-size)
+            padding: 0 14%
+        @media only screen and (max-width: 575px)
+            padding: 0 5%
