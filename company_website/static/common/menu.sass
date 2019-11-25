@@ -26,7 +26,11 @@
 .navbar.nb-hidden
     padding-top: 30px
 
+    .bottom-shadow
+        display: none
+
 .navbar
+    display: block
     min-width: 991px
     height: 60px
     padding-left: 0
@@ -41,9 +45,15 @@
     .collapse, .navbar-collapse
         z-index: 15
 
+    .bottom-shadow
+        margin: 0
+        margin-block-start: 0
+        height: 4px
+        border: 0
+        box-shadow: inset 0 13px 3px -12px rgba(0, 0, 0, 0.5)
+
     .navbar-collapse.background-change
         background-color: $blue-color
-        border-bottom: solid 1px white
         -webkit-transition: $fast-animation
         -moz-transition: $fast-animation
         -ms-transition: $fast-animation
