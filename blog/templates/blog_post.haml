@@ -1,6 +1,14 @@
 {% extends "blog_base.haml" %}
+{% load wagtailimages_tags %}
 {% block title %}{{page.specific.seo_title}}{% endblock %}
 
+{% block properties %}
+    %meta{:property => "og:title", :content => "{{ page.specific.title }}"}
+    {% image page.specific.cover_photo  fill-1200x628 as photo %}
+    %meta{:property => "og:image", :content => "{{ photo.url }}"}
+    %meta{:property => "og:image:width", :content => "{{ photo.width }}"}
+    %meta{:property => "og:image:height", :content => "{{ photo.height }}"}
+{% endblock %}
 {% block blog_content %}
     {% include 'blog/post.haml' %}
 {% endblock %}
