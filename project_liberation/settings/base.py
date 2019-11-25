@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'raven.contrib.django.raven_compat',
     'wagtailmarkdown',
+    'google_analytics',
     # project-liberation
     'blog.apps.BlogConfig',
     'company_website.apps.CompanyWebsiteConfig',
@@ -383,3 +384,8 @@ WAGTAIL_APPEND_SLASH = False
 WAGTAILIMAGES_MAX_UPLOAD_SIZE = 25 * 1024 * 1024
 
 SITE_ID = 1
+
+# Setting need to be set up in production settings with proper google analytics id
+# GOOGLE_ANALYTICS = {
+#     'google_analytics_id': '',
+# }

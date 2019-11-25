@@ -31,4 +31,6 @@ urlpatterns = [
         redirect_view,
         kwargs={"blog_article_address": "code-poets-named-top-developers-poland/"},
     ),
+    # google analytics url
+    url(r'^djga/', include('google_analytics.urls')),
 ]

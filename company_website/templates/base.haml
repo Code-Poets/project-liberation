@@ -1,7 +1,10 @@
 %title {% block title %}{% endblock %}
 {% include "common_partials/head.haml" %}
+{% load google_analytics_tags %}
 {% load pipeline %}
 {% stylesheet 'common' %}
+.google-analytics
+    %img.google-analytics-image{:src => "{% google_analytics %}"}
 
 {% block extra_head %}
 {% endblock %}
