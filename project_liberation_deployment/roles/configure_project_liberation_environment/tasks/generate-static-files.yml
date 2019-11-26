@@ -34,7 +34,7 @@
         remote_src: yes
 
     - name: Copy files to properly structure of directory for static files
-      command: rsync -az "{{ item }}" "{{ static_files_dir }}/"
+      command: rsync -az "{{ item }}" "{{ django_static_files_dir }}/"
       with_items:
         - "/tmp/{{ unpacked_image_package_name }}/company_website/static/"
         - "/tmp/{{ unpacked_image_package_name }}/blog/static/"

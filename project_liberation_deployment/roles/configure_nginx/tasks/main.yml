@@ -15,8 +15,8 @@
         mode:  0755
       loop:
         - "{{ image_package_dir }}"
-        - "{{ static_files_dir }}"
-        - "{{ error_static_files_dir }}"
+        - "{{ django_static_files_dir }}"
+        - "{{ nginx_static_files_dir }}"
         - "{{ media_files_dir }}"
 
 - become: yes
@@ -54,7 +54,7 @@
     - name: Add css files to custom error pages
       copy:
         src:  "{{ item }}.css"
-        dest: "{{ error_static_files_dir }}/{{ item }}.{{ static_files.results[html_and_css_index].stat.checksum[:14] }}.css"
+        dest: "{{ nginx_static_files_dir }}/{{ item }}.{{ static_files.results[html_and_css_index].stat.checksum[:14] }}.css"
         owner: project_liberation
         group: project_liberation
         mode:  0555
@@ -65,11 +65,23 @@
     - name: Copy image files to properly directories structure of static files
       copy:
         src:  "/tmp/{{ unpacked_image_package_name }}/project_liberation_deployment/http_status_codes/static/{{ item }}.png"
-        dest: "{{ error_static_files_dir }}/{{ item }}.{{ image_static_files.results[image_index].stat.checksum[:14] }}.png"
+        dest: "{{ nginx_static_files_dir }}/{{ item }}.{{ image_static_files.results[image_index].stat.checksum[:14] }}.png"
+        owner: project_liberation
+        group: project_liberation
+        mode:  0555
         remote_src: yes
       loop: "{{ image_files }}"
       loop_control:
         index_var: image_index
+
+    - name: Copy the favicon image file to properly directories structure of static files
+      copy:
+        src:  "/tmp/{{ unpacked_image_package_name }}/project_liberation_deployment/http_status_codes/static/favicon.ico"
+        dest: "{{ nginx_static_files_dir }}/favicon.ico"
+        owner: project_liberation
+        group: project_liberation
+        mode:  0555
+        remote_src: yes
 
     - name: Remove temporary image files
       file:

@@ -23,20 +23,24 @@ server {
        internal;
     }
 
+    location = /favicon.ico {
+        alias {{ nginx_static_files_dir }}/favicon.ico;
+    }
+
     location / {
         limit_req  zone=ip_req_limit   burst={{ nginx.number_of_requests_stored_in_queue }} nodelay;
         limit_conn ip_connection_limit {{ nginx.number_of_open_connections_per_client }};
         return 503;
     }
 
-    location /static-error/ {
+    location /nginx-static/ {
         expires     1y;
         add_header  Cache-Control "public";
 
         # Enable HSTS header
         add_header  Strict-Transport-Security "max-age=31536000";
 
-        alias {{ error_static_files_dir }}/;
+        alias {{ nginx_static_files_dir }}/;
     }
 
     listen [::]:443 ssl ipv6only=on; # managed by Certbot
