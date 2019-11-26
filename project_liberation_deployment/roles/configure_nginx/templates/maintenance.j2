@@ -16,9 +16,9 @@ add_header X-XSS-Protection "1; mode=block";
 server {
     server_name codepoets.it www.codepoets.it;
 
-    error_page 503 /maintance.html;
+    error_page 503 /maintenance.html;
 
-    location = /maintance.html {
+    location = /maintenance.html {
        root /var/www/html/;
        internal;
     }
@@ -27,6 +27,16 @@ server {
         limit_req  zone=ip_req_limit   burst={{ nginx.number_of_requests_stored_in_queue }} nodelay;
         limit_conn ip_connection_limit {{ nginx.number_of_open_connections_per_client }};
         return 503;
+    }
+
+    location /static-error/ {
+        expires     1y;
+        add_header  Cache-Control "public";
+
+        # Enable HSTS header
+        add_header  Strict-Transport-Security "max-age=31536000";
+
+        alias {{ error_static_files_dir }}/;
     }
 
     listen [::]:443 ssl ipv6only=on; # managed by Certbot
@@ -39,10 +49,6 @@ server {
     # Enable HSTS header
     add_header Strict-Transport-Security "max-age=31536000";
 
-
-    location /static/ {
-        alias /home/project_liberation/http_static_files/;
-    }
 }
 
 server {

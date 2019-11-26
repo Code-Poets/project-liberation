@@ -6,11 +6,6 @@
         path:  /etc/nginx/sites-enabled/default
         state: absent
 
-    - name: Add custom 503 error page
-      copy:
-        src:  503.html
-        dest: /var/www/html/503.html
-
     - name: Create dirs for nginx
       file:
         path:  "{{ item }}"
@@ -18,10 +13,79 @@
         owner: project_liberation
         group: project_liberation
         mode:  0755
-      with_items:
+      loop:
         - "{{ image_package_dir }}"
         - "{{ static_files_dir }}"
+        - "{{ error_static_files_dir }}"
         - "{{ media_files_dir }}"
+
+- become: yes
+  become_user: "{{ ansible_user_id }}"
+  block:
+    - name: Generate checksums of nginx html and css files
+      local_action: stat path=roles/configure_nginx/files/{{ item }}.css checksum_algorithm=sha256
+      register: static_files
+      loop: "{{ html_and_css_files }}"
+
+    - include_role:
+        name: configure_project_liberation_environment
+      vars:
+        update_project_liberation_application: "no"
+        upload_image_package:                  "yes"
+
+    - name: Extract image package archive
+      unarchive:
+        src:        "{{ image_package_dir }}/{{ image_package_name }}"
+        dest:       /tmp/
+        remote_src: yes
+      become:      yes
+      become_user: project_liberation
+
+    - name: Generate checksums of nginx image files
+      stat:
+        path: "/tmp/{{ unpacked_image_package_name }}/project_liberation_deployment/http_status_codes/static/{{ item }}.png"
+        checksum_algorithm: sha256
+      register: image_static_files
+      loop: "{{ image_files }}"
+
+- become:      yes
+  become_user: root
+  block:
+    - name: Add css files to custom error pages
+      copy:
+        src:  "{{ item }}.css"
+        dest: "{{ error_static_files_dir }}/{{ item }}.{{ static_files.results[html_and_css_index].stat.checksum[:14] }}.css"
+        owner: project_liberation
+        group: project_liberation
+        mode:  0555
+      loop: "{{ html_and_css_files }}"
+      loop_control:
+        index_var: html_and_css_index
+
+    - name: Copy image files to properly directories structure of static files
+      copy:
+        src:  "/tmp/{{ unpacked_image_package_name }}/project_liberation_deployment/http_status_codes/static/{{ item }}.png"
+        dest: "{{ error_static_files_dir }}/{{ item }}.{{ image_static_files.results[image_index].stat.checksum[:14] }}.png"
+        remote_src: yes
+      loop: "{{ image_files }}"
+      loop_control:
+        index_var: image_index
+
+    - name: Remove temporary image files
+      file:
+        path:  "/tmp/{{ unpacked_image_package_name }}"
+        state: absent
+
+    - name: Add custom error pages
+      template:
+        src:  "html/{{ item }}.html.j2"
+        dest: "/var/www/html/{{ item }}.html"
+        owner: project_liberation
+        group: project_liberation
+        mode:  0555
+      loop: "{{ html_and_css_files }}"
+      loop_control:
+        index_var: html_and_css_index
 
     - name: Add nginx configs for project-liberation
       template:
