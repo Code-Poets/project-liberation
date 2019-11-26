@@ -22,7 +22,7 @@ class ProjectToEstimateForm(ModelForm):
     design_product = forms.ChoiceField(
         choices=EstimateConstants.true_false_choices, widget=forms.RadioSelect(), required=False
     )
-    find_out_way = forms.ChoiceField(
+    company_info_origin = forms.ChoiceField(
         choices=EstimateConstants.company_info_origin_choices, widget=forms.RadioSelect(), required=False
     )
     privacy_policy_accepted = forms.BooleanField(

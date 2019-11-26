@@ -76,8 +76,8 @@
             .select-container.i-want-to
               I want to
               .switch-field
-                {% for field in form.build_or_improve %}
-                  .select-box{:id => "build_or_improve_#{forloop.counter}"}
+                {% for field in form.project_development %}
+                  .select-box{:id => "project_development_#{forloop.counter}"}
                     {{ field }}
                   {% endfor %}
 
@@ -103,16 +103,16 @@
             .select-container.how-much-time
               How much time do you have?
               .switch-field
-                {% for field in form.project_time %}
+                {% for field in form.project_duration %}
                   {% if not forloop.counter|divisibleby:2 %}
                   <span class="button-pair">
-                    .monthly-budget{:id => "project_time_#{forloop.counter}"}
+                    .monthly-budget{:id => "project_duration_#{forloop.counter}"}
                       {{ field }}
                     {% if forloop.last %}
                   </span>
                     {% endif %}
                   {% else %}
-                    .monthly-budget{:id => "project_time_#{forloop.counter}"}
+                    .monthly-budget{:id => "project_duration_#{forloop.counter}"}
                       {{ field }}
                   </span>
                   {% endif %}

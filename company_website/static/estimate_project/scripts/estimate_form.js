@@ -9,16 +9,16 @@ $( "#nda_2" ).click(function() {
     $('#nda_2').css({'background-color': 'ffe6b3', 'color' : '3778bc', 'font-weight': 600});
   });
 
-$( "#build_or_improve_1" ).click(function() {
+$( "#project_development_1" ).click(function() {
     // alert( "Handler for 1 .click() called." );
-    $('#build_or_improve_1').css({'background-color': 'ffe6b3', 'color' : '3778bc', 'font-weight': 600});
-    $('#build_or_improve_2').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
+    $('#project_development_1').css({'background-color': 'ffe6b3', 'color' : '3778bc', 'font-weight': 600});
+    $('#project_development_2').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
   });
 
 
-$( "#build_or_improve_2" ).click(function() {
-    $('#build_or_improve_1').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
-    $('#build_or_improve_2').css({'background-color': 'ffe6b3', 'color' : '3778bc', 'font-weight': 600});
+$( "#project_development_2" ).click(function() {
+    $('#project_development_1').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
+    $('#project_development_2').css({'background-color': 'ffe6b3', 'color' : '3778bc', 'font-weight': 600});
   });
 
 
@@ -53,25 +53,25 @@ $( "#id_monthly_bugdet_3" ).click(function() {
   });
 
 
-$( "#id_project_time_0" ).click(function() {
-    $('#project_time_3').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
-    $('#project_time_2').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
-    $('#project_time_1').css({'background-color': 'ffe6b3', 'color' : '3778bc', 'font-weight': 600});
+$( "#id_project_duration_0" ).click(function() {
+    $('#project_duration_3').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
+    $('#project_duration_2').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
+    $('#project_duration_1').css({'background-color': 'ffe6b3', 'color' : '3778bc', 'font-weight': 600});
   });
 
 
-$( "#id_project_time_1" ).click(function() {
-    $('#project_time_3').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
-    $('#project_time_1').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
-    $('#project_time_2').css({'background-color': 'ffe6b3', 'color' : '3778bc', 'font-weight': 600});
+$( "#id_project_duration_1" ).click(function() {
+    $('#project_duration_3').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
+    $('#project_duration_1').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
+    $('#project_duration_2').css({'background-color': 'ffe6b3', 'color' : '3778bc', 'font-weight': 600});
   });
 
 
 
-$( "#id_project_time_2" ).click(function() {
-    $('#project_time_1').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
-    $('#project_time_2').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
-    $('#project_time_3').css({'background-color': 'ffe6b3', 'color' : '3778bc', 'font-weight': 600});
+$( "#id_project_duration_2" ).click(function() {
+    $('#project_duration_1').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
+    $('#project_duration_2').css({'background-color': 'white', 'color' : '868686', 'font-weight': 500});
+    $('#project_duration_3').css({'background-color': 'ffe6b3', 'color' : '3778bc', 'font-weight': 600});
   });
 
 $( "#id_design_product_0" ).click(function() {
