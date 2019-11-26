@@ -1,3 +1,19 @@
+### v1.5.0
+
+##### Features
+
+- Feature add google analytics ([#140](https://github.com/Code-Poets/project-liberation/pull/140))
+- Feature add meta tags for blog posts ([#141](https://github.com/Code-Poets/project-liberation/pull/141))
+- Feature add a playbook that configures the project-liberation server ([#136](https://github.com/Code-Poets/project-liberation/pull/136))
+- Feature add a playbook that deploys a new version of project-liberation to the server ([#137](https://github.com/Code-Poets/project-liberation/pull/137))
+- Feature change navbar's bottom from solid border to shadow ([#139](https://github.com/Code-Poets/project-liberation/pull/139))
+
+##### Bugfixes
+
+- Bugfix testimonials' carousel autoplay behaviour ([#124](https://github.com/Code-Poets/project-liberation/pull/124))
+- Bugfix Estimate Project ([#144](https://github.com/Code-Poets/project-liberation/pull/144))
+
+
 ### v1.4.0
 
 ##### Features
