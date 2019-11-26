@@ -1,7 +1,6 @@
 #!/bin/bash -e
 
-# FIXME This need to be change after domain will be attach to new server
-DOMAIN_NAME=35.246.198.141
+DOMAIN_NAME=https://codepoets.it
 NGINX_ENDPOINT_WITH_IMAGE_PACKAGE="download-image-package"
 # FIXME This need to be change after first release to support versioning
 PACKAGE_NAME="project-liberation.zip"
