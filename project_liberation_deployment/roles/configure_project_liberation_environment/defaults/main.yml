@@ -1,0 +1,5 @@
+update_project_liberation_application: 'yes'
+upload_secret_file: 'no'
+migrate_database: 'no'
+upload_image_package: 'no'
+generate_static_files: 'no'

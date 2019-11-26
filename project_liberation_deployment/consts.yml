@@ -1,10 +1,15 @@
 home_dir:                             /home/project_liberation
 backup_dir:                          "{{ home_dir }}/backups"
 image_package_dir:                    "{{ home_dir }}/image-package"
+image_package_name:                   project-liberation.zip
 media_files_dir:                      "{{ home_dir }}/http_media_files"
 name_of_project_liberation_bucket:    project-liberaion-bucket
 postgres_backup_dir:                  "{{ backup_dir }}/postgresql_backup"
 postgres_backup_public_key_dir:       "{{ home_dir }}/.key"
 project_liberation_dir:               "{{ home_dir }}/project-liberation"
+project_liberation_image_package_dir: ../../project-liberation-image-packages
+project_liberation_repository:        https://github.com/Code-Poets/project-liberation
 project_liberation_secret_dir:        ../../project-liberation-secret
+project_liberation_virtualenv_dir:    "{{ home_dir }}/virtualenv"
 static_files_dir:                     "{{ home_dir }}/http_static_files"
+unpacked_image_package_name:          "{{ image_package_name[:-4] }}"

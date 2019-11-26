@@ -1,0 +1,10 @@
+- hosts:
+    - project_liberation
+  vars_files:
+    - consts.yml
+    - versions.yml
+    - ../../project-liberation-config/var.yml
+  roles:
+    - { role: maintenance_mode, maintenance_mode: enable }
+    - configure_project_liberation_environment
+    - { role: maintenance_mode, maintenance_mode: disable }

@@ -1,0 +1,50 @@
+- become:      yes
+  become_user: project_liberation
+  block:
+    - stat:
+        path: "{{ project_liberation_virtualenv_dir }}"
+      register: result
+
+    - name: Create virtualenv for project-liberation
+      command: >
+        virtualenv
+            "{{ project_liberation_virtualenv_dir }}"
+            --python "python{{ python_version }}"
+            creates="{{ project_liberation_virtualenv_dir }}"
+      when: result.stat.exists == False
+
+    - name: Clone project-liberation repositories
+      git:
+        repo:    "{{ project_liberation_repository }}"
+        dest:    "{{ project_liberation_dir }}"
+        version: "{{ project_liberation_version | default('master') }}"
+        clone:   yes
+        update:  yes
+
+    - name:  Install requirements for project-liberation
+      shell: "source {{ project_liberation_virtualenv_dir }}/bin/activate && pipenv --bare install"
+      args:
+        executable: /bin/bash
+        chdir:      "{{ project_liberation_dir }}"
+
+    - name: Install npm packages
+      npm:
+        path: "{{ project_liberation_dir }}"
+
+    - name: Install gunicorn for project-liberation
+      pip:
+        chdir:             "{{ project_liberation_dir }}"
+        name:              gunicorn
+        virtualenv:        "{{ project_liberation_virtualenv_dir }}"
+        virtualenv_python: "python{{ python_version }}"
+
+- become:      yes
+  become_user: root
+  block:
+    - name: Upload configuration file
+      template:
+        src:   local_settings.py.j2
+        dest:  "{{ project_liberation_dir }}/project_liberation/settings/local_settings.py"
+        mode:  0644
+        owner: project_liberation
+        group: project_liberation

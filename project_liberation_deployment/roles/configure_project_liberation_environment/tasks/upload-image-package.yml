@@ -1,0 +1,19 @@
+- name: "Looking for {{ image_package_name }} package on the host"
+  local_action: stat path="{{ project_liberation_image_package_dir }}/{{ image_package_name }}"
+  register: image_package
+
+- fail:
+    msg: "This playbook expects to find a package called {{ image_package_name }} in its directory.
+         The package contains images. Please download it from Google Drive and rerun this playbook."
+  when: not image_package.stat.exists
+
+- become:      yes
+  become_user: root
+  block:
+    - name: Upload image package
+      copy:
+        src:   "{{ project_liberation_image_package_dir }}/{{ image_package_name }}"
+        dest:  "{{ image_package_dir }}/{{ image_package_name }}"
+        mode:  0644
+        owner: project_liberation
+        group: project_liberation
