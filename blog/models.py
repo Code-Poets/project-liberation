@@ -54,11 +54,24 @@ class BlogCategory(models.Model):
     def save(
         self, force_insert: Any = False, force_update: Any = False, using: Any = None, update_fields: Any = None
     ) -> None:
-        super().save(force_insert, force_update, using, update_fields)
-        parent_page = Page.objects.get(title="MAIN PAGE").specific
-        blog_category_page = BlogCategoryPage(title=self.name, slug=self.slug)
-        parent_page.add_child(instance=blog_category_page)
-        blog_category_page.save()
+        if self.pk is not None:
+            category = BlogCategory.objects.get(pk=self.pk)
+            blog_category_page = BlogCategoryPage.objects.get(title=category.name)
+            super().save(force_insert, force_update, using, update_fields)
+            blog_category_page.title = self.name
+            blog_category_page.seo_title = self.name
+            blog_category_page.slug = self.slug
+            blog_category_page.save()
+        else:
+            super().save(force_insert, force_update, using, update_fields)
+            parent_page = Page.objects.get(title="MAIN PAGE").specific
+            blog_category_page = BlogCategoryPage(
+                title=self.name,
+                seo_title=self.name,
+                slug=self.slug,
+            )
+            parent_page.add_child(instance=blog_category_page)
+            blog_category_page.save()
 
     def delete(self, using: Any = None, keep_parents: Any = False) -> None:
         Page.objects.get(title=self.title).delete()
