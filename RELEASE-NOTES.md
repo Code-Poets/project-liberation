@@ -1,3 +1,11 @@
+### v1.6.0
+
+##### Features
+
+- Feature change main screen slogan ([#145](https://github.com/Code-Poets/project-liberation/pull/145))
+- Feature add nginx's custom error pages to the deployment process ([#142](https://github.com/Code-Poets/project-liberation/pull/142))
+
+
 ### v1.5.0
 
 ##### Features
