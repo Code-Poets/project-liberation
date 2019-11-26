@@ -1,3 +1,6 @@
+from company_website.fields import ChoiceEnum
+
+
 class EstimateConstants:
     product_choices = (("build", "Build something new"), ("improve", "Improve existing project"))
     budget_choices = (
@@ -16,3 +19,12 @@ class EstimateConstants:
         ("Tech Event", "Tech Event"),
         ("Other", "Other"),
     )
+
+
+class PageNames(ChoiceEnum):
+    MAIN_PAGE = "Main Page"
+    TEAM_INTRODUCTION = "Team Introduction"
+    HOW_WE_WORK = "How we Work"
+    CAREER = "Career"
+    ESTIMATE_PROJECT = "Estimate Project"
+    PRIVACY_AND_POLICY = "Privacy and Policy"

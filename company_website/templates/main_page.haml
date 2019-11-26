@@ -1,5 +1,11 @@
 {% extends "base.haml" %}
-{% block title %}Code Poets - Software Development Company | Wrocław, Poland{% endblock %}
+{% block title %}
+    %title {{ title }}
+{% endblock %}
+{% block meta_tags %}
+    %meta{:name => "description", :content => "{{ meta_description }}"}
+    %meta{:name => "keywords", :content => "{{ keywords }}"}
+{% endblock %}
 {% load pipeline %}
 
 {% block extra_head %}

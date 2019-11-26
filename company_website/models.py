@@ -10,6 +10,7 @@ from django.db.models import PositiveSmallIntegerField
 from sorl.thumbnail import ImageField
 
 from company_website.constants import EstimateConstants
+from company_website.constants import PageNames
 
 
 class Testimonial(models.Model):
@@ -87,3 +88,17 @@ class EstimateProject(models.Model):
     company_info_origin = models.CharField(
         max_length=20, choices=EstimateConstants.company_info_origin_choices, blank=True, null=True
     )
+
+
+class PageSeo(models.Model):
+    def __str__(self) -> str:
+        return self.page_name
+
+    page_name = models.CharField(max_length=40, choices=PageNames.choices(), unique=True)
+    title = models.CharField(max_length=80)
+    meta_description = models.CharField(max_length=168)
+    keywords = models.CharField(max_length=512)
+
+    class Meta:
+        verbose_name = "Page SEO"
+        verbose_name_plural = "Pages SEO"
