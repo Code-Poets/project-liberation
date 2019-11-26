@@ -1,0 +1,88 @@
+limit_req_zone $binary_remote_addr zone=ip_req_limit:10m rate={{ nginx.limit_of_requests_per_second }}r/s;
+limit_conn_zone $binary_remote_addr zone=ip_connection_limit:10m;
+
+# Disable sending the nginx version in error pages and server header
+server_tokens off;
+
+# Include shared security headers
+include /etc/nginx/snippets/shared-security-headers.conf;
+
+server {
+    server_name codepoets.it www.codepoets.it;
+
+    location / {
+        limit_req  zone=ip_req_limit   burst={{ nginx.number_of_requests_stored_in_queue }} nodelay;
+        limit_conn ip_connection_limit {{ nginx.number_of_open_connections_per_client }};
+        limit_req_status 444;
+
+        set              $project_liberation_backend  http://127.0.0.1:8000;
+        proxy_set_header x-real-ip                    $remote_addr;
+        proxy_set_header x-forwarded-for              $remote_addr;
+        proxy_set_header host                         $http_host;
+        proxy_pass                                    $project_liberation_backend;
+
+        # Configuration of proxy buffer
+        proxy_buffering        on;
+        proxy_buffer_size      8k;
+        proxy_buffers          8 32k;
+
+
+    }
+
+    location /admin/ {
+    {% for allowed_ip in allowed_ips_to_admin_endpoint %}
+        allow                {{ allowed_ip }};
+    {% endfor %}
+        deny                 all;
+
+        limit_req    zone=ip_req_limit   burst={{ nginx.number_of_requests_stored_in_queue }} nodelay;
+        limit_conn   ip_connection_limit {{ nginx.number_of_open_connections_per_client }};
+        limit_req_status 444;
+
+        set              $project_liberation_backend  http://127.0.0.1:8000;
+        proxy_set_header x-real-ip                    $remote_addr;
+        proxy_set_header x-forwarded-for              $remote_addr;
+        proxy_set_header host                         $http_host;
+        proxy_pass                                    $project_liberation_backend;
+
+        client_max_body_size "100m";
+    }
+
+    location /download-image-package/ {
+        limit_except GET { deny all; }
+        alias        {{ image_package_dir }}/;
+    }
+
+    location /static/ {
+
+        alias {{ static_files_dir }}/;
+    }
+
+    location /media/ {
+
+        alias {{ media_files_dir }}/;
+    }
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/codepoets.it/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/codepoets.it/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+    include /etc/nginx/snippets/configuration-of-compression-timeouts-and-sizes.conf;
+
+}
+
+server {
+    if ($host = codepoets.it) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    listen           80 default_server;
+    listen      [::]:80 default_server;
+    server_name codepoets.it www.codepoets.it;
+
+    return 404; # managed by Certbot
+
+}

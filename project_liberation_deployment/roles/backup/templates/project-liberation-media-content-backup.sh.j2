@@ -1,0 +1,33 @@
+#!/bin/bash -e
+
+HTTP_MEDIA_BACKUP_DIR="{{ backup_dir }}/http_media_backup"
+DATE=$(date +"%Y-%m-%d-%H:%M")
+PROJECT_LIBERATION_VERSION="$(cd {{ project_liberation_dir}}/; git describe --always --abbrev=16)"
+
+if [ ! -d $HTTP_MEDIA_BACKUP_DIR ]; then
+    mkdir $HTTP_MEDIA_BACKUP_DIR/
+fi
+
+NAME_OF_BACKUP_FILE="$HTTP_MEDIA_BACKUP_DIR/http_media_backup_${PROJECT_LIBERATION_VERSION}_${DATE}.tar.zst"
+
+tar                                \
+    --create                       \
+    --verbose                      \
+    --zstd                         \
+    --owner=0                      \
+    --group=0                      \
+    --numeric-owner                \
+    --file="$NAME_OF_BACKUP_FILE"  \
+    --directory="{{ home_dir }}/"  \
+    http_media_files/
+
+gsutil cp                            \
+    $NAME_OF_BACKUP_FILE             \
+    gs://project-liberation-bucket/
+
+# Cleanup content backups older than 30 days.
+find $HTTP_MEDIA_BACKUP_DIR             \
+    -name "http_media_backup_*.tar.zst" \
+    -mtime +30                          \
+    -type f                             \
+    -delete

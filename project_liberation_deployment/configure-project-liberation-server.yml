@@ -1,0 +1,43 @@
+- hosts:
+    - project_liberation
+  vars_files:
+    - consts.yml
+    - versions.yml
+    - ../../project-liberation-config/var.yml
+    - ../../project-liberation-secret/var.yml
+  roles:
+    - install_dependencies_and_basic_configuration
+    - configure_postgres
+    - backup
+  tasks:
+    - become:      yes
+      become_user: root
+      block:
+        - name: Add systemd service for project-liberation app
+          template:
+            src:  project-liberation-web.service.j2
+            dest: /etc/systemd/system/project-liberation-web.service
+            mode: 0644
+
+        - name: Enable project-liberation service
+          service:
+            daemon_reload: yes
+            enabled:       yes
+            name:          project-liberation-web
+
+        - name: Check if nginx is already configured
+          stat:
+            path: /etc/letsencrypt/options-ssl-nginx.conf
+          register: nginx_configuration
+
+        - name: Generate ssl certificate for nginx
+          command: >
+            certbot --nginx
+              -d  codepoets.it
+              -d  www.codepoets.it
+              -m  {{ letsencrypt_email_account }}
+              --agree-tos
+          when: not nginx_configuration.stat.exists
+
+        - include_role:
+            name: configure_nginx

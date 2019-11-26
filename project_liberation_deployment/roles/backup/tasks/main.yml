@@ -1,0 +1,94 @@
+- become:      yes
+  become_user: root
+  block:
+    - name: Create a ext4 filesystem on /dev/sdb and check disk blocks
+      filesystem:
+        fstype: ext4
+        dev:    /dev/sdb
+
+    - name: Mount disk for postgresql backups
+      mount:
+        path:   "{{ backup_dir }}"
+        src:    /dev/sdb
+        fstype: ext4
+        state:  mounted
+
+    - name: Change owner of mountpoint
+      file:
+        path:  "{{ backup_dir }}"
+        owner: project_liberation
+        group: project_liberation
+        mode:  0755
+
+    - name: Create directories for scripts and backups
+      file:
+        path:  "{{ item }}"
+        state: directory
+        owner: project_liberation
+        group: project_liberation
+        mode:  0755
+      with_items:
+        - "{{ home_dir }}/bin/"
+        - "{{ postgres_backup_dir }}"
+
+
+    - name: Copy backup scripts for project-liberation
+      template:
+        src:   "{{ item }}.j2"
+        dest:  "{{ home_dir }}/bin/{{ item }}"
+        owner: project_liberation
+        group: project_liberation
+        mode:  0555
+      with_items:
+        - pg_backup.sh
+        - upload-postgresql-backup-to-gcloud-bucket.sh
+        - project-liberation-media-content-backup.sh
+
+    - name: Create a directory for openssl public key
+      file:
+        path:  "{{ postgres_backup_public_key_dir }}"
+        state: directory
+        owner: project_liberation
+        group: project_liberation
+        mode:  0700
+
+    - name: Upload openssl public key
+      template:
+        src:   "{{ project_liberation_secret_dir }}/project_liberation_postgres_backup_key.pem.pub"
+        dest:  "{{ postgres_backup_public_key_dir }}/project_liberation_postgres_backup_key.pem.pub"
+        owner: project_liberation
+        group: project_liberation
+        mode:  0444
+
+    - name: Add cron job that automatically backup postgresql
+      cron:
+        name:   postgresql backup
+        minute: "0"
+        hour:   "2"
+        user:   project_liberation
+        job:    "{{ home_dir }}/bin/pg_backup.sh project_liberation"
+
+    - name: Add cron job that automatically upload postgresql database backup to Google Cloud Bucket
+      cron:
+        name:   upload postgresql backup
+        minute: "15"
+        hour:   "2"
+        user:   project_liberation
+        job:    "{{ home_dir }}/bin/upload-postgresql-backup-to-gcloud-bucket.sh project_liberation"
+
+    - name: Add cron job that automatically renew Let's Encrypt Certificate
+      cron:
+        name:   renew certificate
+        minute: "0"
+        hour:   "2"
+        user:   root
+        job:    /usr/bin/certbot renew --quiet
+
+    - name: Add cron job that automatically backup project-liberation media content
+      cron:
+        name:    backup content
+        minute:  "0"
+        hour:    "3"
+        weekday: "0"
+        user:    project_liberation
+        job:     "{{ home_dir }}/bin/project-liberation-media-content-backup.sh"

@@ -1,0 +1,61 @@
+limit_req_zone $binary_remote_addr zone=ip_req_limit:10m rate={{ nginx.limit_of_requests_per_second }}r/s;
+limit_conn_zone $binary_remote_addr zone=ip_connection_limit:10m;
+
+# Disable sending the nginx version in error pages and server header
+server_tokens off;
+
+# Don't allow the browser to render the page inside an frame
+add_header X-Frame-Options SAMEORIGIN;
+
+# Add X-Content-Type-Options header that disables concent-type sniffing on some browsers
+add_header X-Content-Type-Options nosniff;
+
+# Add X-XSS-Protection header that enables the Cross-site scripting filter in the browsers
+add_header X-XSS-Protection "1; mode=block";
+
+server {
+    server_name codepoets.it www.codepoets.it;
+
+    error_page 503 /maintance.html;
+
+    location = /maintance.html {
+       root /var/www/html/;
+       internal;
+    }
+
+    location / {
+        limit_req  zone=ip_req_limit   burst={{ nginx.number_of_requests_stored_in_queue }} nodelay;
+        limit_conn ip_connection_limit {{ nginx.number_of_open_connections_per_client }};
+        return 503;
+    }
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/codepoets.it/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/codepoets.it/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+    # Enable HSTS header
+    add_header Strict-Transport-Security "max-age=31536000";
+
+
+    location /static/ {
+        alias /home/project_liberation/http_static_files/;
+    }
+}
+
+server {
+    if ($host = codepoets.it) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    listen           80 default_server;
+    listen      [::]:80 default_server;
+    server_name codepoets.it www.codepoets.it;
+
+    client_body_timeout   {{ nginx.client_body_timeout }};
+    client_header_timeout {{ nginx.client_header_timeout }};
+    return 404; # managed by Certbot
+
+}

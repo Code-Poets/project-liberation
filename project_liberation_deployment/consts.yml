@@ -1,0 +1,10 @@
+home_dir:                             /home/project_liberation
+backup_dir:                          "{{ home_dir }}/backups"
+image_package_dir:                    "{{ home_dir }}/image-package"
+media_files_dir:                      "{{ home_dir }}/http_media_files"
+name_of_project_liberation_bucket:    project-liberaion-bucket
+postgres_backup_dir:                  "{{ backup_dir }}/postgresql_backup"
+postgres_backup_public_key_dir:       "{{ home_dir }}/.key"
+project_liberation_dir:               "{{ home_dir }}/project-liberation"
+project_liberation_secret_dir:        ../../project-liberation-secret
+static_files_dir:                     "{{ home_dir }}/http_static_files"
