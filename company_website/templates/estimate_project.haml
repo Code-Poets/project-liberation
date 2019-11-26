@@ -1,28 +1,17 @@
-%title Code Poets - Software Development Company | Wrocław, Poland
-{% include "common_partials/head.haml" %}
+{% extends "base.haml" %}
+{% block title %}Code Poets - Software Development Company | Wrocław, Poland{% endblock %}
 {% load pipeline %}
-{% stylesheet 'common' %}
-{% stylesheet 'estimate_project' %}
 
-.overlay
+{% block extra_head %}
+    {% stylesheet 'estimate_project' %}
+{% endblock %}
 
-{% include "common_partials/menu.haml" %}
+{% block content %}
+    {% include "common_partials/section_header.haml" with title="Estimate your project." subtext="﻿Please fill out this simple form.</br>﻿We will contact you soon to discuss your project and next steps." %}
+    {% include "estimate_project/estimate_project_form.haml" %}
+{% endblock %}
 
-{% include "common_partials/section_header.haml" with title="Estimate your project." subtext="﻿Please fill out this simple form.</br>﻿We will contact you soon to discuss your project and next steps." %}
-
-
-
-
-
-{% include "estimate_project/estimate_project_form.haml" %}
-
-{% include "common_partials/footer.haml" %}
-
-
-{% include "common_partials/scripts.haml" %}
-
-{% javascript 'estimate_project' %}
-
-
-
+{% block extra_script %}
+    {% javascript 'estimate_project' %}
+{% endblock %}
 
