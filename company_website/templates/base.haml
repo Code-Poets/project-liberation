@@ -7,7 +7,7 @@
 {% load pipeline %}
 {% stylesheet 'common' %}
 .google-analytics
-    %img.google-analytics-image{:src => "{% google_analytics %}"}
+    %img.google-analytics-image{:src => "{% google_analytics %}", :alt => "Google Analytics"}
 
 {% block extra_head %}
 {% endblock %}

@@ -14,12 +14,12 @@
             .slides.owl-carousel.owl-theme
                 {% for testimonial in object_list %}
                     .testimonial.item
-                        %img.background-image.owl-lazy{:data-src => "{% static 'main_page/images/testimonials/testimonials_background.png' %}"}
+                        %img.background-image.owl-lazy{:data-src => "{% static 'main_page/images/testimonials/testimonials_background.png' %}", :alt => "Testimonials Background", :title => "Testimonials Background"}
                         .profile-picture
                             .image-cropper
-                                %img.owl-lazy{:data-src =>"{{ testimonial.image.url }}"}
+                                %img.owl-lazy{:data-src =>"{{ testimonial.image.url }}", :alt => "{{ testimonial.name }}", :title => "{{ testimonial.name }}"}
                         .opinion-section
-                            %img.quote-mark-left.owl-lazy{:width => "45px", :height => "39px", :data-src => "{% static 'main_page/images/testimonials/quote_mark_left.png' %}"}
+                            %img.quote-mark-left.owl-lazy{:width => "45px", :height => "39px", :data-src => "{% static 'main_page/images/testimonials/quote_mark_left.png' %}", :alt => "Quote Mark"}
                             .text-area
                                 %span.review
                                     {{ testimonial.quote }}
@@ -28,13 +28,13 @@
                                         {{ testimonial.name }}
                                     %span.position
                                         {{ testimonial.position }}
-                            %img.quote-mark-right.owl-lazy{:data-src => "{% static 'main_page/images/testimonials/quote_mark_right.png' %}"}
+                            %img.quote-mark-right.owl-lazy{:data-src => "{% static 'main_page/images/testimonials/quote_mark_right.png' %}", :alt => "Quote Mark"}
                 {% endfor %}
-            %input.nav-button-next.lazyload{:type => "image", :data-src => "{% static 'main_page/images/testimonials/testimonials_arrow_right.png' %}"}
+            %input.nav-button-next.lazyload{:type => "image", :data-src => "{% static 'main_page/images/testimonials/testimonials_arrow_right.png' %}", :alt => "Right Arror"}
         .custom-dots-container
-            %input.nav-button-prev.lazyload{:type => "image", :data-src => "{% static 'main_page/images/testimonials/testimonials_arrow_left.png' %}"}
+            %input.nav-button-prev.lazyload{:type => "image", :data-src => "{% static 'main_page/images/testimonials/testimonials_arrow_left.png' %}", :alt => "Left Arror"}
             %ul.custom-dots-bar
                 {% for testimonial in object_list %}
                     %li.custom-dot
                 {% endfor %}
-            %input.nav-button-next.lazyload{:type => "image", :data-src => "{% static 'main_page/images/testimonials/testimonials_arrow_right.png' %}"}
+            %input.nav-button-next.lazyload{:type => "image", :data-src => "{% static 'main_page/images/testimonials/testimonials_arrow_right.png' %}", :alt => "Right Arror"}

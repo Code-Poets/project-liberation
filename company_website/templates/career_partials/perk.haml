@@ -1,6 +1,6 @@
 {% load static %}
 .perk
-    %img.image.lazyload{data-src: "{% static image %}"}
+    %img.image.lazyload{:data-src => "{% static image %}", :alt => "{{ image_title }}", :title => "{{ image_title }}"}
     .name
         {{ name }}
     .benefit
