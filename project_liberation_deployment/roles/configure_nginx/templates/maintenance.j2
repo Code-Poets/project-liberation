@@ -13,8 +13,19 @@ add_header X-Content-Type-Options nosniff;
 # Add X-XSS-Protection header that enables the Cross-site scripting filter in the browsers
 add_header X-XSS-Protection "1; mode=block";
 
+# Restricting access based on country
+geoip_country /usr/share/GeoIP/GeoIP.dat;
+map $geoip_country_code $country_access {
+    "IN"    1;
+    default 0;
+}
+
 server {
     server_name codepoets.it www.codepoets.it;
+
+    if ($country_access = '1') {
+        return 403;
+    }
 
     error_page 503 /maintenance.html;
 
@@ -56,6 +67,9 @@ server {
 }
 
 server {
+    if ($country_access = '1') {
+        return 403;
+    }
     if ($host = codepoets.it) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
