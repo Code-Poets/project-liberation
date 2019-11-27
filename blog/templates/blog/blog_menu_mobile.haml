@@ -12,5 +12,5 @@
             %a.link{:href => "{% blog_url '' %}"} All Articles
         {% for category in page.get_menu_categories %}
             .row.separator
-                %a.link{:href => "{% blog_url category.name %}"} {{ category }}
+                %a.link{:href => "{% blog_url category.slug %}"} {{ category }}
         {% endfor %}

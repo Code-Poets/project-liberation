@@ -1,6 +1,14 @@
 {% extends "base.haml" %}
 {% load wagtailcore_tags %}
 
+{% block title %}
+    %title {{ page.specific.seo_title }}
+{% endblock %}
+{% block meta_tags %}
+    %meta{:name => "description", :content => "{{ page.specific.meta_description }}"}
+    %meta{:name => "keywords", :content => "{{ page.specific.keywords }}"}
+{% endblock %}
+
 {% block content %}
     {% include 'blog/blog_menu_desktop.haml' %}
     {% block blog_content %}

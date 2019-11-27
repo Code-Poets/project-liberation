@@ -5,21 +5,25 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from django.views.generic import FormView
 from django.views.generic import ListView
-from django.views.generic import TemplateView
 
+from company_website.constants import PageNames
 from company_website.forms import ProjectToEstimateForm
 from company_website.models import Employees
 from company_website.models import Testimonial
+from company_website.view_helpers import CustomTemplateView
+from company_website.view_helpers import add_meta_tags_to_page_context
 
 
 class MainPageView(ListView):
 
     template_name = "main_page.haml"
     model = Testimonial
+    page_name = PageNames.MAIN_PAGE.name
 
     def get_context_data(self, **kwargs: Any) -> dict:
         context_data = super().get_context_data(**kwargs)
         context_data["google_api_key"] = settings.GOOGLE_API_KEY
+        context_data = add_meta_tags_to_page_context(page_name=self.page_name, context_data=context_data)
         return context_data
 
 
@@ -27,39 +31,44 @@ class TeamIntroductionPageView(ListView):
 
     template_name = "team_introduction_page.haml"
     model = Employees
+    page_name = PageNames.TEAM_INTRODUCTION.name
 
     def get_context_data(self, *, _object_list: Any = None, **kwargs: Any) -> dict:
         context_data = super().get_context_data(**kwargs)
         context_data["bosses"] = self.get_queryset().filter(boss=True).order_by("order")
         context_data["employees"] = self.get_queryset().filter(boss=False).order_by("order")
+        context_data = add_meta_tags_to_page_context(page_name=self.page_name, context_data=context_data)
         return context_data
 
 
-class HowWeWorkView(TemplateView):
+class HowWeWorkView(CustomTemplateView):
 
     template_name = "how_we_work_page.haml"
+    page_name = PageNames.HOW_WE_WORK.name
 
 
-class CareerPageView(TemplateView):
+class CareerPageView(CustomTemplateView):
 
     template_name = "career.haml"
+    page_name = PageNames.CAREER.name
 
 
-class PrivacyAndPolicyView(TemplateView):
+class PrivacyAndPolicyView(CustomTemplateView):
 
     template_name = "privacy_and_policy_page.haml"
+    page_name = PageNames.PRIVACY_AND_POLICY.name
 
 
 class EstimateProjectView(FormView):
+
     template_name = "estimate_project.haml"
     form_class = ProjectToEstimateForm
+    page_name = PageNames.ESTIMATE_PROJECT.name
 
     def form_valid(self, form: ProjectToEstimateForm) -> bool:
         messages.success(self.request, "Profile details updated.")
         form.save()
-
         return super().form_valid(form)
 
     def get_success_url(self) -> str:
-        print()
         return reverse_lazy("estimate_project")
