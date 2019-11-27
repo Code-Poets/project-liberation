@@ -8,14 +8,14 @@
 .post-container
     .page-photo
         {% image page.specific.article_photo  fill-1920x550 as photo %}
-        %img.article-photo.lazyload{:data-src => "{{ photo.url }}", :width => "{{ photo.width }}", :height => "{{ photo.height }}"}
+        %img.article-photo.lazyload{:data-src => "{{ photo.url }}", :width => "{{ photo.width }}", :height => "{{ photo.height }}", :alt => "{{ page.specific.article_photo.title }}", :title => "{{ page.specific.article_photo.title }}"}
     .post-body
         .article-details
             .row.post-title
                 {{ page.specific.title }}
             .row
                 {% thumbnail page.specific.author.front_image "400x400" as image %}
-                    %img.lazyload.author-image{:data-src => "{{ image.url }}"}
+                    %img.lazyload.author-image{:data-src => "{{ image.url }}", :alt => "{{ page.specific.author.name }}", :title => "{{ page.specific.author.name }}"}
                 {% endthumbnail %}
                 .author-details
                     .author-name {{ page.specific.author.name }}
