@@ -27,7 +27,7 @@
             %li.nav-item.margin
                 %a.nav-link{:href => "{% url 'blog:company-blog:wagtail_serve' '' %}"} Blog
             .estimate-triangle-left.hidden-xs
-            %a.nav-link.estimate-anchor{:href => "estimate_project"}
+            %a.nav-link.estimate-anchor{:href => "{% url 'estimate_project' %}"}
                 %li.nav-item.estimate
                     %span.estimate-project Estimate Project
             .estimate-triangle-right.hidden-xs
@@ -53,6 +53,6 @@
                 %a.nav-link.mobile-link{:href => "{% url 'career' %}"} Career
             %li.nav-item.margin.mobile-nav
                 %a.nav-link.mobile-link{:href => "{% url 'blog:company-blog:wagtail_serve' '' %}"} Blog
-            %a.nav-link.mobile-link.estimate{:href => "estimate_project"}
+            %a.nav-link.mobile-link.estimate{:href => "{% url 'estimate_project' %}"}
                 %li.nav-item.estimate.mobile-nav
                     %span.mobile.estimate-project Estimate Project
