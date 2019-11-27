@@ -1,6 +1,5 @@
 {% extends "blog_base.haml" %}
 {% load wagtailimages_tags %}
-{% block title %}{{page.specific.seo_title}}{% endblock %}
 
 {% block properties %}
     %meta{:property => "og:title", :content => "{{ page.specific.title }}"}

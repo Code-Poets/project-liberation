@@ -21,13 +21,23 @@ from wagtailmarkdown.blocks import MarkdownBlock
 from company_website.models import Employees
 
 
+class MixinSeoFields(models.Model):
+    class Meta:
+        abstract = True
+
+    meta_description = models.CharField(max_length=168, default="")
+    keywords = models.CharField(max_length=512, default="")
+
+    promote_panels = Page.promote_panels + [FieldPanel("meta_description"), FieldPanel("keywords")]
+
+
 class MixinPageMethods:
     @staticmethod
     def get_menu_categories() -> PageQuerySet:
         return BlogCategory.objects.all().order_by("order")
 
 
-class BlogCategoryPage(Page, MixinPageMethods):
+class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
     template = "blog_categories_posts.haml"
 
     def get_context(self, request: WSGIRequest, *args: Any, **kwargs: Any) -> dict:
@@ -41,8 +51,16 @@ class BlogCategory(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, max_length=80)
     order = models.PositiveSmallIntegerField()
+    meta_description = models.CharField(max_length=168, default="")
+    keywords = models.CharField(max_length=512, default="")
 
-    panels = [FieldPanel("name"), FieldPanel("slug"), FieldPanel("order")]
+    panels = [
+        FieldPanel("name"),
+        FieldPanel("slug"),
+        FieldPanel("meta_description"),
+        FieldPanel("keywords"),
+        FieldPanel("order"),
+    ]
 
     def __str__(self) -> str:
         return self.name
@@ -61,6 +79,8 @@ class BlogCategory(models.Model):
             blog_category_page.title = self.name
             blog_category_page.seo_title = self.name
             blog_category_page.slug = self.slug
+            blog_category_page.meta_description = self.meta_description
+            blog_category_page.keywords = self.keywords
             blog_category_page.save()
         else:
             super().save(force_insert, force_update, using, update_fields)
@@ -69,16 +89,18 @@ class BlogCategory(models.Model):
                 title=self.name,
                 seo_title=self.name,
                 slug=self.slug,
+                meta_description=self.meta_description,
+                keywords=self.keywords,
             )
             parent_page.add_child(instance=blog_category_page)
             blog_category_page.save()
 
     def delete(self, using: Any = None, keep_parents: Any = False) -> None:
-        Page.objects.get(title=self.title).delete()
+        Page.objects.get(title=self.name).delete()
         super().delete(using, keep_parents)
 
 
-class BlogIndexPage(Page, MixinPageMethods):
+class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
     template = "blog_index_page.haml"
 
     def get_all_articles(self) -> PageQuerySet:  # pylint: disable=no-self-use
@@ -95,7 +117,7 @@ class BlogIndexPage(Page, MixinPageMethods):
         return BlogArticlePage.objects.all().order_by("-views")[:3]
 
 
-class BlogArticlePage(Page, MixinPageMethods):
+class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
     template = "blog_post.haml"
     categories = ParentalManyToManyField("blog.BlogCategory", blank=True, related_name="category_posts")
     date = models.DateField("Post date")
