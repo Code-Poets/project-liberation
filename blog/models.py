@@ -42,7 +42,7 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
 
     def get_context(self, request: WSGIRequest, *args: Any, **kwargs: Any) -> dict:
         context = super().get_context(request, *args, **kwargs)
-        context["category_articles"] = BlogArticlePage.objects.filter(categories__name=self.title).order_by("-path")
+        context["category_articles"] = BlogArticlePage.objects.filter(categories__slug=self.slug).order_by("-path")
         return context
 
 
