@@ -1,3 +1,20 @@
+### v1.7.0
+
+##### Features
+
+- Feature add restricting access based on country ([#151](https://github.com/Code-Poets/project-liberation/pull/151))
+- Feature change elements in menu ([#154](https://github.com/Code-Poets/project-liberation/pull/154))
+- Feature change services order ([#153](https://github.com/Code-Poets/project-liberation/pull/153))
+- Feature add meta tags for social medias ([#152](https://github.com/Code-Poets/project-liberation/pull/152))
+- Feature add alt and title parameters to img tag ([#149](https://github.com/Code-Poets/project-liberation/pull/149))
+- Feature add ceo tags ([#146](https://github.com/Code-Poets/project-liberation/pull/146))
+
+##### Bugfixes
+
+- Bugfix estimate project view url regex ([#150](https://github.com/Code-Poets/project-liberation/pull/150))
+- Bugfix estimate project url ([#147](https://github.com/Code-Poets/project-liberation/pull/147))
+
+
 ### v1.6.0
 
 ##### Features
