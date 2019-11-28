@@ -25,6 +25,10 @@ server {
 
     proxy_intercept_errors on;
 
+    location = /favicon.ico {
+        alias {{ nginx_static_files_dir }}/favicon.ico;
+    }
+
     location / {
         limit_req  zone=ip_req_limit   burst={{ nginx.number_of_requests_stored_in_queue }} nodelay;
         limit_conn ip_connection_limit {{ nginx.number_of_open_connections_per_client }};
@@ -68,17 +72,17 @@ server {
     }
 
     location /static/ {
-        alias {{ static_files_dir }}/;
+        alias {{ django_static_files_dir }}/;
     }
 
-    location /static-error/ {
+    location /nginx-static/ {
         expires     1y;
         add_header  Cache-Control "public";
 
         # Include shared security headers
         include /etc/nginx/snippets/shared-security-headers.conf;
 
-        alias {{ error_static_files_dir }}/;
+        alias {{ nginx_static_files_dir }}/;
     }
 
     location /media/ {

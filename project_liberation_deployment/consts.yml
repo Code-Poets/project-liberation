@@ -1,6 +1,6 @@
 home_dir:                             /home/project_liberation
-backup_dir:                          "{{ home_dir }}/backups"
-error_static_files_dir:               "{{ home_dir }}/http_error_static_files"
+backup_dir:                           "{{ home_dir }}/backups"
+nginx_static_files_dir:               "{{ home_dir }}/http_nginx_static_files"
 image_package_dir:                    "{{ home_dir }}/image-package"
 image_package_name:                   project-liberation.zip
 media_files_dir:                      "{{ home_dir }}/http_media_files"
@@ -12,5 +12,5 @@ project_liberation_image_package_dir: ../../project-liberation-image-packages
 project_liberation_repository:        https://github.com/Code-Poets/project-liberation
 project_liberation_secret_dir:        ../../project-liberation-secret
 project_liberation_virtualenv_dir:    "{{ home_dir }}/virtualenv"
-static_files_dir:                     "{{ home_dir }}/http_static_files"
+django_static_files_dir:              "{{ home_dir }}/http_django_static_files"
 unpacked_image_package_name:          "{{ image_package_name[:-4] }}"

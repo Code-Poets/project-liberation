@@ -4,12 +4,13 @@
         <meta charset="UTF-8">
         <title>This Site is under Maintenance</title>
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap"/>
-        <link rel="stylesheet" type="text/css" href="/static-error/maintenance.{{ static_files.results[html_and_css_index].stat.checksum[:14] }}.css">
+        <link rel="stylesheet" type="text/css" href="/nginx-static/maintenance.{{ static_files.results[html_and_css_index].stat.checksum[:14] }}.css">
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     </head>
     <body>
         <div class="container">
-            <img class="image-container" src="/static-error/cp_logo_2.{{ checksum_of_cp_logo_2 }}.png" alt="code-poets-logo"/>
-            <img class="image-container" src="/static-error/maintenance.{{ checksum_of_maintenance }}.png" alt="maintenance"/>
+            <img class="image-container" src="/nginx-static/cp_logo_2.{{ checksum_of_cp_logo_2 }}.png" alt="code-poets-logo"/>
+            <img class="image-container" src="/nginx-static/maintenance.{{ checksum_of_maintenance }}.png" alt="maintenance"/>
         </div>
 
     </body>

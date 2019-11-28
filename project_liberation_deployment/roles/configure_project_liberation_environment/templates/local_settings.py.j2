@@ -28,6 +28,6 @@ DATABASES['default']['PASSWORD'] = ''
 DATABASES['default']['HOST']     = ''
 DATABASES['default']['PORT']     = ''
 
-STATIC_ROOT='{{ static_files_dir }}/'
+STATIC_ROOT='{{ django_static_files_dir }}/'
 MEDIA_ROOT='{{ media_files_dir }}/'
 FILE_UPLOAD_PERMISSIONS = 0o644
