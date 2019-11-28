@@ -1,3 +1,10 @@
+### v1.7.1
+
+##### Bugfixes
+
+- Bugfix blog app model ([#155](https://github.com/Code-Poets/project-liberation/pull/155))
+
+
 ### v1.7.0
 
 ##### Features
