@@ -87,7 +87,7 @@ class BlogCategory(models.Model):
     ) -> None:
         if self.pk is not None:
             category = BlogCategory.objects.get(pk=self.pk)
-            blog_category_page = BlogCategoryPage.objects.get(title=category.name)
+            blog_category_page = BlogCategoryPage.objects.get(slug=category.slug)
             super().save(force_insert, force_update, using, update_fields)
             blog_category_page.title = self.title
             blog_category_page.seo_title = self.title
