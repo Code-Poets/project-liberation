@@ -48,15 +48,28 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
 
 @register_snippet
 class BlogCategory(models.Model):
-    name = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True, max_length=80)
-    order = models.PositiveSmallIntegerField()
-    meta_description = models.CharField(max_length=168, default="")
-    keywords = models.CharField(max_length=512, default="")
+    name = models.CharField(
+        max_length=255, help_text="Name of category. This name will be shown as a category on blog main page."
+    )
+    slug = models.SlugField(
+        unique=True,
+        max_length=80,
+        help_text="Category page url address. Under this url category page will be searched.",
+    )
+    order = models.PositiveSmallIntegerField(help_text="Order of categories shown on blog main page menu.")
+    meta_description = models.CharField(max_length=168, default="", help_text="Meta description of category page.")
+    keywords = models.CharField(max_length=512, default="", help_text="Keywords of category page.")
+    title = models.CharField(
+        verbose_name="page title",
+        max_length=255,
+        default="",
+        help_text="'Search Engine Friendly' title. This will appear at the top of the browser window.",
+    )
 
     panels = [
         FieldPanel("name"),
         FieldPanel("slug"),
+        FieldPanel("title"),
         FieldPanel("meta_description"),
         FieldPanel("keywords"),
         FieldPanel("order"),
@@ -76,8 +89,8 @@ class BlogCategory(models.Model):
             category = BlogCategory.objects.get(pk=self.pk)
             blog_category_page = BlogCategoryPage.objects.get(title=category.name)
             super().save(force_insert, force_update, using, update_fields)
-            blog_category_page.title = self.name
-            blog_category_page.seo_title = self.name
+            blog_category_page.title = self.title
+            blog_category_page.seo_title = self.title
             blog_category_page.slug = self.slug
             blog_category_page.meta_description = self.meta_description
             blog_category_page.keywords = self.keywords
@@ -86,8 +99,8 @@ class BlogCategory(models.Model):
             super().save(force_insert, force_update, using, update_fields)
             parent_page = Page.objects.get(title="MAIN PAGE").specific
             blog_category_page = BlogCategoryPage(
-                title=self.name,
-                seo_title=self.name,
+                title=self.title,
+                seo_title=self.title,
                 slug=self.slug,
                 meta_description=self.meta_description,
                 keywords=self.keywords,
