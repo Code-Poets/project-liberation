@@ -7,8 +7,23 @@ server_tokens off;
 # Include shared security headers
 include /etc/nginx/snippets/shared-security-headers.conf;
 
+# Restricting access based on country
+geoip_country /usr/share/GeoIP/GeoIP.dat;
+map $geoip_country_code $country_access {
+    "IN"    1;
+    default 0;
+}
+
 server {
     server_name codepoets.it www.codepoets.it;
+
+    if ($country_access = '1') {
+        return 403;
+    }
+    if ($host = www.codepoets.it) {
+        return 301 https://codepoets.it$request_uri;
+    }
+
 
     error_page 500 501 502 503 504 505 506 507 508 510 511 /500.html;
     error_page 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 421 422 423 424 425 426 428 429 431 451 /404.html;
@@ -101,6 +116,9 @@ server {
 }
 
 server {
+    if ($country_access = '1') {
+        return 403;
+    }
     if ($host = codepoets.it) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
