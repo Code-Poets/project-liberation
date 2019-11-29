@@ -45,6 +45,12 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
         context["category_articles"] = BlogArticlePage.objects.filter(categories__slug=self.slug).order_by("-path")
         return context
 
+    def get_proper_url(self) -> str:
+        return self.slug
+
+    def get_absolute_url(self) -> str:
+        return f"/blog/{self.get_proper_url()}/"
+
 
 @register_snippet
 class BlogCategory(models.Model):
@@ -129,6 +135,12 @@ class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
     def get_popular_articles() -> PageQuerySet:
         return BlogArticlePage.objects.all().order_by("-views")[:3]
 
+    def get_proper_url(self) -> str:
+        return self.slug
+
+    def get_absolute_url(self) -> str:  # pylint: disable=no-self-use
+        return "/blog/"
+
 
 class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
     template = "blog_post.haml"
@@ -180,6 +192,9 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
 
     def get_proper_url(self) -> str:
         return self.slug
+
+    def get_absolute_url(self) -> str:
+        return f"/blog/{self.get_proper_url()}/"
 
     def get_context(self, request: WSGIRequest, *args: Any, **kwargs: Any) -> dict:
         context = super().get_context(request, *args, **kwargs)
