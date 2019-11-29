@@ -20,8 +20,12 @@ sitemaps = {
 urlpatterns = [
     # sitemaps
     url("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django.contrib.sitemaps.views.sitemap"),
+    # robots.txt
+    url(r"^robots.txt", include("robots.urls")),
+    # company website urls
     url(r"^admin/", admin.site.urls),
     url(r"^", include("company_website.urls")),
+    # blog urls
     url(r"^blog/", include("blog.urls")),
     url(r"^blog-cms/", include("blog.urls_admin")),
     # redirects for older blog posts
