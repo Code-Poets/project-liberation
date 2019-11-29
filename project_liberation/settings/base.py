@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'raven.contrib.django.raven_compat',
     'wagtailmarkdown',
     'google_analytics',
+    'robots',
     # project-liberation
     'blog.apps.BlogConfig',
     'company_website.apps.CompanyWebsiteConfig',
