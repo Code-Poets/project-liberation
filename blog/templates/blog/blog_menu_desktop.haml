@@ -1,16 +1,15 @@
 {% load static %}
 {% load pipeline %}
 {% stylesheet 'blog' %}
-{% load blog_tag %}
 
 
 .blog_menu_desktop
     .row
         .category
-            %a.link.border-div{:href => "{% blog_url '' %}"} All Articles
+            %a.link.border-div{:href => "{% url 'wagtail_serve' '' %}"} All Articles
         {% for category in page.get_menu_categories %}
             .category
-                %a.link.border-div{:href => "{% blog_url category.slug %}"} {{ category }}
+                %a.link.border-div{:href => "{% url 'wagtail_serve' category.slug %}"} {{ category }}
         {% endfor %}
         .search-bar
             {% include 'blog/partials/search_form.haml' %}

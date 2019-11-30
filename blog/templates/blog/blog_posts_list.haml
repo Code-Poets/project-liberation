@@ -1,6 +1,5 @@
 {% load wagtailcore_tags %}
 {% load thumbnail %}
-{% load blog_tag %}
 {% load wagtailimages_tags %}
 {% load pipeline %}
 {% stylesheet 'blog_posts_list' %}
@@ -22,12 +21,12 @@
                     .article-wrapper
                         .popular-article-border
                         .popular-article
-                            %a.title{:href => "{% blog_url article.specific.get_proper_url %}"} {{ article.specific.title }}
+                            %a.title{:href => "{% url 'wagtail_serve' article.specific.slug %}"} {{ article.specific.title }}
                             .author by
                                 %strong {{ article.specific.author.name }}
                             .rest-information.row
                                 {% for category in article.get_article_categories %}
-                                    %a.category{:href => "{% blog_url category.name %}"} {{ category }}
+                                    %a.category{:href => "{% url 'wagtail_serve' category.slug %}"} {{ category }}
                                 {% endfor %}
                                 .time-and-date.row
                                     .article-read-time {{ article.specific.read_time }} min read
