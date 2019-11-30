@@ -27,7 +27,6 @@ urlpatterns = [
     url(r"^", include("company_website.urls")),
     # blog urls
     url(r"^blog/", include("blog.urls")),
-    url(r"^blog-cms/", include("blog.urls_admin")),
     # redirects for older blog posts
     url(
         r"^the-pycon-pl-2019-impressions/",
