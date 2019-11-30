@@ -116,7 +116,7 @@ class BlogCategory(models.Model):
             blog_category_page.save()
 
     def delete(self, using: Any = None, keep_parents: Any = False) -> None:
-        Page.objects.get(title=self.name).delete()
+        Page.objects.get(slug=self.slug).delete()
         super().delete(using, keep_parents)
 
 
