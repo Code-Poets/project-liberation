@@ -50,7 +50,7 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
         return self.slug
 
     def get_absolute_url(self) -> str:
-        return f"/blog/{self.get_proper_url()}/"
+        return self.url_path
 
 
 @register_snippet
@@ -139,8 +139,8 @@ class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
     def get_proper_url(self) -> str:
         return self.slug
 
-    def get_absolute_url(self) -> str:  # pylint: disable=no-self-use
-        return "/blog/"
+    def get_absolute_url(self) -> str:
+        return self.url_path
 
 
 class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
@@ -195,7 +195,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
         return self.slug
 
     def get_absolute_url(self) -> str:
-        return f"/blog/{self.get_proper_url()}/"
+        return self.url_path
 
     def get_context(self, request: WSGIRequest, *args: Any, **kwargs: Any) -> dict:
         context = super().get_context(request, *args, **kwargs)
