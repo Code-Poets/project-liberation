@@ -11,6 +11,7 @@ from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
+from wagtail.core.models import Site
 from wagtail.core.query import PageQuerySet
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -103,7 +104,7 @@ class BlogCategory(models.Model):
             blog_category_page.save()
         else:
             super().save(force_insert, force_update, using, update_fields)
-            parent_page = Page.objects.get(title="MAIN PAGE").specific
+            parent_page = Site.objects.get(is_default_site=True).root_page
             blog_category_page = BlogCategoryPage(
                 title=self.title,
                 seo_title=self.title,
