@@ -199,15 +199,14 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
 
     def get_context(self, request: WSGIRequest, *args: Any, **kwargs: Any) -> dict:
         context = super().get_context(request, *args, **kwargs)
-        self._increase_view_counter(context["page"])
+        self._increase_view_counter()
         return context
 
-    @staticmethod
-    def _increase_view_counter(page: "BlogArticlePage") -> None:
+    def _increase_view_counter(self) -> None:
         # increase page view counter
-        page.views += 1
-        page.full_clean()
-        page.save()
+        self.views += 1
+        self.full_clean()
+        self.save()
 
     def save(self, *args: Any, **kwargs: Any) -> None:
         if self.is_main_article:
