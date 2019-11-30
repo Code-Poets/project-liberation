@@ -1,4 +1,3 @@
-{% load blog_tag %}
 {% load thumbnail %}
 {% load pipeline %}
 {% stylesheet 'blog_posts_list' %}
@@ -9,7 +8,7 @@
     {% for blog_article in article_list  %}
         .col-md-6.article-text-container{:class => "{% if forloop.counter|divisibleby:'2' %}grey-background{% endif %}"}
             .row.title
-                %a.main-article-url{:href => "{% blog_url blog_article.specific.get_proper_url %}"}
+                %a.main-article-url{:href => "{% url 'wagtail_serve' blog_article.specific.slug %}"}
                     .main-article-title {{ blog_article.specific.title }}
 
             .row.info-section
@@ -23,7 +22,7 @@
                                 {{ blog_article.specific.author.name }}
                             .category
                                 {% for category in blog_article.get_article_categories %}
-                                    %a.category-anchor{:href => "{% blog_url category.name %}"} {{ category }}
+                                    %a.category-anchor{:href => "{% url 'wagtail_serve' category.slug %}"} {{ category }}
                                 {% endfor %}
                     .read-time
                         {{ blog_article.specific.read_time }} min read
@@ -31,14 +30,14 @@
                         {{ blog_article.specific.date }}
 
             .row.article-img-container
-                %a.image-url{:href => "{% blog_url blog_article.specific.get_proper_url %}"}
+                %a.image-url{:href => "{% url 'wagtail_serve' blog_article.specific.slug %}"}
                     {% image blog_article.specific.cover_photo fill-1200x628 %}
 
             .row.intro-row
                 .intro-container
                     {{ blog_article.specific.intro }} [...]
                 .read-more
-                    %a.read-more-url{:href => "{% blog_url blog_article.specific.get_proper_url %}"}
+                    %a.read-more-url{:href => "{% url 'wagtail_serve' blog_article.specific.slug %}"}
                         %span.more Read more
 
         {% if forloop.counter|divisibleby:"2" %}
