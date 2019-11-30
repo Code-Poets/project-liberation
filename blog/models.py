@@ -11,6 +11,7 @@ from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
+from wagtail.core.models import Site
 from wagtail.core.query import PageQuerySet
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -49,7 +50,7 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
         return self.slug
 
     def get_absolute_url(self) -> str:
-        return f"/blog/{self.get_proper_url()}/"
+        return self.url_path
 
 
 @register_snippet
@@ -103,7 +104,7 @@ class BlogCategory(models.Model):
             blog_category_page.save()
         else:
             super().save(force_insert, force_update, using, update_fields)
-            parent_page = Page.objects.get(title="MAIN PAGE").specific
+            parent_page = Site.objects.get(is_default_site=True).root_page
             blog_category_page = BlogCategoryPage(
                 title=self.title,
                 seo_title=self.title,
@@ -115,7 +116,7 @@ class BlogCategory(models.Model):
             blog_category_page.save()
 
     def delete(self, using: Any = None, keep_parents: Any = False) -> None:
-        Page.objects.get(title=self.name).delete()
+        Page.objects.get(slug=self.slug).delete()
         super().delete(using, keep_parents)
 
 
@@ -138,8 +139,8 @@ class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
     def get_proper_url(self) -> str:
         return self.slug
 
-    def get_absolute_url(self) -> str:  # pylint: disable=no-self-use
-        return "/blog/"
+    def get_absolute_url(self) -> str:
+        return self.url_path
 
 
 class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
@@ -194,19 +195,18 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
         return self.slug
 
     def get_absolute_url(self) -> str:
-        return f"/blog/{self.get_proper_url()}/"
+        return self.url_path
 
     def get_context(self, request: WSGIRequest, *args: Any, **kwargs: Any) -> dict:
         context = super().get_context(request, *args, **kwargs)
-        self._increase_view_counter(context["page"])
+        self._increase_view_counter()
         return context
 
-    @staticmethod
-    def _increase_view_counter(page: "BlogArticlePage") -> None:
+    def _increase_view_counter(self) -> None:
         # increase page view counter
-        page.views += 1
-        page.full_clean()
-        page.save()
+        self.views += 1
+        self.full_clean()
+        self.save()
 
     def save(self, *args: Any, **kwargs: Any) -> None:
         if self.is_main_article:
