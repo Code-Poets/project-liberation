@@ -1,3 +1,17 @@
+### v1.8.0
+
+##### Features
+
+- Feature add sitemap for whole project ([#157](https://github.com/Code-Poets/project-liberation/pull/157))
+- Feature add django robots ([#158](https://github.com/Code-Poets/project-liberation/pull/158))
+
+##### Bugfixes
+
+- Bugfix blog models errors ([#161](https://github.com/Code-Poets/project-liberation/pull/161))
+- Bugfix get rid of blog urls workarounds ([#159](https://github.com/Code-Poets/project-liberation/pull/159))
+- Bugfix feather blocking textarea in estimate project ([#156](https://github.com/Code-Poets/project-liberation/pull/156))
+
+
 ### v1.7.1
 
 ##### Bugfixes
