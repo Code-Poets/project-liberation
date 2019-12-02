@@ -58,6 +58,11 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
         blog_category = BlogCategory(**self.instance_parameters, order=order if order == 0 else order + 1)
         blog_category.save()
 
+    def delete(self, *args: Any, **kwargs: Any) -> None:
+        super().delete(*args, **kwargs)
+        if BlogCategory.objects.filter(**self.instance_parameters):
+            BlogCategory.objects.get(**self.instance_parameters).delete()
+
     @property
     def instance_parameters(self) -> dict:
         # Parameters for BlogCategoryPage and BlogCategorySnippet
@@ -129,8 +134,10 @@ class BlogCategory(models.Model):
             super().save(force_insert, force_update, using, update_fields)
 
     def delete(self, using: Any = None, keep_parents: Any = False) -> None:
-        Page.objects.get(slug=self.slug).delete()
         super().delete(using, keep_parents)
+        if BlogCategoryPage.objects.filter(**self.instance_parameters):
+            BlogCategoryPage.objects.get(**self.instance_parameters).delete()
+
     @property
     def instance_parameters(self) -> dict:
         # Parameters for BlogCategoryPage and BlogCategorySnippet
