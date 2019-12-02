@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 # This is setup to disable warning "Pipenv found itself running within a virtual environment, so it will automatically use that environment, instead of creating its own for any project"
 export PIPENV_VERBOSITY=-1
