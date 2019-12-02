@@ -1,7 +1,8 @@
 from django.test import TestCase
+from parameterized import parameterized
 
-from blog.models import BlogCategoryPage
 from blog.models import BlogCategory
+from blog.models import BlogCategoryPage
 from blog.tests.test_helpers import BlogTestHelpers
 
 
@@ -55,11 +56,51 @@ class TestBlogCategoryPage(TestCase, BlogTestHelpers):
         self.assertEqual(len(BlogCategoryPage.objects.all()), 0)
         self.assertEqual(len(BlogCategory.objects.all()), 0)
 
-    def test_that_change_any_blog_category_snippet_parameter_should_change_blog_category_page_parameter(self):
-        pass
+    @parameterized.expand(
+        [
+            ("title", "New Title"),
+            ("seo_title", "New Seo Title"),
+            # ("slug", "new-slug-name"),  # FIXME Now Categories are queried by slug
+            ("meta_description", "New Meta Description"),
+            ("keywords", "New keywords, Not Old"),
+        ]
+    )
+    def test_that_change_any_blog_category_snippet_parameter_should_change_blog_category_page_parameter(
+        self, parameter_name, parameter_value
+    ):
+        blog_category_snippet = self._create_blog_category_snippet(**self.blog_category_parameters)
+        blog_category_page = BlogCategoryPage.objects.get(**self.blog_category_parameters)
+        setattr(blog_category_snippet, parameter_name, parameter_value)
+        blog_category_snippet.save()
 
-    def test_that_change_any_blog_category_page_parameter_should_change_blog_category_snippet_parameter(self):
-        pass
+        # Get BlogCategoryPage with the same PK
+        changed_blog_category_page = BlogCategoryPage.objects.get(pk=blog_category_page.pk)
+        self.assertEqual(getattr(blog_category_snippet, parameter_name), parameter_value)
+        self.assertEqual(
+            getattr(blog_category_snippet, parameter_name), getattr(changed_blog_category_page, parameter_name)
+        )
+
+    @parameterized.expand(
+        [
+            ("title", "New Title"),
+            ("seo_title", "New Seo Title"),
+            # ("slug", "new-slug-name"),  # FIXME Now Categories are queried by slug
+            ("meta_description", "New Meta Description"),
+            ("keywords", "New keywords, Not Old"),
+        ]
+    )
+    def test_that_change_any_blog_category_page_parameter_should_change_blog_category_snippet_parameter(
+        self, parameter_name, parameter_value
+    ):
+        blog_category_page = self._create_blog_category_page(self.blog_index_page, **self.blog_category_parameters)
+        changed_blog_category = BlogCategory.objects.get(**self.blog_category_parameters)
+        setattr(blog_category_page, parameter_name, parameter_value)
+        blog_category_page.save()
+
+        # Get BlogCategory with the same PK
+        changed_blog_category = BlogCategory.objects.get(pk=changed_blog_category.pk)
+        self.assertEqual(getattr(blog_category_page, parameter_name), parameter_value)
+        self.assertEqual(getattr(blog_category_page, parameter_name), getattr(changed_blog_category, parameter_name))
 
     def test_that_blog_category_page_can_be_only_index_blog_page_child(self):
         pass

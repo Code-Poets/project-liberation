@@ -53,10 +53,19 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
         return self.url_path
 
     def save(self) -> None:
-        super().save()
-        order = getattr(BlogCategory.objects.all().order_by("order").last(), "order", 0)
-        blog_category = BlogCategory(**self.instance_parameters, order=order if order == 0 else order + 1)
-        blog_category.save()
+        if self.pk is not None:
+            blog_category_page = BlogCategoryPage.objects.get(pk=self.pk)
+            blog_category = BlogCategory.objects.get(slug=blog_category_page.slug)
+            if not blog_category.instance_parameters == self.instance_parameters:
+                for (parameter_name, parameter_value) in self.instance_parameters.items():
+                    setattr(blog_category, parameter_name, parameter_value)
+                super().save()
+            blog_category.save()
+        else:
+            order = getattr(BlogCategory.objects.all().order_by("order").last(), "order", 0)
+            blog_category = BlogCategory(**self.instance_parameters, order=order if order == 0 else order + 1)
+            super().save()
+            blog_category.save()
 
     def delete(self, *args: Any, **kwargs: Any) -> None:
         super().delete(*args, **kwargs)
@@ -118,8 +127,10 @@ class BlogCategory(models.Model):
         if self.pk is not None:
             category = BlogCategory.objects.get(pk=self.pk)
             blog_category_page = BlogCategoryPage.objects.get(slug=category.slug)
-            blog_category_page.update(**self.instance_parameters)
-            blog_category_page.save()
+            if not blog_category_page.instance_parameters == self.instance_parameters:
+                for (parameter_name, parameter_value) in self.instance_parameters.items():
+                    setattr(blog_category_page, parameter_name, parameter_value)
+                blog_category_page.save()
             super().save(force_insert, force_update, using, update_fields)
         else:
             # If BlogCategoryPage already exists skip this statement
