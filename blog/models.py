@@ -55,8 +55,14 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
 
 @register_snippet
 class BlogCategory(models.Model):
-    name = models.CharField(
-        max_length=255, help_text="Name of category. This name will be shown as a category on blog main page."
+    title = models.CharField(
+        max_length=255, help_text="Category title. This name will be shown as a category on blog main page."
+    )
+    seo_title = models.CharField(
+        verbose_name="page seo title",
+        max_length=255,
+        default="",
+        help_text="'Search Engine Friendly' title. This will appear at the top of the browser window.",
     )
     slug = models.SlugField(
         unique=True,
@@ -66,24 +72,18 @@ class BlogCategory(models.Model):
     order = models.PositiveSmallIntegerField(help_text="Order of categories shown on blog main page menu.")
     meta_description = models.CharField(max_length=168, default="", help_text="Meta description of category page.")
     keywords = models.CharField(max_length=512, default="", help_text="Keywords of category page.")
-    title = models.CharField(
-        verbose_name="page title",
-        max_length=255,
-        default="",
-        help_text="'Search Engine Friendly' title. This will appear at the top of the browser window.",
-    )
 
     panels = [
-        FieldPanel("name"),
-        FieldPanel("slug"),
         FieldPanel("title"),
+        FieldPanel("seo_title"),
+        FieldPanel("slug"),
         FieldPanel("meta_description"),
         FieldPanel("keywords"),
         FieldPanel("order"),
     ]
 
     def __str__(self) -> str:
-        return self.name
+        return self.title
 
     class Meta:
         verbose_name = "Category"
@@ -92,32 +92,38 @@ class BlogCategory(models.Model):
     def save(
         self, force_insert: Any = False, force_update: Any = False, using: Any = None, update_fields: Any = None
     ) -> None:
+        # Updating BlogCategoryPage
         if self.pk is not None:
             category = BlogCategory.objects.get(pk=self.pk)
             blog_category_page = BlogCategoryPage.objects.get(slug=category.slug)
-            super().save(force_insert, force_update, using, update_fields)
-            blog_category_page.title = self.title
-            blog_category_page.seo_title = self.title
-            blog_category_page.slug = self.slug
-            blog_category_page.meta_description = self.meta_description
-            blog_category_page.keywords = self.keywords
+            blog_category_page.update(**self.instance_parameters)
             blog_category_page.save()
+            super().save(force_insert, force_update, using, update_fields)
         else:
+            # If BlogCategoryPage already exists skip this statement
+            if not BlogCategoryPage.objects.filter(**self.instance_parameters).exists():
+                super().save(force_insert, force_update, using, update_fields)
+                parent_page = Site.objects.get(is_default_site=True).root_page
+                blog_category_page = BlogCategoryPage(**self.instance_parameters)
+                parent_page.add_child(instance=blog_category_page)
+                blog_category_page.save()
+        # Save BlogCategory object
+        if not BlogCategory.objects.filter(**self.instance_parameters).exists():
             super().save(force_insert, force_update, using, update_fields)
-            parent_page = Site.objects.get(is_default_site=True).root_page
-            blog_category_page = BlogCategoryPage(
-                title=self.title,
-                seo_title=self.title,
-                slug=self.slug,
-                meta_description=self.meta_description,
-                keywords=self.keywords,
-            )
-            parent_page.add_child(instance=blog_category_page)
-            blog_category_page.save()
 
     def delete(self, using: Any = None, keep_parents: Any = False) -> None:
         Page.objects.get(slug=self.slug).delete()
         super().delete(using, keep_parents)
+    @property
+    def instance_parameters(self) -> dict:
+        # Parameters for BlogCategoryPage and BlogCategorySnippet
+        return {
+            "title": self.title,
+            "seo_title": self.seo_title,
+            "slug": self.slug,
+            "meta_description": self.meta_description,
+            "keywords": self.keywords,
+        }
 
 
 class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
