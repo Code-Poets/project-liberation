@@ -52,6 +52,23 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
     def get_absolute_url(self) -> str:
         return self.url_path
 
+    def save(self) -> None:
+        super().save()
+        order = getattr(BlogCategory.objects.all().order_by("order").last(), "order", 0)
+        blog_category = BlogCategory(**self.instance_parameters, order=order if order == 0 else order + 1)
+        blog_category.save()
+
+    @property
+    def instance_parameters(self) -> dict:
+        # Parameters for BlogCategoryPage and BlogCategorySnippet
+        return {
+            "title": self.title,
+            "seo_title": self.seo_title,
+            "slug": self.slug,
+            "meta_description": self.meta_description,
+            "keywords": self.keywords,
+        }
+
 
 @register_snippet
 class BlogCategory(models.Model):
