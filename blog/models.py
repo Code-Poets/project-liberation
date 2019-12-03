@@ -27,8 +27,8 @@ class MixinSeoFields(models.Model):
     class Meta:
         abstract = True
 
-    meta_description = models.CharField(max_length=168, default="")
-    keywords = models.CharField(max_length=512, default="")
+    meta_description = models.CharField(max_length=168, blank=True)
+    keywords = models.CharField(max_length=512, blank=True)
 
     promote_panels = Page.promote_panels + [FieldPanel("meta_description"), FieldPanel("keywords")]
 
@@ -94,12 +94,14 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
 @register_snippet
 class BlogCategorySnippet(models.Model):
     title = models.CharField(
-        max_length=255, help_text="Category title. This name will be shown as a category on blog main page."
+        max_length=255,
+        help_text="Category title. This name will be shown as a category on blog main page.",
+        unique=True,
     )
     seo_title = models.CharField(
         verbose_name="page seo title",
         max_length=255,
-        default="",
+        blank=True,
         help_text="'Search Engine Friendly' title. This will appear at the top of the browser window.",
     )
     slug = models.SlugField(
@@ -108,8 +110,8 @@ class BlogCategorySnippet(models.Model):
         help_text="Category page url address. Under this url category page will be searched.",
     )
     order = models.PositiveSmallIntegerField(help_text="Order of categories shown on blog main page menu.")
-    meta_description = models.CharField(max_length=168, default="", help_text="Meta description of category page.")
-    keywords = models.CharField(max_length=512, default="", help_text="Keywords of category page.")
+    meta_description = models.CharField(max_length=168, blank=True, help_text="Meta description of category page.")
+    keywords = models.CharField(max_length=512, blank=True, help_text="Keywords of category page.")
 
     panels = [
         FieldPanel("title"),
@@ -138,10 +140,12 @@ class BlogCategorySnippet(models.Model):
                 for (parameter_name, parameter_value) in self.instance_parameters.items():
                     setattr(blog_category_page, parameter_name, parameter_value)
                 blog_category_page.save()
+            self._validate_mandatory_fields()
             super().save(force_insert, force_update, using, update_fields)
         else:
             # If BlogCategoryPage already exists skip this statement
             if not BlogCategoryPage.objects.filter(**self.instance_parameters).exists():
+                self._validate_mandatory_fields()
                 super().save(force_insert, force_update, using, update_fields)
                 parent_page = Site.objects.get(is_default_site=True).root_page
                 blog_category_page = BlogCategoryPage(**self.instance_parameters)
@@ -149,7 +153,14 @@ class BlogCategorySnippet(models.Model):
                 blog_category_page.save()
         # Save BlogCategory object
         if not BlogCategorySnippet.objects.filter(**self.instance_parameters).exists():
+            self._validate_mandatory_fields()
             super().save(force_insert, force_update, using, update_fields)
+
+    def _validate_mandatory_fields(self):
+        mandatory_fields = ["title", "slug"]
+        for field in mandatory_fields:
+            if not getattr(self, field):
+                raise ValidationError(message=f"{field} should not be None")
 
     def delete(self, using: Any = None, keep_parents: Any = False) -> None:
         super().delete(using, keep_parents)

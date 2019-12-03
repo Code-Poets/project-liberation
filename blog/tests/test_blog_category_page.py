@@ -118,5 +118,23 @@ class TestBlogCategoryPage(TestCase, BlogTestHelpers):
         with self.assertRaises(ValidationError):
             blog_category_page.add_child(instance=new_blog_category_page)
 
-    def test_that_new_category_page_should_has_all_mandatory_parameters(self):
-        pass
+    @parameterized.expand([("title"), ("slug")])
+    def test_that_new_category_models_should_has_all_mandatory_parameters(self, parameter_name):
+        self.blog_category_parameters[parameter_name] = None
+        with self.assertRaises(ValidationError):
+            self._create_blog_category_snippet(**self.blog_category_parameters)
+
+        with self.assertRaises(ValidationError):
+            self._create_blog_category_page(self.blog_index_page, **self.blog_category_parameters)
+
+    @parameterized.expand([("seo_title"), ("meta_description"), ("keywords")])
+    def test_that_unnecesarry_category_snippet_parameters_should_not_raise_exception(self, parameter_name):
+        self.blog_category_parameters[parameter_name] = ""
+        category_snippet = self._create_blog_category_snippet(**self.blog_category_parameters)
+        self.assertIsInstance(category_snippet, BlogCategorySnippet)
+
+    @parameterized.expand([("seo_title"), ("meta_description"), ("keywords")])
+    def test_that_unnecesarry_category_page_parameters_should_not_raise_exception(self, parameter_name):
+        self.blog_category_parameters[parameter_name] = ""
+        category_page = self._create_blog_category_page(self.blog_index_page, **self.blog_category_parameters)
+        self.assertIsInstance(category_page, BlogCategoryPage)
