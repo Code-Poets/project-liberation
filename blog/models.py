@@ -149,9 +149,10 @@ class BlogCategorySnippet(models.Model):
                 self._validate_mandatory_fields()
                 self.order = self._get_lowest_possible_order_number()
                 super().save(force_insert, force_update, using, update_fields)
-                parent_page = Site.objects.get(is_default_site=True).root_page
+                parent_page = BlogIndexPage.objects.get(id=Site.objects.get(is_default_site=True).root_page_id)
                 blog_category_page = BlogCategoryPage(**self.instance_parameters)
                 parent_page.add_child(instance=blog_category_page)
+                parent_page.save()
                 blog_category_page.save()
         # Save BlogCategory object
         if not BlogCategorySnippet.objects.filter(**self.instance_parameters).exists():
@@ -297,4 +298,9 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
                 article.save()
             except BlogArticlePage.DoesNotExist:
                 pass
+        self._validate_parent_page()
         super().save(*args, **kwargs)
+
+    def _validate_parent_page(self) -> None:
+        if not isinstance(self.get_parent().specific, BlogIndexPage):
+            raise ValidationError(message=f"{self.title} must be child of BlogIndexPage")
