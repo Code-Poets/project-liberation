@@ -16,6 +16,7 @@ pytest-django = "*"
 assertpy = "*"
 factory-boy = "*"
 ipdb = "*"
+parameterized = "*"
 
 [packages]
 Django = "*"

@@ -2,6 +2,8 @@ from django.urls import reverse
 from wagtail.core.models import Page
 from wagtail.core.models import Site
 
+from blog.models import BlogCategoryPage
+from blog.models import BlogCategorySnippet
 from blog.models import BlogIndexPage
 
 
@@ -33,3 +35,39 @@ class BlogTestHelpers:
         blog_index_page = self._add_blog_index_page_as_root_child_page()
         site = self._add_blog_index_page_as_site_root_page(blog_index_page)
         return (blog_index_page, site)
+
+    @staticmethod
+    def _create_blog_category_snippet(
+        title="Test Category",
+        seo_title="Page SEO title",
+        slug="test-category",
+        meta_description="This is test category page",
+        keywords="Category, Page, Blog",
+        order=None,
+    ):
+        blog_category_snippet = BlogCategorySnippet(
+            title=title,
+            seo_title=seo_title,
+            slug=slug,
+            order=order,
+            meta_description=meta_description,
+            keywords=keywords,
+        )
+        blog_category_snippet.save()
+        return blog_category_snippet
+
+    @staticmethod
+    def _create_blog_category_page(
+        blog_index_page,
+        title="Test Category",
+        seo_title="Page SEO title",
+        slug="test-category",
+        meta_description="This is test category page",
+        keywords="Category, Page, Blog",
+    ):
+        blog_category_page = BlogCategoryPage(
+            title=title, seo_title=seo_title, slug=slug, meta_description=meta_description, keywords=keywords
+        )
+        blog_index_page.add_child(instance=blog_category_page)
+        blog_category_page.save()
+        return blog_category_page

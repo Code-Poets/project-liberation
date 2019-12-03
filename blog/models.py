@@ -1,6 +1,7 @@
 from typing import Any
 
 from django import forms
+from django.core.exceptions import ValidationError
 from django.core.handlers.wsgi import WSGIRequest
 from django.db import models
 from django.db.models import QuerySet
@@ -26,8 +27,8 @@ class MixinSeoFields(models.Model):
     class Meta:
         abstract = True
 
-    meta_description = models.CharField(max_length=168, default="")
-    keywords = models.CharField(max_length=512, default="")
+    meta_description = models.CharField(max_length=168, blank=True)
+    keywords = models.CharField(max_length=512, blank=True)
 
     promote_panels = Page.promote_panels + [FieldPanel("meta_description"), FieldPanel("keywords")]
 
@@ -35,7 +36,7 @@ class MixinSeoFields(models.Model):
 class MixinPageMethods:
     @staticmethod
     def get_menu_categories() -> PageQuerySet:
-        return BlogCategory.objects.all().order_by("order")
+        return BlogCategorySnippet.objects.all().order_by("order")
 
 
 class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
@@ -52,11 +53,56 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
     def get_absolute_url(self) -> str:
         return self.url_path
 
+    def save(self) -> None:
+        if self.pk is not None:
+            blog_category_page = BlogCategoryPage.objects.get(pk=self.pk)
+            blog_category = BlogCategorySnippet.objects.get(slug=blog_category_page.slug)
+            if not blog_category.instance_parameters == self.instance_parameters:
+                for (parameter_name, parameter_value) in self.instance_parameters.items():
+                    setattr(blog_category, parameter_name, parameter_value)
+            self._validate_parent_page()
+            super().save()
+            blog_category.save()
+        else:
+            order = getattr(BlogCategorySnippet.objects.all().order_by("order").last(), "order", 0)
+            blog_category = BlogCategorySnippet(**self.instance_parameters, order=order)
+            self._validate_parent_page()
+            super().save()
+            blog_category.save()
+
+    def _validate_parent_page(self) -> None:
+        if not isinstance(self.get_parent().specific, BlogIndexPage):
+            raise ValidationError(message=f"{self.title} must be child of BlogIndexPage")
+
+    def delete(self, *args: Any, **kwargs: Any) -> None:
+        super().delete(*args, **kwargs)
+        if BlogCategorySnippet.objects.filter(**self.instance_parameters):
+            BlogCategorySnippet.objects.get(**self.instance_parameters).delete()
+
+    @property
+    def instance_parameters(self) -> dict:
+        # Parameters for BlogCategoryPage and BlogCategorySnippet
+        return {
+            "title": self.title,
+            "seo_title": self.seo_title,
+            "slug": self.slug,
+            "meta_description": self.meta_description,
+            "keywords": self.keywords,
+        }
+
 
 @register_snippet
-class BlogCategory(models.Model):
-    name = models.CharField(
-        max_length=255, help_text="Name of category. This name will be shown as a category on blog main page."
+class BlogCategorySnippet(models.Model):
+    title = models.CharField(
+        max_length=255,
+        help_text="Category title. This name will be shown as a category on blog main page.",
+        unique=True,
+    )
+    seo_title = models.CharField(
+        verbose_name="page seo title",
+        max_length=255,
+        blank=True,
+        help_text="'Search Engine Friendly' title. This will appear at the top of the browser window.",
     )
     slug = models.SlugField(
         unique=True,
@@ -64,26 +110,20 @@ class BlogCategory(models.Model):
         help_text="Category page url address. Under this url category page will be searched.",
     )
     order = models.PositiveSmallIntegerField(help_text="Order of categories shown on blog main page menu.")
-    meta_description = models.CharField(max_length=168, default="", help_text="Meta description of category page.")
-    keywords = models.CharField(max_length=512, default="", help_text="Keywords of category page.")
-    title = models.CharField(
-        verbose_name="page title",
-        max_length=255,
-        default="",
-        help_text="'Search Engine Friendly' title. This will appear at the top of the browser window.",
-    )
+    meta_description = models.CharField(max_length=168, blank=True, help_text="Meta description of category page.")
+    keywords = models.CharField(max_length=512, blank=True, help_text="Keywords of category page.")
 
     panels = [
-        FieldPanel("name"),
-        FieldPanel("slug"),
         FieldPanel("title"),
+        FieldPanel("seo_title"),
+        FieldPanel("slug"),
         FieldPanel("meta_description"),
         FieldPanel("keywords"),
         FieldPanel("order"),
     ]
 
     def __str__(self) -> str:
-        return self.name
+        return self.title
 
     class Meta:
         verbose_name = "Category"
@@ -92,32 +132,73 @@ class BlogCategory(models.Model):
     def save(
         self, force_insert: Any = False, force_update: Any = False, using: Any = None, update_fields: Any = None
     ) -> None:
+        # Updating BlogCategoryPage
         if self.pk is not None:
-            category = BlogCategory.objects.get(pk=self.pk)
+            category = BlogCategorySnippet.objects.get(pk=self.pk)
             blog_category_page = BlogCategoryPage.objects.get(slug=category.slug)
+            if not blog_category_page.instance_parameters == self.instance_parameters:
+                for (parameter_name, parameter_value) in self.instance_parameters.items():
+                    setattr(blog_category_page, parameter_name, parameter_value)
+                blog_category_page.save()
+            self._validate_mandatory_fields()
+            self.order = self._get_lowest_possible_order_number()
             super().save(force_insert, force_update, using, update_fields)
-            blog_category_page.title = self.title
-            blog_category_page.seo_title = self.title
-            blog_category_page.slug = self.slug
-            blog_category_page.meta_description = self.meta_description
-            blog_category_page.keywords = self.keywords
-            blog_category_page.save()
         else:
+            # If BlogCategoryPage already exists skip this statement
+            if not BlogCategoryPage.objects.filter(**self.instance_parameters).exists():
+                self._validate_mandatory_fields()
+                self.order = self._get_lowest_possible_order_number()
+                super().save(force_insert, force_update, using, update_fields)
+                parent_page = Site.objects.get(is_default_site=True).root_page
+                blog_category_page = BlogCategoryPage(**self.instance_parameters)
+                parent_page.add_child(instance=blog_category_page)
+                blog_category_page.save()
+        # Save BlogCategory object
+        if not BlogCategorySnippet.objects.filter(**self.instance_parameters).exists():
+            self._validate_mandatory_fields()
+            self.order = self._get_lowest_possible_order_number()
             super().save(force_insert, force_update, using, update_fields)
-            parent_page = Site.objects.get(is_default_site=True).root_page
-            blog_category_page = BlogCategoryPage(
-                title=self.title,
-                seo_title=self.title,
-                slug=self.slug,
-                meta_description=self.meta_description,
-                keywords=self.keywords,
-            )
-            parent_page.add_child(instance=blog_category_page)
-            blog_category_page.save()
+
+    def _get_lowest_possible_order_number(self) -> int:
+        order_number_exists = BlogCategorySnippet.objects.filter(order=self.order).exists()
+        if not order_number_exists and isinstance(self.order, int):
+            return self.order
+        elif order_number_exists and isinstance(self.order, int):
+            try:
+                blog_category_snippet_with_bigger_order = BlogCategorySnippet.objects.get(order=(self.order))
+                blog_category_snippet_with_bigger_order.order += 1
+                blog_category_snippet_with_bigger_order.save()
+                return self.order
+            except BlogCategorySnippet.DoesNotExist:
+                return self.order
+        else:
+            blog_category_snippets = BlogCategorySnippet.objects.all().order_by("order")
+            if len(blog_category_snippets) == 0:
+                return 0
+            else:
+                return blog_category_snippets.last().order + 1
+
+    def _validate_mandatory_fields(self) -> None:
+        mandatory_fields = ["title", "slug"]
+        for field in mandatory_fields:
+            if not getattr(self, field):
+                raise ValidationError(message=f"{field} should not be None")
 
     def delete(self, using: Any = None, keep_parents: Any = False) -> None:
-        Page.objects.get(slug=self.slug).delete()
         super().delete(using, keep_parents)
+        if BlogCategoryPage.objects.filter(**self.instance_parameters):
+            BlogCategoryPage.objects.get(**self.instance_parameters).delete()
+
+    @property
+    def instance_parameters(self) -> dict:
+        # Parameters for BlogCategoryPage and BlogCategorySnippet
+        return {
+            "title": self.title,
+            "seo_title": self.seo_title,
+            "slug": self.slug,
+            "meta_description": self.meta_description,
+            "keywords": self.keywords,
+        }
 
 
 class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
@@ -145,7 +226,7 @@ class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
 
 class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
     template = "blog_post.haml"
-    categories = ParentalManyToManyField("blog.BlogCategory", blank=True, related_name="category_posts")
+    categories = ParentalManyToManyField("blog.BlogCategorySnippet", blank=True, related_name="category_posts")
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     body = StreamField(
