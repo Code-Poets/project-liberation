@@ -138,3 +138,25 @@ class TestBlogCategoryPage(TestCase, BlogTestHelpers):
         self.blog_category_parameters[parameter_name] = ""
         category_page = self._create_blog_category_page(self.blog_index_page, **self.blog_category_parameters)
         self.assertIsInstance(category_page, BlogCategoryPage)
+
+    def test_that_order_field_should_correctly_set_if_order_parameter_is_wrong(self):
+        category_snippet_1 = self._create_blog_category_snippet(**self.blog_category_parameters)
+        blog_category_parameters_2 = {name: value + "1" for (name, value) in self.blog_category_parameters.items()}
+        category_snippet_2 = self._create_blog_category_snippet(**blog_category_parameters_2)
+        blog_category_parameters_3 = {name: value + "2" for (name, value) in self.blog_category_parameters.items()}
+        category_snippet_3 = self._create_blog_category_snippet(**blog_category_parameters_3)
+        blog_category_parameters_4 = {name: value + "3" for (name, value) in self.blog_category_parameters.items()}
+        category_snippet_4 = self._create_blog_category_snippet(**blog_category_parameters_4)
+        self.assertEqual(category_snippet_1.order, 0)
+        self.assertEqual(category_snippet_2.order, 1)
+        self.assertEqual(category_snippet_3.order, 2)
+        self.assertEqual(category_snippet_4.order, 3)
+
+        # Change order "by hand" to different one
+        category_snippet_4.order = 0
+        category_snippet_4.save()
+
+        self.assertEqual(BlogCategorySnippet.objects.get(slug=category_snippet_4.slug).order, 0)
+        self.assertEqual(BlogCategorySnippet.objects.get(slug=category_snippet_1.slug).order, 1)
+        self.assertEqual(BlogCategorySnippet.objects.get(slug=category_snippet_2.slug).order, 2)
+        self.assertEqual(BlogCategorySnippet.objects.get(slug=category_snippet_3.slug).order, 3)

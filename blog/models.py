@@ -65,12 +65,12 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
             blog_category.save()
         else:
             order = getattr(BlogCategorySnippet.objects.all().order_by("order").last(), "order", 0)
-            blog_category = BlogCategorySnippet(**self.instance_parameters, order=order if order == 0 else order + 1)
+            blog_category = BlogCategorySnippet(**self.instance_parameters, order=order)
             self._validate_parent_page()
             super().save()
             blog_category.save()
 
-    def _validate_parent_page(self):
+    def _validate_parent_page(self) -> None:
         if not isinstance(self.get_parent().specific, BlogIndexPage):
             raise ValidationError(message=f"{self.title} must be child of BlogIndexPage")
 
@@ -141,11 +141,13 @@ class BlogCategorySnippet(models.Model):
                     setattr(blog_category_page, parameter_name, parameter_value)
                 blog_category_page.save()
             self._validate_mandatory_fields()
+            self.order = self._get_lowest_possible_order_number()
             super().save(force_insert, force_update, using, update_fields)
         else:
             # If BlogCategoryPage already exists skip this statement
             if not BlogCategoryPage.objects.filter(**self.instance_parameters).exists():
                 self._validate_mandatory_fields()
+                self.order = self._get_lowest_possible_order_number()
                 super().save(force_insert, force_update, using, update_fields)
                 parent_page = Site.objects.get(is_default_site=True).root_page
                 blog_category_page = BlogCategoryPage(**self.instance_parameters)
@@ -154,9 +156,29 @@ class BlogCategorySnippet(models.Model):
         # Save BlogCategory object
         if not BlogCategorySnippet.objects.filter(**self.instance_parameters).exists():
             self._validate_mandatory_fields()
+            self.order = self._get_lowest_possible_order_number()
             super().save(force_insert, force_update, using, update_fields)
 
-    def _validate_mandatory_fields(self):
+    def _get_lowest_possible_order_number(self) -> int:
+        order_number_exists = BlogCategorySnippet.objects.filter(order=self.order).exists()
+        if not order_number_exists and isinstance(self.order, int):
+            return self.order
+        elif order_number_exists and isinstance(self.order, int):
+            try:
+                blog_category_snippet_with_bigger_order = BlogCategorySnippet.objects.get(order=(self.order))
+                blog_category_snippet_with_bigger_order.order += 1
+                blog_category_snippet_with_bigger_order.save()
+                return self.order
+            except BlogCategorySnippet.DoesNotExist:
+                return self.order
+        else:
+            blog_category_snippets = BlogCategorySnippet.objects.all().order_by("order")
+            if len(blog_category_snippets) == 0:
+                return 0
+            else:
+                return blog_category_snippets.last().order + 1
+
+    def _validate_mandatory_fields(self) -> None:
         mandatory_fields = ["title", "slug"]
         for field in mandatory_fields:
             if not getattr(self, field):

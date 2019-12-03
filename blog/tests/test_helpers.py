@@ -43,7 +43,7 @@ class BlogTestHelpers:
         slug="test-category",
         meta_description="This is test category page",
         keywords="Category, Page, Blog",
-        order=0,
+        order=None,
     ):
         blog_category_snippet = BlogCategorySnippet(
             title=title,
