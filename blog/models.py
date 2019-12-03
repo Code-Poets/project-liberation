@@ -1,6 +1,7 @@
 from typing import Any
 
 from django import forms
+from django.core.exceptions import ValidationError
 from django.core.handlers.wsgi import WSGIRequest
 from django.db import models
 from django.db.models import QuerySet
@@ -59,13 +60,19 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
             if not blog_category.instance_parameters == self.instance_parameters:
                 for (parameter_name, parameter_value) in self.instance_parameters.items():
                     setattr(blog_category, parameter_name, parameter_value)
-                super().save()
+            self._validate_parent_page()
+            super().save()
             blog_category.save()
         else:
             order = getattr(BlogCategorySnippet.objects.all().order_by("order").last(), "order", 0)
             blog_category = BlogCategorySnippet(**self.instance_parameters, order=order if order == 0 else order + 1)
+            self._validate_parent_page()
             super().save()
             blog_category.save()
+
+    def _validate_parent_page(self):
+        if not isinstance(self.get_parent().specific, BlogIndexPage):
+            raise ValidationError(message=f"{self.title} must be child of BlogIndexPage")
 
     def delete(self, *args: Any, **kwargs: Any) -> None:
         super().delete(*args, **kwargs)

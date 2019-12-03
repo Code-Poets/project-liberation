@@ -1,8 +1,9 @@
+from django.core.exceptions import ValidationError
 from django.test import TestCase
 from parameterized import parameterized
 
-from blog.models import BlogCategorySnippet
 from blog.models import BlogCategoryPage
+from blog.models import BlogCategorySnippet
 from blog.tests.test_helpers import BlogTestHelpers
 
 
@@ -103,7 +104,19 @@ class TestBlogCategoryPage(TestCase, BlogTestHelpers):
         self.assertEqual(getattr(blog_category_page, parameter_name), getattr(changed_blog_category, parameter_name))
 
     def test_that_blog_category_page_can_be_only_index_blog_page_child(self):
-        pass
+        blog_category_page = self._create_blog_category_page(self.blog_index_page, **self.blog_category_parameters)
+        new_blog_category_parameters = {
+            "title": "Another Test Category",
+            "seo_title": "Another Page SEO title",
+            "slug": "another-test-category",
+            "meta_description": "Another This is test category page",
+            "keywords": "Another Category, Page, Blog",
+        }
+
+        # Add new BlogCateoryPage as a child of BlogCategoryPage
+        new_blog_category_page = BlogCategoryPage(**new_blog_category_parameters)
+        with self.assertRaises(ValidationError):
+            blog_category_page.add_child(instance=new_blog_category_page)
 
     def test_that_new_category_page_should_has_all_mandatory_parameters(self):
         pass
