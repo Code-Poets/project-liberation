@@ -35,7 +35,7 @@ class MixinSeoFields(models.Model):
 class MixinPageMethods:
     @staticmethod
     def get_menu_categories() -> PageQuerySet:
-        return BlogCategory.objects.all().order_by("order")
+        return BlogCategorySnippet.objects.all().order_by("order")
 
 
 class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
@@ -55,22 +55,22 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
     def save(self) -> None:
         if self.pk is not None:
             blog_category_page = BlogCategoryPage.objects.get(pk=self.pk)
-            blog_category = BlogCategory.objects.get(slug=blog_category_page.slug)
+            blog_category = BlogCategorySnippet.objects.get(slug=blog_category_page.slug)
             if not blog_category.instance_parameters == self.instance_parameters:
                 for (parameter_name, parameter_value) in self.instance_parameters.items():
                     setattr(blog_category, parameter_name, parameter_value)
                 super().save()
             blog_category.save()
         else:
-            order = getattr(BlogCategory.objects.all().order_by("order").last(), "order", 0)
-            blog_category = BlogCategory(**self.instance_parameters, order=order if order == 0 else order + 1)
+            order = getattr(BlogCategorySnippet.objects.all().order_by("order").last(), "order", 0)
+            blog_category = BlogCategorySnippet(**self.instance_parameters, order=order if order == 0 else order + 1)
             super().save()
             blog_category.save()
 
     def delete(self, *args: Any, **kwargs: Any) -> None:
         super().delete(*args, **kwargs)
-        if BlogCategory.objects.filter(**self.instance_parameters):
-            BlogCategory.objects.get(**self.instance_parameters).delete()
+        if BlogCategorySnippet.objects.filter(**self.instance_parameters):
+            BlogCategorySnippet.objects.get(**self.instance_parameters).delete()
 
     @property
     def instance_parameters(self) -> dict:
@@ -85,7 +85,7 @@ class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
 
 
 @register_snippet
-class BlogCategory(models.Model):
+class BlogCategorySnippet(models.Model):
     title = models.CharField(
         max_length=255, help_text="Category title. This name will be shown as a category on blog main page."
     )
@@ -125,7 +125,7 @@ class BlogCategory(models.Model):
     ) -> None:
         # Updating BlogCategoryPage
         if self.pk is not None:
-            category = BlogCategory.objects.get(pk=self.pk)
+            category = BlogCategorySnippet.objects.get(pk=self.pk)
             blog_category_page = BlogCategoryPage.objects.get(slug=category.slug)
             if not blog_category_page.instance_parameters == self.instance_parameters:
                 for (parameter_name, parameter_value) in self.instance_parameters.items():
@@ -141,7 +141,7 @@ class BlogCategory(models.Model):
                 parent_page.add_child(instance=blog_category_page)
                 blog_category_page.save()
         # Save BlogCategory object
-        if not BlogCategory.objects.filter(**self.instance_parameters).exists():
+        if not BlogCategorySnippet.objects.filter(**self.instance_parameters).exists():
             super().save(force_insert, force_update, using, update_fields)
 
     def delete(self, using: Any = None, keep_parents: Any = False) -> None:
@@ -186,7 +186,7 @@ class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
 
 class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
     template = "blog_post.haml"
-    categories = ParentalManyToManyField("blog.BlogCategory", blank=True, related_name="category_posts")
+    categories = ParentalManyToManyField("blog.BlogCategorySnippet", blank=True, related_name="category_posts")
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     body = StreamField(

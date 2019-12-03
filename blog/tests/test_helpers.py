@@ -2,8 +2,8 @@ from django.urls import reverse
 from wagtail.core.models import Page
 from wagtail.core.models import Site
 
-from blog.models import BlogCategory
 from blog.models import BlogCategoryPage
+from blog.models import BlogCategorySnippet
 from blog.models import BlogIndexPage
 
 
@@ -45,7 +45,7 @@ class BlogTestHelpers:
         keywords="Category, Page, Blog",
         order=0,
     ):
-        blog_category_snippet = BlogCategory(
+        blog_category_snippet = BlogCategorySnippet(
             title=title,
             seo_title=seo_title,
             slug=slug,

@@ -1,7 +1,7 @@
 from django.test import TestCase
 from parameterized import parameterized
 
-from blog.models import BlogCategory
+from blog.models import BlogCategorySnippet
 from blog.models import BlogCategoryPage
 from blog.tests.test_helpers import BlogTestHelpers
 
@@ -24,16 +24,16 @@ class TestBlogCategoryPage(TestCase, BlogTestHelpers):
     def test_that_delete_blog_category_snippet_should_delete_blog_category_page(self):
         blog_category_snippet = self._create_blog_category_snippet(**self.blog_category_parameters)
         self.assertTrue(BlogCategoryPage.objects.filter(**self.blog_category_parameters).exists())
-        self.assertTrue(BlogCategory.objects.filter(**self.blog_category_parameters).exists())
+        self.assertTrue(BlogCategorySnippet.objects.filter(**self.blog_category_parameters).exists())
 
         # delete blog_category_snippet
         blog_category_snippet.delete()
         self.assertFalse(BlogCategoryPage.objects.filter(**self.blog_category_parameters).exists())
         self.assertEqual(len(BlogCategoryPage.objects.all()), 0)
-        self.assertEqual(len(BlogCategory.objects.all()), 0)
+        self.assertEqual(len(BlogCategorySnippet.objects.all()), 0)
 
     def test_that_new_blog_category_page_should_create_blog_category_snippet(self):
-        self.assertEqual(BlogCategory.objects.all().count(), 0)
+        self.assertEqual(BlogCategorySnippet.objects.all().count(), 0)
         category_order = 0
 
         self._create_blog_category_page(self.blog_index_page, **self.blog_category_parameters)
@@ -42,19 +42,19 @@ class TestBlogCategoryPage(TestCase, BlogTestHelpers):
         self.assertTrue(BlogCategoryPage.objects.get(**self.blog_category_parameters))
 
         # if this query finds BlogCategorySnippet it will means that it's equally to BlogCategoryPage parameters
-        blog_category_snippet = BlogCategory.objects.get(**self.blog_category_parameters)
+        blog_category_snippet = BlogCategorySnippet.objects.get(**self.blog_category_parameters)
         self.assertEqual(blog_category_snippet.order, category_order)
 
     def test_that_delete_blog_category_page_should_delete_blog_category_snippet(self):
         blog_category_page = self._create_blog_category_page(self.blog_index_page, **self.blog_category_parameters)
 
-        self.assertTrue(BlogCategory.objects.get(**self.blog_category_parameters))
+        self.assertTrue(BlogCategorySnippet.objects.get(**self.blog_category_parameters))
 
         # delete blog_category_page
         blog_category_page.delete()
-        self.assertFalse(BlogCategory.objects.filter(**self.blog_category_parameters).exists())
+        self.assertFalse(BlogCategorySnippet.objects.filter(**self.blog_category_parameters).exists())
         self.assertEqual(len(BlogCategoryPage.objects.all()), 0)
-        self.assertEqual(len(BlogCategory.objects.all()), 0)
+        self.assertEqual(len(BlogCategorySnippet.objects.all()), 0)
 
     @parameterized.expand(
         [
@@ -93,12 +93,12 @@ class TestBlogCategoryPage(TestCase, BlogTestHelpers):
         self, parameter_name, parameter_value
     ):
         blog_category_page = self._create_blog_category_page(self.blog_index_page, **self.blog_category_parameters)
-        changed_blog_category = BlogCategory.objects.get(**self.blog_category_parameters)
+        changed_blog_category = BlogCategorySnippet.objects.get(**self.blog_category_parameters)
         setattr(blog_category_page, parameter_name, parameter_value)
         blog_category_page.save()
 
         # Get BlogCategory with the same PK
-        changed_blog_category = BlogCategory.objects.get(pk=changed_blog_category.pk)
+        changed_blog_category = BlogCategorySnippet.objects.get(pk=changed_blog_category.pk)
         self.assertEqual(getattr(blog_category_page, parameter_name), parameter_value)
         self.assertEqual(getattr(blog_category_page, parameter_name), getattr(changed_blog_category, parameter_name))
 
