@@ -291,6 +291,8 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
         self.save()
 
     def save(self, *args: Any, **kwargs: Any) -> None:
+        if not BlogArticlePage.objects.filter(is_main_article=True) and not self.is_main_article:
+            self.is_main_article = True
         if self.is_main_article:
             try:
                 article = BlogArticlePage.objects.get(is_main_article=self.is_main_article)

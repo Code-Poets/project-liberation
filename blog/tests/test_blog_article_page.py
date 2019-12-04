@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 
+from blog.models import BlogArticlePage
 from blog.models import BlogCategoryPage
 from blog.tests.test_helpers import BlogTestHelpers
 
@@ -21,10 +22,15 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
         pass
 
     def test_that_first_article_should_be_main_article(self):
-        pass
+        blog_article_page = self._create_blog_article_page(is_main_article=False)
+        self.assertEqual(blog_article_page.is_main_article, True)
 
     def test_that_every_article_page_opening_should_raise_view_counter(self):
         pass
 
     def test_that_making_one_article_as_main_article_should_change_main_article_flag_in_article_which_was_main(self):
-        pass
+        blog_article_page = self._create_blog_article_page(is_main_article=False)
+        self.assertEqual(blog_article_page.is_main_article, True)
+        blog_article_page_2 = self._create_blog_article_page(is_main_article=True)
+        self.assertEqual(blog_article_page_2.is_main_article, True)
+        self.assertEqual(BlogArticlePage.objects.get(pk=blog_article_page.pk).is_main_article, False)
