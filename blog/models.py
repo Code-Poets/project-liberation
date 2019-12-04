@@ -6,6 +6,7 @@ from django.core.handlers.wsgi import WSGIRequest
 from django.db import models
 from django.db.models import QuerySet
 from modelcluster.fields import ParentalManyToManyField
+from modelcluster.queryset import FakeQuerySet
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.contrib.table_block.blocks import TableBlock
@@ -149,9 +150,10 @@ class BlogCategorySnippet(models.Model):
                 self._validate_mandatory_fields()
                 self.order = self._get_lowest_possible_order_number()
                 super().save(force_insert, force_update, using, update_fields)
-                parent_page = Site.objects.get(is_default_site=True).root_page
+                parent_page = BlogIndexPage.objects.get(id=Site.objects.get(is_default_site=True).root_page_id)
                 blog_category_page = BlogCategoryPage(**self.instance_parameters)
                 parent_page.add_child(instance=blog_category_page)
+                parent_page.save()
                 blog_category_page.save()
         # Save BlogCategory object
         if not BlogCategorySnippet.objects.filter(**self.instance_parameters).exists():
@@ -226,7 +228,7 @@ class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
 
 class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
     template = "blog_post.haml"
-    categories = ParentalManyToManyField("blog.BlogCategorySnippet", blank=True, related_name="category_posts")
+    categories = ParentalManyToManyField("blog.BlogCategorySnippet", related_name="category_posts")
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     body = StreamField(
@@ -242,7 +244,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
 
     author = models.ForeignKey(Employees, on_delete=models.DO_NOTHING)
 
-    read_time = models.IntegerField()
+    read_time = models.PositiveIntegerField()
 
     views = models.PositiveIntegerField(default=0)
 
@@ -290,6 +292,8 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
         self.save()
 
     def save(self, *args: Any, **kwargs: Any) -> None:
+        if not BlogArticlePage.objects.filter(is_main_article=True) and not self.is_main_article:
+            self.is_main_article = True
         if self.is_main_article:
             try:
                 article = BlogArticlePage.objects.get(is_main_article=self.is_main_article)
@@ -297,4 +301,15 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
                 article.save()
             except BlogArticlePage.DoesNotExist:
                 pass
+        if isinstance(self.categories.all(), FakeQuerySet):
+            if self.categories.all().results == []:
+                raise ValidationError(message=f"Categories must set to an instance of BlogCategorySnippet")
+        else:
+            if self.categories.all() == []:
+                raise ValidationError(message=f"Categories must set to an instance of BlogCategorySnippet")
+        self._validate_parent_page()
         super().save(*args, **kwargs)
+
+    def _validate_parent_page(self) -> None:
+        if not isinstance(self.get_parent().specific, BlogIndexPage):
+            raise ValidationError(message=f"{self.title} must be child of BlogIndexPage")
