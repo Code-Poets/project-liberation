@@ -6,6 +6,7 @@ from django.core.handlers.wsgi import WSGIRequest
 from django.db import models
 from django.db.models import QuerySet
 from modelcluster.fields import ParentalManyToManyField
+from modelcluster.queryset import FakeQuerySet
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.contrib.table_block.blocks import TableBlock
@@ -227,7 +228,7 @@ class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
 
 class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
     template = "blog_post.haml"
-    categories = ParentalManyToManyField("blog.BlogCategorySnippet", blank=True, related_name="category_posts")
+    categories = ParentalManyToManyField("blog.BlogCategorySnippet", related_name="category_posts")
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     body = StreamField(
@@ -243,7 +244,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
 
     author = models.ForeignKey(Employees, on_delete=models.DO_NOTHING)
 
-    read_time = models.IntegerField()
+    read_time = models.PositiveIntegerField()
 
     views = models.PositiveIntegerField(default=0)
 
@@ -300,6 +301,12 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
                 article.save()
             except BlogArticlePage.DoesNotExist:
                 pass
+        if isinstance(self.categories.all(), FakeQuerySet):
+            if self.categories.all().results == []:
+                raise ValidationError(message=f"Categories must set to an instance of BlogCategorySnippet")
+        else:
+            if self.categories.all() == []:
+                raise ValidationError(message=f"Categories must set to an instance of BlogCategorySnippet")
         self._validate_parent_page()
         super().save(*args, **kwargs)
 
