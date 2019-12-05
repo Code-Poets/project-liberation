@@ -146,7 +146,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
@@ -391,3 +391,5 @@ SITE_ID = 1
 # GOOGLE_ANALYTICS = {
 #     'google_analytics_id': '',
 # }
+
+DATE_FORMAT = "M. d, Y"
