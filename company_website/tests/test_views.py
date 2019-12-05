@@ -3,7 +3,6 @@ from django.urls import reverse
 
 from company_website.factories import BossFactory
 from company_website.factories import EmployeeFactory
-from company_website.models import Employees
 
 
 class TeamIntroductionViewTests(TestCase):
@@ -14,9 +13,12 @@ class TeamIntroductionViewTests(TestCase):
 
     def test_get_context_data_return_data_with_bosses_and_employees(self):
         response = self.client.get(self.url)
-        self.assertEqual(
-            list(response.context_data["bosses"]), list(Employees.objects.filter(boss=True).order_by("order"))
-        )
-        self.assertEqual(
-            list(response.context_data["employees"]), list(Employees.objects.filter(boss=False).order_by("order"))
-        )
+        self.assertEqual(list(response.context_data["bosses"]), self.list_of_bosses)
+        self.assertEqual(list(response.context_data["employees"]), self.list_of_employees)
+
+    def test_that_get_context_data_return_bosses_and_employees_which_are_working(self):
+        new_employees_list = self.list_of_employees + [EmployeeFactory(is_working=False) for _ in range(5)]
+        self.assertEqual(len(new_employees_list), 15)
+        response = self.client.get(self.url)
+        self.assertEqual(list(response.context_data["bosses"]), self.list_of_bosses)
+        self.assertEqual(list(response.context_data["employees"]), self.list_of_employees)

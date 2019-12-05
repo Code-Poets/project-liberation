@@ -9,7 +9,7 @@ from company_website.models import Testimonial
 
 class EmployeesAdmin(AdminImageMixin, admin.ModelAdmin):
     model = Employees
-    list_display = ("order", "name", "position", "boss")
+    list_display = ("order", "name", "position", "boss", "is_working")
 
 
 class EstimateAdmin(admin.ModelAdmin):

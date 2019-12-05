@@ -7,6 +7,7 @@ from django.db import models
 from django.db.models import BooleanField
 from django.db.models import CharField
 from django.db.models import PositiveSmallIntegerField
+from django.db.models import QuerySet
 from sorl.thumbnail import ImageField
 
 from company_website.constants import EstimateConstants
@@ -30,6 +31,7 @@ class Employees(models.Model):
     back_image = ImageField(default=None, blank=True, upload_to=settings.COMPANY_EMPLOYEES_STORAGE)
     boss = BooleanField(default=False)
     order = PositiveSmallIntegerField(unique=True, blank=True)
+    is_working = BooleanField(default=True)
 
     def __str__(self) -> str:
         return self.name
@@ -53,6 +55,14 @@ class Employees(models.Model):
                 return min(list(set(order_numbers_range) - set(order_list)))
         else:
             return 1
+
+    @staticmethod
+    def _get_bosses() -> QuerySet:
+        return Employees.objects.filter(boss=True, is_working=True).order_by("order")
+
+    @staticmethod
+    def _get_employees() -> QuerySet:
+        return Employees.objects.filter(boss=False, is_working=True).order_by("order")
 
     def save(
         self, force_insert: bool = False, force_update: bool = False, using: Any = None, update_fields: Any = None
