@@ -87,6 +87,12 @@ server {
     }
 
     location /static/ {
+        expires     1y;
+        add_header  Cache-Control "public";
+
+        # Include shared security headers
+        include /etc/nginx/snippets/shared-security-headers.conf;
+
         alias {{ django_static_files_dir }}/;
     }
 
