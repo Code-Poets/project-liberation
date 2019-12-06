@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     'pipeline',
     'hamlpy',
     'sorl.thumbnail',
-    'raven.contrib.django.raven_compat',
     'wagtailmarkdown',
     'google_analytics',
     'robots',
@@ -166,10 +165,6 @@ LOGGING = {
         }
     },
     'handlers': {
-        'sentry': {
-            'level': 'ERROR',
-            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
-        },
         'mail_admins': {
             'level':   'ERROR',
             'filters': ['require_debug_false'],
@@ -229,13 +224,13 @@ LOGGING = {
         },
         'django.request': {
             # Level is DEBUG because we're leaving filtering up to the handler.
-            'handlers':  ['sentry'],
+            'handlers':  ['console'],
             'level':     'DEBUG',
             'propagate': True,
         },
-        'peoject_liberation.crash': {
+        'project_liberation.crash': {
             # Level is DEBUG because we're leaving filtering up to the handler.
-            'handlers':  ['sentry'],
+            'handlers':  ['console'],
             'level':     'DEBUG',
             'propagate': True,
         },
