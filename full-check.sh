@@ -43,6 +43,10 @@ printf "========================= MYPY STATIC TYPE CHECKER =================\n"
 mypy --config-file=${BASH_SOURCE%/*}/mypy.ini ${BASH_SOURCE%/*}
 printf "\n"
 
+printf "========================= REGENERATE STATIC FILES =================\n"
+${BASH_SOURCE%/*}/reload-statics.sh
+printf "\n"
+
 printf "========================= UNIT TESTS WITH COVERAGE =================\n"
 # NOTE: 'manage.py test' does not find all tests unless we run it from within the app directory.
 ${BASH_SOURCE%/*}/run-test-coverage.sh

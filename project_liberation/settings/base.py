@@ -252,6 +252,9 @@ STATIC_URL = '/static/'
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'django.contrib.staticfiles.finders.FileSystemFinder',
+    'pipeline.finders.AppDirectoriesFinder',
+    'pipeline.finders.FileSystemFinder',
+    'pipeline.finders.CachedFileFinder',
     'pipeline.finders.PipelineFinder',
 ]
 
@@ -370,7 +373,7 @@ PIPELINE = {
     'COMPILERS': ('pipeline.compilers.sass.SASSCompiler',)
 }
 
-STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 # A key for Google API, necessary for accessing the map on the mainpage.
 # GOOGLE_API_KEY = ''

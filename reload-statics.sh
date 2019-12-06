@@ -1,2 +1,3 @@
-rm -r project_liberation/static
-./manage.py collectstatic --no-input
+#!/bin/bash -e
+./manage.py collectstatic --noinput --clear --force-color --verbosity 0
+echo "OK"
