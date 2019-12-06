@@ -21,9 +21,9 @@ tar                                \
     --directory="{{ home_dir }}/"  \
     http_media_files/
 
-gsutil cp                            \
-    $NAME_OF_BACKUP_FILE             \
-    gs://project-liberation-bucket/
+gsutil cp                                          \
+    $NAME_OF_BACKUP_FILE                           \
+    gs://{{ name_of_project_liberation_bucket }}/
 
 # Cleanup content backups older than 30 days.
 find $HTTP_MEDIA_BACKUP_DIR             \
