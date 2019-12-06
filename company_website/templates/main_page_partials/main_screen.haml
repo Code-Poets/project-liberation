@@ -1,10 +1,13 @@
 {% load static %}
+{% load thumbnail %}
+{% load static_path %}
+
 
 .container-fluid.px-0.main-screen{:id => "home"}
     #content.jumbo.d-flex
         .mobile-logo
             %img.codepoets-mobile.lazyload{:alt => "Codepoets logo", :title => "Codepoets logo", :data-src => "{% static 'common/images/menu/code_poets_logo_menu_white.png' %}"}
-        %img.background-img.lazyload{:alt => "Codepoets software", :title => "Codepoets software", :data-src => "{% static 'main_page/images/main_screen/slide.jpg' %}"}
+        %img.background-img.lazyload{:alt => "Codepoets software", :title => "Codepoets software", :data-src => "{% thumbnail 'main_page/images/main_screen/slide.jpg'|get_static_url '1905x1074' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'main_page/images/main_screen/slide.jpg'|get_static_url '414x809' crop='center' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'main_page/images/main_screen/slide.jpg'|get_static_url '768x1127' crop='center' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'main_page/images/main_screen/slide.jpg'|get_static_url '1905x1074' as im %} {{ im.url }} 1200w {% endthumbnail %}"}
         .container-fluid
             .text-box-blue
                 %span.main-screen-text WE CREATE CHEMISTRY SOFTWARE
