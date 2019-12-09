@@ -245,15 +245,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'pipeline.finders.AppDirectoriesFinder',
-    'pipeline.finders.FileSystemFinder',
-    'pipeline.finders.CachedFileFinder',
-    'pipeline.finders.PipelineFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+
 PIPELINE = {
+    "PIPELINE_ENABLED": True,
     "CSS_COMPRESSOR": 'pipeline.compressors.cssmin.CSSMinCompressor',
     "JS_COMPRESSOR": 'pipeline.compressors.uglifyjs.UglifyJSCompressor',
     "CSSMIN_BINARY": os.path.join(BASE_DIR, '../node_modules/.bin/cssmin'),
@@ -368,7 +366,7 @@ PIPELINE = {
     'COMPILERS': ('pipeline.compilers.sass.SASSCompiler',)
 }
 
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+STATICFILES_STORAGE = "pipeline.storage.PipelineCachedStorage"
 
 # A key for Google API, necessary for accessing the map on the mainpage.
 # GOOGLE_API_KEY = ''
