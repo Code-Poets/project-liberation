@@ -1,4 +1,6 @@
 {% load static %}
+{% load thumbnail %}
+{% load static_path %}
 
 .container.how-we-work
     .row
@@ -15,10 +17,10 @@
             %p.paragraph-description For project management we use Atlassian JIRA to which you’ll receive access and be able to observe work in progress 24/7. You can communicate directly with the team as often as you wish – they’ll respond as soon as possible.
     .row.images
         .col-md.agile-images{:data-aos => "zoom-in"}
-            %img#image-left-popup.popup.left-image.lazyload{:data-src => "{% static 'how_we_work/images/Project_Board_-_Agile_Board_-_Jira_1.jpg' %}", :alt => "Project board Jira 1", :title => "Project board Jira 1"}
+            %img#image-left-popup.popup.left-image.lazyload{:data-src => "{% thumbnail 'how_we_work/images/Project_Board_-_Agile_Board_-_Jira_1.jpg'|get_static_url '1000x705' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Project board Jira 1", :title => "Project board Jira 1"}
         .placeholder
         .col-md.agile-images{:data-aos => "zoom-in"}
-            %img#image-right-popup.popup.right-image.lazyload{:data-src => "{% static 'how_we_work/images/Project_Board_-_Agile_Board_-_Jira_2.jpg' %}", :alt => "Project board Jira 2", :title => "Project board Jira 2"}
+            %img#image-right-popup.popup.right-image.lazyload{:data-src => "{% thumbnail 'how_we_work/images/Project_Board_-_Agile_Board_-_Jira_2.jpg'|get_static_url '1000x705' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Project board Jira 2", :title => "Project board Jira 2"}
     .row.third-description-row
         .col-md-8.mid-section.offset-md-2
             %h4.should-know-header What else you should know?
