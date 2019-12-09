@@ -1,13 +1,16 @@
 {% load static %}
+{% load thumbnail %}
+{% load static_path %}
+
 .perks-and-benefits
     {% include "common_partials/section_header.haml" with title="Perks & Benefits" subtext="of working with Code Poets" %}
-    %image.feather.lazyload{:data-src => "{% static 'career/images/feather_blue.png' %}", :alt => "Blue Feather", :title => "Blue Feather"}
+    %image.feather.lazyload{:data-src => "{% thumbnail 'career/images/feather_blue.png'|get_static_url '217x402' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Blue Feather", :title => "Blue Feather"}
     .container
         .grid-content
             .row-odd
                 .pair-odd
                     .cropped.item_1{:data-aos => "fade-up"}
-                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/clock.jpg' %}", :alt => "Clock wall", :title => "Clock wall"}
+                        %image.photo.lazyload{:data-src => "{% thumbnail 'career/images/photos/clock.jpg'|get_static_url '300x300' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Clock wall", :title => "Clock wall"}
                     .space-item
                     .cropped.item_2{:data-aos => "fade-up"}
                         .border-orange
@@ -15,7 +18,7 @@
                 .space-pair
                 .pair-even
                     .cropped.item_1{:data-aos => "fade-up"}
-                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/health.jpg' %}", :alt => "Healthy Joga", :title => "Healthy Joga"}
+                        %image.photo.lazyload{:data-src => "{% thumbnail 'career/images/photos/health.jpg'|get_static_url '300x300' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Healthy Joga", :title => "Healthy Joga"}
                     .space-item
                     .cropped.item_2{:data-aos => "fade-up"}
                         .border-blue
@@ -28,7 +31,7 @@
                             {% include "career_partials/perk.haml" with name="Remote working" benefit="Home, office or a sunny beach? For us it doesn't matter where you are but what you do." image="career/images/home.png" image_title="Remote Work" %}
                     .space-item
                     .cropped.item_2{:data-aos => "fade-up"}
-                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/remote.jpg' %}", :alt => "Remote Working", :title => "Remote Working"}
+                        %image.photo.lazyload{:data-src => "{% thumbnail 'career/images/photos/remote.jpg'|get_static_url '300x300' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Remote Working", :title => "Remote Working"}
                 .space-pair
                 .pair-even
                     .cropped.item_1{:data-aos => "fade-up"}
@@ -36,12 +39,12 @@
                             {% include "career_partials/perk.haml" with name="Language lessons" benefit="Improve your English with our native speaker teachers." image="career/images/language.png" image_title="Language Lessons" %}
                     .space-item
                     .cropped.item_2{:data-aos => "fade-up"}
-                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/lessons.jpg' %}", :alt => "English classes", :title => "English classes"}
+                        %image.photo.lazyload{:data-src => "{% thumbnail 'career/images/photos/lessons.jpg'|get_static_url '300x300' as im %} {{ im.url }} {% endthumbnail %}", :alt => "English classes", :title => "English classes"}
             .space-row
             .row-odd
                 .pair-odd
                     .cropped.item_1{:data-aos => "fade-up"}
-                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/sport.jpg' %}", :alt => "Sporting life", :title => "Sporting life"}
+                        %image.photo.lazyload{:data-src => "{% thumbnail 'career/images/photos/sport.jpg'|get_static_url '300x300' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Sporting life", :title => "Sporting life"}
                     .space-item
                     .cropped.item_2{:data-aos => "fade-up"}
                         .border-orange
@@ -49,7 +52,7 @@
                 .space-pair
                 .pair-even
                     .cropped.item_1{:data-aos => "fade-up"}
-                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/office.jpg' %}", :alt => "Pleasant Office", :title => "Pleasant Office"}
+                        %image.photo.lazyload{:data-src => "{% thumbnail 'career/images/photos/office.jpg'|get_static_url '300x300' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Pleasant Office", :title => "Pleasant Office"}
                     .space-item
                     .cropped.item_2{:data-aos => "fade-up"}
                         .border-blue
@@ -62,7 +65,7 @@
                             {% include "career_partials/perk.haml" with name="Lunch & Learn" benefit="Internal weekly trainings connected with delicious food." image="career/images/lunch.png" image_title="Weekly lunches" %}
                     .space-item
                     .cropped.item_2{:data-aos => "fade-up"}
-                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/techtalk.jpg' %}", :alt => "Weekly tech-talks", :title => "Weekly tech-talks"}
+                        %image.photo.lazyload{:data-src => "{% thumbnail 'career/images/photos/techtalk.jpg'|get_static_url '300x300' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Weekly tech-talks", :title => "Weekly tech-talks"}
                 .space-pair
                 .pair-even
                     .cropped.item_1{:data-aos => "fade-up"}
@@ -70,4 +73,4 @@
                             {% include "career_partials/perk.haml" with name="Growth budget" benefit="We give you an opportunity to expand your knowledge - pick your conference or training." image="career/images/growth.png" image_title="Self Development" %}
                     .space-item
                     .cropped.item_2{:data-aos => "fade-up"}
-                        %image.photo.lazyload{:data-src => "{% static 'career/images/photos/conference.jpg' %}", :alt => "PyCon Conference", :title => "PyCon Conference"}
+                        %image.photo.lazyload{:data-src => "{% thumbnail 'career/images/photos/conference.jpg'|get_static_url '300x300' as im %} {{ im.url }} {% endthumbnail %}", :alt => "PyCon Conference", :title => "PyCon Conference"}

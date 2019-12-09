@@ -1,6 +1,9 @@
 {% load static %}
+{% load thumbnail %}
+{% load static_path %}
+
 .perk
-    %img.image.lazyload{:data-src => "{% static image %}", :alt => "{{ image_title }}", :title => "{{ image_title }}"}
+    %img.image.lazyload{:data-src => "{% thumbnail image|get_static_url '300x300' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "{{ image_title }}", :title => "{{ image_title }}"}
     .name
         {{ name }}
     .benefit
