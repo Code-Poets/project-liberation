@@ -1,4 +1,6 @@
 {% load static %}
+{% load thumbnail %}
+{% load static_path %}
 
 .row.images-scrum
     .col-sm-12.scrum-col
@@ -66,7 +68,7 @@
                         %p.title
                             %strong Increment
                         The Increment is the sum of all the items completed during a Sprint and the value of the increments of all previous Sprints. At the end of a Sprint, the new Increment must be in useable condition and be potentially releasable. The increment is a step toward a vision or goal.
-        %img.scrum.lazyload{:data-src => "{% static 'how_we_work/images/agile.png' %}", :alt => "Agile workflow", :title => "Agile workflow"}
+        %img.scrum.lazyload{:data-src => "{% thumbnail 'how_we_work/images/agile.png'|get_static_url '1210x400' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'how_we_work/images/agile.png'|get_static_url '412x160' format='PNG' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'how_we_work/images/agile.png'|get_static_url '709x272' format='PNG' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'how_we_work/images/agile.png'|get_static_url '1210x400' format='PNG' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Agile workflow", :title => "Agile workflow"}
 
 .hotspot-mobile-devices.col-md-8.offset-md-1
     .scrum-metolody-container{:data-aos => "fade-up", :data-aos-anchor-placement => "top-bottom"}

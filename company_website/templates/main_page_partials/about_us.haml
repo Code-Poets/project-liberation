@@ -1,6 +1,8 @@
 {% load static %}
+{% load thumbnail %}
+{% load static_path %}
 
-%img.feather.feather-yellow.lazyload{:data-src=> "{% static 'main_page/images/background/feather_yellow.png' %}", :alt => "Code Poets feather background"}
+%img.feather.feather-yellow.lazyload{:data-src=> "{% thumbnail 'main_page/images/background/feather_yellow.png'|get_static_url '270x832' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Code Poets feather background"}
 .container.about-us-container{:id => "about-us"}
     .row
         {% include "main_page_partials/section_separator.haml" %}
@@ -11,11 +13,11 @@
         .col-lg-6.about-us-col{:data-aos => "fade-up", :data-aos-offset => "-200"}
             %a{:href => "{% url 'team_introduction' %}"}
                 .about-us-box
-                    %img.about-us-image.img-bottom.lazyload{:data-src => "{% static 'main_page/images/about_code_poets/about_us.jpg' %}", :alt => "About Codepoets"}
+                    %img.about-us-image.img-bottom.lazyload{:data-src => "{% thumbnail 'main_page/images/about_code_poets/about_us.jpg'|get_static_url '702x468' as im %} {{ im.url }} {% endthumbnail %}", :alt => "About Codepoets"}
                     %h3.description Team
 
         .col-lg-6.about-us-col{:data-aos => "fade-up", :data-aos-offset => "-200"}
             %a{:href => "{% url 'how_we_work' %}"}
                 .how-we-work-box
-                    %img.about-us-image.img-top.lazyload{:data-src => "{% static 'main_page/images/about_code_poets/how_we_work.jpg' %}", :alt => "How we work in Codepoets"}
+                    %img.about-us-image.img-top.lazyload{:data-src => "{% thumbnail 'main_page/images/about_code_poets/how_we_work.jpg'|get_static_url '702x468' as im %} {{ im.url }} {% endthumbnail %}", :alt => "How we work in Codepoets"}
                     %h3.description How we work

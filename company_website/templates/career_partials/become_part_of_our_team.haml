@@ -1,4 +1,7 @@
 {% load static %}
+{% load thumbnail %}
+{% load static_path %}
+
 .become-part-of-our-team
     {% include "common_partials/section_header.haml" with title="Become part of our team." subtext="Check out our latest open positions" %}
     .button-wrapper
@@ -8,7 +11,7 @@
         .row.no-margin{:data-aos => "fade-up"}
             .col-12.col-xl-6.item_1
                 .cropped
-                    %image.photo.lazyload{:data-src => "{% static 'career/images/photos/interview.jpg' %}", :alt => "Job Interview", :title => "Job Interview"}
+                    %image.photo.lazyload{:data-src => "{% thumbnail 'career/images/photos/interview.jpg'|get_static_url '570x380' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Job Interview", :title => "Job Interview"}
             .col-12.col-xl-6.item_2
                 .cropped
                     .promo
