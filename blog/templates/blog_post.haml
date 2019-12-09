@@ -3,17 +3,17 @@
 
 {% block properties %}
     {% image page.specific.cover_photo  fill-1200x628 as photo %}
-    %link{:rel => "image_src", :href => "{{ request.META.HTTP_HOST }}{{ photo.url }}"}
+    %link{:rel => "image_src", :href => "{{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ photo.url }}"}
     %meta{:property => "og:type", :content => "article"}
-    %meta{:property => "og:url", :content => "{{ request.META.HTTP_HOST }}{{ request.path }}"}
+    %meta{:property => "og:url", :content => "{{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ request.path }}"}
     %meta{:property => "og:title", :content => "{{ page.specific.title }}"}
-    %meta{:property => "og:image", :content => "{{ request.META.HTTP_HOST }}{{ photo.url }}"}
+    %meta{:property => "og:image", :content => "{{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ photo.url }}"}
     %meta{:property => "og:image:width", :content => "{{ photo.width }}"}
     %meta{:property => "og:image:height", :content => "{{ photo.height }}"}
     %meta{:property => "og:description", :content => "{{ page.specific.meta_description }}"}
     %meta{:property => "twitter:card", :content => "summary"}
     %meta{:property => "twitter:title", :content => "{{ page.specific.meta_description }}"}
-    %meta{:property => "twitter:image", :content => "{{ request.META.HTTP_HOST }}{{ photo.url }}"}
+    %meta{:property => "twitter:image", :content => "{{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ photo.url }}"}
 {% endblock %}
 
 {% block blog_content %}
