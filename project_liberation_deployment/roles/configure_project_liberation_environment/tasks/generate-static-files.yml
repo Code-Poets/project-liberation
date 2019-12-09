@@ -11,12 +11,6 @@
              Please run the deploy.yml playbook with default extra vars \"update_project_liberation_application=yes\" to set up and update project-liberation repository."
       when: not result.stat.exists
 
-    - name: Generate static files
-      django_manage:
-          command:    collectstatic
-          app_path:   "{{ project_liberation_dir }}"
-          virtualenv: "{{ project_liberation_virtualenv_dir }}"
-
     - name: Check if image package exist
       stat:
         path: "{{ image_package_dir }}/{{ image_package_name }}"
@@ -39,6 +33,13 @@
         - "company_website/static/"
         - "blog/static/"
 
+    - name: Generate static files
+      django_manage:
+          command:    collectstatic
+          app_path:   "{{ project_liberation_dir }}"
+          virtualenv: "{{ project_liberation_virtualenv_dir }}"
+
+  always:
     - name: Remove temporary files
       file:
         path:  "/tmp/{{ unpacked_image_package_name }}"
