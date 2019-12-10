@@ -31,7 +31,7 @@
 
 .navbar
     display: block
-    min-width: 991px
+    min-width: calc(#{$menu-max-size} - 20px)
     height: 60px
     padding-left: 0
     padding-right: 0
@@ -170,7 +170,7 @@
                 border-right: 30px solid #FF6C17
                 border-bottom: 30px solid $orange-color
 
-@media screen and (max-width: $md-screen-size)
+@media screen and (max-width: $menu-max-size)
     .navbar
         display: none
 

@@ -74,7 +74,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    var toggled_menu_width = 991;
+    var toggled_menu_width = 1175;
     const hamburger = document.querySelector('.hamburger');
 
     function checkWidth() {
