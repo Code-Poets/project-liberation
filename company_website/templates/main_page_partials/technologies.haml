@@ -1,18 +1,16 @@
 {% load static %}
-{% load thumbnail %}
-{% load static_path %}
 
 .container
     .row.tech-img
         .col-lg-4.flex-wrapp.justify-content-center.nopadding{:data-aos => "zoom-in"}
-            %img.technology.lazyload{:data-src=> "{% thumbnail 'main_page/images/technologies/angular.png'|get_static_url '120x120' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Angular", :title => "Angular"}
-            %img.technology.lazyload{:data-src=> "{% thumbnail 'main_page/images/technologies/python.png'|get_static_url '120x120' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Python", :title => "Python"}
-            %img.technology.lazyload{:data-src=> "{% thumbnail 'main_page/images/technologies/django.png'|get_static_url '120x120' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Django", :title => "Django"}
+            %img.technology.lazyload{:data-src => "{% static 'main_page/images/technologies/angular.png' %}", :alt => "Angular", :title => "Angular"}
+            %img.technology.lazyload{:data-src => "{% static 'main_page/images/technologies/python.png' %}", :alt => "Python", :title => "Python"}
+            %img.technology.lazyload{:data-src => "{% static 'main_page/images/technologies/django.png' %}", :alt => "Django", :title => "Django"}
         .col-lg-4.flex-wrapp.justify-content-center.nopadding{:data-aos => "zoom-in" }
-            %img.technology.lazyload{:data-src=> "{% thumbnail 'main_page/images/technologies/epam_INDYGO.png'|get_static_url '120x120' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Epam_INDYGO", :title => "Epam_INDYGO"}
-            %img.technology.lazyload{:data-src=> "{% thumbnail 'main_page/images/technologies/kekuljs.png'|get_static_url '120x120' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "KekulJS", :title => "KekulJS"}
-            %img.technology.lazyload{:data-src=> "{% thumbnail 'main_page/images/technologies/MarvinJS.png'|get_static_url '120x120' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "MarvinJS", :title => "MarvinJS"}
+            %img.technology.lazyload{:data-src => "{% static 'main_page/images/technologies/epam_INDYGO.png' %}", :alt => "Epam_INDYGO", :title => "Epam_INDYGO"}
+            %img.technology.lazyload{:data-src => "{% static 'main_page/images/technologies/kekuljs.png' %}", :alt => "KekulJS", :title => "KekulJS"}
+            %img.technology.lazyload{:data-src => "{% static 'main_page/images/technologies/MarvinJS.png' %}", :alt => "MarvinJS", :title => "MarvinJS"}
         .col-lg-4.flex-wrapp.justify-content-center.nopadding{:data-aos => "zoom-in" }
-            %img.technology.lazyload{:data-src=> "{% thumbnail 'main_page/images/technologies/java.png'|get_static_url '120x120' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "Java", :title => "Java"}
-            %img.technology.lazyload{:data-src=> "{% thumbnail 'main_page/images/technologies/typescript.png'|get_static_url '120x120' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "TypeScript", :title => "TypeScript"}
-            %img.technology.lazyload{:data-src=> "{% thumbnail 'main_page/images/technologies/RDKit.png'|get_static_url '120x120' format='PNG' as im %} {{ im.url }} {% endthumbnail %}", :alt => "RDKit", :title => "RDKit"}
+            %img.technology.lazyload{:data-src => "{% static 'main_page/images/technologies/java.png' %}", :alt => "Java", :title => "Java"}
+            %img.technology.lazyload{:data-src => "{% static 'main_page/images/technologies/typescript.png' %}", :alt => "TypeScript", :title => "TypeScript"}
+            %img.technology.lazyload{:data-src => "{% static 'main_page/images/technologies/RDKit.png' %}", :alt => "RDKit", :title => "RDKit"}
