@@ -389,5 +389,3 @@ SITE_ID = 1
 # }
 
 DATE_FORMAT = "M. d, Y"
-
-URL_PREFIX = "http"

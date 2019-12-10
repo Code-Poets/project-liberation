@@ -15,5 +15,3 @@ LOGGING["handlers"]["sentry"] = {  # type: ignore
 
 LOGGING["loggers"]["django.request"]["handlers"] = ['sentry']  # type: ignore
 LOGGING["loggers"]["project_liberation.crash"]["handlers"] = ['sentry']  # type: ignore
-
-URL_PREFIX = "https"

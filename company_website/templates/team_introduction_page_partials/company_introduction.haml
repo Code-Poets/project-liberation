@@ -1,6 +1,4 @@
 {% load static %}
-{% load thumbnail %}
-{% load static_path %}
 
 .about-us-page
     .who-we-are-part.row{:data-aos => "fade-up"}
@@ -31,15 +29,15 @@
                         Read more...
     .our-values-part.row
         .left-container.left-column{:data-aos => "fade-up"}
-            %img.lazyload.image_1{:data-src => "{% thumbnail 'team_introduction_page/images/image_1.jpg'|get_static_url '707x500' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_1.jpg'|get_static_url '373x284' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_1.jpg'|get_static_url '570x430' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_1.jpg'|get_static_url '707x500' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Code Poets team", :title => "Code Poets team"}
+            %img.lazyload.image_1{:data-src => "{% static 'team_introduction_page/images/image_1.jpg' %}", :alt => "Code Poets team", :title => "Code Poets team"}
         .right-container.right-column
             .outer-text-div.outer-our-values-text-div{:data-aos => "fade-up"}
                 .inner-text-div.inner-our-values-text-div
                     .topic.our-values-topic OUR VALUES
-            %img.lazyload.image_2{:data-src => "{% thumbnail 'team_introduction_page/images/image_2.jpg'|get_static_url '468x309' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_2.jpg'|get_static_url '247x176' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_2.jpg'|get_static_url '377x266' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_2.jpg'|get_static_url '468x309' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Code Poets team", :title => "Code Poets team", :data-aos => "fade-up"}
+            %img.lazyload.image_2{:data-src => "{% static 'team_introduction_page/images/image_2.jpg' %}", :alt => "Our values", :title => "Our values", :data-aos => "fade-up"}
     .understand-part.row
         .left-container.inner-left-container.left-column
-            %img.lazyload.image_3{:data-src => "{% thumbnail 'team_introduction_page/images/image_3.jpg'|get_static_url '491x350' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_3.jpg'|get_static_url '259x196' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_3.jpg'|get_static_url '396x297' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_3.jpg'|get_static_url '491x350' as im %} {{ im.url }} 1200w {% endthumbnail %}", :title => "Code Poets brazilian jiu jitsu team", :data-aos => "fade-up"}
+            %img.lazyload.image_3{:data-src => "{% static 'team_introduction_page/images/image_3.jpg' %}", :alt => "Code Poets brazilian jiu jitsu team", :title => "Code Poets brazilian jiu jitsu team", :data-aos => "fade-up"}
             .square.yellow-square{:data-aos => "fade-up"}
         .right-container.right-column
             .outer-text-div.outer-understand-text-div{:data-aos => "fade-up"}
@@ -52,9 +50,9 @@
                             We need to create partnership and be understanding to each other in order to provide the best solutions.
     .understand-part-2.row
         .left-container.left-column{:data-aos => "fade-up"}
-            %img.lazyload.overlayed-image.image_4{:data-src => "{% thumbnail 'team_introduction_page/images/image_4.jpg'|get_static_url '401x620' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_4.jpg'|get_static_url '211x346' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_4.jpg'|get_static_url '323x525' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_4.jpg'|get_static_url '401x620' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Animal friendly", :title => "Animal friendly"}
+            %img.lazyload.overlayed-image.image_4{:data-src => "{% static 'team_introduction_page/images/image_4.jpg' %}", :alt => "Animal friendly", :title => "Animal friendly"}
         .right-container.right-column{:data-aos => "fade-up"}
-            %img.lazyload.image_5{:data-src => "{% thumbnail 'team_introduction_page/images/image_5.jpg'|get_static_url '774x530' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_5.jpg'|get_static_url '410X297' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_5.jpg'|get_static_url '627x451' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_5.jpg'|get_static_url '774x530' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Code Poets common dinner", :title => "Code Poets common dinner"}
+            %img.lazyload.image_5{:data-src => "{% static 'team_introduction_page/images/image_5.jpg' %}", :alt => "Code Poets common dinner", :title => "Code Poets common dinner"}
     .deliver-part.row{:data-aos => "fade-up"}
         .outer-text-div.deliver-text-div
             .inner-text-div.inner-deliver-text-div
@@ -67,7 +65,7 @@
                         Always on time.
     .improve-part.row
         .left-container.inner-left-container.left-column
-            %img.lazyload.image_6{:data-src => "{% thumbnail 'team_introduction_page/images/image_6.jpg'|get_static_url '587x400' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_6.jpg'|get_static_url '310x223' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_6.jpg'|get_static_url '474x339' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_6.jpg'|get_static_url '587x400' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Code Poets feather background", :title => "Code Poets feather background", :data-aos => "fade-up"}
+            %img.lazyload.image_6{:data-src => "{% static 'team_introduction_page/images/image_6.jpg' %}", :alt => "Code Poets feather background", :title => "Code Poets feather background", :data-aos => "fade-up"}
             .outer-text-div.improve-text-div{:data-aos => "fade-up"}
                 .inner-text-div.inner-improve-text-div
                     .topic-row
@@ -79,13 +77,13 @@
                             We think that it is the key to success.
             .square.orange-square{:data-aos => "fade-up"}
         .right-container.right-column
-            %img.lazyload.image_7{:data-src => "{% thumbnail 'team_introduction_page/images/image_7.jpg'|get_static_url '588x915' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_7.jpg'|get_static_url '311x508' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_7.jpg'|get_static_url '475x771' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_7.jpg'|get_static_url '588x915' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Code Poets ladies day", :title => "Code Poets ladies day", :data-aos => "fade-up"}
+            %img.lazyload.image_7{:data-src => "{% static 'team_introduction_page/images/image_7.jpg' %}", :alt => "Code Poets ladies day", :title => "Code Poets ladies day", :data-aos => "fade-up"}
     .be-honest-part.row
         .left-container.inner-left-container.left-column
-            %img.lazyload.overlayed-image.runmageddon-image{:data-src => "{% thumbnail 'team_introduction_page/images/image_8.jpg'|get_static_url '497x875' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_8.jpg'|get_static_url '261x490' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_8.jpg'|get_static_url '400x744' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_8.jpg'|get_static_url '497x875' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Code Poets runmageddon", :title => "Code Poets runmageddon", :data-aos => "fade-up"}
+            %img.lazyload.overlayed-image.runmageddon-image{:data-src => "{% static 'team_introduction_page/images/image_8.jpg' %}", :alt => "Code Poets runmageddon", :title => "Code Poets runmageddon", :data-aos => "fade-up"}
             .square.blue-square{:data-aos => "fade-up"}
         .right-container.right-column
-            %img.lazyload.image_9{:data-src => "{% thumbnail 'team_introduction_page/images/image_9.jpg'|get_static_url '678x450' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_9.jpg'|get_static_url '359x254' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_9.jpg'|get_static_url '549x385' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_9.jpg'|get_static_url '678x450' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Code Poets west office", :title => "Code Poets west office", :data-aos => "fade-up"}
+            %img.lazyload.image_9{:data-src => "{% static 'team_introduction_page/images/image_9.jpg' %}", :alt => "Code Poets west office", :title => "Code Poets west office", :data-aos => "fade-up"}
             .outer-text-div.be-honest-text-div{:data-aos => "fade-up"}
                 .inner-text-div.inner-be-honest-text-div
                     .topic-row
@@ -98,10 +96,10 @@
     .be-honest-part-2.row
         .left-container.left-column
             .overlayed-image
-                %img.lazyload.image_10{:data-src => "{% thumbnail 'team_introduction_page/images/image_10.jpg'|get_static_url '407x288' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_10.jpg'|get_static_url '212x161' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_10.jpg'|get_static_url '327x245' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_10.jpg'|get_static_url '407x288' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Code Poets east office", :title => "Code Poets east office", :data-aos => "fade-up"}
-                %img.lazyload.image_11{:data-src => "{% thumbnail 'team_introduction_page/images/image_11.jpg'|get_static_url '407x288' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_11.jpg'|get_static_url '212x161' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_11.jpg'|get_static_url '327x245' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_11.jpg'|get_static_url '407x288' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Strong team", :title => "Strong team", :data-aos => "fade-up"}
+                %img.lazyload.image_10{:data-src => "{% static 'team_introduction_page/images/image_10.jpg' %}", :alt => "Code Poets east office", :title => "Code Poets east office", :data-aos => "fade-up"}
+                %img.lazyload.image_11{:data-src => "{% static 'team_introduction_page/images/image_11.jpg' %}", :alt => "Strong team", :title => "Strong team", :data-aos => "fade-up"}
         .right-container.right-column
-            %img.lazyload.image_12{:data-src => "{% thumbnail 'team_introduction_page/images/image_12.jpg'|get_static_url '768x511' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_12.jpg'|get_static_url '408x288' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_12.jpg'|get_static_url '623x437' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_12.jpg'|get_static_url '768x511' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Code Poets playroom", :title => "Code Poets playroom", :data-aos => "fade-up"}
+            %img.lazyload.image_12{:data-src => "{% static 'team_introduction_page/images/image_12.jpg' %}", :alt => "Code Poets playroom", :title => "Code Poets playroom", :data-aos => "fade-up"}
     .self-organized-part.row
         .outer-text-div.self-organized-text-div{:data-aos => "fade-up"}
             .inner-text-div.inner-self-organized-text-div
@@ -114,13 +112,13 @@
                         We are sure that no one will arrange the process, projects and even the company better than its members.
     .self-organized-part-2.row
         .left-container.col-6.inner-left-container.left-column
-            %img.lazyload.image_13{:data-src => "{% thumbnail 'team_introduction_page/images/image_13.jpg'|get_static_url '575x422' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_13.jpg'|get_static_url '303x250' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_13.jpg'|get_static_url '464x380' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_13.jpg'|get_static_url '575x422' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Code Poets mountain journey", :title => "Code Poets mountain journey", :data-aos => "fade-up"}
+            %img.lazyload.image_13{:data-src => "{% static 'team_introduction_page/images/image_13.jpg' %}", :alt => "Code Poets mountain journey", :title => "Code Poets mountain journey", :data-aos => "fade-up"}
             .square.red-square{:data-aos => "fade-up"}
         .right-container.col-6.right-column
-            %img.lazyload.image_14{:data-src => "{% thumbnail 'team_introduction_page/images/image_14.jpg'|get_static_url '600x532' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_14.jpg'|get_static_url '317x399' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_14.jpg'|get_static_url '485x454' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_14.jpg'|get_static_url '600x532' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Code Poets fat thursday", :title => "Code Poets fat thursday", :data-aos => "fade-up"}
+            %img.lazyload.image_14{:data-src => "{% static 'team_introduction_page/images/image_14.jpg' %}", :alt => "Code Poets fat thursday", :title => "Code Poets fat thursday", :data-aos => "fade-up"}
     .self-organized-part-3.row
         .left-container.left-column
-            %img.lazyload.overlayed-image.self-organized-overlayed-image{:data-src => "{% thumbnail 'team_introduction_page/images/image_15.jpg'|get_static_url '485x500' as im %} {{ im.url }} {% endthumbnail %}", :data-srcset => "{% thumbnail 'team_introduction_page/images/image_15.jpg'|get_static_url '255x279' as im %} {{ im.url }} 500w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_15.jpg'|get_static_url '391x423' as im %} {{ im.url }} 850w {% endthumbnail %}, {% thumbnail 'team_introduction_page/images/image_15.jpg'|get_static_url '485x500' as im %} {{ im.url }} 1200w {% endthumbnail %}", :alt => "Code Poets hot dog", :title => "Code Poets hot dog", :data-aos => "fade-up"}
+            %img.lazyload.overlayed-image.self-organized-overlayed-image{:data-src => "{% static 'team_introduction_page/images/image_15.jpg' %}", :alt => "Code Poets hot dog", :title => "Code Poets hot dog", :data-aos => "fade-up"}
         .right-container.right-column
             .outer-text-div.self-organized-2-text-div{:data-aos => "fade-up"}
                 .inner-text-div.inner-self-organized-part-2-text-div
