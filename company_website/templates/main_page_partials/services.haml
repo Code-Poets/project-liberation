@@ -1,5 +1,7 @@
 {% load static %}
 .services-container{:id => 'services'}
+    {% include "common_partials/section_header.haml" with title="Services" subtext="" %}
+    %image.section-feather.lazyload{:data-src => "{% static 'main_page/images/background/feather_yellow_254x752.png' %}", :alt => "Yellow Feather", :title => "Yellow Feather"}
     .container
         .row.services-row
             .col-md-6.box{:data-aos => "fade-up"}
