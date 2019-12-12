@@ -38,85 +38,124 @@
                 .service-box-img
                     text-align: center
                     border: 1px solid transparent
-                    border-radius: 8px
-                    margin-bottom: 5px
-
-                    @media only screen and (max-width: $extra-large-services-size)
-                        margin-bottom: 10px
-
-                    .service-img
-                        padding: 0 16%
-                        width: 12vw
-
-                        @media only screen and (max-width: $extra-large-services-size)
-                            width: 230px
-
-                        @media only screen and (max-width: 450px)
-                            width: 60vw
-
-            .services-description
-                @media only screen and (min-width: $extra-large-services-size)
-                    padding-top: 10px
-
-                .text-description
-                    margin-top: -8px
-                    font-size: 0.80em
-                    text-align: justify
-
-                    @media only screen and (max-width: $sm-screen-size)
-                        margin-top: 0
-
-            .text-header
-                text-align: center
-                font-weight: 700
+.services-container
+    .container
+        .row
+            .title
+                margin: $container-title-template-margin auto $container-title-template-margin-bottom
                 color: $blue-color
+                font-weight: 700
+
+            .col-xl-5
+                padding-right: 0
+                padding-left: 0
+
+        .row.services-row
+            margin: 0 auto
+            text-align: justify
+            font-size: 1vw
+            line-height: 113%
+
+            @media only screen and (max-width: $extra-large-services-size)
+                font-size: 100%
 
             @media only screen and (min-width: $extra-large-services-size)
-                .wider-header
-                    width: 115%
-                    margin-left: calc(-14.5% + 1vw)
+                .right-section-text
+                    margin-left: 15px
 
-            .service-box-green
-                background-color: $service-green-box-color
 
-                .service-box-img-green
-                    background-color: $service-green-box-color-light
+            .box
+                margin-bottom: 15px
 
-            .service-box-red
-                background-color: $service-red-box-color
+                .service-box
+                    border-radius: 8px
+                    text-align: center
+                    margin: auto
+                    width: fit-content
+                    width: -moz-fit-content
 
-                .service-box-img-red
-                    background-color: $service-red-box-color-light
+                    .service-box-img
+                        text-align: center
+                        border: 1px solid transparent
+                        border-radius: 8px
+                        margin-bottom: 5px
 
-            .service-box-orange
-                background-color: $service-orange-box-color
+                        @media only screen and (max-width: $extra-large-services-size)
+                            margin-bottom: 10px
 
-                .service-box-img-orange
-                    background-color: $service-orange-box-color-light
+                        .service-img
+                            padding: 0 16%
+                            width: 12vw
 
-            .service-box-blue
-                background-color: $service-blue-box-color
+                            @media only screen and (max-width: $extra-large-services-size)
+                                width: 230px
 
-                .service-box-img-blue
-                    background-color: $service-blue-box-color-light
+                            @media only screen and (max-width: 450px)
+                                width: 60vw
 
-            .service-box-aos:hover
-                opacity: 0.8
+                .services-description
+                    @media only screen and (min-width: $extra-large-services-size)
+                        padding-top: 10px
 
-            a, a:hover
-                color: black
-                text-decoration: none
+                    .text-description
+                        margin-top: -8px
+                        font-size: 0.80em
+                        text-align: justify
 
-    .row-line
-        .hr-line
-            margin-top: $container-row-line-margin
+                        @media only screen and (max-width: $sm-screen-size)
+                            margin-top: 0
 
-    .mobile-devices
-        display: none
+                .text-header
+                    text-align: center
+                    font-weight: 700
+                    color: $blue-color
 
-    @media only screen and (max-width: $sm-screen-size)
+                @media only screen and (min-width: $extra-large-services-size)
+                    .wider-header
+                        width: 115%
+                        margin-left: calc(-14.5% + 1vw)
+
+                .service-box-green
+                    background-color: $service-green-box-color
+
+                    .service-box-img-green
+                        background-color: $service-green-box-color-light
+
+                .service-box-red
+                    background-color: $service-red-box-color
+
+                    .service-box-img-red
+                        background-color: $service-red-box-color-light
+
+                .service-box-orange
+                    background-color: $service-orange-box-color
+
+                    .service-box-img-orange
+                        background-color: $service-orange-box-color-light
+
+                .service-box-blue
+                    background-color: $service-blue-box-color
+
+                    .service-box-img-blue
+                        background-color: $service-blue-box-color-light
+
+                .service-box-aos:hover
+                    opacity: 0.8
+
+                a, a:hover
+                    color: black
+                    text-decoration: none
+
+        .row-line
+            .hr-line
+                margin-top: $container-row-line-margin
+
         .mobile-devices
-            display: inherit
-
-        .full-screen
             display: none
+
+        @media only screen and (max-width: $sm-screen-size)
+            .mobile-devices
+                display: inherit
+
+            .full-screen
+                display: none
