@@ -1,12 +1,8 @@
 {% load static %}
 
-.container
-    .portfolio-container{:id => "project"}
-        .row
-            {% include "main_page_partials/section_separator.haml" %}
-        .row.portfolio.title
-            .col-md-12.text-center.section-title
-                %h1.section PROJECTS
+.portfolio-container{:id => "project"}
+    {% include "common_partials/section_header.haml" with title="Projects" subtext="" %}
+    .container
         .row.portfolio
             .col-md-12.col-lg-6.custom-paddings{:data-aos => "fade-up", :data-aos-offset => "-200"}
                 %a{:href => "https://www.sigmaaldrich.com/chemistry/chemical-synthesis/synthesis-software.html"}
