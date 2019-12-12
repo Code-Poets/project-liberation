@@ -1,3 +1,24 @@
+### v1.9.0
+
+##### Features
+
+- Feature add is_working field in Employees model ([#167](https://github.com/Code-Poets/project-liberation/pull/167))
+- Feature staticfiles improvement ([#169](https://github.com/Code-Poets/project-liberation/pull/169))
+- Feature add a long cache lifetime after implementing the static files versioning mechanism ([#172](https://github.com/Code-Poets/project-liberation/pull/172))
+- Feature add loading static images with different sizes ([#182](https://github.com/Code-Poets/project-liberation/pull/182))
+
+##### Bugfixes
+
+- Bugfix blog categories models ([#163](https://github.com/Code-Poets/project-liberation/pull/163))
+- Bugfix blog article model ([#164](https://github.com/Code-Poets/project-liberation/pull/164))
+- Bugfix dates in articles list view ([#166](https://github.com/Code-Poets/project-liberation/pull/166))
+- Bugfix typo in project liberation bucket name ([#171](https://github.com/Code-Poets/project-liberation/pull/171))
+- Bugfix add absolute url to blog posts ([#176](https://github.com/Code-Poets/project-liberation/pull/176))
+- Bugfix fix javascript files in cached static files ([#178](https://github.com/Code-Poets/project-liberation/pull/178))
+- Bugfix move order of tasks to add images to django before generate static files ([#177](https://github.com/Code-Poets/project-liberation/pull/177))
+- Bugfix menu collapse too late ([#180](https://github.com/Code-Poets/project-liberation/pull/180))
+
+
 ### v1.8.0
 
 ##### Features
