@@ -17,6 +17,7 @@ assertpy = "*"
 factory-boy = "*"
 ipdb = "*"
 parameterized = "*"
+opencv-python = "*"
 
 [packages]
 Django = "<3"
