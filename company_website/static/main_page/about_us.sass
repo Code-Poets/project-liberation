@@ -1,76 +1,77 @@
 @import "../common/partials/constants"
 
-.container.about-us-container
-    .row
-        margin: 0
-        .section-title
-            .title
-                color: $blue-color
-                font-weight: 700
-                margin-top: $container-title-template-margin
-                margin-bottom: $container-title-template-margin-bottom - 5px
+.about-us-container
+    .container
+        .row
+            margin: 0
+            .section-title
+                .title
+                    color: $blue-color
+                    font-weight: 700
+                    margin-top: $container-title-template-margin
+                    margin-bottom: $container-title-template-margin-bottom - 5px
 
-    .row-line
-        .hr-line
-            margin-top: 0
-
-            @media screen and (max-width: $md-screen-size)
-                margin-top: $container-row-line-margin
-
-    .row.about-us-row
-        margin: 0
-
-        .about-us-col
-            margin: 0 auto
-            padding: 0
-
-            @media screen and (max-width: $md-screen-size)
-                margin-bottom: 15px
-
-            a, a:hover
-                color: white
-                text-decoration: none
-
-            .how-we-work-box
-                background-color: $how-we-work-box-background
-
-            .about-us-box
-                background-color: $about-us-box-background
-
-            .about-us-box, .how-we-work-box
-                padding: 0
-                border-radius: 20px
-                margin: 0 auto
-                font-size: 1vw
-                vertical-align: middle
-                width: fit-content
-                width: -moz-fit-content
-                width: 29vw
+        .row-line
+            .hr-line
+                margin-top: 0
 
                 @media screen and (max-width: $md-screen-size)
-                    width: 100%
-                    font-size: 14px
-                    border-radius: 15px
+                    margin-top: $container-row-line-margin
 
-                .about-us-image
-                    border-radius: inherit
+        .row.about-us-row
+            margin: 0
+
+            .about-us-col
+                margin: 0 auto
+                padding: 0
+
+                @media screen and (max-width: $md-screen-size)
+                    margin-bottom: 15px
+
+                a, a:hover
+                    color: white
+                    text-decoration: none
+
+                .how-we-work-box
+                    background-color: $how-we-work-box-background
+
+                .about-us-box
+                    background-color: $about-us-box-background
+
+                .about-us-box, .how-we-work-box
+                    padding: 0
+                    border-radius: 20px
+                    margin: 0 auto
+                    font-size: 1vw
+                    vertical-align: middle
+                    width: fit-content
+                    width: -moz-fit-content
                     width: 29vw
-                    height: auto
 
                     @media screen and (max-width: $md-screen-size)
                         width: 100%
+                        font-size: 14px
+                        border-radius: 15px
 
-                .description
-                    vertical-align: middle
-                    text-align: center
-                    padding: 1.1vw
-                    margin: 0
-                    font-weight: 700
-                    font-size: 1.5em
-                    line-height: normal
+                    .about-us-image
+                        border-radius: inherit
+                        width: 29vw
+                        height: auto
 
-                    @media screen and (max-width: $md-screen-size)
-                        padding: 12px
+                        @media screen and (max-width: $md-screen-size)
+                            width: 100%
 
-                &:hover
-                    opacity: 0.8
+                    .description
+                        vertical-align: middle
+                        text-align: center
+                        padding: 1.1vw
+                        margin: 0
+                        font-weight: 700
+                        font-size: 1.5em
+                        line-height: normal
+
+                        @media screen and (max-width: $md-screen-size)
+                            padding: 12px
+
+                    &:hover
+                        opacity: 0.8
