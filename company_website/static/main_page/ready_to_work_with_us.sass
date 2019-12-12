@@ -1,4 +1,5 @@
 @import "../common/partials/constants"
+@import "../common/partials/section_header"
 
 $xs-breakpoint: 379px
 $xxs-breakpoint: 363px
@@ -9,19 +10,22 @@ $xxs-breakpoint: 363px
     max-width: 100%
 
 .ready-to-work-with-us
-    font-family: $font-family
-    font-weight: 400
-    max-width: $max-section-width
-    margin: auto
-    color: $blue
+    .section-header
+        margin-top: 3vw
+        margin-bottom: 5vw
+        min-height: unset
+        .content-wrapper
+            .section-description-contents
+                display: block
+                min-height: 6rem
+                .section-description-bar
+                    top: unset
+                    bottom: calc(#{$section-description-content-height} + #{$section-description-text-offset} - #{$section-description-total-height})
+                .section-description-text
+                    margin-left: calc(18px + 1.5vw)
+                    .title
+                        font-size: 3.6rem
 
-    .section-title
-        text-align: center
-        text-transform: uppercase
-        color: $blue
-        font-size: 2.2rem
-        font-weight: 700
-        margin-bottom: .7rem
     .row
         .col-lg-6
             .inner-section
@@ -45,8 +49,9 @@ $xxs-breakpoint: 363px
                         border-color: $blue-highlight
 
     .content_section
-        max-width: 100%
-        margin: 0
+        color: $blue
+        margin: auto
+        max-width: $max-section-width
         margin-bottom: 50px
 
         .backdrop

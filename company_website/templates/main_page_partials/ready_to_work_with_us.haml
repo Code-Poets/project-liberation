@@ -1,11 +1,7 @@
 {% load static %}
 
-.container.ready-to-work-with-us{:id => "contact-us"}
-    .row
-        {% include "main_page_partials/section_separator.haml" %}
-    %h2.section-title
-        Ready to work with us?
-
+.ready-to-work-with-us{:id => "contact-us"}
+    {% include "common_partials/section_header.haml" with title="Ready to work with us?" subtext="" %}
     .row.content_section
         .col-lg-6.col-12{:data-aos => "fade-up", :data-aos-offset => "-100"}
             .inner-section.backdrop
