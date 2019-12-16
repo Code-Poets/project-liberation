@@ -42,9 +42,11 @@
           - libgeoip-dev
           - libpcre++-dev
           - libxslt-dev
+          - mailutils
           - nginx={{ nginx_version }}
           - nodejs
           - pipenv
+          - postfix
           - postgresql
           - python3
           - python3-certbot-nginx
