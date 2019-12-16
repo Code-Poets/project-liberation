@@ -82,6 +82,8 @@ server {
     }
 
     location /download-image-package/ {
+        limit_conn ip_connection_limit 1;
+        limit_rate 2m;
         limit_except GET { deny all; }
         alias        {{ image_package_dir }}/;
     }
