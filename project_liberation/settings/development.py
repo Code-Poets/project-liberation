@@ -12,3 +12,7 @@ DATABASES['default']['PORT']     = ''
 GOOGLE_ANALYTICS = {
     'google_analytics_id': 'test_id',
 }
+
+STATICFILES_STORAGE = "pipeline.storage.PipelineStorage"
+
+PIPELINE["PIPELINE_ENABLED"] = False
