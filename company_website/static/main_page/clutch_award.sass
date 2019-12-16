@@ -1,0 +1,77 @@
+@import "partials/constants"
+$badge-height: 8vw
+
+
+.clutch-container
+    font-family: $font-family
+    .container
+        margin: 0
+        .left-container
+            height: $badge-height
+            width: 60px
+            margin: 4vw 0 0 1.3%
+            background: #17323D
+
+            @media only screen and (max-width: $sm-screen-size)
+                display: none
+
+        .clutch-image
+            margin: 0 5px
+            height: calc(#{$badge-height} * 2)
+
+            @media only screen and (max-width: $sm-screen-size)
+                height: 65vw
+                margin: 0 auto 2vw auto
+
+        .right-container
+            margin-top: 4vw
+            width: calc(100% - 60px - 15.35vw - 2 * 1.3%)
+
+            @media only screen and (max-width: $sm-screen-size)
+                display: none
+
+            .clutch-text-container
+                text-align-last: justify
+                position: relative
+                background: #17323D
+                height: $badge-height
+                font-weight: 600
+                color: white
+                font-size: 1.7vw
+
+                .clutch-text
+                    position: absolute
+                    top: 50%
+                    left: 8%
+                    right: 8%
+                    transform: translate(0, -50%)
+
+                .orange-text
+                    color: #F9921C
+
+            .see-our-views-container
+                padding-top: 10px
+                display: flex
+                justify-content: flex-end
+                height: 4vw
+                font-size: 2.35vw
+                font-weight: 500
+                @media only screen and (max-width: $md-screen-size)
+                    font-size: 2vw
+
+                .clutch-stars
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    margin: 0 3vw 0 1vw
+
+                    .clutch-star
+                        padding-left: 5px
+                        height: 2vw
+
+                a:link
+                    text-decoration: none
+
+                .link-to-clutch
+                    color: black
+                    font-weight: 600

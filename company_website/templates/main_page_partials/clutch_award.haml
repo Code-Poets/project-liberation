@@ -1,0 +1,22 @@
+{% load static %}
+
+.clutch-container{:data-aos => "fade-up"}
+    .container.row
+        .left-container
+        %img.lazyload.clutch-image{:data-src => "{% static 'main_page/images/main_screen/clutch.png' %}"}
+        .right-container
+            .clutch-text-container
+                .clutch-text We would like to
+                    %b.orange-text proudly
+                    announce <br>that we have been
+                    %b.orange-text awarded
+                    by Clutch!
+            .see-our-views-container
+                .see-our-views-text See our views&nbsp
+                %a.link-to-clutch{:href => "https://clutch.co/profile/code-poets"} here
+                .clutch-stars
+                    %img.lazyload.clutch-star{:data-src => "{% static 'main_page/images/about_code_poets/clutch_star_full.png' %}"}
+                    %img.lazyload.clutch-star{:data-src => "{% static 'main_page/images/about_code_poets/clutch_star_full.png' %}"}
+                    %img.lazyload.clutch-star{:data-src => "{% static 'main_page/images/about_code_poets/clutch_star_full.png' %}"}
+                    %img.lazyload.clutch-star{:data-src => "{% static 'main_page/images/about_code_poets/clutch_star_full.png' %}"}
+                    %img.lazyload.clutch-star{:data-src => "{% static 'main_page/images/about_code_poets/clutch_star_full.png' %}"}
