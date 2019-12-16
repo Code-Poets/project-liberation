@@ -1,6 +1,7 @@
 from typing import Any
 
 from django import forms
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.handlers.wsgi import WSGIRequest
 from django.db import models
@@ -283,6 +284,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
     def get_context(self, request: WSGIRequest, *args: Any, **kwargs: Any) -> dict:
         context = super().get_context(request, *args, **kwargs)
         self._increase_view_counter()
+        context["URL_PREFIX"] = settings.URL_PREFIX
         return context
 
     def _increase_view_counter(self) -> None:
