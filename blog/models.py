@@ -218,7 +218,7 @@ class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
 
     @staticmethod
     def get_popular_articles() -> PageQuerySet:
-        return BlogArticlePage.objects.all().order_by("-views")[:3]
+        return BlogArticlePage.objects.all().order_by("-views")[:5]
 
     def get_proper_url(self) -> str:
         return self.slug
