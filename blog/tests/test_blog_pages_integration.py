@@ -10,7 +10,7 @@ class TestBlogIndexPageIntegration(TestCase, BlogTestHelpers):
     def setUp(self) -> None:
         self._set_default_blog_index_page_as_new_root_page_child()
         self.blog_category_snippet = self._create_blog_category_snippet()
-        self.number_of_articles = 4
+        self.number_of_articles = 6
         for loop_number in range(self.number_of_articles):
             self._create_blog_article_page(views=loop_number)
         self.blog_index_page = self._get_newest_blog_index_page()
@@ -32,7 +32,7 @@ class TestBlogIndexPageIntegration(TestCase, BlogTestHelpers):
 
     def test_that_get_popular_articles_should_return_most_popular_blog_articles(self):
         popular_articles = self.blog_index_page.get_popular_articles()
-        self.assertEqual(len(popular_articles), 3)
+        self.assertEqual(len(popular_articles), 5)
         most_views = popular_articles[0].views
         for article in popular_articles:
             self.assertEqual(article.views, most_views)
