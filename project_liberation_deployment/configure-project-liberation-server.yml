@@ -9,6 +9,7 @@
     - install_dependencies_and_basic_configuration
     - configure_postgres
     - backup
+    - configure_mail_alerts
   tasks:
     - become:      yes
       become_user: root

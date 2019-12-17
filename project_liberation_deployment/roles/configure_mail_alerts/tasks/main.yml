@@ -1,0 +1,36 @@
+- become:      yes
+  become_user: root
+  block:
+    - name: Configure postfix's mail server to use sendgrid
+      copy:
+        src:   main.cf
+        dest:  /etc/postfix/main.cf
+
+    - name: Add postfix's secret
+      copy:
+        src:   "{{ project_liberation_secret_dir }}/sasl_passwd.vault"
+        dest:  /etc/postfix/sasl_passwd
+
+    - name:    Update postfix's hashtables
+      command: postmap /etc/postfix/sasl_passwd
+
+    - name:  Restart postfix's service
+      service:
+        enabled: yes
+        name:    postfix
+        state:   restarted
+
+    - name: Copy a script that sends e-mail with notifications when server resources are low
+      copy:
+        src:   alert-resource-limits.sh
+        dest:  "{{ home_dir }}/bin/alert-resource-limits.sh"
+        owner: project_liberation
+        group: project_liberation
+        mode:  0555
+
+    - name: Add cron's job that automatically checks usage of server's resources
+      cron:
+        name:         check server's resources
+        special_time: hourly
+        user:         root
+        job:          "{{ home_dir }}/bin/alert-resource-limits.sh"
