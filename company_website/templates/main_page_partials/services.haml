@@ -1,57 +1,55 @@
 {% load static %}
-
-.container.services-container{:id => 'services'}
-    .row.row-line
-        {% include "main_page_partials/section_separator.haml" %}
-    .row.service.row
-        %h1.title SERVICES
-    .row.services-row
-        .col-md-6.box{:data-aos => "fade-up"}
-            %span
-                .row.left-row
-                    .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-5
-                        %p.text-header.mobile-devices Cheminformatics
-                        .service-box.service-box-orange
-                            .service-box-img.service-box-img-orange
-                                %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/cheminformatic_development.png' %}",  :alt => "Cheminformatic Development", :title => "Cheminformatic Development"}
-                    .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-6.right-section-text
-                        .services-description
-                            %p.text-header.full-screen.wider-header Cheminformatics
-                            %p.text-description Our team of interdisciplinary specialists allows us to utilize both chemical and IT expertise. It results in better understanding of business needs and has positive impact on the quality of the final product.
-        .col-md-6.box{:data-aos => "fade-up"}
-            %span
-                .row.right-row
-                    .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-5
-                        %p.text-header.mobile-devices Machine Learning
-                        .service-box.service-box-blue
-                            .service-box-img.service-box-img-blue
-                                %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/machine_learning.png' %}",  :alt => "Machine Learning", :title => "Machine Learning"}
-                    .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-6.right-section-text
-                        .services-description
-                            %p.text-header.full-screen Machine Learning
-                            %p.text-description The current growth in IT is heavily driven by Machine Learning, from the automotive industry to computer graphics. We can help you understand the potential ways.
-    .row.services-row
-        .col-md-6.box{:data-aos => "fade-up"}
-            %span
-                .row.left-row
-                    .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-5
-                        %p.text-header.mobile-devices Web Application Development
-                        .service-box.service-box-green
-                            .service-box-img.service-box-img-green
-                                %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/web_application_development.png' %}", :alt => "Web Application Development", :title => "Web Application Development"}
-                    .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-6.right-section-text
-                        .services-description
-                            %p.text-header.full-screen.wider-header Web Application Development
-                            %p.text-description We understand your needs and are able to deliver scalable web application solutions based on frontend and backend technologies.
-        .col-md-6.box{:data-aos => "fade-up"}
-            %span
-                .row.right-row
-                    .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-5
-                        %p.text-header.mobile-devices Rapid MVP Development
-                        .service-box.service-box-red
-                            .service-box-img.service-box-img-red
-                                %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/rapid_mvp_development.png' %}",  :alt => "Rapid MVP Development", :title => "Rapid MVP Development"}
-                    .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-6.right-section-text
-                        .services-description
-                            %p.text-header.full-screen Rapid MVP Development
-                            %p.text-description With Minimum Viable Product it’s possible to deliver a project within a very limited time frame & budget.
+.services-container{:id => 'services'}
+    {% include "common_partials/section_header.haml" with title="Services" subtext="" %}
+    %image.section-feather.lazyload{:data-src => "{% static 'main_page/images/background/feather_yellow_254x752.png' %}", :alt => "Yellow Feather", :title => "Yellow Feather"}
+    .container
+        .row.services-row
+            .col-md-6.box{:data-aos => "fade-up"}
+                %span
+                    .row.left-row
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-5
+                            %p.text-header.mobile-devices Cheminformatics
+                            .service-box.service-box-orange
+                                .service-box-img.service-box-img-orange
+                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/cheminformatic_development.png' %}",  :alt => "Cheminformatic Development", :title => "Cheminformatic Development"}
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-6.right-section-text
+                            .services-description
+                                %p.text-header.full-screen.wider-header Cheminformatics
+                                %p.text-description Our team of interdisciplinary specialists allows us to utilize both chemical and IT expertise. It results in better understanding of business needs and has positive impact on the quality of the final product.
+            .col-md-6.box{:data-aos => "fade-up"}
+                %span
+                    .row.right-row
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-5
+                            %p.text-header.mobile-devices Machine Learning
+                            .service-box.service-box-blue
+                                .service-box-img.service-box-img-blue
+                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/machine_learning.png' %}",  :alt => "Machine Learning", :title => "Machine Learning"}
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-6.right-section-text
+                            .services-description
+                                %p.text-header.full-screen Machine Learning
+                                %p.text-description The current growth in IT is heavily driven by Machine Learning, from the automotive industry to computer graphics. We can help you understand the potential ways.
+        .row.services-row
+            .col-md-6.box{:data-aos => "fade-up"}
+                %span
+                    .row.left-row
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-5
+                            %p.text-header.mobile-devices Web Application Development
+                            .service-box.service-box-green
+                                .service-box-img.service-box-img-green
+                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/web_application_development.png' %}", :alt => "Web Application Development", :title => "Web Application Development"}
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-6.right-section-text
+                            .services-description
+                                %p.text-header.full-screen.wider-header Web Application Development
+                                %p.text-description We understand your needs and are able to deliver scalable web application solutions based on frontend and backend technologies.
+            .col-md-6.box{:data-aos => "fade-up"}
+                %span
+                    .row.right-row
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-5
+                            %p.text-header.mobile-devices Rapid MVP Development
+                            .service-box.service-box-red
+                                .service-box-img.service-box-img-red
+                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/rapid_mvp_development.png' %}",  :alt => "Rapid MVP Development", :title => "Rapid MVP Development"}
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0.col-xl-6.right-section-text
+                            .services-description
+                                %p.text-header.full-screen Rapid MVP Development
+                                %p.text-description With Minimum Viable Product it’s possible to deliver a project within a very limited time frame & budget.

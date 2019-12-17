@@ -1,16 +1,27 @@
 @import "../common/partials/constants"
-
-.feather
-    width: 14vw
-    position: absolute
-    margin-top: -4.5vw
-    padding-left: 15px
-    opacity: 0.95
-
-    @media screen and (max-width: 1200px)
-        margin-top: 0
+@import "../common/partials/section_header"
 
 .portfolio-container
+
+    .section-header
+        margin-top: 3vw
+        margin-bottom: 5vw
+        min-height: unset
+        background: $section-header-yellow-color
+        .content-wrapper
+            .section-description-contents
+                display: block
+                min-height: 6rem
+                .section-description-bar
+                    background: $blue-color
+                    top: unset
+                    bottom: calc(#{$section-description-content-height} + #{$section-description-text-offset} - #{$section-description-total-height})
+                .section-description-text
+                    margin-left: calc(18px + 1.5vw)
+                    .title
+                        color: $blue-color
+                        font-size: 3.6rem
+
     a, a span
         text-decoration: none
 
@@ -184,8 +195,6 @@
             padding: 0.5vw
 
 @media only screen and (max-width: $md-screen-size)
-    .feather
-        display: none
 
     .mobile-hidden-projects
         overflow: hidden
