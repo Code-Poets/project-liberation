@@ -1,4 +1,5 @@
 @import "../common/partials/_constants.sass"
+@import "../common/partials/section_header"
 
 body
     text-indent: 0
@@ -6,6 +7,25 @@ body
     line-height: unset
     font-family: "Open Sans", sans-serif
 
+    .employees-intruduction-header-section
+        .section-header
+            margin-top: 5vw
+            margin-bottom: 3vw
+            min-height: unset
+            background: $section-header-yellow-color
+            .content-wrapper
+                .section-description-contents
+                    display: block
+                    min-height: 6rem
+                    .section-description-bar
+                        background: $blue-color
+                        top: unset
+                        bottom: calc(#{$section-description-content-height} + #{$section-description-text-offset} - #{$section-description-total-height})
+                    .section-description-text
+                        margin-left: calc(18px + 1.5vw)
+                        .title
+                            color: $blue-color
+                            font-size: 3.6rem
 
     .employees-intruduction
         max-width: $about-us-page-width

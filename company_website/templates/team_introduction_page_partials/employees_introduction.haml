@@ -1,8 +1,11 @@
 {% load static %}
 {% load thumbnail %}
 
+
+.employees-intruduction-header-section
+    {% include "common_partials/section_header.haml" with title="Our Team" subtext="" %}
+
 .employees-intruduction
-    .text-div OUR TEAM
     .team-images
         .bosses-images
             {% for boss in bosses %}
