@@ -1,10 +1,38 @@
 @import "../common/partials/_constants.sass"
+@import "../common/partials/section_header"
 
 body
 
     text-indent: 0
     margin: 0 0
     line-height: unset
+
+    .about-us-section-header
+        .section-header
+            margin-top: 0
+            @media only screen and (min-width: $menu-max-size)
+                margin-top: 60px
+            margin-bottom: 2vw
+            min-height: unset
+            .container
+                max-width: $about-us-page-width
+                padding-left: $default-padding-in-vw
+                padding-right: $default-padding-in-vw
+                @media only screen and (min-width: $about-us-page-width)
+                    padding-left: 0
+                    padding-right: 0
+                .content-wrapper
+                    .section-description-contents
+                        display: block
+                        min-height: 6rem
+                        .section-description-bar
+                            top: unset
+                            bottom: calc(#{$section-description-content-height} + #{$section-description-text-offset} - #{$section-description-total-height})
+                        .section-description-text
+                            margin-left: calc(18px + 1.5vw)
+                            .title
+                                font-size: 3.6rem
+
 
     .row
         margin: 0

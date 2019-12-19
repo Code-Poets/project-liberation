@@ -1,12 +1,10 @@
 {% load static %}
-
+.about-us-section-header
+    {% include "common_partials/section_header.haml" with title="Who are we?" subtext="" %}
 .about-us-page
     .who-we-are-part.row{:data-aos => "fade-up"}
         .outer-text-div
             .inner-text-div
-                .topic-row
-                    .topic.who-we-are-topic
-                        WHO ARE WE?
                 .text-row.who-we-are-text-row
                     %p.description
                         For us software is like poetry. Knowing the language is not enough to create it.
