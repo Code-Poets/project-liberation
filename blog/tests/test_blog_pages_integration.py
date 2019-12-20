@@ -1,8 +1,11 @@
+import math
+
 from django.test import TestCase
 from django.utils.datetime_safe import datetime
 
 from blog.models import BlogArticlePage
 from blog.models import BlogCategoryPage
+from blog.models import BlogIndexPage
 from blog.tests.test_helpers import BlogTestHelpers
 
 
@@ -39,13 +42,13 @@ class TestBlogIndexPageIntegration(TestCase, BlogTestHelpers):
             most_views -= 1
 
 
-class TestBlogCategoryPageIntegration(TestCase, BlogTestHelpers):
+class BlogSetUpClass(TestCase, BlogTestHelpers):
     def setUp(self) -> None:
         self._set_default_blog_index_page_as_new_root_page_child()
         self.blog_category_1 = self._create_blog_category_snippet(title="Test Category", slug="test-category")
         self.blog_category_2 = self._create_blog_category_snippet(title="Test Category 2", slug="test-category-2")
         self.blog_category_1_articles_amount = 3
-        self.blog_category_2_articles_amount = 5
+        self.blog_category_2_articles_amount = 7
         self.blog_category_1_articles = []
         self.blog_category_2_articles = []
         self.custom_date = datetime(year=2019, month=1, day=1)
@@ -70,6 +73,8 @@ class TestBlogCategoryPageIntegration(TestCase, BlogTestHelpers):
                 )
             )
 
+
+class TestBlogCategoryPageIntegration(BlogSetUpClass):
     def test_that_category_page_should_show_articles_which_are_related_only_with_this_category(self):
         response = self.client.get(BlogCategoryPage.objects.get(**self.blog_category_1.instance_parameters).full_url)
         self.assertTemplateUsed(response, BlogCategoryPage.template)
@@ -84,3 +89,21 @@ class TestBlogCategoryPageIntegration(TestCase, BlogTestHelpers):
             self.assertNotIn(category_2_article.title, response.rendered_content)
             self.assertNotIn(category_2_article.intro, response.rendered_content)
             self.assertNotIn(category_2_article.date.strftime("%b. %d, %Y"), response.rendered_content)
+
+
+class TestBlogPagesPagination(BlogSetUpClass):
+    def test_that_pagination_in_displayed_on_index_page_when_is_more_than_6_articles(self):
+        response = self.client.get(self.blog_index_page_url)
+        number_of_paginated_pages = math.ceil(BlogArticlePage.objects.all().count() / 6)
+        self.assertTemplateUsed(response, BlogIndexPage.template)
+        for number in range(1, number_of_paginated_pages + 1):
+            self.assertIn(f"?page={number}", response.rendered_content)
+
+    def test_that_pagination_in_displayed_on_category_page_when_is_more_than_6_articles(self):
+        response = self.client.get(BlogCategoryPage.objects.get(**self.blog_category_2.instance_parameters).full_url)
+        number_of_paginated_pages = math.ceil(
+            BlogArticlePage.objects.filter(categories__title=self.blog_category_2.title).count() / 6
+        )
+        self.assertTemplateUsed(response, BlogCategoryPage.template)
+        for number in range(1, number_of_paginated_pages + 1):
+            self.assertIn(f"?page={number}", response.rendered_content)

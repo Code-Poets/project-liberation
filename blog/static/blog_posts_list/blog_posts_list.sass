@@ -20,7 +20,7 @@ $dark-blue: #03428c
         .line
             width: 95%
 
-            @media only screen and (max-width: 834px)
+            @media only screen and (max-width: 767px)
                 display: none
 
     @media only screen and (max-width: 1079px)
@@ -99,9 +99,10 @@ $dark-blue: #03428c
         .mobile-devices-articles
             display: none
             @media only screen and (max-width: 767px)
-                display: initial
+                display: flex
 
         .rest-posts
+            width: 100%
             @media only screen and (max-width: 767px)
                 margin-right: 0
                 margin-left: 0
@@ -233,6 +234,7 @@ $dark-blue: #03428c
                             font-size: 9.5px
                             font-weight: 400
 
+
     .no-articles-div
         text-align: center
         margin: 0 auto
@@ -241,3 +243,10 @@ $dark-blue: #03428c
             font-weight: 600
         .no-matched-criteria-text
             padding-top: 20px
+
+.articles-paginator
+    padding: 25px
+    @media only screen and (max-width: 767px)
+        padding: 50px
+    margin: 0 auto
+

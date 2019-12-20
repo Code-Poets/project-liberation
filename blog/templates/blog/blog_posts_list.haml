@@ -4,6 +4,7 @@
 {% load pipeline %}
 {% stylesheet 'blog_posts_list' %}
 
+
 .container.blog-posts-list
     {% if page.get_all_articles %}
         .col-md-9.posts-container
@@ -11,9 +12,9 @@
 
             %hr.separator
             .row.rest-posts.full-screen-articles
-                {% include 'blog/partials/article_list.haml' with article_list=page.get_rest_articles %}
+                {% include 'blog/partials/article_list.haml' with article_list=paginated_rest_articles %}
             .row.rest-posts.mobile-devices-articles
-                {% include 'blog/partials/article_list.haml' with article_list=page.get_all_articles %}
+                {% include 'blog/partials/article_list.haml' with article_list=paginated_all_articles %}
         .col-md.popular-articles
             .inner-popular-articles
                 .popular-articles-text POPULAR ARTICLES
