@@ -93,10 +93,17 @@ $(document).ready(function () {
 var $root = $('html, body');
 $('a.nav-link').click(function () {
     var str = $.attr(this, 'href');
-    if (str.indexOf("#") == 1) {
-        $root.animate({
-            scrollTop: $(str.substring(1)).offset().top
-        }, 500);
-        return false;
+    var scrollTo;
+    if (window.location.pathname == "/" ){
+        if (str.indexOf("#") == 1) {
+            if (window.innerWidth > 1175){
+                scrollTo = ($(str.substring(1)).offset().top - 50)
+            } else {
+                scrollTo = $(str.substring(1)).offset().top
+            }
+            $root.animate({
+                scrollTop: scrollTo
+            }, 500);
+        }
     }
 });
