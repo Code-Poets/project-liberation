@@ -4,6 +4,9 @@ from django import forms
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.handlers.wsgi import WSGIRequest
+from django.core.paginator import EmptyPage
+from django.core.paginator import PageNotAnInteger
+from django.core.paginator import Paginator
 from django.db import models
 from django.db.models import QuerySet
 from modelcluster.fields import ParentalManyToManyField
@@ -40,13 +43,27 @@ class MixinPageMethods:
     def get_menu_categories() -> PageQuerySet:
         return BlogCategorySnippet.objects.all().order_by("order")
 
+    @staticmethod
+    def get_paginated_articles(articles: QuerySet, request: WSGIRequest) -> Page:
+        paginator = Paginator(articles, 6)
+        page = request.GET.get("page")
+        try:
+            paginated_articles = paginator.page(page)
+        except PageNotAnInteger:
+            paginated_articles = paginator.page(1)
+        except EmptyPage:
+            paginated_articles = paginator.page(paginator.num_pages)
+        return paginated_articles
+
 
 class BlogCategoryPage(MixinSeoFields, Page, MixinPageMethods):
     template = "blog_categories_posts.haml"
 
     def get_context(self, request: WSGIRequest, *args: Any, **kwargs: Any) -> dict:
         context = super().get_context(request, *args, **kwargs)
-        context["category_articles"] = BlogArticlePage.objects.filter(categories__slug=self.slug).order_by("-path")
+        context["category_articles"] = self.get_paginated_articles(
+            BlogArticlePage.objects.filter(categories__slug=self.slug).order_by("-path"), request
+        )
         return context
 
     def get_proper_url(self) -> str:
@@ -225,6 +242,12 @@ class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
 
     def get_absolute_url(self) -> str:
         return self.url_path
+
+    def get_context(self, request: WSGIRequest, *args: Any, **kwargs: Any) -> dict:
+        context_data = super().get_context(request, *args, **kwargs)
+        context_data["paginated_rest_articles"] = self.get_paginated_articles(self.get_rest_articles(), request)
+        context_data["paginated_all_articles"] = self.get_paginated_articles(self.get_all_articles(), request)
+        return context_data
 
 
 class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):

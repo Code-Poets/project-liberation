@@ -45,3 +45,29 @@
                 %hr.line
         {% endif %}
     {% endfor %}
+
+.articles-paginator
+    {% if article_list.paginator.num_pages > 1 %}
+        .pagination
+            {% if article_list.has_previous %}
+                %li.page-item
+                    %a.page-link{:href => "?page={{ article_list.previous_page_number }}"}
+                        %span &laquo;
+            {% endif %}
+
+            {% for page_num in article_list.paginator.page_range %}
+                {% if page_num == article_list.number %}
+                    %li.page-item.active
+                        %a.page-link{:href => "?page={{ page_num }}"} {{ page_num }}
+                {% else %}
+                    %li.page-item
+                        %a.page-link{:href => "?page={{ page_num }}"} {{ page_num }}
+                {% endif %}
+            {% endfor %}
+
+            {% if article_list.has_next %}
+                %li.page-item
+                    %a.page-link{:href => "?page={{ article_list.next_page_number }}"}
+                        %span &raquo;
+            {% endif %}
+    {% endif %}
