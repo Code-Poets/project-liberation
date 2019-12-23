@@ -13,6 +13,16 @@ GOOGLE_API_KEYS_ERRORS = {
     "length": Error("GOOGLE_API_KEY is of wrong length!"),
 }
 
+STORAGE_DIRECTORIES_SETTING_NAMES = ["COMPANY_EMPLOYEES_STORAGE", "TESTIMONIAL_PHOTOS_STORAGE"]
+
+
+def setting_not_declared_error(setting_name: str) -> Error:
+    return Error(f"{setting_name} is not declared in settings!")
+
+
+def setting_not_a_string_error(setting_name: str) -> Error:
+    return Error(f"{setting_name} is not a string!")
+
 
 @register()
 def check_google_api_key(app_configs: Any, **kwargs: Any) -> list:  # pylint: disable=unused-argument
@@ -26,3 +36,15 @@ def check_google_api_key(app_configs: Any, **kwargs: Any) -> list:  # pylint: di
         return [GOOGLE_API_KEYS_ERRORS["length"]]
 
     return []
+
+
+@register()
+def check_custom_storage_directories(app_configs: Any, **kwargs: Any) -> list:  # pylint: disable=unused-argument
+    errors = []
+    for setting_name in STORAGE_DIRECTORIES_SETTING_NAMES:
+        if not hasattr(settings, setting_name):
+            errors.append(setting_not_declared_error(setting_name))
+
+        elif not isinstance(getattr(settings, setting_name), str):
+            errors.append(setting_not_a_string_error(setting_name))
+    return errors
