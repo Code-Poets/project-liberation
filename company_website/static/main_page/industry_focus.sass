@@ -1,0 +1,39 @@
+@import "../common/partials/constants"
+@import "../common/partials/section_header"
+
+$text-breakpoint-1: 1427px
+$text-breakpoint-2: 1096px
+$text-breakpoint-3: 1095px
+$text-breakpoint-4: 769px
+
+
+.industry-focus-container
+    .industry-icon
+        text-align: center
+
+        .industry-icon-image
+            max-width: 230px
+            max-height: 230px
+            width: 100%
+
+    .industry-name
+        text-align: center
+        text-transform: uppercase
+        color: $blue-color
+        margin: auto
+        padding: 40px 0
+        font-size: 28px
+        font-weight: 700
+        line-height: 1.2
+
+    @media only screen and (min-width: $text-breakpoint-2) and (max-width: $text-breakpoint-1)
+        .industry-name
+            font-size: 1.46vw
+            font-weight: 700
+            line-height: 1.2
+
+    @media only screen and (min-width: $text-breakpoint-4) and (max-width: $text-breakpoint-3)
+        .industry-name
+            font-size: 16px
+            font-weight: 700
+            line-height: 1.2
