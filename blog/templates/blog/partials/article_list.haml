@@ -51,15 +51,18 @@
         .pagination
             {% if article_list.has_previous %}
                 %li.page-item
-                    %a.page-link{:href => "?page={{ article_list.previous_page_number }}"}
+                    %a.page-link{:href => "?page=1"}
                         %span &laquo;
+                %li.page-item
+                    %a.page-link{:href => "?page={{ article_list.previous_page_number }}"}
+                        %span &lsaquo;
             {% endif %}
 
             {% for page_num in article_list.paginator.page_range %}
                 {% if page_num == article_list.number %}
                     %li.page-item.active
                         %a.page-link{:href => "?page={{ page_num }}"} {{ page_num }}
-                {% else %}
+                {% elif page_num > article_list.number|add:'-3' and page_num < article_list.number|add:'3' %}
                     %li.page-item
                         %a.page-link{:href => "?page={{ page_num }}"} {{ page_num }}
                 {% endif %}
@@ -68,6 +71,9 @@
             {% if article_list.has_next %}
                 %li.page-item
                     %a.page-link{:href => "?page={{ article_list.next_page_number }}"}
+                        %span &rsaquo;
+                %li.page-item
+                    %a.page-link{:href => "?page={{ article_list.paginator.num_pages }}"}
                         %span &raquo;
             {% endif %}
     {% endif %}
