@@ -1,6 +1,5 @@
 import random
 from typing import Dict
-from typing import Tuple
 
 from django.conf import settings
 from django.core.management import BaseCommand
@@ -21,6 +20,7 @@ from common.helpers import create_image
 from company_website.factories import BossFactory
 from company_website.factories import EmployeeFactory
 from company_website.models import Employees
+from company_website.models import Testimonial
 
 
 class Command(BaseCommand):
@@ -28,6 +28,7 @@ class Command(BaseCommand):
 
     bosses_limit = 2
     employees_limit = 20
+    testimonial_limit = 10
     article_per_category = 15
     # Categories data
     categories = [
@@ -85,6 +86,21 @@ class Command(BaseCommand):
     @transaction.atomic
     def handle(self, *args, **options):
 
+        fake = Faker()
+        # Add Testimonials
+        if len(Testimonial.objects.all()) == 0:
+            for index in range(0, self.testimonial_limit):
+                testimonial = Testimonial(
+                    name=fake.name()[:32],
+                    position=fake.job()[:64],
+                    quote=fake.sentence(nb_words=50)[:300],
+                    image=create_image(
+                        150, 150, f"testimonial_{index}", settings.MEDIA_ROOT, return_relative_path=True
+                    ),
+                )
+                testimonial.save()
+                print(f"{testimonial} testimonial successfully created")
+
         # Add Employees to Team Introduction Page
         # add 2 bosses
         if len(Employees.objects.filter(boss=True)) == 0:
@@ -95,7 +111,7 @@ class Command(BaseCommand):
                 boss.front_image = front_image
                 boss.back_image = back_image
                 boss.save()
-                print(f"Boss {boss.name} created")
+                print(f"Boss {boss.name} successfully created")
         # add 20 employees
         if len(Employees.objects.filter(boss=False)) == 0:
             for _ in range(0, self.employees_limit):
@@ -105,7 +121,7 @@ class Command(BaseCommand):
                 employee.front_image = front_image
                 employee.back_image = back_image
                 employee.save()
-                print(f"Employee {employee.name} created")
+                print(f"Employee {employee.name} successfully created")
 
         # Initiate Blog Index Page
         blog_index_page_parameters = {
@@ -126,7 +142,6 @@ class Command(BaseCommand):
             site.save()
 
         employees = Employees.objects.all()
-        fake = Faker()
         # Create category and for every category add 15 articles
         for category_parameters in self.categories:
             if not BlogCategorySnippet.objects.filter(**category_parameters).exists():
@@ -135,7 +150,7 @@ class Command(BaseCommand):
             else:
                 blog_category_snippet = BlogCategorySnippet.objects.get(**category_parameters)
 
-            for article_number in range(0, self.article_per_category + 1):
+            for article_number in range(0, self.article_per_category):
                 blog_index_page = BlogIndexPage.objects.get(**blog_index_page_parameters)
                 # base article parameters
                 index = self.categories.index(category_parameters)
@@ -144,8 +159,12 @@ class Command(BaseCommand):
                 body = StreamValue(block, [("markdown", fake.sentence(nb_words=1000))])
                 # article images
                 rgb_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-                wagtail_cover_photo = self._generate_wagtail_image({"x": 1668, "y": 873}, f"cover_photo_{index}_{article_number}", rgb_color=rgb_color)
-                wagtail_article_photo = self._generate_wagtail_image({"x": 2084, "y": 598}, f"article_photo_{index}_{article_number}", rgb_color=rgb_color)
+                wagtail_cover_photo = self._generate_wagtail_image(
+                    {"x": 1668, "y": 873}, f"cover_photo_{index}_{article_number}", rgb_color=rgb_color
+                )
+                wagtail_article_photo = self._generate_wagtail_image(
+                    {"x": 2084, "y": 598}, f"article_photo_{index}_{article_number}", rgb_color=rgb_color
+                )
                 # add article to database
                 blog_article_page = BlogArticlePage(
                     title=fake.sentence(nb_words=5),
@@ -164,11 +183,7 @@ class Command(BaseCommand):
                 blog_article_page.save()
 
     def _generate_wagtail_image(self, resolution: Dict[str, int], name: str, rgb_color=None) -> WagtailImage:
-        new_image = create_image(
-            resolution["y"], resolution["x"], name, settings.MEDIA_ROOT, rgb_color=rgb_color
-        )
-        wagtail_new_image = WagtailImage.objects.create(
-            title=name, file=new_image
-        )
+        new_image = create_image(resolution["y"], resolution["x"], name, settings.MEDIA_ROOT, rgb_color=rgb_color)
+        wagtail_new_image = WagtailImage.objects.create(title=name, file=new_image)
         wagtail_new_image.save()
         return wagtail_new_image
