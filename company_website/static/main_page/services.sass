@@ -1,6 +1,11 @@
 @import "../common/partials/constants"
 @import "../common/partials/section_header"
 
+$cheminf-color: 89bd40
+$ml-color: 20a8ba
+$webapp-dev-color: 277491
+$mvp-color: d55130
+
 .section-header
     margin-top: 2vw
     margin-bottom: 5vw
@@ -21,11 +26,12 @@
     position: relative
 
     .section-feather
-        width: 128px
-        height: 376px
+        height: 312px
         position: absolute
-        top: -93
-        right: 3.6%
+        top: -69px
+        right: 10%
+        transform: scaleX(-1) rotate(-45deg)
+
 
         @media only screen and (max-width: $md-screen-size)
             display: None
@@ -43,16 +49,10 @@
 
         .row.services-row
             text-align: justify
-            font-size: 1vw
             line-height: 113%
 
             @media only screen and (max-width: $extra-large-services-size)
                 font-size: 100%
-
-            @media only screen and (min-width: $extra-large-services-size)
-                .right-section-text
-                    margin-left: 15px
-
 
             .box
                 margin-bottom: 15px
@@ -60,6 +60,7 @@
                 .service-box
                     border-radius: 8px
                     text-align: center
+                    margin: auto
                     width: fit-content
                     width: -moz-fit-content
 
@@ -70,14 +71,9 @@
                         margin-bottom: 5px
 
                         .service-img
-                            padding: 0 16%
-                            width: 12vw
-
-                            @media only screen and (max-width: $extra-large-services-size)
-                                width: 230px
-
-                            @media only screen and (max-width: 450px)
-                                width: 60vw
+                            max-width: 230px
+                            max-height: 230px
+                            width: 100%
 
                     @media only screen and (max-width: $extra-large-services-size)
                         margin: auto
@@ -88,49 +84,40 @@
 
                 .services-description
                     @media only screen and (min-width: $extra-large-services-size)
-                        padding-top: 10px
+                        padding: 40px 0
 
                     .text-description
                         margin-top: -8px
-                        font-size: 0.80em
+                        padding: 0 2.8vw
+                        font-size: 19px
+                        line-height: 1.3
                         text-align: justify
+                        text-align-last: center
+                        font-weight: 600
+                        color: $blue-color
 
                         @media only screen and (max-width: $sm-screen-size)
                             margin-top: 0
 
                 .text-header
                     text-align: center
+                    font-size: 28px
                     font-weight: 700
+                    line-height: 1.2
                     color: $blue-color
+                    margin-bottom: 18px
 
-                @media only screen and (min-width: $extra-large-services-size)
-                    .wider-header
-                        width: 115%
-                        margin-left: calc(-14.5% + 1vw)
+                .cheminformatics-header
+                    color: $cheminf-color
 
-                .service-box-green
-                    background-color: $service-green-box-color
+                .machine-learning-header
+                    color: $ml-color
 
-                    .service-box-img-green
-                        background-color: $service-green-box-color-light
+                .webapp-development-header
+                    color: $webapp-dev-color
 
-                .service-box-red
-                    background-color: $service-red-box-color
-
-                    .service-box-img-red
-                        background-color: $service-red-box-color-light
-
-                .service-box-orange
-                    background-color: $service-orange-box-color
-
-                    .service-box-img-orange
-                        background-color: $service-orange-box-color-light
-
-                .service-box-blue
-                    background-color: $service-blue-box-color
-
-                    .service-box-img-blue
-                        background-color: $service-blue-box-color-light
+                .rapid-mvp-header
+                    color: $mvp-color
 
                 .service-box-aos:hover
                     opacity: 0.8
