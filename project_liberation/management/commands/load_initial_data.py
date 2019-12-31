@@ -182,7 +182,8 @@ class Command(BaseCommand):
                 blog_index_page.add_child(instance=blog_article_page)
                 blog_article_page.save()
 
-    def _generate_wagtail_image(self, resolution: Dict[str, int], name: str, rgb_color=None) -> WagtailImage:
+    @staticmethod
+    def _generate_wagtail_image(resolution: Dict[str, int], name: str, rgb_color=None) -> WagtailImage:
         new_image = create_image(resolution["y"], resolution["x"], name, settings.MEDIA_ROOT, rgb_color=rgb_color)
         wagtail_new_image = WagtailImage.objects.create(title=name, file=new_image)
         wagtail_new_image.save()
