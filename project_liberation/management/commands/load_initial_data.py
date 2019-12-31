@@ -1,6 +1,5 @@
 import random
 from typing import Dict
-from typing import Tuple
 
 from django.conf import settings
 from django.core.management import BaseCommand
@@ -144,8 +143,12 @@ class Command(BaseCommand):
                 body = StreamValue(block, [("markdown", fake.sentence(nb_words=1000))])
                 # article images
                 rgb_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-                wagtail_cover_photo = self._generate_wagtail_image({"x": 1668, "y": 873}, f"cover_photo_{index}_{article_number}", rgb_color=rgb_color)
-                wagtail_article_photo = self._generate_wagtail_image({"x": 2084, "y": 598}, f"article_photo_{index}_{article_number}", rgb_color=rgb_color)
+                wagtail_cover_photo = self._generate_wagtail_image(
+                    {"x": 1668, "y": 873}, f"cover_photo_{index}_{article_number}", rgb_color=rgb_color
+                )
+                wagtail_article_photo = self._generate_wagtail_image(
+                    {"x": 2084, "y": 598}, f"article_photo_{index}_{article_number}", rgb_color=rgb_color
+                )
                 # add article to database
                 blog_article_page = BlogArticlePage(
                     title=fake.sentence(nb_words=5),
@@ -164,11 +167,7 @@ class Command(BaseCommand):
                 blog_article_page.save()
 
     def _generate_wagtail_image(self, resolution: Dict[str, int], name: str, rgb_color=None) -> WagtailImage:
-        new_image = create_image(
-            resolution["y"], resolution["x"], name, settings.MEDIA_ROOT, rgb_color=rgb_color
-        )
-        wagtail_new_image = WagtailImage.objects.create(
-            title=name, file=new_image
-        )
+        new_image = create_image(resolution["y"], resolution["x"], name, settings.MEDIA_ROOT, rgb_color=rgb_color)
+        wagtail_new_image = WagtailImage.objects.create(title=name, file=new_image)
         wagtail_new_image.save()
         return wagtail_new_image
