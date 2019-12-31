@@ -134,7 +134,7 @@ class Command(BaseCommand):
             else:
                 blog_category_snippet = BlogCategorySnippet.objects.get(**category_parameters)
 
-            for article_number in range(0, self.article_per_category + 1):
+            for article_number in range(0, self.article_per_category):
                 blog_index_page = BlogIndexPage.objects.get(**blog_index_page_parameters)
                 # base article parameters
                 index = self.categories.index(category_parameters)
