@@ -1,6 +1,7 @@
 {% load static %}
 {% load pipeline %}
 {% stylesheet 'blog' %}
+{% javascript 'blog' %}
 
 
 .blog-menu-desktop
@@ -13,3 +14,20 @@
         {% endfor %}
         .search-bar
             {% include 'blog/partials/search_form.haml' %}
+
+.blog-menu-mobile
+    .blog-menu-container
+        .search-bar
+            {% include 'blog/partials/search_form.haml' %}
+        .categories{:id => "category"}
+            .blog-menu-button.down-arrow
+            .text
+                Categories
+        %nav.navbar-mobile-blog{:id => "blog-menu"}
+            .menu-mobile
+                .category-element
+                    %a.nav-link{:href => "{% url 'wagtail_serve' '' %}"} All Articles
+                {% for category in page.get_menu_categories %}
+                    .category-element
+                        %a.nav-link{:href => "{% url 'wagtail_serve' category.slug %}"} {{ category }}
+                {% endfor %}
