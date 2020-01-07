@@ -99,7 +99,7 @@ $('a.nav-link').click(function () {
             if (window.innerWidth > 1175){
                 scrollTo = ($(str.substring(1)).offset().top - 50)
             } else {
-                scrollTo = $(str.substring(1)).offset().top
+                scrollTo = ($(str.substring(1)).offset().top - 94);
             }
             $root.animate({
                 scrollTop: scrollTo
