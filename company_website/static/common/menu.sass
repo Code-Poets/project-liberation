@@ -20,6 +20,9 @@
 .navbar-mobile-column
     display: none
 
+.mobile-navbar
+    display: none
+
 .navbar.nb-visible
     padding-top: 0
 
@@ -174,6 +177,43 @@
     .navbar
         display: none
 
+    .mobile-navbar
+        display: flex
+        position: fixed
+        top: 0
+        height: 96px
+        width: 100%
+        background: $blue-color
+        z-index: 1000
+
+    .bottom-shadow-mobile
+        position: fixed
+        top: 96px
+        margin: 0
+        margin-block-start: 0
+        height: 4px
+        width: 100%
+        border: 0
+        box-shadow: inset 0 13px 3px -12px rgba(0, 0, 0, 0.5)
+
+    .mobile-logo
+        display: none
+        position: absolute
+        z-index: 1001
+        left: 0
+        right: 0
+        text-align: center
+        background-color: $blue-color
+        @media only screen and (max-width: $menu-max-size)
+            display: initial
+
+        .codepoets-mobile
+            width: 200px
+            margin: 20px auto
+            @media only screen and (max-width: 374px)
+                margin: 25px auto
+                width: 160px
+
     .navbar-mobile-column
         position: fixed
         right: -260px
@@ -196,7 +236,7 @@
             position: relative
             scrollbar-width: none
             overflow-y: auto
-            height: 100vh
+            height: 100%
             width: inherit
             text-align: center
 
@@ -210,7 +250,7 @@
                 width: 150px
 
             .menu
-                padding-top: 30%
+                padding-top: 96px
                 padding-bottom: 30%
                 -ms-overflow-y: scroll
                 vertical-align: middle
@@ -221,8 +261,8 @@
                     margin-top: 0
                     height: unset
                     padding: 15px 0
-                    margin-left: 10px
-                    margin-right: 10px
+                    margin-left: 15px
+                    margin-right: 15px
                     font-size: 14px
 
                     .nav-link
@@ -241,9 +281,10 @@
                     .nav-item.estimate.mobile-nav
                         background-color: $orange-color
                         padding: 15px
-                        height: 60px
-                        font-size: 16px
+                        height: 70px
+                        font-size: 22px
                         font-weight: 700
+                        border-radius: 10px
 
                         .mobile
                             vertical-align: middle
