@@ -1,0 +1,26 @@
+{% load static %}
+.industry-focus-container
+    {% include "common_partials/section_header.haml" with title="Industry focus" subtext="" %}
+    .container
+        .row
+            .col-md-4.col-12{:data-aos => "fade-up"}
+                .industry-icon
+                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/cheminformatics_n_drug_discovery.png' %}",  :alt => "Cheminformatics & Drug Discovery", :title => "Cheminformatics & Drug Discovery"}
+                %p.industry-name
+                    Cheminformatics
+                    %br
+                    & Drug Discovery
+            .col-md-4.col-12{:data-aos => "fade-up"}
+                .industry-icon
+                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/biotechnology_n_bioinformatics.png' %}",  :alt => "Biotechnology & Bioinformatics", :title => "Biotechnology & Bioinformatics"}
+                %p.industry-name
+                    Biotechnology
+                    %br
+                    & Bioinformatics
+            .col-md-4.col-12{:data-aos => "fade-up"}
+                .industry-icon
+                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/healthcare_n_cosmetics.png' %}",  :alt => "Healthcare & Cosmetics", :title => "Healthcare & Cosmetics"}
+                %p.industry-name
+                    Healthcare
+                    %br
+                    & Cosmetics
