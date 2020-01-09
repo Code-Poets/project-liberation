@@ -4,7 +4,7 @@ $padding: 5px
 $blue: #3778bc
 
 
-.blog_menu_desktop
+.blog-menu-desktop
     margin-bottom: 61px
     position: sticky
     background-color: $blue
@@ -86,3 +86,108 @@ $blue: #3778bc
 .link
     color: white
     font-size: 13px
+
+.blog-menu-mobile
+    display: none
+    z-index: 998
+    background-color: $blue
+    position: sticky
+    top: 96px
+    height: 50px
+    width: 100%
+
+    @media only screen and (max-width: 1175px)
+        display: flex
+
+    .blog-menu-container
+        width: 100%
+        position: relative
+
+        .search-bar
+            position: absolute
+            right: 10px
+            top: 50%
+            transform: translate(0,-50%)
+
+            @media only screen and (max-width: 440px)
+                display: none
+
+        .categories
+            position: absolute
+            left: 20px
+            top: 50%
+            transform: translate(0,-50%)
+            color: white
+            font-weight: 600
+            overflow: hidden
+
+            .down-arrow
+                border: solid white
+                border-width: 0 2px 2px 0
+                display: inline-block
+                padding: 7px
+                margin: 0 4px 0 5px
+                float: left
+                transform: rotate(45deg)
+                -webkit-transform: rotate(45deg)
+
+            .text
+                padding-left: 10px
+                float: left
+
+            .close-sign
+                float: left
+                width: 24px
+                height: 24px
+                opacity: 1
+
+            .close-sign:before, .close-sign:after
+                position: absolute
+                left: 15px
+                content: ' '
+                height: 24px
+                width: 2px
+                background-color: white
+                color: white
+
+            .close-sign:before
+                transform: rotate(45deg)
+
+            .close-sign:after
+                transform: rotate(-45deg)
+
+        .navbar-mobile-blog
+            top: 146px
+            position: fixed
+            left: -250px
+            width: 250px
+            height: 100%
+            transition: all .5s
+
+            .menu-mobile
+                height: 100%
+                overflow-y: auto
+                background: $blue
+
+                .category-element
+                    color: white
+
+                    .nav-link
+                        color: white
+                        font-weight: 700
+                        text-align: center
+
+                    .nav-link.margin, .nav-link.mobile-link
+                        color: white
+
+                    .nav-link:hover
+                        opacity: 0.8
+
+                    .nav-link:focus
+                        color: white
+
+        .navbar-mobile-open
+            left: 0
+
+.blog-menu-mobile-open
+    z-index: 1000

@@ -355,6 +355,12 @@ PIPELINE = {
             ),
             'output_filename': 'js/how_we_work.js'
         },
+        'blog': {
+            'source_filenames': (
+                'blog/scripts/*.js',
+            ),
+            'output_filename': 'js/blog.js'
+        },
         'blog_post': {
             'source_filenames': (
                 'blog_post/scripts/*.js',

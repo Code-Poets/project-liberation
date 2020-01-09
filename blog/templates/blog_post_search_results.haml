@@ -5,7 +5,7 @@
 {% load pipeline %}
 
 {% block content %}
-    {% include 'blog/blog_menu_desktop.haml' %}
+    {% include 'blog/blog_menu.haml' %}
     {% stylesheet 'blog_posts_list' %}
     .container.blog-posts-list
         {% if search_results %}
@@ -20,5 +20,4 @@
                 .no-matched-criteria-text
                     Sorry, no posts matched your criteria
         {% endif %}
-    {% include 'blog/blog_menu_mobile.haml' %}
 {% endblock %}

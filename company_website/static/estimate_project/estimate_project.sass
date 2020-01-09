@@ -15,7 +15,9 @@ $section-description-text-offset: 12.5px
 @import "../common/partials/section_header"
 
 .section-header
-    margin-top: 60px
+    margin-top: 96px
+    @media only screen and (min-width: $menu-max-size)
+        margin-top: 60px
 
 .section-header
     .content-wrapper
@@ -186,7 +188,7 @@ form
 
     .nda
         height: auto
-        margin-bottom: 50
+        margin-bottom: 50px
         color: $dark-grey
         text-align: center
 
@@ -390,10 +392,6 @@ form
 
 .mobile-display
     display: none
-
-@media screen and (max-width: $menu-max-size)
-    .section-header
-        margin-top: 0
 
 @media only screen and (max-width: $row-breakpoint)
     .mobile-display
