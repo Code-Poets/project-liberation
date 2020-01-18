@@ -25,7 +25,13 @@ body
                         margin-left: calc(18px + 1.5vw)
                         .title
                             color: $blue-color
-                            font-size: 3.6rem
+                            font-size: 5.5vw
+
+                            @media only screen and (min-width: 1175px)
+                                font-size: 3.6rem
+
+                            @media only screen and (max-width: 800px)
+                                font-size: 2.5rem
 
     .employees-intruduction
         max-width: $about-us-page-width

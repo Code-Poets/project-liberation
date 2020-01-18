@@ -12,8 +12,14 @@ $section-description-text-color: $orange-color !default
     width: 100%
     max-width: 100%
     min-height: $section-description-total-height
-    padding: $section-description-vertical-padding 0
+    padding: calc(21vw - #{$section-description-content-height} - #{$section-description-text-offset}) 0
     overflow: hidden
+
+    @media only screen and (min-width: 1175px)
+        padding: 2rem
+
+    @media only screen and (max-width: 800px)
+        padding: 0
 
     .content-wrapper
         height: inherit
