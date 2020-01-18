@@ -14,6 +14,9 @@ body
                 margin-top: 60px
             margin-bottom: 2vw
             min-height: unset
+            padding: 1.5rem 0
+            @media only screen and (max-width: 800px)
+                padding: 1rem 0
             .container
                 max-width: $about-us-page-width
                 padding-left: $default-padding-in-vw
@@ -24,14 +27,28 @@ body
                 .content-wrapper
                     .section-description-contents
                         display: block
-                        min-height: 6rem
+                        min-height: 0
                         .section-description-bar
                             top: unset
                             bottom: calc(#{$section-description-content-height} + #{$section-description-text-offset} - #{$section-description-total-height})
+                            height: calc(100% + #{2 * $section-description-text-offset} - 1vw)
+
+                            @media only screen and (min-width: 1175px)
+                                height: 6.2rem
+
+                            @media only screen and (max-width: 500px)
+                                height: 3.9rem
+
                         .section-description-text
                             margin-left: calc(18px + 1.5vw)
                             .title
-                                font-size: 3.6rem
+                                font-size: 5.5vw
+
+                                @media only screen and (min-width: 1175px)
+                                    font-size: 3.6rem
+
+                                @media only screen and (max-width: 500px)
+                                    font-size: 1.5rem
 
 
     .row
