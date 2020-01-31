@@ -1,3 +1,33 @@
+### v1.10.0
+
+##### Features
+
+- Feature change mobile navbars ([#207](https://github.com/Code-Poets/project-liberation/pull/207))
+- Feature redesign services section ([#206](https://github.com/Code-Poets/project-liberation/pull/206))
+- Feature add animation to who are we part in team introduction page ([#203](https://github.com/Code-Poets/project-liberation/pull/203))
+- Feature add pagination to blog ([#199](https://github.com/Code-Poets/project-liberation/pull/199))
+- Add new section header for employees introduction subpage ([#196](https://github.com/Code-Poets/project-liberation/pull/196))
+- Feature add new section headers in team introduction subpage ([#195](https://github.com/Code-Poets/project-liberation/pull/195))
+- Feature add new section headers to how we work subpage ([#194](https://github.com/Code-Poets/project-liberation/pull/194))
+- Feature change number of popular articles to five ([#193](https://github.com/Code-Poets/project-liberation/pull/193))
+- Feature disable career page ([#192](https://github.com/Code-Poets/project-liberation/pull/192))
+- Feature change about us section on main page ([#191](https://github.com/Code-Poets/project-liberation/pull/191))
+- Feature change section headers on main page ([#190](https://github.com/Code-Poets/project-liberation/pull/190))
+- Feature add basic alerts for high usage of server resources ([#189](https://github.com/Code-Poets/project-liberation/pull/189))
+
+##### Bugfixes
+
+- Bugfix team introduction page section header size ([#214](https://github.com/Code-Poets/project-liberation/pull/214))
+- Bugfix project links ([#211](https://github.com/Code-Poets/project-liberation/pull/211))
+- Bugfix inconsistent section padding in main page ([#202](https://github.com/Code-Poets/project-liberation/pull/202))
+- Bugfix position name look on team-introduction page ([#201](https://github.com/Code-Poets/project-liberation/pull/201))
+- Bugfix empty space between testimonials and ready to work with us on main page ([#198](https://github.com/Code-Poets/project-liberation/pull/198))
+- Bugfix menu functionality ([#197](https://github.com/Code-Poets/project-liberation/pull/197))
+- Bugfix change size when menu from desktop should change to mobile ([#187](https://github.com/Code-Poets/project-liberation/pull/187))
+- Bugfix url prefix in blog article posts ([#184](https://github.com/Code-Poets/project-liberation/pull/184))
+- Bugfix estimate project section header ([#183](https://github.com/Code-Poets/project-liberation/pull/183))
+
+
 ### v1.9.0
 
 ##### Features
