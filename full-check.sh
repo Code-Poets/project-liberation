@@ -19,10 +19,6 @@ if [ -z $virtualenv_path ]; then
 fi
 
 source $virtualenv_path/bin/activate
-printf "=============== VIRTUAL ENVIRONMENT PACKAGES CHECKS ================\n"
-${BASH_SOURCE%/*}/check-environment-packages.sh
-printf "\n"
-
 printf "===============DOWNLOAD AND ADD IMAGES TO DJANGO ===================\n"
 ${BASH_SOURCE%/*}/download-and-add-images-to-django.sh
 printf "\n"
