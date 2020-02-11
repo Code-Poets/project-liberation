@@ -1,3 +1,9 @@
+### v1.10.1
+
+##### Bugfixes
+- Bugfix remove "career" from CompanyWebsiteViewSitemap ([#217](https://github.com/Code-Poets/project-liberation/pull/217))
+
+
 ### v1.10.0
 
 ##### Features
