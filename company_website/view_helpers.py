@@ -1,7 +1,11 @@
+import hashlib
+from base64 import b64encode
 from typing import Any
 from typing import Dict
 
+import requests
 from django.views.generic import TemplateView
+from requests.exceptions import Timeout
 
 from company_website.models import PageSeo
 
@@ -24,3 +28,15 @@ def add_meta_tags_to_page_context(page_name: str, context_data: Dict) -> Dict:
     context_data["meta_description"] = page_seo.meta_description
     context_data["keywords"] = page_seo.keywords
     return context_data
+
+
+def generate_subresource_integrity_sha384(content_link: str) -> str:
+    try:
+        response = requests.get(content_link, timeout=5)
+        print(response.content)
+        sha = hashlib.sha384()
+        sha.update(response.content)
+        sha_diget = b64encode(sha.digest())
+        return "sha384-" + sha_diget.decode()
+    except Timeout:
+        return ""
