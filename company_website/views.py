@@ -12,6 +12,7 @@ from company_website.models import Employees
 from company_website.models import Testimonial
 from company_website.view_helpers import CustomTemplateView
 from company_website.view_helpers import add_meta_tags_to_page_context
+from company_website.view_helpers import generate_subresource_integrity_sha384
 
 
 class MainPageView(ListView):
@@ -24,6 +25,12 @@ class MainPageView(ListView):
         context_data = super().get_context_data(**kwargs)
         context_data["google_api_key"] = settings.GOOGLE_API_KEY
         context_data = add_meta_tags_to_page_context(page_name=self.page_name, context_data=context_data)
+        context_data["calendly_js_sha"] = generate_subresource_integrity_sha384(
+            "https://calendly.com/assets/external/widget.js"
+        )
+        context_data["calendly_css_sha"] = generate_subresource_integrity_sha384(
+            "https://calendly.com/assets/external/widget.css"
+        )
         return context_data
 
 
