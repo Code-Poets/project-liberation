@@ -2,6 +2,8 @@
 
 ##### Bugfixes
 - Bugfix remove "career" from CompanyWebsiteViewSitemap ([#217](https://github.com/Code-Poets/project-liberation/pull/217))
+- Bugfix how we work site duplication on graph ([#218](https://github.com/Code-Poets/project-liberation/pull/218))
+- Bugfix generate new Subresource Integrity hash for calendly ([#219](https://github.com/Code-Poets/project-liberation/pull/219))
 
 
 ### v1.10.0
