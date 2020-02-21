@@ -9,6 +9,8 @@ from requests.exceptions import Timeout
 
 from company_website.models import PageSeo
 
+REQUESTS_TIMOUT = 3
+
 
 class CustomTemplateView(TemplateView):
     page_name = ""
@@ -32,8 +34,7 @@ def add_meta_tags_to_page_context(page_name: str, context_data: Dict) -> Dict:
 
 def generate_subresource_integrity_sha384(content_link: str) -> str:
     try:
-        response = requests.get(content_link, timeout=5)
-        print(response.content)
+        response = requests.get(content_link, timeout=REQUESTS_TIMOUT)
         sha = hashlib.sha384()
         sha.update(response.content)
         sha_diget = b64encode(sha.digest())
