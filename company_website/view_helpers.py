@@ -32,9 +32,9 @@ def add_meta_tags_to_page_context(page_name: str, context_data: Dict) -> Dict:
     return context_data
 
 
-def generate_subresource_integrity_sha384(content_link: str) -> str:
+def generate_subresource_integrity_sha384(url: str) -> str:
     try:
-        response = requests.get(content_link, timeout=REQUESTS_TIMOUT)
+        response = requests.get(url, timeout=REQUESTS_TIMOUT)
         sha = hashlib.sha384()
         sha.update(response.content)
         sha_diget = b64encode(sha.digest())
