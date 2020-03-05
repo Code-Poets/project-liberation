@@ -1,3 +1,12 @@
+### v1.11.0
+
+##### Features
+- Feature add google tag manager scripts ([#224](https://github.com/Code-Poets/project-liberation/pull/224))
+
+##### Bugfixes
+- Bugfix adjust "right-container" with clutch award for firefox ([#225](https://github.com/Code-Poets/project-liberation/pull/225))
+
+
 ### v1.10.1
 
 ##### Bugfixes
