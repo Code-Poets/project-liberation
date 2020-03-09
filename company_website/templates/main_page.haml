@@ -27,11 +27,9 @@
 {% endblock %}
 
 {% block extra_script %}
+    :javascript
+      let google_api_key = "{{ google_api_key }}";
     {% include "main_page_partials/scripts.haml" %}
     {% javascript 'main' %}
-    %script{:async => "",
-        :defer => "",
-        :src => "https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap"}
 
 {% endblock %}
-

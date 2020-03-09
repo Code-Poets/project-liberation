@@ -37,3 +37,10 @@ window.initMap = function initMap() {
     });
     info_window.open(map, marker);
 };
+
+if(screen.width >= 720) {
+    document.write(
+        '<script src="https://maps.googleapis.com/maps/api/js?key=' + google_api_key +
+        '&callback=initMap" async defer></script>'
+    );
+}
