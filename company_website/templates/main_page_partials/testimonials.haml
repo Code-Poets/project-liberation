@@ -8,7 +8,7 @@
                 .slides.owl-carousel.owl-theme
                     {% for testimonial in object_list %}
                         .testimonial.item
-                            %img.background-image.owl-lazy{:data-src => "{% static 'main_page/images/testimonials/testimonials_background.png' %}", :alt => "Testimonials Background", :title => "Testimonials Background"}
+                            %img.background-image.owl-lazy{:data-src => "{% static 'main_page/images/testimonials/testimonials_background_1250x235.png' %}", :alt => "Testimonials Background", :title => "Testimonials Background"}
                             .profile-picture
                                 .image-cropper
                                     %img.owl-lazy{:data-src =>"{{ testimonial.image.url }}", :alt => "{{ testimonial.name }}", :title => "{{ testimonial.name }}"}
