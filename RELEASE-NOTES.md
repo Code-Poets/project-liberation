@@ -1,3 +1,9 @@
+### v1.12.1
+
+##### Bugfixes
+- Bugfix delete calendly integrity hash ([#233](https://github.com/Code-Poets/project-liberation/pull/233))
+
+
 ### v1.12.0
 
 ##### Features
