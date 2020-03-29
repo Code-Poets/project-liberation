@@ -22,7 +22,7 @@
         update:  yes
 
     - name:  Install requirements for project-liberation
-      shell: "source {{ project_liberation_virtualenv_dir }}/bin/activate && PIPENV_MAX_SUBPROCESS=4 pipenv --bare install"
+      shell: "source {{ project_liberation_virtualenv_dir }}/bin/activate && pip install -r requirements.txt"
       args:
         executable: /bin/bash
         chdir:      "{{ project_liberation_dir }}"

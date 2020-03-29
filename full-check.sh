@@ -1,24 +1,23 @@
 #!/bin/bash
 
-# This is setup to disable warning "Pipenv found itself running within a virtual environment, so it will automatically use that environment, instead of creating its own for any project"
-export PIPENV_VERBOSITY=-1
-
-# Run pipenv virtual enviroment
+# Run poetry virtual environment
 virtualenv_path="$(
     cd  ${BASH_SOURCE%/*}/
-    echo "$(pipenv --venv)"
+    echo "$(poetry env info -p)"
 )"
 
 if [ -z $virtualenv_path ]; then
     RED_COLOR='\033[0;31m'
     GREEN_COLOR='\033[0;32m'
     NO_COLOR='\033[0m'
-    printf "${NO_COLOR}You can create virtualenv by using command: ${GREEN_COLOR}pipenv install --dev\n"
+    printf "${NO_COLOR}You can create virtualenv by using command: ${GREEN_COLOR}poetry install\n"
     exit 1
-
 fi
 
-source $virtualenv_path/bin/activate
+if [ -z $VIRTUAL_ENV ]; then
+    source $virtualenv_path/bin/activate
+fi
+
 printf "===============DOWNLOAD AND ADD IMAGES TO DJANGO ===================\n"
 ${BASH_SOURCE%/*}/download-and-add-images-to-django.sh
 printf "\n"
@@ -48,5 +47,5 @@ printf "========================= UNIT TESTS WITH COVERAGE =================\n"
 ${BASH_SOURCE%/*}/run-test-coverage.sh
 printf "\n"
 
-# Exit from pipenv virtual environment
+# Disable poetry virtual environment
 exit

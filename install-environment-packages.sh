@@ -20,12 +20,7 @@ fi
 
 (
     cd ${BASH_SOURCE%/*}/
-
-    pytest                            \
-        --cov-report term-missing     \
-        --cov-config coverage-config  \
-        --cov=.
-    rm .coverage
+    poetry install
 )
 
 # Disable poetry virtual environment

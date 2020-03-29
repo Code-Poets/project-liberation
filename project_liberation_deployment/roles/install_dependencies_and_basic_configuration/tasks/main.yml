@@ -45,7 +45,6 @@
           - mailutils
           - nginx={{ nginx_version }}
           - nodejs
-          - pipenv
           - postfix
           - postgresql
           - python3

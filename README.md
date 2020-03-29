@@ -16,26 +16,22 @@ This application is CodePoets home page.
     $ npm install
     ```
 
-1.  Install pipenv on your machine. Do not create any virtualenv, just install pipenv globally on your operation system:
+1.  Install poetry on your machine:
 
-    Arch:
-    ```
-    $ sudo pacman -Syu python-pipenv
+    osx / linux / bashonwindows :
+    ```bash
+    $ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
     ```
 
-    Debian:
-    ```
-    $ sudo apt install pipenv
-    ```
 
 1.  Create new virtual environment for project with all development packages.
     ```
-    $ pipenv install --dev
+    $ poetry install
     ```
 
 1.  Activate newly created virtualenv:
     ```
-    $ pipenv shell
+    $ poetry shell
     ```
 
 1.  Create local settings in `project_liberation/settings/local_settings.py`.

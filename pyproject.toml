@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "project-liberation"
+version = "v1.10.0"
+description = "Necessary packages for Project Liberation"
+authors = ["Karol Beker <karol.beker@codepoets.it>"]
+
+[tool.poetry.dependencies]
+python = "3.7.*"
+django = "<3"
+wagtail-markdown = {git = "https://github.com/kbeker/wagtail-markdown.git"}
+psycopg2 = "2.7.5"
+psycopg2-binary = "2.7.7"
+django-pipeline = "*"
+django-hamlpy = "*"
+sorl-thumbnail = "*"
+pillow = "*"
+raven = "*"
+wagtail = "*"
+django-google-analytics-app = "*"
+django-robots = "*"
+
+[tool.poetry.dev-dependencies]
+black = "^19.10b0"
+flake8 = "*"
+ipython = "*"
+isort = "*"
+mypy = "*"
+pylint = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-django = "*"
+assertpy = "*"
+factory-boy = "*"
+ipdb = "*"
+parameterized = "*"
+opencv-python = "*"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
