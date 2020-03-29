@@ -1,3 +1,13 @@
+### v1.12.0
+
+##### Features
+- Feature change pipenv for poetry dependency manager ([#222](https://github.com/Code-Poets/project-liberation/pull/222))
+
+##### Bugfixes
+- Bugfix enhanced pagespeed insights ([#229](https://github.com/Code-Poets/project-liberation/pull/229))
+- Bugfix /how-we-work/ page stylistic errors ([#230](https://github.com/Code-Poets/project-liberation/pull/230))
+
+
 ### v1.11.0
 
 ##### Features
