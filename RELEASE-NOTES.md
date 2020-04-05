@@ -1,3 +1,9 @@
+### v1.12.3
+
+##### Bugfixes
+- Bugfix styles in ready_to_work_with_us section ([#235](https://github.com/Code-Poets/project-liberation/pull/235))
+
+
 ### v1.12.2
 
 ##### Bugfixes
