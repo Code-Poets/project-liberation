@@ -1,3 +1,9 @@
+### v1.12.5
+
+##### Bugfixes
+- Bugfix http to https nginx redirect ([#238](https://github.com/Code-Poets/project-liberation/pull/238))
+
+
 ### v1.12.4
 
 ##### Bugfixes
