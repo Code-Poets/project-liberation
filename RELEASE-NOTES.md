@@ -1,3 +1,9 @@
+### v1.12.4
+
+##### Bugfixes
+- Bugfix add redirection for host without https ([#237](https://github.com/Code-Poets/project-liberation/pull/237))
+
+
 ### v1.12.3
 
 ##### Bugfixes
