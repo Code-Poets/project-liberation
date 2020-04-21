@@ -128,10 +128,10 @@ server {
         return 403;
     }
     if ($host = codepoets.it) {
-        return 301 https://$host$request_uri;
+        return 301 https://codepoets.it$request_uri;
     }
     if ($host = www.codepoets.it) {
-        return 301 https://$host$request_uri;
+        return 301 https://codepoets.it$request_uri;
     }
 
     listen           80 default_server;
