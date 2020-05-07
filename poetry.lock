@@ -753,7 +753,7 @@ version = "2.7.7"
 [[package]]
 category = "dev"
 description = "Run a subprocess in a pseudo terminal"
-marker = "python_version >= \"3.4\" and sys_platform != \"win32\" or sys_platform != \"win32\""
+marker = "python_version >= \"3.4\" and sys_platform != \"win32\" or sys_platform != \"win32\" or python_version >= \"3.4\" and sys_platform != \"win32\" and (python_version >= \"3.4\" and sys_platform != \"win32\" or sys_platform != \"win32\")"
 name = "ptyprocess"
 optional = false
 python-versions = "*"
@@ -1042,7 +1042,7 @@ description = "A Django content management system."
 name = "wagtail"
 optional = false
 python-versions = "*"
-version = "2.8"
+version = "2.8.2"
 
 [package.dependencies]
 Django = ">=2.1,<3.1"
@@ -1083,6 +1083,7 @@ testing = ["dj_database_url (0.4.2)"]
 reference = "c95aa13828fafc831f46042ce4eca3a4b1d93d20"
 type = "git"
 url = "https://github.com/kbeker/wagtail-markdown.git"
+
 [[package]]
 category = "dev"
 description = "Measures number of Terminal column cells of wide-character codes"
@@ -1723,8 +1724,8 @@ urllib3 = [
     {file = "urllib3-1.25.8.tar.gz", hash = "sha256:87716c2d2a7121198ebcb7ce7cccf6ce5e9ba539041cfbaeecfb641dc0bf6acc"},
 ]
 wagtail = [
-    {file = "wagtail-2.8-py3-none-any.whl", hash = "sha256:8ac4a9d7db4d6c37bbd4b298f5fb5a51f5ecc3210daa4afb7ba434a4aa3b468f"},
-    {file = "wagtail-2.8.tar.gz", hash = "sha256:94813e18c0401c303e9ff589987d8e2ee513175e4df32e62ace65afcc4ef2976"},
+    {file = "wagtail-2.8.2-py3-none-any.whl", hash = "sha256:2193da20d37021f5f31ee0f3322e7386678537d6e154bb285a11977935333a94"},
+    {file = "wagtail-2.8.2.tar.gz", hash = "sha256:f6530a7ef2ca3207a6e5c1106bf1c9b6ce86fc2d7c96276e10d6f4ae86308c70"},
 ]
 wagtail-markdown = []
 wcwidth = [
