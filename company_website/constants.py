@@ -28,3 +28,4 @@ class PageNames(ChoiceEnum):
     CAREER = "Career"
     ESTIMATE_PROJECT = "Estimate Project"
     PRIVACY_AND_POLICY = "Privacy and Policy"
+    THANK_YOU = "Thank You"
