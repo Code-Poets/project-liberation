@@ -1,0 +1,16 @@
+{% load static %}
+.thank-you-container
+    .{:data-aos => "fade-up"}
+        %image.background-image.lazyload{:data-src => "{% static 'main_page/images/background/feather_yellow_254x752.png' %}", :alt => "Yellow Feather", :title => "Yellow Feather"}
+        .outer-text-div
+            .inner-text-div
+                .topic-row
+                    .topic
+                        Thank you!
+                .text-row
+                    %p.description.self-organized-part-2-description
+                        We’ll get back to you shortly.
+        .redirect-text
+            You will be redirected to the main page in
+            %span#timer
+            seconds.

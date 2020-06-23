@@ -1,0 +1,87 @@
+@import "../common/partials/set_initials"
+@import "../common/partials/constants"
+
+$light-icy-blue: #41A6DE
+$redirect-text-height: 24px
+$text-box-width-breakpoint: 399px
+$redirect-text-breakpoint: 775px
+
+.thank-you-container
+    padding-top: calc(#{$base-menu-height} + 20vh)
+    min-height: calc(100vh - #{$base-footer-height} - #{$base-menu-height})
+    padding-bottom: calc(20vh - #{$redirect-text-height})
+
+    .background-image
+        width: 155px
+        height: 432px
+        opacity: 60%
+        position: absolute
+        top: -115px
+        right: 65%
+        transform: rotate(-55deg)
+        z-index: -1
+
+        @media only screen and (max-width: 992px)
+            width: auto
+            height: 329px
+            top: -69px
+
+        @media only screen and (max-width: 775px)
+            display: None
+
+    .outer-text-div
+        position: relative
+        width: 40%
+        min-width: 350px
+        max-height: 100%
+        text-align: center
+        border-radius: $default-border-radius-in-vw
+        background: $light-icy-blue
+        color: $orange-color
+        margin: auto
+
+        @media only screen and (min-width: $about-us-page-width)
+            border-radius: $default-border-radius-in-px
+
+        @media only screen and (max-width: $text-box-width-breakpoint)
+            width: 87%
+            min-width: 250px
+
+        .inner-text-div
+            display: inline-block
+            max-height: 100%
+            padding: calc(2 * #{$default-padding-in-vw}) 13px
+            @media only screen and (min-width: $about-us-page-width)
+                padding: calc(2 * #{$default-padding-in-px})
+            .topic
+                font-weight: 700
+                font-size: 44px
+                width: 100%
+
+            .text-row
+                font-weight: 600
+                padding-top: 2.5vw
+                width: 100%
+                height: auto
+                max-height: 100%
+
+                @media only screen and (min-width: $about-us-page-width)
+                    padding-top: 35px
+
+            .description
+                text-align: justify
+                margin: 0
+                font-size: 19px
+
+                @media only screen and (max-width: $text-box-width-breakpoint)
+                    font-size: 18px
+
+    .redirect-text
+        text-align: center
+        min-height: $redirect-text-height
+        padding: 0 30%
+
+        @media only screen and (max-width: $redirect-text-breakpoint)
+            padding: 0 9%
+            padding-top: 10px
+
