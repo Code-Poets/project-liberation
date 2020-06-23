@@ -373,6 +373,12 @@ PIPELINE = {
             ),
             'output_filename': 'js/blog_post.js'
         },
+        'thank_you': {
+            'source_filenames': (
+                'thank_you/scripts/*.js',
+            ),
+            'output_filename': 'js/thank_you.js'
+        },
     },
     'COMPILERS': ('pipeline.compilers.sass.SASSCompiler',)
 }
