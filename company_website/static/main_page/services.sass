@@ -1,14 +1,15 @@
 @import "../common/partials/constants"
 @import "../common/partials/section_header"
 
-$cheminf-color: 89bd40
-$ml-color: 20a8ba
+$teamext-color: 89bd40
+$customsoft-color: 20a8ba
 $webapp-dev-color: 277491
 $mvp-color: d55130
+$services-text-breakpoint: 1794px
 
 .section-header
-    margin-top: 2vw
-    margin-bottom: 5vw
+    margin-top: 38px
+    margin-bottom: 55px
     min-height: unset
     .content-wrapper
         .section-description-contents
@@ -56,6 +57,33 @@ $mvp-color: d55130
 
             .box
                 margin-bottom: 15px
+                
+                .text-header
+                    text-align: center
+                    font-size: 28px
+                    font-weight: 700
+                    line-height: 1.2
+                    color: $blue-color
+                    margin: 0 auto 18px
+
+                .team-extension-header
+                    color: $teamext-color
+
+                .custom-software-header
+                    color: $customsoft-color
+
+                .webapp-development-header
+                    color: $webapp-dev-color
+
+                .rapid-mvp-header
+                    color: $mvp-color
+
+                @media only screen and (max-width: $services-text-breakpoint)
+                    .text-description
+                        max-width: 452px
+
+                    .text-header
+                        max-width: 307px
 
                 .service-box
                     border-radius: 8px
@@ -83,41 +111,24 @@ $mvp-color: d55130
 
 
                 .services-description
+                    padding-bottom: 40px
+                    
                     @media only screen and (min-width: $extra-large-services-size)
-                        padding: 40px 0
+                        padding-top: 40px
 
                     .text-description
-                        margin-top: -8px
+                        margin: -8px auto 0
                         padding: 0 2.8vw
                         font-size: 19px
                         line-height: 1.3
-                        text-align: justify
+                        text-align: center
+                        letter-spacing: 0.9
                         text-align-last: center
                         font-weight: 600
                         color: $blue-color
 
                         @media only screen and (max-width: $sm-screen-size)
                             margin-top: 0
-
-                .text-header
-                    text-align: center
-                    font-size: 28px
-                    font-weight: 700
-                    line-height: 1.2
-                    color: $blue-color
-                    margin-bottom: 18px
-
-                .cheminformatics-header
-                    color: $cheminf-color
-
-                .machine-learning-header
-                    color: $ml-color
-
-                .webapp-development-header
-                    color: $webapp-dev-color
-
-                .rapid-mvp-header
-                    color: $mvp-color
 
                 .service-box-aos:hover
                     opacity: 0.8
