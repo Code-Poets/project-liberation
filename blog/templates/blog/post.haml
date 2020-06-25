@@ -21,16 +21,10 @@
                     .row.rest-information-row
                         .author-position {{ page.specific.author.position }}
                         .rest-details.more-details-desktop-look
-                            {% for category in page.get_article_categories %}
-                                %a.category.inline-display{:href => "{% url 'wagtail_serve' category.slug %}"} {{ category }}
-                            {% endfor %}
                             .read-time.inline-display {{ page.specific.read_time }} min read
                             .date.inline-display {{ page.specific.date }}
                     .row.more-details-mobile-look
                         .rest-details.inner-more-details-mobile-look
-                            {% for category in page.get_article_categories %}
-                                %a.category.inline-display{:href => "{% url 'wagtail_serve' category.slug %}"} {{ category }}
-                            {% endfor %}
                             .read-time.inline-display {{ page.specific.read_time }} min read
                             .date.inline-display {{ page.specific.date }}
         .article-content

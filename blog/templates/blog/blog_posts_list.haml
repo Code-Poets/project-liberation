@@ -26,9 +26,6 @@
                             .author by
                                 %strong {{ article.specific.author.name }}
                             .rest-information.row
-                                {% for category in article.get_article_categories %}
-                                    %a.category{:href => "{% url 'wagtail_serve' category.slug %}"} {{ category }}
-                                {% endfor %}
                                 .time-and-date.row
                                     .article-read-time {{ article.specific.read_time }} min read
                                     .article-publised-date {{ article.specific.date }}

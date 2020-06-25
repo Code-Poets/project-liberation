@@ -13,14 +13,10 @@
                     {% thumbnail page.get_main_article.specific.author.front_image "400x400" as image %}
                         %img.main-img.lazyload{:data-src => "{{ image.url }}"}
                     {% endthumbnail %}
-                    .auto-name-and-category
+                    .auto-name
                         .container-section
                             .author-name
                                 {{ page.get_main_article.specific.author.name }}
-                            .category
-                                {% for category in page.get_main_article.get_article_categories %}
-                                    %a.category-anchor{:href => "{% url 'wagtail_serve' category.slug %}"} {{ category }}
-                                {% endfor %}
                     .read-time
                         {{ page.get_main_article.specific.read_time }} min read
                     .date
