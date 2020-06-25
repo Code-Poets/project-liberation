@@ -24,14 +24,6 @@ $blue: #3778bc
         margin: 0
         justify-content: center
 
-    .category
-        height: 18px
-        padding: 6px 0
-
-        .border-div
-            padding: 0 8px
-            border-right: 1px solid white
-
 .blog_menu_mobile
     background: $blue
     margin: 0 auto
@@ -112,50 +104,6 @@ $blue: #3778bc
             @media only screen and (max-width: 440px)
                 display: none
 
-        .categories
-            position: absolute
-            left: 20px
-            top: 50%
-            transform: translate(0,-50%)
-            color: white
-            font-weight: 600
-            overflow: hidden
-
-            .down-arrow
-                border: solid white
-                border-width: 0 2px 2px 0
-                display: inline-block
-                padding: 7px
-                margin: 0 4px 0 5px
-                float: left
-                transform: rotate(45deg)
-                -webkit-transform: rotate(45deg)
-
-            .text
-                padding-left: 10px
-                float: left
-
-            .close-sign
-                float: left
-                width: 24px
-                height: 24px
-                opacity: 1
-
-            .close-sign:before, .close-sign:after
-                position: absolute
-                left: 15px
-                content: ' '
-                height: 24px
-                width: 2px
-                background-color: white
-                color: white
-
-            .close-sign:before
-                transform: rotate(45deg)
-
-            .close-sign:after
-                transform: rotate(-45deg)
-
         .navbar-mobile-blog
             top: 146px
             position: fixed
@@ -168,23 +116,6 @@ $blue: #3778bc
                 height: 100%
                 overflow-y: auto
                 background: $blue
-
-                .category-element
-                    color: white
-
-                    .nav-link
-                        color: white
-                        font-weight: 700
-                        text-align: center
-
-                    .nav-link.margin, .nav-link.mobile-link
-                        color: white
-
-                    .nav-link:hover
-                        opacity: 0.8
-
-                    .nav-link:focus
-                        color: white
 
         .navbar-mobile-open
             left: 0
