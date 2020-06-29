@@ -16,7 +16,28 @@
 
             .row.main-row
                 padding-bottom: 10px
-                flex-wrap: wrap-reverse
+                flex-wrap: wrap
+
+                .no-margin-row
+                    margin: 0
+
+                .title
+                    display: -webkit-box
+                    -webkit-line-clamp: 2
+                    -webkit-box-orient: vertical
+                    overflow: hidden
+                    text-overflow: ellipsis
+                    max-height: 70px
+                    margin-bottom: 15px
+    
+                    .main-article-url
+                        margin-bottom: 5px
+                        color: #003272
+                        font-size: 25px
+                        font-weight: 700
+
+                        @media only screen and (max-width: 1079px)
+                            margin-top: 10px
 
                 .article-text-container
                     @media only screen and (max-width: 833px)
@@ -24,26 +45,9 @@
                         flex: 100%
                         margin-right: unset
 
-                    .row.title
-                        display: -webkit-box
-                        -webkit-line-clamp: 2
-                        -webkit-box-orient: vertical
-                        overflow: hidden
-                        text-overflow: ellipsis
-                        max-height: 70px
-
                     .row
                         margin-left: 0
                         margin-right: 0
-
-                        .main-article-url
-                            margin-bottom: 5px
-                            color: #003272
-                            font-size: 22px
-                            font-weight: 700
-
-                            @media only screen and (max-width: 1079px)
-                                margin-top: 10px
 
                         .info-section
                             position: relative
@@ -60,7 +64,7 @@
                                 height: 45px
                                 width: 45px
                                 object-fit: cover
-                                object-position: 0 0
+                                object-position: top
 
                             .auto-name
                                 height: 45px
@@ -113,21 +117,18 @@
                         position: relative
                         width: 100%
                         margin: 0
-                        .image-url
+
+                    .image-url
+                        img
+                            transition: all 1s ease
+                            border-radius: 25px
+                            height: auto
+                            width: 100%
+
+                            @media only screen and (max-width: 833px)
+                                position: initial
+
+                        &:hover
                             img
-                                transition: all 1s ease
-                                border-radius: 25px
-                                position: absolute
-                                top: 0
-                                left: 0
-                                bottom: 0
-                                height: auto
-                                width: 100%
-
-                                @media only screen and (max-width: 833px)
-                                    position: initial
-
-                            &:hover
-                                img
-                                    opacity: 0.4
+                                opacity: 0.4
 
