@@ -11,9 +11,9 @@
             {% include 'blog/blog_posts_list_partials/main_article.haml' %}
 
             %hr.separator
-            .row.rest-posts.full-screen-articles
+            .full-screen-articles
                 {% include 'blog/partials/article_list.haml' with article_list=paginated_rest_articles %}
-            .row.rest-posts.mobile-devices-articles
+            .mobile-devices-articles
                 {% include 'blog/partials/article_list.haml' with article_list=paginated_all_articles %}
         .col-md.popular-articles
             .inner-popular-articles
