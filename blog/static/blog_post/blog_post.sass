@@ -1,3 +1,5 @@
+@import "../../../company_website/static/common/partials/constants"
+
 $post-width-in-px: 800px
 $post-width-in-vw: 90vw
 $dark-blue: #03428c
@@ -11,14 +13,23 @@ $width-to-change-details: 500px
 
 
 .post-container
-    margin-top: 1px
+    @media only screen and (max-width: $menu-max-size)
+        margin-top: $mobile-menu-height
 
     p
         text-align: justify
+        margin-bottom: 35px
+        line-height: 1.8rem
+
+    h3
+        margin-top: 15px
+        margin-bottom: 35px
 
     table
         width: 100%
         border: 1px solid
+        margin-top: 5px
+        margin-bottom: 35px
 
         caption
             text-align: center
@@ -37,13 +48,15 @@ $width-to-change-details: 500px
     img
         width: 100%
         height: auto
+        margin-top: 5px
+        margin-bottom: 35px
 
     .article-photo
         width: 100%
         height: 30vw
 
     .article-details
-        margin-bottom: 20px
+        margin-bottom: 40px
         position: relative
         .row
             margin: 0
@@ -59,7 +72,7 @@ $width-to-change-details: 500px
             width: $author-image-size
             height: $author-image-size
             object-fit: cover
-            object-position: 0 0
+            object-position: top
             margin-right: 10px
 
         .author-details
