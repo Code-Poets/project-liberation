@@ -29,7 +29,7 @@
                 Country
 
           .nda
-            Do you need NDA?
+            Do you need an NDA?
             .switch-field
               {% for field in form.nda_required %}
                 .select-box{:id => "nda_#{forloop.counter}"}
@@ -38,7 +38,7 @@
           .desktop-display
             .additional-questions
               .label
-                Need more precise estimation?
+                Do you need a very precise estimation?
               .add-button
                 Show additional questions
 
@@ -74,7 +74,7 @@
         .bottom-containers
           .single-container
             .select-container.i-want-to
-              I want to
+              You want to
               .switch-field
                 {% for field in form.project_development %}
                   .select-box{:id => "project_development_#{forloop.counter}"}
