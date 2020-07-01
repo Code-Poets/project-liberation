@@ -22,3 +22,15 @@ class TeamIntroductionViewTests(TestCase):
         response = self.client.get(self.url)
         self.assertEqual(list(response.context_data["bosses"]), self.list_of_bosses)
         self.assertEqual(list(response.context_data["employees"]), self.list_of_employees)
+
+
+class EstimateProjectViewTests(TestCase):
+    def test_that_estimate_project_view_should_redirect_to_thank_you_view(self):
+        form_data = {
+            "name": "John Doe",
+            "email": "email@address.com",
+            "idea_description": "Some description",
+            "privacy_policy_accepted": True,
+        }
+        response = self.client.post(path=reverse("estimate_project"), data=form_data, follow=True)
+        self.assertRedirects(response, reverse("thank_you"))

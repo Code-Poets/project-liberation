@@ -1,0 +1,21 @@
+{% extends "base.haml" %}
+{% block title %}
+    %title {{ title }}
+{% endblock %}
+{% block meta_tags %}
+    %meta{:name => "description", :content => "{{ meta_description }}"}
+    %meta{:name => "keywords", :content => "{{ keywords }}"}
+{% endblock %}
+{% load pipeline %}
+
+{% block extra_head %}
+    {% stylesheet 'thank_you' %}
+{% endblock %}
+
+{% block content %}
+    {% include "thank_you/thank_you.haml" %}
+{% endblock %}
+
+{% block extra_script %}
+    {% javascript 'thank_you' %}
+{% endblock %}

@@ -71,4 +71,9 @@ class EstimateProjectView(FormView):
         return super().form_valid(form)
 
     def get_success_url(self) -> str:
-        return reverse_lazy("estimate_project")
+        return reverse_lazy("thank_you")
+
+
+class ThankYouView(CustomTemplateView):
+    template_name = "thank_you.haml"
+    page_name = PageNames.THANK_YOU.name

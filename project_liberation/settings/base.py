@@ -323,6 +323,12 @@ PIPELINE = {
             ),
             'output_filename': 'css/estimate_project.css',
         },
+        'thank_you': {
+            'source_filenames': (
+                'thank_you/*.sass',
+            ),
+            'output_filename': 'css/thank_you.css',
+        },
     },
     'JAVASCRIPT': {
         'main': {
@@ -366,6 +372,12 @@ PIPELINE = {
                 'blog_post/scripts/*.js',
             ),
             'output_filename': 'js/blog_post.js'
+        },
+        'thank_you': {
+            'source_filenames': (
+                'thank_you/scripts/*.js',
+            ),
+            'output_filename': 'js/thank_you.js'
         },
     },
     'COMPILERS': ('pipeline.compilers.sass.SASSCompiler',)
