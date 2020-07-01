@@ -19,11 +19,11 @@ if [ -z $VIRTUAL_ENV ]; then
 fi
 
 printf "[FLAKE8: project-liberation]\n"
-flake8                                                                                          \
-    --exclude="${BASH_SOURCE%/*}/project_liberation/settings/"                                  \
-    --jobs=4                                                                                    \
-    --max-line-length=120                                                                       \
-    --ignore=E124,E126,E128,E131,E156,E201,E221,E222,E241,E265,E271,E272,E701,F405,E501,W503    \
+flake8                                                                                               \
+    --exclude="${BASH_SOURCE%/*}/project_liberation/settings/"                                       \
+    --jobs=4                                                                                         \
+    --max-line-length=120                                                                            \
+    --ignore=E124,E126,E128,E131,E156,E201,E221,E222,E231,E241,E265,E271,E272,E701,F405,E501,W503    \
     ${BASH_SOURCE%/*}
 
 printf "\n"

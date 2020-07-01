@@ -5,7 +5,6 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import include
 
 from blog.sitemap import BlogArticlesSitemap
-from blog.sitemap import BlogCategorySitemap
 from blog.sitemap import BlogIndexSitemap
 from company_website.sitemap import CompanyWebsiteViewSitemap
 from project_liberation.views import redirect_view
@@ -13,7 +12,6 @@ from project_liberation.views import redirect_view
 sitemaps = {
     "company_website": CompanyWebsiteViewSitemap,
     "blog_index_page": BlogIndexSitemap,
-    "blog_categories": BlogCategorySitemap,
     "blog_articles": BlogArticlesSitemap,
 }
 

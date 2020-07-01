@@ -1,7 +1,6 @@
 window.onload = function(){
 
     function handleMenuToggling() {
-        let categories = document.querySelector(".categories");
         let blogButton = document.querySelector(".blog-menu-button");
 
         const handleClick = () => {
@@ -16,8 +15,6 @@ window.onload = function(){
                 blogButton.classList.remove("close-sign");
             }
         };
-
-        categories.addEventListener('click', handleClick);
     }
     handleMenuToggling();
 };

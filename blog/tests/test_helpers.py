@@ -7,8 +7,6 @@ from wagtail.core.models import Site
 from wagtailmarkdown.blocks import MarkdownBlock
 
 from blog.models import BlogArticlePage
-from blog.models import BlogCategoryPage
-from blog.models import BlogCategorySnippet
 from blog.models import BlogIndexPage
 from company_website.factories import BossFactory
 
@@ -42,47 +40,10 @@ class BlogTestHelpers:
         site = self._add_blog_index_page_as_site_root_page(blog_index_page)
         return (blog_index_page, site)
 
-    @staticmethod
-    def _create_blog_category_snippet(
-        title="Test Category",
-        seo_title="Page SEO title",
-        slug="test-category",
-        meta_description="This is test category page",
-        keywords="Category, Page, Blog",
-        order=None,
-    ):
-        blog_category_snippet = BlogCategorySnippet(
-            title=title,
-            seo_title=seo_title,
-            slug=slug,
-            order=order,
-            meta_description=meta_description,
-            keywords=keywords,
-        )
-        blog_category_snippet.save()
-        return blog_category_snippet
-
-    @staticmethod
-    def _create_blog_category_page(
-        blog_index_page,
-        title="Test Category",
-        seo_title="Page SEO title",
-        slug="test-category",
-        meta_description="This is test category page",
-        keywords="Category, Page, Blog",
-    ):
-        blog_category_page = BlogCategoryPage(
-            title=title, seo_title=seo_title, slug=slug, meta_description=meta_description, keywords=keywords
-        )
-        blog_index_page.add_child(instance=blog_category_page)
-        blog_category_page.save()
-        return blog_category_page
-
     def _create_blog_article_page(
         self,
         blog_index_page=None,
         title="Simple Article Title",
-        categories=None,
         date=datetime.now(),
         intro="Simple Article Intro",
         body=None,
@@ -93,8 +54,6 @@ class BlogTestHelpers:
         article_photo=None,
         is_main_article=False,
     ):
-        if categories is None:
-            categories = [BlogCategorySnippet.objects.all().first()]
         if body is None:
             block = StreamBlock([("markdown", MarkdownBlock())])
             body = StreamValue(block, [("markdown", "Hello, World")])
@@ -102,7 +61,6 @@ class BlogTestHelpers:
             author = BossFactory()
         blog_article_page = BlogArticlePage(
             title=title,
-            categories=categories,
             date=date,
             intro=intro,
             body=body,

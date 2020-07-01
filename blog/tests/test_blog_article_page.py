@@ -7,7 +7,6 @@ from wagtail.core.blocks import StreamValue
 from wagtailmarkdown.blocks import MarkdownBlock
 
 from blog.models import BlogArticlePage
-from blog.models import BlogCategoryPage
 from blog.tests.test_helpers import BlogTestHelpers
 from company_website.factories import BossFactory
 
@@ -15,8 +14,6 @@ from company_website.factories import BossFactory
 class TestBlogArticlePage(TestCase, BlogTestHelpers):
     def setUp(self) -> None:
         self._set_default_blog_index_page_as_new_root_page_child()
-        self.blog_category = self._create_blog_category_snippet()
-        self.blog_category_page = BlogCategoryPage.objects.get(**self.blog_category.instance_parameters)
         self.blog_index_page = self._get_newest_blog_index_page()
 
     def test_that_new_article_page_can_be_only_index_blog_page_child(self):
@@ -25,15 +22,7 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
             self._create_blog_article_page(blog_index_page=blog_article_page)
 
     @parameterized.expand(
-        [
-            ("title", None),
-            ("categories", []),
-            ("date", None),
-            ("intro", None),
-            ("author", None),
-            ("read_time", -1),
-            ("views", -1),
-        ]
+        [("title", None), ("date", None), ("intro", None), ("author", None), ("read_time", -1), ("views", -1),]
     )
     def test_that_new_article_page_should_has_all_mandatory_parameters(self, parameter_name, parameter_value):
         author = BossFactory()
@@ -41,7 +30,6 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
         body = StreamValue(block, [("markdown", "Hello, World")])
         blog_article_parameter = {
             "title": "Simple Article Title",
-            "categories": [self.blog_category],
             "date": datetime.now(),
             "intro": "Simple Article Intro",
             "body": body,
