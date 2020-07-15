@@ -1,3 +1,11 @@
+### v1.13.0
+
+##### Features
+- Feature remove categories from blog ([#243](https://github.com/Code-Poets/project-liberation/pull/243))
+- Feature add thank you page ([#241](https://github.com/Code-Poets/project-liberation/pull/241))
+- Feature update texts across website ([#242](https://github.com/Code-Poets/project-liberation/pull/242))
+
+
 ### v1.12.5
 
 ##### Bugfixes
