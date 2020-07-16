@@ -138,7 +138,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
         self.full_clean()
         self.save()
 
-    def save(self, *args: Any, **kwargs: Any) -> None:
+    def save(self, *args: Any, **kwargs: Any) -> None:  # pylint: disable=signature-differs
         if not BlogArticlePage.objects.filter(is_main_article=True) and not self.is_main_article:
             self.is_main_article = True
         if self.is_main_article:
