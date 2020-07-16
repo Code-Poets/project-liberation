@@ -1,11 +1,20 @@
 import os
 import random
+from typing import List
+from typing import Optional
 
 import cv2
 import numpy as np
 
 
-def create_image(height, width, image_name, images_directory, rgb_color=None, return_relative_path=False):
+def create_image(
+    height: int,
+    width: int,
+    image_name: str,
+    images_directory: str,
+    rgb_color: Optional[List[int]] = None,
+    return_relative_path: bool = False,
+) -> str:
     tmp_dir = "tmp/"
     file_name = f"{image_name}.jpg"
     file_path = os.path.abspath(os.path.join(images_directory, tmp_dir, file_name))
