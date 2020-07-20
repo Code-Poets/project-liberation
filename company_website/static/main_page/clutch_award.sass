@@ -4,6 +4,8 @@ $badge-height: 8vw
 
 .clutch-container
     font-family: $font-family
+    margin: 30px 0
+
     .container
         margin: 0
         .left-container
@@ -52,7 +54,7 @@ $badge-height: 8vw
             .see-our-reviews-container
                 padding-top: 10px
                 display: flex
-                justify-content: flex-end
+                justify-content: center
                 height: 4vw
                 font-size: 2.35vw
                 font-weight: 500
@@ -63,7 +65,7 @@ $badge-height: 8vw
                     display: flex
                     align-items: center
                     justify-content: center
-                    margin: 0 3vw 0 1vw
+                    margin-left: 2vw
 
                     .clutch-star
                         padding-left: 5px
@@ -71,6 +73,10 @@ $badge-height: 8vw
 
                 a:link
                     text-decoration: none
+                    transition: opacity 0.25s
+
+                a:hover
+                    opacity: 0.5
 
                 .link-to-clutch
                     color: black
