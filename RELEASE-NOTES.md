@@ -1,3 +1,9 @@
+### v1.13.1
+
+##### Bugfixes
+- Bugfix blog main page layout ([#249](https://github.com/Code-Poets/project-liberation/pull/249))
+
+
 ### v1.13.0
 
 ##### Features
