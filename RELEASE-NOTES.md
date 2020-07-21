@@ -1,3 +1,9 @@
+### v1.14.0
+
+##### Features
+- Feature change calendly link ([#251](https://github.com/Code-Poets/project-liberation/pull/251))
+
+
 ### v1.13.1
 
 ##### Bugfixes
