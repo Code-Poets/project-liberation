@@ -58,11 +58,6 @@
                     {% endfor %}
         {% endif %}
 
-        .comment-section{:id => "disqus_thread"}
-            %script{:type => "text/javascript"}
-                var blog_page_url = "{{ request.build_absolute_uri }}"
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
 {% block extra_script %}
     %script{:type => "text/javascript",
         :src => "https://code.jquery.com/jquery-3.4.1.js",
