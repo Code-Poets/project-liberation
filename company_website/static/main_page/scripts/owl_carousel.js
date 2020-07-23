@@ -5,7 +5,7 @@ owl_carousel.owlCarousel({
     lazyLoad: true,
     loop: true,
     autoplay: true,
-    autoplayTimeout: 3000,
+    autoplayTimeout: 7000,
     autoplayHoverPause: true,
     margin: 20,
     nav: false,
