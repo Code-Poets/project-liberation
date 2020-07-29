@@ -20,6 +20,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtailmarkdown.blocks import MarkdownBlock
 
+from blog.constants import MAX_BLOG_ARTICLE_TITLE_LENGTH
 from company_website.models import Employees
 
 
@@ -151,6 +152,14 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
         self._validate_parent_page()
         super().save(*args, **kwargs)
 
+    def clean(self) -> None:
+        super().clean()
+        self._validate_title_length()
+
     def _validate_parent_page(self) -> None:
         if not isinstance(self.get_parent().specific, BlogIndexPage):
             raise ValidationError(message=f"{self.title} must be child of BlogIndexPage")
+
+    def _validate_title_length(self) -> None:
+        if self.title is not None and len(self.title) > MAX_BLOG_ARTICLE_TITLE_LENGTH:
+            raise ValidationError({"title": f"Title must be less than {MAX_BLOG_ARTICLE_TITLE_LENGTH} characters."})

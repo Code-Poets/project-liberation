@@ -96,9 +96,9 @@ $blog-post-list-container-padding-top: 120px
             display: none
             @media only screen and (max-width: 767px)
                 display: flex
+                flex-wrap: wrap
 
         .rest-posts
-            width: 100%
             @media only screen and (max-width: 767px)
                 margin-right: 0
                 margin-left: 0
@@ -189,7 +189,7 @@ $blog-post-list-container-padding-top: 120px
                             height: 45px
                             width: 45px
                             object-fit: cover
-                            object-position: 0 0
+                            object-position: top
 
                         .auto-name
                             height: 45px
@@ -230,6 +230,8 @@ $blog-post-list-container-padding-top: 120px
             padding-top: 20px
 
 .articles-paginator
+    display: flex
+    justify-content: center
     padding: 25px
     @media only screen and (max-width: 767px)
         padding: 50px 0 50px 0

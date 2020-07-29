@@ -64,3 +64,23 @@ class TestBlogPagesPagination(BlogSetUpClass):
         self.assertTemplateUsed(response, BlogIndexPage.template)
         for number in range(1, number_of_paginated_pages + 1):
             self.assertIn(f"?page={number}", response.rendered_content)
+
+
+class TestBlogPagesSlugFieldPreservation(TestCase, BlogTestHelpers):
+    def setUp(self):
+        self._set_default_blog_index_page_as_new_root_page_child()
+        self.blog_article_page = self._create_blog_article_page(
+            title="Simple Article Title",
+            date=datetime(year=2019, month=5, day=1),
+            intro="Simple Article Intro",
+            read_time=5,
+        )
+        self.new_title = "Not So Simple Article Title"
+        self.expected_slug = "simple-article-title"
+
+    def test_that_altering_title_in_blog_page_model_should_not_alter_the_url_slug(self):
+        self.blog_article_page.title = self.new_title
+        self.blog_article_page.save()
+
+        self.assertEqual(self.blog_article_page.title, self.new_title)
+        self.assertEqual(self.blog_article_page.slug, self.expected_slug)

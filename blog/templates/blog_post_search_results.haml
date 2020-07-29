@@ -10,8 +10,7 @@
     .container.blog-posts-list
         {% if search_results %}
             .col-md-12.posts-container
-                .row.rest-posts
-                    {% include 'blog/partials/article_list.haml' with article_list=search_results %}
+                {% include 'blog/partials/article_list.haml' with article_list=search_results %}
 
         {% else %}
             .no-articles-div

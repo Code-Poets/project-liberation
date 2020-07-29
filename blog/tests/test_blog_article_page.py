@@ -6,6 +6,7 @@ from wagtail.core.blocks import StreamBlock
 from wagtail.core.blocks import StreamValue
 from wagtailmarkdown.blocks import MarkdownBlock
 
+from blog.models import MAX_BLOG_ARTICLE_TITLE_LENGTH
 from blog.models import BlogArticlePage
 from blog.tests.test_helpers import BlogTestHelpers
 from company_website.factories import BossFactory
@@ -61,3 +62,8 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
         blog_article_page_2 = self._create_blog_article_page(is_main_article=True)
         self.assertEqual(blog_article_page_2.is_main_article, True)
         self.assertEqual(BlogArticlePage.objects.get(pk=blog_article_page.pk).is_main_article, False)
+
+    def test_that_title_should_not_be_longer_than_custom_specified_amount_of_characters(self):
+        title_that_is_way_too_long = "f" * (MAX_BLOG_ARTICLE_TITLE_LENGTH + 1)
+        with self.assertRaises(ValidationError):
+            self._create_blog_article_page(title=title_that_is_way_too_long)
