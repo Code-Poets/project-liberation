@@ -1,20 +1,22 @@
 @import "../common/partials/constants"
-.container-fluid
-    .clutch-reward
-        position: absolute
-        height: auto
-        width: 16vw
-        right: 100px
-        top: 100px
-        @media only screen and (max-width: $md-screen-size)
-            display: none
 
+$clutch-max-height-breakpoint: 745px
+
+.container-fluid
     .jumbo
         width: 100%
         height: 110vh
         position: relative
+        flex-direction: column
+        overflow: hidden
+
+        @media only screen and (max-height: $clutch-max-height-breakpoint) and (max-width: $sm-screen-size)
+            height: auto
+            padding-bottom: 8.8vh
 
         .background-img
+            position: absolute
+            height: 100%
             width: inherit
             object-fit: cover
             object-position: 48.5% 0
@@ -22,21 +24,20 @@
         .container-fluid
             display: table
             padding-left: 30px
-            margin-left: auto
-            margin-right: 0
-            margin-top: 27vh
+            padding-top: 50px
+            left: 0
+            top: 21vh
             width: 57%
             min-width: fit-content
             min-width: -moz-min-content
             position: absolute
-            font-size: 5vw
-            left: 0
-
-            @media only screen and (max-width: $md-screen-size)
-                font-size: 5vw
+            font-size: calc(9.6px + 4.5vw)
 
             @media only screen and (max-width: $sm-screen-size)
-                font-size: 6vw
+                position: relative
+                top: unset
+                left: unset
+                font-size: 9.98vw
                 padding: 0
                 width: 100%
                 min-width: 100%
@@ -75,3 +76,34 @@
                 font-size: 0.4em
                 @media only screen and (max-width: $sm-screen-size)
                     padding: 2% 2%
+
+        .clutch-container
+            position: absolute
+            display: flex
+            justify-content: flex-start
+            flex-direction: column
+            width: 165px
+            right: 25px
+            top: 100px
+
+            .clutch-reward
+                position: relative
+                height: auto
+                width: 100%
+                margin-bottom: 30px
+
+            @media only screen and (max-width: $sm-screen-size)
+                position: relative
+                top: unset
+                right: unset
+                margin: 9vh -8px 0
+                width: unset
+                flex-direction: row
+                height: 44vw
+                max-height: 165px
+                justify-content: center
+
+                .clutch-reward
+                    height: 100%
+                    width: auto
+                    margin: 0 8px
