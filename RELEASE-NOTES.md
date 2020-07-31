@@ -1,3 +1,12 @@
+### v1.15.0
+
+##### Features
+- Feature update text at how we work ([#253](https://github.com/Code-Poets/project-liberation/pull/253))
+- Feature update clutch badge ([#248](https://github.com/Code-Poets/project-liberation/pull/248))
+- Feature change testimonials delay ([#252](https://github.com/Code-Poets/project-liberation/pull/252))
+- Feature change text and layout at blog ([#245](https://github.com/Code-Poets/project-liberation/pull/245))
+
+
 ### v1.14.0
 
 ##### Features
