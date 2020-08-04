@@ -1,3 +1,9 @@
+### v1.15.1
+
+##### Bugfixes
+- Bugfix typo at how we work page ([#256](https://github.com/Code-Poets/project-liberation/pull/256))
+
+
 ### v1.15.0
 
 ##### Features
