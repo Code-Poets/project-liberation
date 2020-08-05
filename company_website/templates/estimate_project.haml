@@ -10,6 +10,9 @@
 
 {% block extra_head %}
     {% stylesheet 'estimate_project' %}
+    :javascript
+      window.GOOGLE_ADS_CONVERSION_TARGET_ADDRESS = '{{ GOOGLE_ADS_CONVERSION_TARGET_ADDRESS }}'
+    {% javascript 'estimate_project_head' %}
 {% endblock %}
 
 {% block content %}

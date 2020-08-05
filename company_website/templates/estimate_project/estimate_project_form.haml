@@ -62,7 +62,8 @@
               {{form.privacy_policy_accepted}}
               I have read and accepted our
               %a{:href => "{% url 'privacy_and_policy' %}"}  Privacy Policy
-            %input.custom-button{:type => "submit", :value => "Estimate Project", :class => "estimate-button", :id => "btnSubmit"}
+            {% url "thank_you" as thank_you_url %}
+            %input.custom-button{:type => "submit", :value => "Estimate Project", :class => "estimate-button", :id => "btnSubmit", :onclick => 'return gtagReportConversion("{{ URL_PREFIX }}://{{ request.get_host }}{{ thank_you_url }}")'}
 
     .row
       .hide-add-questions

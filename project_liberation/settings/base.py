@@ -355,6 +355,12 @@ PIPELINE = {
             ),
             'output_filename': 'js/estimate_project.js',
         },
+        'estimate_project_head': {
+            'source_filenames': (
+                'estimate_project/scripts/head/*.js',
+            ),
+            'output_filename': 'js/estimate_project_head.js',
+        },
         'team_introduction': {
             'source_filenames': (
                 'team_introduction_page/scripts/*.js',

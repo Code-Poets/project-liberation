@@ -66,6 +66,11 @@ class EstimateProjectView(FormView, GoogleAdsMixin):
     form_class = ProjectToEstimateForm
     page_name = PageNames.ESTIMATE_PROJECT.name
 
+    def get_context_data(self, *, _object_list: Any = None, **kwargs: Any) -> dict:
+        context_data = super().get_context_data(**kwargs)
+        context_data["URL_PREFIX"] = settings.URL_PREFIX
+        return context_data
+
     def form_valid(self, form: ProjectToEstimateForm) -> bool:
         messages.success(self.request, "Profile details updated.")
         form.save()

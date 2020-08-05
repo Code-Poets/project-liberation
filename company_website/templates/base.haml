@@ -6,20 +6,20 @@
 {% load google_analytics_tags %}
 {% load pipeline %}
 {% stylesheet 'common' %}
-.google-analytics
-    %img.google-analytics-image{:src => "{% google_analytics %}", :alt => "Google Analytics"}
 
 {% block extra_head %}
 {% endblock %}
 
+.google-analytics
+    %img.google-analytics-image{:src => "{% google_analytics %}", :alt => "Google Analytics"}
 .overlay
+
 {% include "common_partials/menu.haml" %}
 
 {% block content %}
 {% endblock %}
 
 {% include "common_partials/footer.haml" %}
-
 {% include "common_partials/scripts.haml" %}
 
 {% block extra_script %}
