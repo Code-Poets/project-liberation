@@ -343,6 +343,12 @@ PIPELINE = {
             ),
             'output_filename': 'js/common.js',
         },
+        'common_head': {
+            'source_filenames': (
+                'common/scripts/head/*.js',
+            ),
+            'output_filename': 'js/common_head.js',
+        },
         'estimate_project': {
             'source_filenames': (
                 'estimate_project/scripts/*.js',

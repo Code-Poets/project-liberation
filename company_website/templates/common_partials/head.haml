@@ -1,13 +1,12 @@
 {% load static %}
+{% load pipeline %}
 
-/ Google Tag Manager
 :javascript
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TCWZK7N');
-/ End Google Tag Manager
+  window.GOOGLE_ADS_CONVERSION_ID = "{{ GOOGLE_ADS_CONVERSION_ID }}"
+
+%script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id={{ google_ads_conversion_id }}"}
+
+{% javascript 'common_head' %}
 
 %link{:rel => "stylesheet",
     :type => "text/css",
