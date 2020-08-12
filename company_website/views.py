@@ -11,10 +11,11 @@ from company_website.forms import ProjectToEstimateForm
 from company_website.models import Employees
 from company_website.models import Testimonial
 from company_website.view_helpers import CustomTemplateView
+from company_website.view_helpers import GoogleAdsMixin
 from company_website.view_helpers import add_meta_tags_to_page_context
 
 
-class MainPageView(ListView):
+class MainPageView(ListView, GoogleAdsMixin):
 
     template_name = "main_page.haml"
     model = Testimonial
@@ -27,7 +28,7 @@ class MainPageView(ListView):
         return context_data
 
 
-class TeamIntroductionPageView(ListView):
+class TeamIntroductionPageView(ListView, GoogleAdsMixin):
 
     template_name = "team_introduction_page.haml"
     model = Employees
@@ -59,7 +60,7 @@ class PrivacyAndPolicyView(CustomTemplateView):
     page_name = PageNames.PRIVACY_AND_POLICY.name
 
 
-class EstimateProjectView(FormView):
+class EstimateProjectView(FormView, GoogleAdsMixin):
 
     template_name = "estimate_project.haml"
     form_class = ProjectToEstimateForm
