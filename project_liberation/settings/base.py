@@ -405,6 +405,10 @@ SITE_ID = 1
 #     'google_analytics_id': '',
 # }
 
+# Settings need to be set up in production settings with proper google ads ID
+# GOOGLE_ADS_CONVERSION_ID = ''
+# GOOGLE_ADS_CONVERSION_TARGET_ADDRESS = ''
+
 DATE_FORMAT = "M. d, Y"
 
 URL_PREFIX = "http"
