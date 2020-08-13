@@ -1,6 +1,8 @@
 @import "../common/partials/_constants.sass"
 @import "../common/partials/section_header"
 
+$who-we-are-text-breakpoint: 941px
+
 body
 
     text-indent: 0
@@ -48,7 +50,7 @@ body
                                     font-size: 3.6rem
 
                                 @media only screen and (max-width: 500px)
-                                    font-size: 1.5rem
+                                    font-size: 1.6rem
 
 
     .row
@@ -106,15 +108,6 @@ body
             display: inline-block
             max-height: 100%
             padding: calc(2 * #{$default-padding-in-vw})
-            @media only screen and (min-width: $about-us-page-width)
-                padding: calc(2 * #{$default-padding-in-px})
-            .topic
-                font-weight: 700
-                font-size: 3.5vw
-                width: 100%
-
-                @media only screen and (min-width: $about-us-page-width)
-                    font-size: 44px
 
             .text-row
                 font-weight: 600
@@ -123,15 +116,26 @@ body
                 height: auto
                 max-height: 100%
 
-                @media only screen and (min-width: $about-us-page-width)
-                    padding-top: 35px
-
             .description
                 text-align: justify
                 margin: 0
                 font-size: 1.7vw
-                @media only screen and (min-width: $about-us-page-width)
+
+            @media only screen and (min-width: $about-us-page-width)
+                padding: calc(2 * #{$default-padding-in-px})
+
+                .topic
+                    font-size: 44px
+
+                .text-row
+                    padding-top: 35px
+
+                .description
                     font-size: 19px
+
+            @media only screen and (max-width: $who-we-are-text-breakpoint)
+                .description
+                    font-size: 1rem
 
         .inner-left-container
             position: relative
@@ -168,10 +172,7 @@ body
 
             p
                 margin: 0 0
-                padding: 1vw 0
-
-                @media only screen and (min-width: $about-us-page-width)
-                    padding: 10px 0
+                padding: 10px 0
 
             .who-we-are-text-row
                 font-weight: 400
@@ -194,19 +195,14 @@ body
                 left: 50%
                 transform: translate(-50%, 0)
                 width: 17vw
+                min-width: 100px
                 font-size: 2.2vw
                 cursor: pointer
-                @media only screen and (min-width: $about-us-page-width)
-                    height: 50px
-                    bottom: -25px
-                    width: 200px
-                    font-size: 26px
 
                 .button-inner-div
                     position: relative
                     height: 4vw
-                    @media only screen and (min-width: $about-us-page-width)
-                        height: 50px
+
                     .read-text
                         margin: 0
                         position: absolute
@@ -215,10 +211,30 @@ body
                         margin-right: -50%
                         transform: translate(-50%, -50%)
 
+                @media only screen and (min-width: $about-us-page-width)
+                    height: 50px
+                    bottom: -25px
+                    width: 200px
+                    font-size: 26px
+
+                    .button-inner-div
+                        height: 50px
+
+                @media only screen and (max-width: $who-we-are-text-breakpoint)
+                    height: 38px
+                    bottom: -19px
+                    width: 160px
+                    font-size: 21px
+
+                    .button-inner-div
+                        height: 34px
+
         .our-values-part
-            padding-top: calc(#{$default-padding-in-vw} * 3)
+            margin-top: 25px
+            padding-top: calc(#{$default-padding-in-vw} * 2)
 
             @media only screen and (min-width: $about-us-page-width)
+                margin-top: unset
                 padding-top:  calc(#{$default-padding-in-px} * 3)
 
             .image_1
@@ -241,6 +257,7 @@ body
 
             .our-values-topic
                 font-size: 4.5vw
+                text-transform: uppercase
 
                 @media only screen and (min-width: $about-us-page-width)
                     font-size: 55px
@@ -273,21 +290,6 @@ body
             @media only screen and (min-width: $about-us-page-width)
                 padding-top: $default-padding-in-px
 
-            .outer-understand-text-div
-                background-color: $company-introduction-yellow-color
-                max-height: 100%
-                height: 100%
-
-            .inner-understand-text-div
-                padding: 4.1vw
-                @media only screen and (min-width: $about-us-page-width)
-                    padding: 50px
-
-            .understand-part-description
-                font-size: 2.5vw
-                @media only screen and (min-width: $about-us-page-width)
-                    font-size: 30px
-
             .image_3
                 height: 29vw
                 object-fit: cover
@@ -296,6 +298,11 @@ body
 
                 @media only screen and (min-width: $about-us-page-width)
                     height: 350px
+
+            .image_16
+                object-fit: cover
+                width: 100%
+                height: 100%
 
             .yellow-square
                 background-color: $company-introduction-yellow-color
@@ -386,10 +393,11 @@ body
                 @media only screen and (min-width: $about-us-page-width)
                     height: 400px
 
-            .improve-text-div
-                background-color: $company-introduction-orange-color
+            .image_17
+                object-fit: cover
                 margin-top: $default-padding-in-vw
                 height: 33vw
+                width: 100%
 
                 @media only screen and (min-width: $about-us-page-width)
                     margin-top: $default-padding-in-px
@@ -429,10 +437,11 @@ body
                 padding-top: $default-padding-in-px
                 height: calc(400px + 450px + 2 * #{$default-padding-in-px})
 
-            .be-honest-text-div
-                background-color: $blue
+            .image_18
+                object-fit: cover
                 margin-top: $default-padding-in-vw
                 height: 33vw
+                width: 100%
 
                 @media only screen and (min-width: $about-us-page-width)
                     margin-top: $default-padding-in-px
@@ -446,16 +455,6 @@ body
 
                 @media only screen and (min-width: $about-us-page-width)
                     height: 450px
-
-            .inner-be-honest-text-div
-                padding: 4.1vw
-                @media only screen and (min-width: $about-us-page-width)
-                    padding: 50px
-
-            .be-honest-part-description
-                font-size: 2.4vw
-                @media only screen and (min-width: $about-us-page-width)
-                    font-size: 30px
 
             .left-column
                 flex: 0 0 calc(100% - (100% - 51% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw})))
@@ -536,25 +535,6 @@ body
                 @media only screen and (min-width: $about-us-page-width)
                     flex: 0 0 calc(100% - (100% - (100% - 51% + (#{$square-side-length-in-px} + #{$default-padding-in-px} + (#{$square-side-length-in-px} + #{$default-padding-in-px})))))
 
-        .self-organized-part
-            padding-top: $default-padding-in-vw
-
-            @media only screen and (min-width: $about-us-page-width)
-                padding-top: $default-padding-in-px
-
-            .self-organized-text-div
-                background-color: $bright-blue
-
-            .inner-self-organized-text-div
-                padding: 4.1vw
-                @media only screen and (min-width: $about-us-page-width)
-                    padding: 50px
-
-            .self-organized-part-description
-                font-size: 2.2vw
-                @media only screen and (min-width: $about-us-page-width)
-                    font-size: 28px
-
         .self-organized-part-2
             height: calc(37vw + #{$square-side-length-in-vw} + 2 * #{$default-padding-in-vw})
 
@@ -600,9 +580,10 @@ body
                 padding-top: $default-padding-in-px
                 height: 435px
 
-            .self-organized-2-text-div
-                background-color: $company-introduction-red-color
+            .image_19
+                object-fit: cover
                 height: 100%
+                width: 100%
 
             .self-organized-overlayed-image
                 object-fit: cover
@@ -612,16 +593,6 @@ body
 
                 @media only screen and (min-width: $about-us-page-width)
                     height: 500px
-
-            .inner-self-organized-part-2-text-div
-                padding: 4.1vw
-                @media only screen and (min-width: $about-us-page-width)
-                    padding: 50px
-
-            .self-organized-part-2-description
-                font-size: 2.4vw
-                @media only screen and (min-width: $about-us-page-width)
-                    font-size: 30px
 
             .left-column
                 flex: 0 0 calc(100% - (100% - 50% + (#{$default-padding-in-vw} + #{$square-side-length-in-vw})))
