@@ -133,6 +133,7 @@ Desktop.ini
 *.jpeg
 *.png
 *.ico
+*.svg
 
 # Node package manager dependencies
 /node_modules
