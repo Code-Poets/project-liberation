@@ -6,6 +6,7 @@ from django.core.management import BaseCommand
 from django.db import transaction
 from django.utils.datetime_safe import datetime
 from faker import Faker
+from wagtail.core.blocks import PageChooserBlock
 from wagtail.core.blocks import StreamBlock
 from wagtail.core.blocks import StreamValue
 from wagtail.core.models import Page
@@ -90,6 +91,7 @@ class Command(BaseCommand):
 
         employees = Employees.objects.all()
         # Create articles
+        last_id = 0
         for article_number in range(0, self.articles_limit):
             blog_index_page = BlogIndexPage.objects.get(**blog_index_page_parameters)
             # base article parameters
@@ -97,6 +99,15 @@ class Command(BaseCommand):
             author = employees[index]
             block = StreamBlock([("markdown", MarkdownBlock())])
             body = StreamValue(block, [("markdown", fake.sentence(nb_words=1000))])
+            # recommended articles
+            if article_number > 3:
+                articles_block = StreamBlock([("page", PageChooserBlock())])
+                articles_data = []
+                for i in range(3):
+                    articles_data.append(("page", BlogArticlePage.objects.get(id=(last_id - i))))
+                recommended_articles = StreamValue(articles_block, articles_data)
+            else:
+                recommended_articles = None
             # article images
             rgb_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
             wagtail_cover_photo = self._generate_wagtail_image(
@@ -113,6 +124,7 @@ class Command(BaseCommand):
                 body=body,
                 author=author,
                 read_time=random.randint(1, 10),
+                recommended_articles=recommended_articles,
                 views=0,
                 cover_photo=wagtail_cover_photo,
                 article_photo=wagtail_article_photo,
@@ -120,6 +132,7 @@ class Command(BaseCommand):
             )
             blog_index_page.add_child(instance=blog_article_page)
             blog_article_page.save()
+            last_id = blog_article_page.id
 
     @staticmethod
     def _generate_wagtail_image(resolution: Dict[str, int], name: str, rgb_color=None) -> WagtailImage:

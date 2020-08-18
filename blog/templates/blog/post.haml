@@ -30,6 +30,15 @@
         .article-content
             {{ page.specific.body }}
 
+        {% if page.specific.recommended_articles %}
+            .recommendations
+                %h4 See also:
+                %ul
+                    {% for article in page.specific.recommended_articles %}
+                        %li {{ article }}
+                    {% endfor %}
+        {% endif %}
+
         .comment-section{:id => "disqus_thread"}
             %script{:type => "text/javascript"}
                 var blog_page_url = {{ request.build_absolute_uri }}

@@ -12,6 +12,7 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core import blocks
+from wagtail.core.blocks import PageChooserBlock
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.core.query import PageQuerySet
@@ -88,7 +89,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
             ("paragraph", blocks.RichTextBlock()),
             ("table", TableBlock()),
             ("image", ImageChooserBlock()),
-        ]
+        ],
     )
 
     search_fields = Page.search_fields + [index.SearchField("intro"), index.SearchField("body")]
@@ -96,6 +97,10 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
     author = models.ForeignKey(Employees, on_delete=models.DO_NOTHING)
 
     read_time = models.PositiveIntegerField()
+
+    recommended_articles = StreamField(
+        [("page", PageChooserBlock(can_choose_root=False, page_type="blog.BlogArticlePage"))], null=True, blank=True,
+    )
 
     views = models.PositiveIntegerField(default=0)
 
@@ -114,6 +119,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
         FieldPanel("intro"),
         FieldPanel("author"),
         FieldPanel("read_time"),
+        StreamFieldPanel("recommended_articles"),
         FieldPanel("views"),
         FieldPanel("is_main_article"),
         ImageChooserPanel("cover_photo"),
@@ -156,6 +162,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
     def clean(self) -> None:
         super().clean()
         self._validate_title_length()
+        self._validate_recommended_articles_uniqueness()
 
     def _validate_parent_page(self) -> None:
         if not isinstance(self.get_parent().specific, BlogIndexPage):
@@ -164,3 +171,11 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
     def _validate_title_length(self) -> None:
         if self.title is not None and len(self.title) > MAX_BLOG_ARTICLE_TITLE_LENGTH:
             raise ValidationError({"title": f"Title must be less than {MAX_BLOG_ARTICLE_TITLE_LENGTH} characters."})
+
+    def _validate_recommended_articles_uniqueness(self) -> None:
+        article_pages_set = set()
+        for stream_child in self.recommended_articles:  # pylint: disable=not-an-iterable
+            if stream_child.value in article_pages_set:
+                raise ValidationError(message=f"'{stream_child.value}' is listed more than once!")
+            else:
+                article_pages_set.add(stream_child.value)
