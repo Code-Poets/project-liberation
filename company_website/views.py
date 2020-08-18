@@ -11,10 +11,11 @@ from company_website.forms import ProjectToEstimateForm
 from company_website.models import Employees
 from company_website.models import Testimonial
 from company_website.view_helpers import CustomTemplateView
+from company_website.view_helpers import GoogleAdsMixin
 from company_website.view_helpers import add_meta_tags_to_page_context
 
 
-class MainPageView(ListView):
+class MainPageView(ListView, GoogleAdsMixin):
 
     template_name = "main_page.haml"
     model = Testimonial
@@ -27,7 +28,7 @@ class MainPageView(ListView):
         return context_data
 
 
-class TeamIntroductionPageView(ListView):
+class TeamIntroductionPageView(ListView, GoogleAdsMixin):
 
     template_name = "team_introduction_page.haml"
     model = Employees
@@ -59,11 +60,16 @@ class PrivacyAndPolicyView(CustomTemplateView):
     page_name = PageNames.PRIVACY_AND_POLICY.name
 
 
-class EstimateProjectView(FormView):
+class EstimateProjectView(FormView, GoogleAdsMixin):
 
     template_name = "estimate_project.haml"
     form_class = ProjectToEstimateForm
     page_name = PageNames.ESTIMATE_PROJECT.name
+
+    def get_context_data(self, *, _object_list: Any = None, **kwargs: Any) -> dict:
+        context_data = super().get_context_data(**kwargs)
+        context_data["URL_PREFIX"] = settings.URL_PREFIX
+        return context_data
 
     def form_valid(self, form: ProjectToEstimateForm) -> bool:
         messages.success(self.request, "Profile details updated.")

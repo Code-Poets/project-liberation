@@ -343,11 +343,23 @@ PIPELINE = {
             ),
             'output_filename': 'js/common.js',
         },
+        'common_head': {
+            'source_filenames': (
+                'common/scripts/head/*.js',
+            ),
+            'output_filename': 'js/common_head.js',
+        },
         'estimate_project': {
             'source_filenames': (
                 'estimate_project/scripts/*.js',
             ),
             'output_filename': 'js/estimate_project.js',
+        },
+        'estimate_project_head': {
+            'source_filenames': (
+                'estimate_project/scripts/head/*.js',
+            ),
+            'output_filename': 'js/estimate_project_head.js',
         },
         'team_introduction': {
             'source_filenames': (
@@ -404,6 +416,10 @@ SITE_ID = 1
 # GOOGLE_ANALYTICS = {
 #     'google_analytics_id': '',
 # }
+
+# Settings need to be set up in production settings with proper google ads ID
+# GOOGLE_ADS_CONVERSION_ID = ''
+# GOOGLE_ADS_CONVERSION_TARGET_ADDRESS = ''
 
 DATE_FORMAT = "M. d, Y"
 

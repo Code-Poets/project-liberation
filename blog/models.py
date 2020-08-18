@@ -22,6 +22,7 @@ from wagtailmarkdown.blocks import MarkdownBlock
 
 from blog.constants import MAX_BLOG_ARTICLE_TITLE_LENGTH
 from company_website.models import Employees
+from company_website.view_helpers import GoogleAdsMixin
 
 
 class MixinSeoFields(models.Model):
@@ -48,7 +49,7 @@ class MixinPageMethods:
         return paginated_articles
 
 
-class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
+class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
     template = "blog_index_page.haml"
 
     def get_all_articles(self) -> PageQuerySet:  # pylint: disable=no-self-use
@@ -77,7 +78,7 @@ class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods):
         return context_data
 
 
-class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods):
+class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
     template = "blog_post.haml"
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)

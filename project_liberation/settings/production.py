@@ -6,6 +6,9 @@ GOOGLE_ANALYTICS = {
     'google_analytics_id': 'UA-128369632-1',
 }
 
+GOOGLE_ADS_CONVERSION_ID = "AW-607460288"
+GOOGLE_ADS_CONVERSION_TARGET_ADDRESS = f"{GOOGLE_ADS_CONVERSION_ID}/pqT6CMvlzdkBEMC31KEC"
+
 INSTALLED_APPS.append("raven.contrib.django.raven_compat")
 
 LOGGING["handlers"]["sentry"] = {  # type: ignore

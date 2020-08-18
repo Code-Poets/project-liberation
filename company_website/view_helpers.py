@@ -1,12 +1,21 @@
 from typing import Any
 from typing import Dict
 
+from django.conf import settings
 from django.views.generic import TemplateView
+from django.views.generic.base import ContextMixin
 
 from company_website.models import PageSeo
 
 
-class CustomTemplateView(TemplateView):
+class GoogleAdsMixin(ContextMixin):
+    extra_context = {
+        "GOOGLE_ADS_CONVERSION_ID": settings.GOOGLE_ADS_CONVERSION_ID,
+        "GOOGLE_ADS_CONVERSION_TARGET_ADDRESS": settings.GOOGLE_ADS_CONVERSION_TARGET_ADDRESS,
+    }
+
+
+class CustomTemplateView(TemplateView, GoogleAdsMixin):
     page_name = ""
 
     def get_context_data(self, **kwargs: Any) -> Dict:
