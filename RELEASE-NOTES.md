@@ -1,3 +1,12 @@
+### v1.16.0
+
+##### Features
+- Feature add recommendations to article ([#260](https://github.com/Code-Poets/project-liberation/pull/260))
+- Feature add google ads plugins ([#262](https://github.com/Code-Poets/project-liberation/pull/262))
+- Feature add SoDA link to footer ([#259](https://github.com/Code-Poets/project-liberation/pull/259))
+- Feature add team introduction photos ([#261](https://github.com/Code-Poets/project-liberation/pull/261))
+
+
 ### v1.15.1
 
 ##### Bugfixes
