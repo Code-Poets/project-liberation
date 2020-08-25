@@ -2,6 +2,7 @@
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 {% load pipeline %}
+{% load blog_article_page_filters %}
 {% stylesheet 'blog_post' %}
 
 .post-container
@@ -27,8 +28,26 @@
                         .rest-details.inner-more-details-mobile-look
                             .read-time.inline-display {{ page.specific.read_time }} min read
                             .date.inline-display {{ page.specific.date }}
+        {% if page.specific.table_of_contents %}
+            .table-of-contents
+                %h4 Table of contents:
+                %ol
+                    {% for header in page.specific.headers_list %}
+                        %li
+                            %a{:href => '##{ page.specific|get_header_id:header }'}
+                                {{ header }}
+                    {% endfor %}
+        {% endif %}
+
         .article-content
-            {{ page.specific.body }}
+            {% for stream_child in page.body %}
+                {% if stream_child.block.name == "header" %}
+                    %h3{:id => '{{ page|get_header_id:stream_child.value }}' }
+                        {{ stream_child.value }}
+                {% else %}
+                    {{ stream_child }}
+                {% endif %}
+            {% endfor %}
 
         {% if page.specific.recommended_articles %}
             .recommendations
