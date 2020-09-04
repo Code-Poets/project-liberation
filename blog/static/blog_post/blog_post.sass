@@ -8,22 +8,29 @@ $light-grey: #a7abb1
 $table-header-color: #F8F8F8
 $table-border: #E1E1E1
 $orange: #F06D1F
-$author-image-size: 50px
+$author-image-size: 70px
 $width-to-change-details: 500px
+$article-elements-default-margin: 35px
 
 
 .post-container
     @media only screen and (max-width: $menu-max-size)
         margin-top: $mobile-menu-height
 
+    p, ul, ol
+        margin-bottom: $article-elements-default-margin
+        font-size: 19px
+        line-height: 2.2rem
+
     p
         text-align: justify
-        margin-bottom: 35px
-        line-height: 1.8rem
 
-    h3
-        margin-top: 15px
-        margin-bottom: 35px
+    hr, div iframe
+        margin-bottom: $article-elements-default-margin
+
+    h3, h2
+        padding-top: 25px
+        margin-bottom: $article-elements-default-margin
 
         &::before
             display: block
@@ -40,8 +47,7 @@ $width-to-change-details: 500px
     table
         width: 100%
         border: 1px solid
-        margin-top: 5px
-        margin-bottom: 35px
+        margin-bottom: $article-elements-default-margin
 
         caption
             text-align: center
@@ -60,8 +66,7 @@ $width-to-change-details: 500px
     img
         width: 100%
         height: auto
-        margin-top: 5px
-        margin-bottom: 35px
+        margin-bottom: $article-elements-default-margin
 
     .table-of-contents
         padding-top: 10px
@@ -74,16 +79,17 @@ $width-to-change-details: 500px
         height: 30vw
 
     .article-details
-        margin-bottom: 40px
+        margin-bottom: 30px
         position: relative
-        .row
-            margin: 0
+
+        .additional-information
+            display: flex
 
         .post-title
             font-size: 35px
             color: $dark-blue
             font-weight: 600
-            margin-bottom: 10px
+            margin: 0 0 10px
 
         .author-image
             border-radius: 50%
@@ -94,46 +100,66 @@ $width-to-change-details: 500px
             margin-right: 10px
 
         .author-details
-            margin: auto 0
+            margin-top: 20px
+            width: 100%
 
         .author-name
             color: $dark-blue
             font-weight: 700
-            font-size: 15px
+            font-size: 21px
 
         .author-position
-            font-size: 10px
+            font-size: 12px
             color: $dark-grey
             font-weight: 700
 
         .rest-information-row
             position: relative
-            width: calc(#{$post-width-in-vw} - #{$author-image-size} - 10px)
-            @media only screen and (min-width: $post-width-in-px)
-                width: calc(#{$post-width-in-px} - #{$author-image-size} - 10px)
+            display: flex
+            align-items: flex-end
+            justify-content: space-between
 
-        .rest-details
-            font-size: 10px
-            position: absolute
-            right: 0
+        @media only screen and (max-width: $width-to-change-details)
+            text-align: center
 
-            .inline-display
-                display: inline-block
+            .additional-information
+                flex-direction: column
+                align-items: center
 
-            .read-time
-                padding: 0 20px
-                @media only screen and (max-width: $width-to-change-details)
-                    padding: 0 3px
+            .author-image
+                margin: 0
+                width: 90px
+                height: 90px
 
-        .more-details-desktop-look
+            .author-details
+                margin-top: 0
+
+            .rest-information-row
+                justify-content: center
+
+    .rest-details
+        font-size: 15px
+        position: relative
+        right: 0
+
+        .inline-display
+            display: inline-block
+
+        .read-time
+            padding: 0 20px
             @media only screen and (max-width: $width-to-change-details)
-                display: none
-        .more-details-mobile-look
-            display: block
-            @media only screen and (min-width: $width-to-change-details)
-                display: none
-            .inner-more-details-mobile-look
-                position: relative
+                padding: 0 3px
+
+    .more-details-desktop-look
+        @media only screen and (max-width: $width-to-change-details)
+            display: none
+    .more-details-mobile-look
+        display: block
+        margin: -10px 0 30px
+        @media only screen and (min-width: calc(#{$width-to-change-details} + 1px))
+            display: none
+        .inner-more-details-mobile-look
+            position: relative
 
     .post-body
         width: 90vw
@@ -143,7 +169,10 @@ $width-to-change-details: 500px
             margin: 25px auto
 
     .recommendations
-        margin-bottom: 25px
+        padding: 25px 0
+
+        li
+            font-size: 21px
 
 a
     color: $blue-color
