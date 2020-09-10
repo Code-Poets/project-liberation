@@ -3,6 +3,7 @@ from datetime import datetime
 from typing import Any
 
 import factory
+from factory import DjangoModelFactory
 from faker import Faker
 from wagtail.core.blocks import RichTextBlock
 from wagtail.core.blocks import StreamBlock
@@ -13,6 +14,9 @@ from wagtail_factories import PageFactory
 
 from blog.models import BlogArticlePage
 from blog.models import BlogIndexPage
+from blog.models import CustomImage
+
+faker = Faker()
 
 
 def generate_article_body() -> StreamValue:
@@ -23,7 +27,7 @@ def generate_article_body() -> StreamValue:
                 "paragraph",
                 RichText(
                     (lambda text, tag: f"<{tag}>{text}</{tag}>")(
-                        Faker().paragraph(nb_sentences=random.randint(30, 100)), "p"
+                        faker.paragraph(nb_sentences=random.randint(30, 100)), "p"
                     )
                 ),
             )
@@ -67,3 +71,15 @@ class BlogArticlePageFactory(PageFactory):
                 parent = BlogIndexPageFactory()
         parent.add_child(instance=instance)
         return instance
+
+
+class CustomImageFactory(DjangoModelFactory):
+    class Meta:
+        model = CustomImage
+
+    title = Faker().sentence(nb_words=5)
+    file = factory.django.ImageField(
+        color=(Faker().random_int(0, 255), Faker().random_int(0, 255), Faker().random_int(0, 255))
+    )
+    width = 600
+    height = 400

@@ -10,12 +10,12 @@ from wagtail.core.blocks import PageChooserBlock
 from wagtail.core.blocks import StreamBlock
 from wagtail.core.blocks import StreamValue
 from wagtail.core.models import Site
-from wagtail.images.models import Image as WagtailImage
 
 from blog.factories import BlogArticlePageFactory
 from blog.factories import BlogIndexPageFactory
 from blog.models import BlogArticlePage
 from blog.models import BlogIndexPage
+from blog.models import CustomImage
 from common.helpers import create_image
 from company_website.factories import BossFactory
 from company_website.factories import EmployeeFactory
@@ -163,7 +163,7 @@ class Command(BaseCommand):
         return wagtail_cover_photo, wagtail_article_photo
 
     @staticmethod
-    def _generate_wagtail_image(resolution: Dict[str, int], name: str, rgb_color=None) -> WagtailImage:
+    def _generate_wagtail_image(resolution: Dict[str, int], name: str, rgb_color=None) -> CustomImage:
         new_image = create_image(resolution["y"], resolution["x"], name, settings.MEDIA_ROOT, rgb_color=rgb_color)
-        wagtail_new_image = WagtailImage.objects.create(title=name, file=new_image)
+        wagtail_new_image = CustomImage.objects.create(title=name, file=new_image)
         return wagtail_new_image

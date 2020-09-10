@@ -5,11 +5,11 @@ from django.test import TestCase
 from parameterized import parameterized
 from wagtail.core.blocks import PageChooserBlock
 from wagtail.core.blocks import StreamValue
-from wagtail.images.models import Image
 
 from blog.factories import BlogArticlePageFactory
 from blog.models import BlogArticlePage
 from blog.models import BlogIndexPage
+from blog.models import CustomImage
 from company_website.factories import BossFactory
 from company_website.factories import EmployeeFactory
 from company_website.models import Employees
@@ -76,8 +76,8 @@ class LoadInitialDataTests(TestCase):
         self.assertEqual(len(article_data.items()), 4)
         self.assertEqual(article_data["author"], Employees.objects.all().first())
         self.assertTrue(article_data["is_main_article"])
-        self.assertIsInstance(article_data["cover_photo"], Image)
-        self.assertIsInstance(article_data["article_photo"], Image)
+        self.assertIsInstance(article_data["cover_photo"], CustomImage)
+        self.assertIsInstance(article_data["article_photo"], CustomImage)
 
     def test_that_generate_recommended_articles_should_generate_valid_stream_of_articles_for_recommended_articles_field(
         self,
@@ -113,7 +113,7 @@ class LoadInitialDataTests(TestCase):
 
         self.assertEqual(len(article_images), 2)
         for image in article_images:
-            self.assertTrue(isinstance(image, Image))
+            self.assertTrue(isinstance(image, CustomImage))
 
         self._assert_wagtail_image_parameters_equal(article_images[0], 1668, 873, "cover_photo_1")
         self._assert_wagtail_image_parameters_equal(article_images[1], 2084, 598, "article_photo_1")
