@@ -3,19 +3,19 @@
     .footer.footer-color
         .container
             .row.no-margin
-                .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-4.offset-sm-4.col-6.offset-3.custom-col-padding
+                .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-6.col-12.custom-col-padding
                     %section.widget.footer-logo
                         %img.company-logo.lazyload{:data-src => "{% static 'common/images/footer/code_poets_logo_footer_white_212x68.png' %}", :alt => "Code Poets logo", :title => "Code Poets logo"}
-                .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-4.offset-sm-4.col-6.offset-3.custom-col-padding
+                .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-6.col-12.custom-col-padding
                     %section.widget.footer-address
                         %h3.widgettitle Code Poets sp. z o.o.
-                        .textwidget.custom-html-widget
+                        .textwidget.custom-html-widget.postal-address
                             ul. Józefa Piłsudskiego 49-57
                             %br
                             50-032 Wrocław
                             %br
                             Poland
-                .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-4.offset-sm-4.col-6.offset-3.custom-col-padding
+                .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-6.col-12.custom-col-padding
                     %section.widget.footer-contact
                         %h3.widgettitle Contact Us
                         .textwidget.custom-html-widget
@@ -23,20 +23,15 @@
                     %section.widget.footer-contact-2
                         .textwidget
                             .social-media-container
-                                %a.social-media-link{:href => "https://www.facebook.com/codepoets.it/", :target => "_blank"}
-                                    %img.social-media-logo.lazyload{
-                                        :data-src => "{% static 'common/images/footer/social_icons/facebook_icon_50x50.png' %}",
-                                        :alt => "Facebook",
-                                    }
-                                %a.social-media-link{:href => "https://www.instagram.com/codepoets.it/", :target => "_blank"}
-                                    %img.social-media-logo.lazyload{
-                                        :data-src => "{% static 'common/images/footer/social_icons/instagram_icon_50x50.png' %}",
-                                        :alt => "Instagram",
-                                    }
                                 %a.social-media-link{:href => "https://www.linkedin.com/company/codepoets/", :target => "_blank"}
                                     %img.social-media-logo.lazyload{
                                         :data-src => "{% static 'common/images/footer/social_icons/linkedin_icon_50x50.png' %}",
                                         :alt => "LinkedIn",
+                                    }
+                                %a.social-media-link{:href => "https://www.facebook.com/codepoets.it/", :target => "_blank"}
+                                    %img.social-media-logo.lazyload{
+                                        :data-src => "{% static 'common/images/footer/social_icons/facebook_icon_50x50.png' %}",
+                                        :alt => "Facebook",
                                     }
                                 %a.social-media-link{:href => "https://clutch.co/profile/code-poets/", :target => "_blank"}
                                     %img.social-media-logo.lazyload{
@@ -48,7 +43,7 @@
                                         :data-src => "{% static 'common/images/footer/social_icons/github_icon_50x50.png' %}",
                                         :alt => "GitHub",
                                     }
-                .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-4.offset-sm-4.col-6.offset-3.custom-col-padding
+                .col-lg-3.offset-lg-0.col-md-3.offset-md-2.col-sm-6.col-12.custom-col-padding
                     %section.widget.footer-reviews
                         .textwidget
                             %script{:type => "text/javascript", :src => "https://widget.clutch.co/static/js/widget.js"}
