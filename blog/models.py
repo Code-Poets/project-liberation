@@ -30,6 +30,9 @@ from wagtail.core.models import Page
 from wagtail.core.query import PageQuerySet
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.models import AbstractImage
+from wagtail.images.models import AbstractRendition
+from wagtail.images.models import Image
 from wagtail.search import index
 from wagtailmarkdown.blocks import MarkdownBlock
 
@@ -64,6 +67,19 @@ class MixinPageMethods:
         except EmptyPage:
             paginated_articles = paginator.page(paginator.num_pages)
         return paginated_articles
+
+
+class CustomImage(AbstractImage):
+    caption = models.CharField(max_length=255, blank=True)
+
+    admin_form_fields = Image.admin_form_fields + ("caption",)
+
+
+class CustomRendition(AbstractRendition):
+    image = models.ForeignKey(CustomImage, on_delete=models.CASCADE, related_name="renditions")
+
+    class Meta:
+        unique_together = (("image", "filter_spec", "focal_point_key"),)
 
 
 class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
@@ -123,11 +139,11 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
     views = models.PositiveIntegerField(default=0)
 
     cover_photo = models.ForeignKey(
-        "wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
+        "blog.CustomImage", null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
     )
 
     article_photo = models.ForeignKey(
-        "wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
+        "blog.CustomImage", null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
     )
 
     is_main_article = models.BooleanField(default=False)
