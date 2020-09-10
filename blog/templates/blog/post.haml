@@ -40,12 +40,17 @@
         {% endif %}
 
         .article-content
-            {% for stream_child in page.body %}
+
+            {% for stream_child in page.specific.body %}
                 {% if stream_child.block.name == article_body_block_names.HEADER.value %}
                     %h3{:id => '{{ page|get_header_id:stream_child.value }}' }
                         {{ stream_child.value }}
                 {% else %}
                     {{ stream_child }}
+                    {% if stream_child.block.name == "image" %}
+                        .image-caption
+                            %i {{ stream_child.value.caption }}
+                    {% endif %}
                 {% endif %}
             {% endfor %}
 
