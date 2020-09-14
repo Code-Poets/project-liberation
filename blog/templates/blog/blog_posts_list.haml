@@ -6,7 +6,7 @@
 
 
 .container.blog-posts-list
-    {% if page.get_all_articles %}
+    {% if page.get_all_articles.exists %}
         .col-md-9.posts-container
             {% include 'blog/blog_posts_list_partials/main_article.haml' %}
 

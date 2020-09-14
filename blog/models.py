@@ -9,6 +9,9 @@ from django.core.paginator import PageNotAnInteger
 from django.core.paginator import Paginator
 from django.db import models
 from django.db.models import QuerySet
+from django.db.models.signals import post_delete
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils.functional import cached_property
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.admin.edit_handlers import StreamFieldPanel
@@ -200,3 +203,29 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
                 raise ValidationError(message=f"'{stream_child.value}' is listed more than once!")
             else:
                 article_pages_set.add(stream_child.value)
+
+
+@receiver(post_save, sender=BlogArticlePage)
+def ensure_main_article_exists(sender: BlogArticlePage, instance: BlogArticlePage, **_kwargs: Any) -> None:
+    if (
+        not instance.is_main_article
+        and not sender.objects.exclude(id=instance.id).filter(is_main_article=True).exists()
+    ):
+        instance.is_main_article = True
+        instance.save()
+    if instance.is_main_article:
+        try:
+            article = sender.objects.exclude(id=instance.id).get(is_main_article=True)
+            article.is_main_article = False
+            article.save()
+        except sender.DoesNotExist:
+            pass
+
+
+@receiver(post_delete, sender=BlogArticlePage)
+def mark_latest_article_as_main(sender: BlogArticlePage, **_kwargs: Any) -> None:
+    if not sender.objects.filter(is_main_article=True).exists():
+        article = sender.objects.order_by("-date").first()
+        if article is not None:
+            article.is_main_article = True
+            article.save()
