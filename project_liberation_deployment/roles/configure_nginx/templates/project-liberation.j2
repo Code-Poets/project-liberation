@@ -63,10 +63,6 @@ server {
     }
 
     location /admin/ {
-    {% for allowed_ip in allowed_ips_to_admin_endpoint %}
-        allow                {{ allowed_ip }};
-    {% endfor %}
-        deny                 all;
 
         limit_req    zone=ip_req_limit   burst={{ nginx.number_of_requests_stored_in_queue }} nodelay;
         limit_conn   ip_connection_limit {{ nginx.number_of_open_connections_per_client }};
