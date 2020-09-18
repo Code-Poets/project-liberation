@@ -365,10 +365,10 @@ version = "2.1.7"
 [package.extras]
 html5lib = ["beautifulsoup4 (>=4.4.1,<5)", "html5lib (>=0.999,<=1.0.1)"]
 lxml = ["lxml (>=4.2.0,<5)"]
-testing = ["tox (>=2.3.1)", "markov_draftjs (0.1.1)", "memory-profiler (0.47)", "psutil (5.4.1)", "coverage (>=4.1.0)", "flake8 (>=3.2.0)", "isort (4.2.5)", "beautifulsoup4 (>=4.4.1,<5)", "html5lib (>=0.999,<=1.0.1)", "lxml (>=4.2.0,<5)"]
+testing = ["tox (>=2.3.1)", "markov-draftjs (0.1.1)", "memory-profiler (0.47)", "psutil (5.4.1)", "coverage (>=4.1.0)", "flake8 (>=3.2.0)", "isort (4.2.5)", "beautifulsoup4 (>=4.4.1,<5)", "html5lib (>=0.999,<=1.0.1)", "lxml (>=4.2.0,<5)"]
 
 [[package]]
-category = "dev"
+category = "main"
 description = "A versatile test fixtures replacement based on thoughtbot's factory_bot for Ruby."
 name = "factory-boy"
 optional = false
@@ -379,7 +379,7 @@ version = "2.12.0"
 Faker = ">=0.7.0"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Faker is a Python package that generates fake data for you."
 name = "faker"
 optional = false
@@ -764,7 +764,7 @@ version = "2.7.7"
 [[package]]
 category = "dev"
 description = "Run a subprocess in a pseudo terminal"
-marker = "python_version >= \"3.4\" and sys_platform != \"win32\" or sys_platform != \"win32\""
+marker = "python_version >= \"3.4\" and sys_platform != \"win32\" or sys_platform != \"win32\" or python_version >= \"3.4\" and sys_platform != \"win32\" and (python_version >= \"3.4\" and sys_platform != \"win32\" or sys_platform != \"win32\")"
 name = "ptyprocess"
 optional = false
 python-versions = "*"
@@ -883,7 +883,7 @@ docs = ["sphinx", "sphinx-rtd-theme"]
 testing = ["django", "django-configurations (>=2.0)", "six"]
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Extensions to the standard Python datetime module"
 name = "python-dateutil"
 optional = false
@@ -989,7 +989,7 @@ docs = ["sphinx", "twisted"]
 tests = ["coverage", "freezegun (>=0.2.8)", "pretend", "pytest (>=3.3.0)", "simplejson", "python-rapidjson", "pytest-asyncio"]
 
 [[package]]
-category = "dev"
+category = "main"
 description = "The most basic Text::Unidecode port"
 name = "text-unidecode"
 optional = false
@@ -1087,6 +1087,22 @@ testing = ["python-dateutil (>=2.2)", "pytz (>=2014.7)", "elasticsearch (>=1.0.0
 
 [[package]]
 category = "main"
+description = "Factory boy classes for wagtail"
+name = "wagtail-factories"
+optional = false
+python-versions = "*"
+version = "2.0.0"
+
+[package.dependencies]
+factory-boy = ">=2.8.0"
+wagtail = ">=2.0"
+
+[package.extras]
+docs = ["sphinx (>=1.4.0)"]
+test = ["pytest (5.0.1)", "pytest-django (3.5.1)", "pytest-cov (2.7.1)", "pytest-pythonpath (0.7.3)", "psycopg2 (>=2.3.1)", "coverage (4.5.3)", "isort (4.3.21)", "flake8 (3.7.8)", "flake8-blind-except (0.1.1)", "flake8-debugger (3.1.0)"]
+
+[[package]]
+category = "main"
 description = "Markdown support for Wagtail"
 name = "wagtail-markdown"
 optional = false
@@ -1105,6 +1121,7 @@ testing = ["dj_database_url (0.4.2)"]
 reference = "c95aa13828fafc831f46042ce4eca3a4b1d93d20"
 type = "git"
 url = "https://github.com/kbeker/wagtail-markdown.git"
+
 [[package]]
 category = "dev"
 description = "Measures the displayed width of unicode strings in a terminal"
@@ -1159,7 +1176,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "11151d86e9981b44c9e39513d9ded241a57887f9c0be2a3f98c5974368a501b6"
+content-hash = "219fbd315dc84f312ce0be6d9635c46bd52495b56e2c2887b417053273335606"
 lock-version = "1.0"
 python-versions = "3.7.*"
 
@@ -1321,6 +1338,7 @@ djangorestframework = [
     {file = "djangorestframework-3.11.0.tar.gz", hash = "sha256:e782087823c47a26826ee5b6fa0c542968219263fb3976ec3c31edab23a4001f"},
 ]
 draftjs-exporter = [
+    {file = "draftjs_exporter-2.1.7-py3-none-any.whl", hash = "sha256:d415a9964690a2cddb66a31ef32dd46c277e9b80434b94e39e3043188ed83e33"},
     {file = "draftjs_exporter-2.1.7.tar.gz", hash = "sha256:5839cbc29d7bce2fb99837a404ca40c3a07313f2a20e2700de7ad6aa9a9a18fb"},
 ]
 factory-boy = [
@@ -1755,6 +1773,10 @@ urllib3 = [
 wagtail = [
     {file = "wagtail-2.9.3-py3-none-any.whl", hash = "sha256:17169ea7c6a2cf2dc8f945f0a967424d7932843087df4897c813868d7f9cddc0"},
     {file = "wagtail-2.9.3.tar.gz", hash = "sha256:7dba2e5cebee2bb39e4c3db703eeb428b6ba323d72e5fbf384f1ce81f65f7e42"},
+]
+wagtail-factories = [
+    {file = "wagtail_factories-2.0.0-py2.py3-none-any.whl", hash = "sha256:2198e791854ef3883812f532a4d1b364aae1c68abc58a48b8ecec8c61e4a151f"},
+    {file = "wagtail_factories-2.0.0.tar.gz", hash = "sha256:416196b88dcdb2d2787926692d7eef7fa0664556900eb6166537026b085d9fbf"},
 ]
 wagtail-markdown = []
 wcwidth = [
