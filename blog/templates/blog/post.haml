@@ -60,7 +60,13 @@
 
         .comment-section{:id => "disqus_thread"}
             %script{:type => "text/javascript"}
-                var blog_page_url = {{ request.build_absolute_uri }}
+                var blog_page_url = "{{ request.build_absolute_uri }}"
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-{% javascript 'blog_post' %}
+{% block extra_script %}
+    %script{:type => "text/javascript",
+        :src => "https://code.jquery.com/jquery-3.4.1.js",
+        :integrity => "sha384-mlceH9HlqLp7GMKHrj5Ara1+LvdTZVMx4S1U43/NxCvAkzIo8WJ0FE7duLel3wVo",
+        :crossorigin => "anonymous"}
+    {% javascript 'blog_post' %}
+{% endblock %}

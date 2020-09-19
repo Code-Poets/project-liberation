@@ -28,10 +28,14 @@ $width-to-change-details: 500px
         &::before
             display: block
             content: " "
-            margin-top: -100px
-            height: 100px
+            margin-top: calc(-#{$base-menu-height} - 40px)
+            height: calc(#{$base-menu-height} + 40px)
             visibility: hidden
             pointer-events: none
+
+            @media only screen and (max-width: $menu-max-size)
+                margin-top: calc(-#{$mobile-menu-height} - 50px)
+                height: calc(#{$mobile-menu-height} + 50px)
 
     table
         width: 100%
