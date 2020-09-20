@@ -6,6 +6,7 @@ from wagtail.core.models import Page
 from wagtail.core.models import Site
 from wagtailmarkdown.blocks import MarkdownBlock
 
+from blog.constants import ArticleBodyBlockNames
 from blog.models import BlogArticlePage
 from blog.models import BlogIndexPage
 from company_website.factories import BossFactory
@@ -45,7 +46,6 @@ class BlogTestHelpers:
         blog_index_page=None,
         title="Simple Article Title",
         date=datetime.now(),
-        intro="Simple Article Intro",
         body=None,
         author=None,
         read_time=7,
@@ -57,14 +57,13 @@ class BlogTestHelpers:
         is_main_article=False,
     ):
         if body is None:
-            block = StreamBlock([("markdown", MarkdownBlock())])
-            body = StreamValue(block, [("markdown", "Hello, World")])
+            block = StreamBlock([(ArticleBodyBlockNames.MARKDOWN.value, MarkdownBlock())])
+            body = StreamValue(block, [(ArticleBodyBlockNames.MARKDOWN.value, "Hello, World")])
         if author is None:
             author = BossFactory()
         blog_article_page = BlogArticlePage(
             title=title,
             date=date,
-            intro=intro,
             body=body,
             author=author,
             read_time=read_time,
