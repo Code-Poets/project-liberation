@@ -1,3 +1,4 @@
+from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 from django.utils.datetime_safe import datetime
@@ -109,6 +110,22 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
 
         self.assertEqual(blog_article_page.recommended_articles, StreamValue(articles_block, []))
 
+    def test_that_altering_title_in_blog_page_model_should_not_alter_the_url_slug(self):
+        blog_article_page = self._create_blog_article_page(
+            title="Simple Article Title",
+            date=datetime(year=2019, month=5, day=1),
+            intro="Simple Article Intro",
+            read_time=5,
+        )
+        new_title = "Not So Simple Article Title"
+        expected_slug = "simple-article-title"
+
+        blog_article_page.title = new_title
+        blog_article_page.save()
+
+        self.assertEqual(blog_article_page.title, new_title)
+        self.assertEqual(blog_article_page.slug, expected_slug)
+
 
 class TestBlogArticleTableOfContents(TestCase, BlogTestHelpers):
     def setUp(self):
@@ -158,3 +175,46 @@ class TestBlogArticleTableOfContents(TestCase, BlogTestHelpers):
         other_article.save()
 
         self.assertFalse(other_article.table_of_contents)
+
+
+class TestBlogArticlePageMainArticleIntegrity(TestCase, BlogTestHelpers):
+    def setUp(self):
+        self._set_default_blog_index_page_as_new_root_page_child()
+        self.blog_index_page = self._get_newest_blog_index_page()
+        self.article = self._create_blog_article_page(is_main_article=True)
+
+    def test_that_setting_main_article_flag_to_true_should_make_the_article_the_new_main_article(self):
+        other_article = self._create_blog_article_page(is_main_article=True)
+        self.article.refresh_from_db()
+
+        self.assertTrue(other_article.is_main_article)
+        self.assertFalse(self.article.is_main_article)
+
+    def test_that_if_main_article_flag_is_set_to_false_it_should_be_switched_back_to_true_after_saving(self):
+        self.article.is_main_article = False
+        self.article.save()
+
+        self.assertTrue(self.article.is_main_article)
+
+    def test_that_if_main_article_is_deleted_the_latest_article_should_be_marked_as_the_main_article(self):
+        older_article = self._create_blog_article_page(date=datetime.now().date() + relativedelta(days=-2))
+        newer_aticle = self._create_blog_article_page(date=datetime.now().date() + relativedelta(days=-1))
+
+        self.article.delete()
+        older_article.refresh_from_db()
+        newer_aticle.refresh_from_db()
+
+        self.assertFalse(older_article.is_main_article)
+        self.assertTrue(newer_aticle.is_main_article)
+
+    def test_that_when_deleting_main_article_only_one_other_article_can_become_the_main_article(self):
+        for _ in range(2):
+            self._create_blog_article_page(date=datetime.now() + relativedelta(days=-1))
+
+        self.article.delete()
+
+        self.assertEqual(BlogArticlePage.objects.filter(is_main_article=True).count(), 1)
+
+    def test_that_removing_main_article_should_be_possible_if_there_are_no_other_articles(self):
+        self.article.delete()
+        self.assertEqual(BlogArticlePage.objects.all().count(), 0)
