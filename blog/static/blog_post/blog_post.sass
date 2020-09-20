@@ -25,6 +25,18 @@ $width-to-change-details: 500px
         margin-top: 15px
         margin-bottom: 35px
 
+        &::before
+            display: block
+            content: " "
+            margin-top: calc(-#{$base-menu-height} - 40px)
+            height: calc(#{$base-menu-height} + 40px)
+            visibility: hidden
+            pointer-events: none
+
+            @media only screen and (max-width: $menu-max-size)
+                margin-top: calc(-#{$mobile-menu-height} - 50px)
+                height: calc(#{$mobile-menu-height} + 50px)
+
     table
         width: 100%
         border: 1px solid
@@ -50,6 +62,12 @@ $width-to-change-details: 500px
         height: auto
         margin-top: 5px
         margin-bottom: 35px
+
+    .table-of-contents
+        padding-top: 10px
+
+        li
+            font-size: 19px
 
     .article-photo
         width: 100%
@@ -126,3 +144,11 @@ $width-to-change-details: 500px
 
     .recommendations
         margin-bottom: 25px
+
+a
+    color: $blue-color
+    transition-duration: .2s
+
+    &:hover
+        color: $orange-color
+        text-decoration: none

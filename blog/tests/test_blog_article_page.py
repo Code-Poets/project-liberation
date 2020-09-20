@@ -2,6 +2,7 @@ from django.core.exceptions import ValidationError
 from django.test import TestCase
 from django.utils.datetime_safe import datetime
 from parameterized import parameterized
+from wagtail.core.blocks import CharBlock
 from wagtail.core.blocks import PageChooserBlock
 from wagtail.core.blocks import StreamBlock
 from wagtail.core.blocks import StreamValue
@@ -107,3 +108,53 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
         blog_article_page.save()
 
         self.assertEqual(blog_article_page.recommended_articles, StreamValue(articles_block, []))
+
+
+class TestBlogArticleTableOfContents(TestCase, BlogTestHelpers):
+    def setUp(self):
+        self._set_default_blog_index_page_as_new_root_page_child()
+        self.blog_index_page = self._get_newest_blog_index_page()
+        header_block = StreamBlock([("header", CharBlock())])
+        body = StreamValue(header_block, [("header", "Header 1"), ("header", "Header 2"), ("header", "Header 3")])
+        self.blog_article_page = self._create_blog_article_page(
+            blog_index_page=self.blog_index_page, body=body, table_of_contents=True
+        )
+
+    def test_that_headers_list_property_should_return_list_of_all_headers(self):
+        expected_result = ["Header 1", "Header 2", "Header 3"]
+        self.assertEqual(self.blog_article_page.headers_list, expected_result)
+
+    @parameterized.expand([("Header 1", 0), ("Header 2", 1), ("Header 3", 2)])
+    def test_that_get_header_id_should_return_integer_representing_header_ordering_number(self, header, expected_id):
+        self.assertEqual(self.blog_article_page.get_header_id(header), expected_id)
+
+    def test_that_blog_article_page_should_display_table_of_contents_containing_all_headers(self):
+        expected_data = {0: "Header 1", 1: "Header 2", 2: "Header 3"}
+
+        response = self.client.get(path=self.blog_article_page.get_absolute_url())
+
+        self.assertContains(response, "Table of contents")
+        for (header_id, header) in expected_data.items():
+            self.assertContains(response, header)
+            self.assertContains(response, f"href='#{header_id}'")
+            self.assertContains(response, f"id='{header_id}'")
+
+    def test_that_article_page_should_not_display_table_of_contents_if_field_is_set_to_false(self):
+        self.blog_article_page.table_of_contents = False
+        self.blog_article_page.full_clean()
+        self.blog_article_page.save()
+        response = self.client.get(path=self.blog_article_page.get_absolute_url())
+
+        self.assertNotContains(response, "Table of contents")
+
+    def test_that_table_of_contents_should_be_set_to_false_if_there_are_no_headers(self):
+        other_article = self._create_blog_article_page(blog_index_page=self.blog_index_page)
+
+        other_article.table_of_contents = True
+        other_article.full_clean()
+
+        self.assertTrue(other_article.table_of_contents)
+
+        other_article.save()
+
+        self.assertFalse(other_article.table_of_contents)

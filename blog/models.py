@@ -1,4 +1,5 @@
 from typing import Any
+from typing import List
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
@@ -8,11 +9,13 @@ from django.core.paginator import PageNotAnInteger
 from django.core.paginator import Paginator
 from django.db import models
 from django.db.models import QuerySet
+from django.utils.functional import cached_property
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.contrib.table_block.blocks import TableBlock
-from wagtail.core import blocks
+from wagtail.core.blocks import CharBlock
 from wagtail.core.blocks import PageChooserBlock
+from wagtail.core.blocks import RichTextBlock
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.core.query import PageQuerySet
@@ -86,7 +89,8 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
     body = StreamField(
         [
             ("markdown", MarkdownBlock(icon="code")),
-            ("paragraph", blocks.RichTextBlock()),
+            ("header", CharBlock()),
+            ("paragraph", RichTextBlock()),
             ("table", TableBlock()),
             ("image", ImageChooserBlock()),
         ],
@@ -97,6 +101,8 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
     author = models.ForeignKey(Employees, on_delete=models.DO_NOTHING)
 
     read_time = models.PositiveIntegerField()
+
+    table_of_contents = models.BooleanField(default=False)
 
     recommended_articles = StreamField(
         [("page", PageChooserBlock(can_choose_root=False, page_type="blog.BlogArticlePage"))], null=True, blank=True,
@@ -124,8 +130,20 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
         FieldPanel("is_main_article"),
         ImageChooserPanel("cover_photo"),
         ImageChooserPanel("article_photo"),
+        FieldPanel("table_of_contents"),
         StreamFieldPanel("body"),
     ]
+
+    @cached_property
+    def headers_list(self) -> List[str]:
+        list_of_headers = []
+        for stream_child in self.body:  # pylint: disable=not-an-iterable
+            if stream_child.block.name == "header":
+                list_of_headers.append(stream_child.value)
+        return list_of_headers
+
+    def get_header_id(self, title: str) -> int:
+        return self.headers_list.index(title)
 
     def get_proper_url(self) -> str:
         return self.slug
@@ -155,6 +173,9 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
                 article.save()
             except BlogArticlePage.DoesNotExist:
                 pass
+
+        if self.table_of_contents and len(self.headers_list) == 0:
+            self.table_of_contents = False
 
         self._validate_parent_page()
         super().save(*args, **kwargs)
