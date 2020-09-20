@@ -3,6 +3,7 @@ from sorl.thumbnail.admin import AdminImageMixin
 
 from company_website.models import Employees
 from company_website.models import EstimateProject
+from company_website.models import EstimateProjectEmailRecipients
 from company_website.models import PageSeo
 from company_website.models import Testimonial
 
@@ -26,7 +27,12 @@ class PageSEOAdmin(admin.ModelAdmin):
     model = PageSeo
 
 
+class EstimateProjectEmailRecipientsAdmin(admin.ModelAdmin):
+    model = EstimateProjectEmailRecipients
+
+
 admin.site.register(Employees, EmployeesAdmin)
 admin.site.register(Testimonial, TestimonialAdmin)
 admin.site.register(EstimateProject, EstimateAdmin)
 admin.site.register(PageSeo, PageSEOAdmin)
+admin.site.register(EstimateProjectEmailRecipients, EstimateProjectEmailRecipientsAdmin)
