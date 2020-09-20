@@ -1,3 +1,4 @@
+from itertools import cycle
 from typing import Any
 from typing import List
 
@@ -13,6 +14,7 @@ from django.db.models.signals import post_delete
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.functional import cached_property
+from django.utils.html import strip_tags
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.contrib.table_block.blocks import TableBlock
@@ -29,8 +31,11 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtailmarkdown.blocks import MarkdownBlock
 
+from blog.constants import INTRO_ELLIPSIS
+from blog.constants import MAX_BLOG_ARTICLE_INTRO_LENGTH
 from blog.constants import MAX_BLOG_ARTICLE_TITLE_LENGTH
 from blog.constants import RICH_TEXT_BLOCK_FEATURES
+from blog.constants import ArticleBodyBlockNames
 from company_website.models import Employees
 from company_website.view_helpers import GoogleAdsMixin
 
@@ -91,14 +96,13 @@ class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
 class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
     template = "blog_post.haml"
     date = models.DateField("Post date")
-    intro = models.CharField(max_length=250)
     body = StreamField(
         [
-            ("markdown", MarkdownBlock(icon="code")),
-            ("header", CharBlock()),
-            ("paragraph", RichTextBlock(features=RICH_TEXT_BLOCK_FEATURES)),
-            ("table", TableBlock()),
-            ("image", ImageChooserBlock()),
+            (ArticleBodyBlockNames.MARKDOWN.value, MarkdownBlock(icon="code")),
+            (ArticleBodyBlockNames.HEADER.value, CharBlock()),
+            (ArticleBodyBlockNames.PARAGRAPH.value, RichTextBlock(features=RICH_TEXT_BLOCK_FEATURES)),
+            (ArticleBodyBlockNames.TABLE.value, TableBlock()),
+            (ArticleBodyBlockNames.IMAGE.value, ImageChooserBlock()),
         ],
     )
 
@@ -128,7 +132,6 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
 
     content_panels = Page.content_panels + [
         FieldPanel("date"),
-        FieldPanel("intro"),
         FieldPanel("author"),
         FieldPanel("read_time"),
         StreamFieldPanel("recommended_articles"),
@@ -144,12 +147,62 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
     def headers_list(self) -> List[str]:
         list_of_headers = []
         for stream_child in self.body:  # pylint: disable=not-an-iterable
-            if stream_child.block.name == "header":
+            if stream_child.block.name == ArticleBodyBlockNames.HEADER.value:
                 list_of_headers.append(stream_child.value)
         return list_of_headers
 
     def get_header_id(self, title: str) -> int:
         return self.headers_list.index(title)
+
+    @cached_property
+    def intro(self) -> str:
+        paragraph_text = self._get_paragraphs_text_for_intro(MAX_BLOG_ARTICLE_INTRO_LENGTH)
+        if len(paragraph_text) == 0:
+            return "Article intro not available."
+        words_cycle = cycle(paragraph_text.split())
+        intro_text = self._concatenate_intro_text_from_paragraphs_text(words_cycle, MAX_BLOG_ARTICLE_INTRO_LENGTH)
+        end_ellipsis = INTRO_ELLIPSIS
+        return intro_text + end_ellipsis
+
+    def _get_paragraphs_text_for_intro(self, character_limit: int) -> str:
+        paragraphs: list = self._get_list_of_paragraphs()
+        paragraphs_text = ""
+        if len(paragraphs) == 0:
+            return paragraphs_text
+
+        paragraphs_cycle = cycle(paragraphs)
+        while len(paragraphs_text) < character_limit:
+            paragraphs_text = self._extract_paragraph_text_from_paragraph_block(paragraphs_cycle, paragraphs_text)
+        return paragraphs_text
+
+    def _get_list_of_paragraphs(self) -> list:
+        return list(
+            filter(lambda body_element: body_element.block.name == ArticleBodyBlockNames.PARAGRAPH.value, self.body)
+        )
+
+    @staticmethod
+    def _extract_paragraph_text_from_paragraph_block(paragraphs: cycle, text: str) -> str:
+        space_between_texts = " "
+        next_text = strip_tags(next(paragraphs).value.source)
+        if len(text) == 0:
+            text = next_text
+        else:
+            text += f"{space_between_texts}{next_text}"
+        return text
+
+    def _concatenate_intro_text_from_paragraphs_text(self, words_cycle: cycle, character_limit: int) -> str:
+        intro_text = ""
+        new_text = next(words_cycle)
+        while len(new_text) < character_limit:
+            intro_text = new_text
+            new_text = self._concatenate_strings(intro_text, words_cycle)
+        return intro_text
+
+    @staticmethod
+    def _concatenate_strings(text: str, words: cycle) -> str:
+        space_between_texts = " "
+        text += f"{space_between_texts}{next(words)}"
+        return text
 
     def get_proper_url(self) -> str:
         return self.slug
@@ -161,6 +214,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
         context = super().get_context(request, *args, **kwargs)
         self._increase_view_counter()
         context["URL_PREFIX"] = settings.URL_PREFIX
+        context["article_body_block_names"] = ArticleBodyBlockNames
         return context
 
     def _increase_view_counter(self) -> None:

@@ -41,7 +41,7 @@
 
         .article-content
             {% for stream_child in page.body %}
-                {% if stream_child.block.name == "header" %}
+                {% if stream_child.block.name == article_body_block_names.HEADER.value %}
                     %h3{:id => '{{ page|get_header_id:stream_child.value }}' }
                         {{ stream_child.value }}
                 {% else %}
