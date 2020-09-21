@@ -13,19 +13,19 @@
         .article-details
             .row.post-title
                 {{ page.specific.title }}
-            .row
+            .row.more-details-mobile-look
+                .rest-details.inner-more-details-mobile-look
+                    .read-time.inline-display {{ page.specific.read_time }} min read
+                    .date.inline-display {{ page.specific.date }}
+            .additional-information
                 {% thumbnail page.specific.author.front_image "400x400" as image %}
                     %img.lazyload.author-image{:data-src => "{{ image.url }}", :alt => "{{ page.specific.author.name }}", :title => "{{ page.specific.author.name }}"}
                 {% endthumbnail %}
                 .author-details
                     .author-name {{ page.specific.author.name }}
-                    .row.rest-information-row
+                    .rest-information-row
                         .author-position {{ page.specific.author.position }}
                         .rest-details.more-details-desktop-look
-                            .read-time.inline-display {{ page.specific.read_time }} min read
-                            .date.inline-display {{ page.specific.date }}
-                    .row.more-details-mobile-look
-                        .rest-details.inner-more-details-mobile-look
                             .read-time.inline-display {{ page.specific.read_time }} min read
                             .date.inline-display {{ page.specific.date }}
         {% if page.specific.table_of_contents %}
