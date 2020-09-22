@@ -126,6 +126,19 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
         self.assertEqual(blog_article_page.title, new_title)
         self.assertEqual(blog_article_page.slug, expected_slug)
 
+    def test_that_deleting_recommended_articles_should_not_raise_any_errors(self):
+        articles = [self._create_blog_article_page() for _ in range(3)]
+        articles_block = StreamBlock([("page", PageChooserBlock())])
+        recommended_articles = StreamValue(articles_block, [("page", article) for article in articles])
+        main_article = self._create_blog_article_page(recommended_articles=recommended_articles)
+
+        for article in articles:
+            article.delete()
+        main_article.refresh_from_db()
+
+        self.assertEqual(BlogArticlePage.objects.all().count(), 1)
+        self.assertEqual(len(main_article.recommended_articles), 0)
+
 
 class TestBlogArticleTableOfContents(TestCase, BlogTestHelpers):
     def setUp(self):

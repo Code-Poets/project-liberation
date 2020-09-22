@@ -19,6 +19,8 @@ from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core.blocks import CharBlock
 from wagtail.core.blocks import PageChooserBlock
 from wagtail.core.blocks import RichTextBlock
+from wagtail.core.blocks import StreamBlock
+from wagtail.core.blocks import StreamValue
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.core.query import PageQuerySet
@@ -186,8 +188,19 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
 
     def clean(self) -> None:
         super().clean()
+        self._clean_recommended_articles()
         self._validate_title_length()
         self._validate_recommended_articles_uniqueness()
+
+    def _clean_recommended_articles(self) -> None:
+        self.recommended_articles = StreamValue(
+            stream_block=StreamBlock([("page", PageChooserBlock())]),
+            stream_data=[
+                ("page", stream_child.value)
+                for stream_child in self.recommended_articles
+                if stream_child.value is not None
+            ],
+        )
 
     def _validate_parent_page(self) -> None:
         if not isinstance(self.get_parent().specific, BlogIndexPage):
@@ -202,8 +215,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
         for stream_child in self.recommended_articles:  # pylint: disable=not-an-iterable
             if stream_child.value in article_pages_set:
                 raise ValidationError(message=f"'{stream_child.value}' is listed more than once!")
-            else:
-                article_pages_set.add(stream_child.value)
+            article_pages_set.add(stream_child.value)
 
 
 @receiver(post_save, sender=BlogArticlePage)
