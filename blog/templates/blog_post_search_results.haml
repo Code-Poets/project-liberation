@@ -8,7 +8,7 @@
     {% include 'blog/blog_menu.haml' %}
     {% stylesheet 'blog_posts_list' %}
     .container.blog-posts-list
-        {% if search_results %}
+        {% if search_results.exists %}
             .col-md-12.posts-container
                 {% include 'blog/partials/article_list.haml' with article_list=search_results %}
 
