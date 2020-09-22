@@ -28,6 +28,7 @@ from wagtail.search import index
 from wagtailmarkdown.blocks import MarkdownBlock
 
 from blog.constants import MAX_BLOG_ARTICLE_TITLE_LENGTH
+from blog.constants import RICH_TEXT_BLOCK_FEATURES
 from company_website.models import Employees
 from company_website.view_helpers import GoogleAdsMixin
 
@@ -93,7 +94,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
         [
             ("markdown", MarkdownBlock(icon="code")),
             ("header", CharBlock()),
-            ("paragraph", RichTextBlock()),
+            ("paragraph", RichTextBlock(features=RICH_TEXT_BLOCK_FEATURES)),
             ("table", TableBlock()),
             ("image", ImageChooserBlock()),
         ],
