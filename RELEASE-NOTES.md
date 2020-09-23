@@ -1,3 +1,20 @@
+### v1.17.0
+
+##### Features
+- Feature add superscript to article Rich Text editor ([#272](https://github.com/Code-Poets/project-liberation/pull/272))
+- Feature change social media icons order ([#269](https://github.com/Code-Poets/project-liberation/pull/269))
+- Feature delete allowed ip addresses for admin panel([#266](https://github.com/Code-Poets/project-liberation/pull/266))
+- Feature automated article description ([#265](https://github.com/Code-Poets/project-liberation/pull/265))
+- Feature add table of contents to blog article ([#264](https://github.com/Code-Poets/project-liberation/pull/264))
+- Feature update Services and Industry Focus ([#263](https://github.com/Code-Poets/project-liberation/pull/263))
+
+##### Bugfixes
+- Bugfix recommended article deletion ([#273](https://github.com/Code-Poets/project-liberation/pull/273))
+- Bugfix new tab opening for external links ([#271](https://github.com/Code-Poets/project-liberation/pull/271))
+- Bugfix main article can be taken down ([#270](https://github.com/Code-Poets/project-liberation/pull/270))
+- Bugfix blog article text formatting ([#268](https://github.com/Code-Poets/project-liberation/pull/268))
+
+
 ### v1.16.0
 
 ##### Features
