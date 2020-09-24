@@ -7,13 +7,15 @@ from django.db import transaction
 from django.utils.datetime_safe import datetime
 from faker import Faker
 from wagtail.core.blocks import PageChooserBlock
+from wagtail.core.blocks import RichTextBlock
 from wagtail.core.blocks import StreamBlock
 from wagtail.core.blocks import StreamValue
 from wagtail.core.models import Page
 from wagtail.core.models import Site
+from wagtail.core.rich_text import RichText
 from wagtail.images.models import Image as WagtailImage
-from wagtailmarkdown.blocks import MarkdownBlock
 
+from blog.constants import ArticleBodyBlockNames
 from blog.models import BlogArticlePage
 from blog.models import BlogIndexPage
 from common.helpers import create_image
@@ -97,8 +99,8 @@ class Command(BaseCommand):
             # base article parameters
             index = article_number % employees.count()
             author = employees[index]
-            block = StreamBlock([("markdown", MarkdownBlock())])
-            body = StreamValue(block, [("markdown", fake.sentence(nb_words=1000))])
+            block = StreamBlock([(ArticleBodyBlockNames.PARAGRAPH.value, RichTextBlock())])
+            body = StreamValue(block, [(ArticleBodyBlockNames.PARAGRAPH.value, RichText(fake.sentence(nb_words=1000)))])
             # recommended articles
             if article_number > 3:
                 articles_block = StreamBlock([("page", PageChooserBlock())])
@@ -120,7 +122,6 @@ class Command(BaseCommand):
             blog_article_page = BlogArticlePage(
                 title=fake.sentence(nb_words=5),
                 date=datetime.now(),
-                intro=fake.sentence(nb_words=30)[:250],
                 body=body,
                 author=author,
                 read_time=random.randint(1, 10),

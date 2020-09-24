@@ -5,10 +5,13 @@ from django.utils.datetime_safe import datetime
 from parameterized import parameterized
 from wagtail.core.blocks import CharBlock
 from wagtail.core.blocks import PageChooserBlock
+from wagtail.core.blocks import RichTextBlock
 from wagtail.core.blocks import StreamBlock
 from wagtail.core.blocks import StreamValue
-from wagtailmarkdown.blocks import MarkdownBlock
+from wagtail.core.rich_text import RichText
 
+from blog.constants import INTRO_ELLIPSIS
+from blog.constants import ArticleBodyBlockNames
 from blog.models import MAX_BLOG_ARTICLE_TITLE_LENGTH
 from blog.models import BlogArticlePage
 from blog.tests.test_helpers import BlogTestHelpers
@@ -26,16 +29,15 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
             self._create_blog_article_page(blog_index_page=blog_article_page)
 
     @parameterized.expand(
-        [("title", None), ("date", None), ("intro", None), ("author", None), ("read_time", -1), ("views", -1),]
+        [("title", None), ("date", None), ("author", None), ("read_time", -1), ("views", -1),]
     )
     def test_that_new_article_page_should_has_all_mandatory_parameters(self, parameter_name, parameter_value):
         author = BossFactory()
-        body_block = StreamBlock([("markdown", MarkdownBlock())])
-        body = StreamValue(body_block, [("markdown", "Hello, World")])
+        body_block = StreamBlock([(ArticleBodyBlockNames.PARAGRAPH.value, RichTextBlock())])
+        body = StreamValue(body_block, [(ArticleBodyBlockNames.PARAGRAPH.value, RichText("Hello, World"))])
         blog_article_parameter = {
             "title": "Simple Article Title",
             "date": datetime.now(),
-            "intro": "Simple Article Intro",
             "body": body,
             "author": author,
             "read_time": 7,
@@ -91,12 +93,11 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
 
     def test_that_article_with_no_recommended_articles_should_be_valid(self):
         author = BossFactory()
-        body_block = StreamBlock([("markdown", MarkdownBlock())])
-        body = StreamValue(body_block, [("markdown", "Hello, World")])
+        body_block = StreamBlock([(ArticleBodyBlockNames.PARAGRAPH.value, RichTextBlock())])
+        body = StreamValue(body_block, [(ArticleBodyBlockNames.PARAGRAPH.value, RichText("Hello, World"))])
         blog_article_parameter = {
             "title": "Simple Article Title",
             "date": datetime.now(),
-            "intro": "Simple Article Intro",
             "body": body,
             "author": author,
             "read_time": 7,
@@ -112,10 +113,7 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
 
     def test_that_altering_title_in_blog_page_model_should_not_alter_the_url_slug(self):
         blog_article_page = self._create_blog_article_page(
-            title="Simple Article Title",
-            date=datetime(year=2019, month=5, day=1),
-            intro="Simple Article Intro",
-            read_time=5,
+            title="Simple Article Title", date=datetime(year=2019, month=5, day=1), read_time=5,
         )
         new_title = "Not So Simple Article Title"
         expected_slug = "simple-article-title"
@@ -139,13 +137,49 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
         self.assertEqual(BlogArticlePage.objects.all().count(), 1)
         self.assertEqual(len(main_article.recommended_articles), 0)
 
+    def test_that_article_intro_should_be_a_part_of_first_paragraph_under_fixed_amount_of_characters(self):
+        paragraph_string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam laoreet venenatis enim, non luctus nisi finibus ut. Mauris porta eleifend massa, nec maximus lacus luctus a. Aenean libero felis, placerat non malesuada a, maximus id erat. Nulla ut purus elementum, auctor orci eget, facilisis est."
+        expected_string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam laoreet venenatis enim, non luctus nisi finibus ut. Mauris porta eleifend massa, nec maximus lacus luctus a. Aenean libero felis, placerat non malesuada a, maximus id erat. Nulla ut"
+
+        body_block = StreamBlock([(ArticleBodyBlockNames.PARAGRAPH.value, RichTextBlock())])
+        body = StreamValue(body_block, [(ArticleBodyBlockNames.PARAGRAPH.value, RichText(paragraph_string))])
+        blog_article = self._create_blog_article_page(body=body)
+
+        self.assertEqual(blog_article.intro, expected_string + INTRO_ELLIPSIS)
+
+    def test_that_article_intro_should_take_multiple_paragraphs_under_account(self):
+        paragraph_1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam laoreet venenatis enim, non luctus nisi finibus ut."
+        paragraph_2 = "Mauris porta eleifend massa, nec maximus lacus luctus a. Aenean libero felis, placerat non malesuada a, maximus id erat."
+        paragraph_3 = "Nulla ut purus elementum, auctor orci eget, facilisis est. Nullam aliquet volutpat massa, vel bibendum libero venenatis ut. Integer ac sapien et urna sollicitudin."
+        expected_string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam laoreet venenatis enim, non luctus nisi finibus ut. Mauris porta eleifend massa, nec maximus lacus luctus a. Aenean libero felis, placerat non malesuada a, maximus id erat. Nulla ut"
+
+        body_block = StreamBlock([(ArticleBodyBlockNames.PARAGRAPH.value, RichTextBlock())])
+        body = StreamValue(
+            body_block,
+            [
+                (ArticleBodyBlockNames.PARAGRAPH.value, RichText(paragraph_1)),
+                (ArticleBodyBlockNames.PARAGRAPH.value, RichText(paragraph_2)),
+                (ArticleBodyBlockNames.PARAGRAPH.value, RichText(paragraph_3)),
+            ],
+        )
+        blog_article = self._create_blog_article_page(body=body)
+
+        self.assertEqual(blog_article.intro, expected_string + INTRO_ELLIPSIS)
+
 
 class TestBlogArticleTableOfContents(TestCase, BlogTestHelpers):
     def setUp(self):
         self._set_default_blog_index_page_as_new_root_page_child()
         self.blog_index_page = self._get_newest_blog_index_page()
-        header_block = StreamBlock([("header", CharBlock())])
-        body = StreamValue(header_block, [("header", "Header 1"), ("header", "Header 2"), ("header", "Header 3")])
+        header_block = StreamBlock([(ArticleBodyBlockNames.HEADER.value, CharBlock())])
+        body = StreamValue(
+            header_block,
+            [
+                (ArticleBodyBlockNames.HEADER.value, "Header 1"),
+                (ArticleBodyBlockNames.HEADER.value, "Header 2"),
+                (ArticleBodyBlockNames.HEADER.value, "Header 3"),
+            ],
+        )
         self.blog_article_page = self._create_blog_article_page(
             blog_index_page=self.blog_index_page, body=body, table_of_contents=True
         )

@@ -51,7 +51,6 @@ class BlogSetUpClass(TestCase, BlogTestHelpers):
                 self._create_blog_article_page(
                     title=f"Simple Article Title {loop_number}",
                     date=datetime(year=2019, month=loop_number, day=1),
-                    intro=f"Simple Article Intro {loop_number}",
                     read_time=loop_number,
                 )
             )
