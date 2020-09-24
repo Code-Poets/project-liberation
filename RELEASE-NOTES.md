@@ -1,3 +1,9 @@
+### v1.17.1
+
+##### Bugfixes
+- Bugfix markdown support for intro ([#275](https://github.com/Code-Poets/project-liberation/pull/273))
+
+
 ### v1.17.0
 
 ##### Features
