@@ -25,12 +25,14 @@ class TeamIntroductionViewTests(TestCase):
 
 
 class EstimateProjectViewTests(TestCase):
-    def test_that_estimate_project_view_should_redirect_to_thank_you_view(self):
-        form_data = {
+    def setUp(self) -> None:
+        self.form_data = {
             "name": "John Doe",
             "email": "email@address.com",
             "idea_description": "Some description",
             "privacy_policy_accepted": True,
         }
-        response = self.client.post(path=reverse("estimate_project"), data=form_data, follow=True)
+
+    def test_that_estimate_project_view_should_redirect_to_thank_you_view(self):
+        response = self.client.post(path=reverse("estimate_project"), data=self.form_data, follow=True)
         self.assertRedirects(response, reverse("thank_you"))
