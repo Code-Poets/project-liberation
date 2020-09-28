@@ -9,6 +9,7 @@ from wagtail.core.blocks import RichTextBlock
 from wagtail.core.blocks import StreamBlock
 from wagtail.core.blocks import StreamValue
 from wagtail.core.rich_text import RichText
+from wagtailmarkdown.blocks import MarkdownBlock
 
 from blog.constants import INTRO_ELLIPSIS
 from blog.constants import ArticleBodyBlockNames
@@ -162,6 +163,26 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
                 (ArticleBodyBlockNames.PARAGRAPH.value, RichText(paragraph_3)),
             ],
         )
+        blog_article = self._create_blog_article_page(body=body)
+
+        self.assertEqual(blog_article.intro, expected_string + INTRO_ELLIPSIS)
+
+    def test_that_article_intro_should_support_markdown_blocks(self):
+        paragraph_string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam laoreet venenatis enim, non luctus nisi finibus ut. Mauris porta eleifend massa, nec maximus lacus luctus a. Aenean libero felis, placerat non malesuada a, maximus id erat. Nulla ut purus elementum, auctor orci eget, facilisis est."
+        expected_string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam laoreet venenatis enim, non luctus nisi finibus ut. Mauris porta eleifend massa, nec maximus lacus luctus a. Aenean libero felis, placerat non malesuada a, maximus id erat. Nulla ut"
+
+        body_block = StreamBlock([(ArticleBodyBlockNames.MARKDOWN.value, MarkdownBlock())])
+        body = StreamValue(body_block, [(ArticleBodyBlockNames.MARKDOWN.value, paragraph_string)])
+        blog_article = self._create_blog_article_page(body=body)
+
+        self.assertEqual(blog_article.intro, expected_string + INTRO_ELLIPSIS)
+
+    def test_that_article_intro_should_strip_markdown_syntax(self):
+        paragraph_string = "###Lorem ipsum `dolor` sit amet, **consectetur** adipiscing [elit](http://www.google.com). \r\n* Nullam *laoreet* venenatis enim, non luctus nisi finibus ut.\r\n> Mauris porta eleifend massa, nec maximus lacus luctus a. Aenean libero felis, placerat non malesuada a, maximus id erat. Nulla ut"
+        expected_string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam laoreet venenatis enim, non luctus nisi finibus ut. Mauris porta eleifend massa, nec maximus lacus luctus a. Aenean libero felis, placerat non malesuada a, maximus id erat. Nulla ut"
+
+        body_block = StreamBlock([(ArticleBodyBlockNames.MARKDOWN.value, MarkdownBlock())])
+        body = StreamValue(body_block, [(ArticleBodyBlockNames.MARKDOWN.value, paragraph_string)])
         blog_article = self._create_blog_article_page(body=body)
 
         self.assertEqual(blog_article.intro, expected_string + INTRO_ELLIPSIS)

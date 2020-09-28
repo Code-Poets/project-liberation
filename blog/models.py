@@ -2,6 +2,7 @@ from itertools import cycle
 from typing import Any
 from typing import List
 
+from bs4 import BeautifulSoup
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.handlers.wsgi import WSGIRequest
@@ -15,6 +16,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.functional import cached_property
 from django.utils.html import strip_tags
+from markdown import markdown
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.contrib.table_block.blocks import TableBlock
@@ -156,7 +158,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
 
     @cached_property
     def intro(self) -> str:
-        paragraph_text = self._get_paragraphs_text_for_intro(MAX_BLOG_ARTICLE_INTRO_LENGTH)
+        paragraph_text = self._get_text_for_intro(MAX_BLOG_ARTICLE_INTRO_LENGTH)
         if len(paragraph_text) == 0:
             return "Article intro not available."
         words_cycle = cycle(paragraph_text.split())
@@ -164,26 +166,31 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
         end_ellipsis = INTRO_ELLIPSIS
         return intro_text + end_ellipsis
 
-    def _get_paragraphs_text_for_intro(self, character_limit: int) -> str:
-        paragraphs: list = self._get_list_of_paragraphs()
+    def _get_text_for_intro(self, character_limit: int) -> str:
+        text_blocks: list = self._get_list_of_text_blocks()
         paragraphs_text = ""
-        if len(paragraphs) == 0:
+        if len(text_blocks) == 0:
             return paragraphs_text
 
-        paragraphs_cycle = cycle(paragraphs)
+        blocks_cycle = cycle(text_blocks)
         while len(paragraphs_text) < character_limit:
-            paragraphs_text = self._extract_paragraph_text_from_paragraph_block(paragraphs_cycle, paragraphs_text)
+            paragraphs_text = self._extract_paragraph_text_from_block(blocks_cycle, paragraphs_text)
         return paragraphs_text
 
-    def _get_list_of_paragraphs(self) -> list:
-        return list(
-            filter(lambda body_element: body_element.block.name == ArticleBodyBlockNames.PARAGRAPH.value, self.body)
-        )
+    def _get_list_of_text_blocks(self) -> list:
+        whitelisted_block_names = [ArticleBodyBlockNames.PARAGRAPH.value, ArticleBodyBlockNames.MARKDOWN.value]
+        return list(filter(lambda body_element: body_element.block.name in whitelisted_block_names, self.body))
 
     @staticmethod
-    def _extract_paragraph_text_from_paragraph_block(paragraphs: cycle, text: str) -> str:
+    def _extract_paragraph_text_from_block(blocks: cycle, text: str) -> str:
         space_between_texts = " "
-        next_text = strip_tags(next(paragraphs).value.source)
+        next_block = next(blocks)
+        if next_block.block.name == ArticleBodyBlockNames.MARKDOWN.value:
+            source_text = "".join(BeautifulSoup(markdown(next_block.value), "html.parser").findAll(text=True))
+        else:
+            source_text = next_block.value.source
+        next_text = strip_tags(source_text)
+
         if len(text) == 0:
             text = next_text
         else:
