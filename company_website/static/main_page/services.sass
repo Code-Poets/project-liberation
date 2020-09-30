@@ -8,7 +8,6 @@ $mvp-color: d55130
 $services-text-breakpoint: 1794px
 
 .section-header
-    margin-top: 38px
     margin-bottom: 55px
     min-height: unset
     .content-wrapper
@@ -25,6 +24,10 @@ $services-text-breakpoint: 1794px
 
 .services-container
     position: relative
+    margin-top: 38px
+
+    &::before
+        @include main-page-section-before
 
     .section-feather
         height: 312px
@@ -89,19 +92,30 @@ $services-text-breakpoint: 1794px
                     border-radius: 8px
                     text-align: center
                     margin: auto
-                    width: fit-content
-                    width: -moz-fit-content
 
                     .service-box-img
                         text-align: center
                         border: 1px solid transparent
                         border-radius: 8px
-                        margin-bottom: 5px
+                        margin: 0 auto 5px
+                        max-width: 230px
+                        max-height: 230px
+                        position: relative
+
+                        &:after
+                            content: ''
+                            display: block
+                            width: 100%
+                            height: 0
+                            padding-bottom: 100%
 
                         .service-img
-                            max-width: 230px
-                            max-height: 230px
+                            position: absolute
+                            top: 0
+                            left: 0
                             width: 100%
+                            height: 100%
+                            display: block
 
                     @media only screen and (max-width: $extra-large-services-size)
                         margin: auto

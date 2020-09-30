@@ -113,3 +113,15 @@ $graph-red-color: #D94141
 // career constants
 $career-container-horizontal-padding: 20px
 $career-container-max-width: calc(1164px + #{$career-container-horizontal-padding} * 2)
+
+@mixin main-page-section-before
+	display: block
+	content: " "
+	margin-top: calc(-#{$base-menu-height} + 1px)
+	height: calc(#{$base-menu-height} - 1px)
+	visibility: hidden
+	pointer-events: none
+
+	@media only screen and (max-width: $menu-max-size)
+		margin-top: calc(-#{$mobile-menu-height} + 1px)
+		height: calc(#{$mobile-menu-height} - 1px)
