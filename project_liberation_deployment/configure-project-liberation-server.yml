@@ -26,19 +26,17 @@
             enabled:       yes
             name:          project-liberation-web
 
-        - name: Check if nginx is already configured
-          stat:
-            path: /etc/letsencrypt/options-ssl-nginx.conf
-          register: nginx_configuration
-
-        - name: Generate ssl certificate for nginx
-          command: >
-            certbot --nginx
-              -d  codepoets.it
-              -d  www.codepoets.it
-              -m  {{ letsencrypt_email_account }}
-              --agree-tos
-          when: not nginx_configuration.stat.exists
+        - name: Copy ssl certificate files to server
+          copy:
+            src:  "{{ project_liberation_secret_dir }}/{{ item }}"
+            dest: "{{ certificates_dir }}/{{ item }}"
+            mode:  0644
+            owner: project_liberation
+            group: project_liberation
+          loop:
+            - "certificate-privkey.pem"
+            - "certificate-fullchain.pem"
+            - "ssl-dhparams.pem"
 
         - include_role:
             name: configure_nginx
