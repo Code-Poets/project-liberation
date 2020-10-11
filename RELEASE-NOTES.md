@@ -1,3 +1,9 @@
+### v1.18.0
+
+##### Features
+- Feature add new certificate ([#278](https://github.com/Code-Poets/project-liberation/pull/278))
+
+
 ### v1.17.1
 
 ##### Bugfixes
