@@ -14,12 +14,12 @@
             .row.info-section
                 .info-section
                     {% thumbnail blog_article.specific.author.front_image "400x400" as image %}
-                        %img.main-img.lazyload{:data-src => "{{ image.url }}", :alt => "{{ blog_article.specific.author.name }}", :title => "{{ blog_article.specific.author.name }}"}
+                        %img.main-img.lazyload{:data-src => "{{ image.url }}", :alt => "{{ blog_article.specific.author.full_name }}", :title => "{{ blog_article.specific.author.full_name }}"}
                     {% endthumbnail %}
                     .auto-name
                         .container-section
                             .author-name
-                                {{ blog_article.specific.author.name }}
+                                {{ blog_article.specific.author.full_name }}
                     .read-time
                         {{ blog_article.specific.read_time }} min read
                     .date

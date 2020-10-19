@@ -13,9 +13,9 @@
                     {% thumbnail boss.front_image "267x400" as front_image %}
                     {% thumbnail boss.back_image "267x400" as back_image %}
                         .person-container
-                            %img.lazyload.front-image{:data-src => "{{ front_image.url }}", :alt => "{{ boss.name }}"}
-                            %img.lazyload.back-image{:data-src => "{{ back_image.url }}", :alt => "{{ boss.name }}"}
-                            %p.boss-name {{ boss.name }}
+                            %img.lazyload.front-image{:data-src => "{{ front_image.url }}", :alt => "{{ boss.full_name }}"}
+                            %img.lazyload.back-image{:data-src => "{{ back_image.url }}", :alt => "{{ boss.full_name }}"}
+                            %p.boss-name {{ boss.full_name }}
                             %p.boss-position {{ boss.position }}
                     {% endthumbnail %}
                     {% endthumbnail %}
@@ -26,9 +26,9 @@
                 {% thumbnail employee.back_image "200x300" as back_image %}
                     .person.employee{:data-aos => "fade-in"}
                         .person-container
-                            %img.lazyload.front-image{:data-src => "{{ front_image.url }}", :alt => "{{ employee.name }}"}
-                            %img.lazyload.back-image{:data-src => "{{ back_image.url }}", :alt => "{{ employee.name }}"}
-                            %p.employee-name {{ employee.name }}
+                            %img.lazyload.front-image{:data-src => "{{ front_image.url }}", :alt => "{{ employee.get_display_name }}"}
+                            %img.lazyload.back-image{:data-src => "{{ back_image.url }}", :alt => "{{ employee.get_display_name }}"}
+                            %p.employee-name {{ employee.get_display_name }}
                             %p.employee-position {{ employee.position }}
                 {% endthumbnail %}
                 {% endthumbnail %}
