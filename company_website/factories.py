@@ -10,10 +10,9 @@ class EmployeeFactory(DjangoModelFactory):
         model = Employees
 
     name = factory.Faker("first_name")
+    last_name = factory.Faker("last_name")
     position = factory.LazyAttributeSequence(lambda o, n: f"{Faker().job()[:50]}")
 
 
 class BossFactory(EmployeeFactory):
-
-    name = factory.Faker("name")
     boss = True
