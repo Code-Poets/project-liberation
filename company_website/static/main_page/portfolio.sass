@@ -2,9 +2,13 @@
 @import "../common/partials/section_header"
 
 .portfolio-container
+    margin-top: 3vw
+
+    &::before
+        @include main-page-section-before
 
     .section-header
-        margin-top: 3vw
+        margin-top: 0
         margin-bottom: 5vw
         min-height: unset
         background: $section-header-yellow-color
@@ -94,6 +98,22 @@
             .logo-merck
                 margin-bottom: 20px
                 width: 10.5vw
+                position: relative
+                display: inline-block
+
+                &:after
+                    content: ''
+                    display: block
+                    width: 100%
+                    height: 0
+                    padding-bottom: 16%
+
+                img
+                    width: 100%
+                    position: absolute
+                    top: 0
+                    left: 0
+                    display: block
 
             .project-merck-box-desc
                 width: 73%
@@ -129,6 +149,22 @@
                     margin-bottom: 20px
                     width: 10.5vw
                     z-index: 1
+                    position: relative
+                    display: inline-block
+
+                    &:after
+                        content: ''
+                        display: block
+                        width: 100%
+                        height: 0
+                        padding-bottom: 40%
+
+                    img
+                        width: 100%
+                        position: absolute
+                        top: 0
+                        left: 0
+                        display: block
 
         .project-polish-lody-box
             color: $polish-lody-font-color

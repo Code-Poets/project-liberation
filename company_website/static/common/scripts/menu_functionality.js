@@ -102,11 +102,7 @@ $('a.nav-link').click(function () {
     var scrollTo;
     if (window.location.pathname == "/" ){
         if (str.indexOf("#") == 1) {
-            if (window.innerWidth > 1175){
-                scrollTo = ($(str.substring(1)).offset().top - 50)
-            } else {
-                scrollTo = ($(str.substring(1)).offset().top - 94);
-            }
+            scrollTo = $(str.substring(1)).offset().top;
             $root.animate({
                 scrollTop: scrollTo
             }, 500);
