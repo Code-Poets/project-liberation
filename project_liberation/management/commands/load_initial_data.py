@@ -143,8 +143,8 @@ class Command(BaseCommand):
 
     def _generate_list_of_article_ids_for_recommended_articles(self, target_id):
         article_ids = []
-        first_id = BlogArticlePage.objects.all().first().id
-        last_id = BlogArticlePage.objects.all().last().id
+        first_id = BlogArticlePage.objects.first().id
+        last_id = BlogArticlePage.objects.last().id
         for _ in range(random.randint(0, self.max_recommended_articles)):
             article_id = random.randint(first_id, last_id)
             while article_id == target_id or article_id in article_ids:
@@ -166,5 +166,4 @@ class Command(BaseCommand):
     def _generate_wagtail_image(resolution: Dict[str, int], name: str, rgb_color=None) -> WagtailImage:
         new_image = create_image(resolution["y"], resolution["x"], name, settings.MEDIA_ROOT, rgb_color=rgb_color)
         wagtail_new_image = WagtailImage.objects.create(title=name, file=new_image)
-        wagtail_new_image.save()
         return wagtail_new_image

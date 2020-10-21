@@ -7,6 +7,7 @@ from faker import Faker
 from wagtail.core.blocks import RichTextBlock
 from wagtail.core.blocks import StreamBlock
 from wagtail.core.blocks import StreamValue
+from wagtail.core.models import Page
 from wagtail.core.rich_text import RichText
 from wagtail_factories import PageFactory
 
@@ -35,6 +36,14 @@ class BlogIndexPageFactory(PageFactory):
     class Meta:
         model = BlogIndexPage
 
+    @classmethod
+    def _create_instance(cls, model_class: Any, parent: Any, kwargs: Any) -> Any:
+        instance = model_class(**kwargs)
+        if parent is None:
+            parent = Page.objects.get(title="Root")
+        parent.add_child(instance=instance)
+        return instance
+
 
 class BlogArticlePageFactory(PageFactory):
     class Meta:
@@ -53,7 +62,7 @@ class BlogArticlePageFactory(PageFactory):
     def _create_instance(cls, model_class: Any, parent: Any, kwargs: Any) -> Any:
         instance = model_class(**kwargs)
         if parent is None:
-            parent = BlogIndexPage.objects.all().first()
+            parent = BlogIndexPage.objects.first()
             if parent is None:
                 parent = BlogIndexPageFactory()
         parent.add_child(instance=instance)
