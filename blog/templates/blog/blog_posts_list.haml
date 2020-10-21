@@ -24,7 +24,7 @@
                         .popular-article
                             %a.title{:href => "{% url 'wagtail_serve' article.specific.slug %}"} {{ article.specific.title }}
                             .author by
-                                %strong {{ article.specific.author.name }}
+                                %strong {{ article.specific.author.full_name }}
                             .rest-information.row
                                 .time-and-date.row
                                     .article-read-time {{ article.specific.read_time }} min read

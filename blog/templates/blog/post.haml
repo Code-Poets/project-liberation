@@ -19,10 +19,10 @@
                     .date.inline-display {{ page.specific.date }}
             .additional-information
                 {% thumbnail page.specific.author.front_image "400x400" as image %}
-                    %img.lazyload.author-image{:data-src => "{{ image.url }}", :alt => "{{ page.specific.author.name }}", :title => "{{ page.specific.author.name }}"}
+                    %img.lazyload.author-image{:data-src => "{{ image.url }}", :alt => "{{ page.specific.author.full_name }}", :title => "{{ page.specific.author.full_name }}"}
                 {% endthumbnail %}
                 .author-details
-                    .author-name {{ page.specific.author.name }}
+                    .author-name {{ page.specific.author.full_name }}
                     .rest-information-row
                         .author-position {{ page.specific.author.position }}
                         .rest-details.more-details-desktop-look

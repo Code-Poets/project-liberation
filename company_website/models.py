@@ -26,6 +26,8 @@ class Testimonial(models.Model):
 
 class Employees(models.Model):
     name = CharField(max_length=50)
+    last_name = CharField(max_length=50, blank=True)
+    display_name = CharField(max_length=50, blank=True)
     position = CharField(max_length=50)
     front_image = ImageField(default=None, blank=True, upload_to=settings.COMPANY_EMPLOYEES_STORAGE)
     back_image = ImageField(default=None, blank=True, upload_to=settings.COMPANY_EMPLOYEES_STORAGE)
@@ -34,6 +36,15 @@ class Employees(models.Model):
     is_working = BooleanField(default=True)
 
     def __str__(self) -> str:
+        return self.full_name
+
+    @property
+    def full_name(self) -> str:
+        return f"{self.name} {self.last_name}"
+
+    def get_display_name(self) -> str:
+        if len(self.display_name) > 0:
+            return self.display_name
         return self.name
 
     @staticmethod
