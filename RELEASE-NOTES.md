@@ -1,3 +1,14 @@
+### v1.19.0
+
+##### Features
+- Feature remove map ([#282](https://github.com/Code-Poets/project-liberation/pull/282))
+- Feature change employees names display([#281](https://github.com/Code-Poets/project-liberation/pull/281))
+- Feature remove blog comment section ([#254](https://github.com/Code-Poets/project-liberation/pull/254))
+
+##### Bugfixes
+- Bugfix main page navigation ([#279](https://github.com/Code-Poets/project-liberation/pull/279))
+
+
 ### v1.18.0
 
 ##### Features
