@@ -8,13 +8,16 @@ from wagtail.core.blocks import PageChooserBlock
 from wagtail.core.blocks import RichTextBlock
 from wagtail.core.blocks import StreamBlock
 from wagtail.core.blocks import StreamValue
+from wagtail.core.blocks import StructValue
 from wagtail.core.rich_text import RichText
 from wagtailmarkdown.blocks import MarkdownBlock
 
 from blog.constants import INTRO_ELLIPSIS
 from blog.constants import ArticleBodyBlockNames
+from blog.factories import ImageFactory
 from blog.models import MAX_BLOG_ARTICLE_TITLE_LENGTH
 from blog.models import BlogArticlePage
+from blog.models import CaptionedImageBlock
 from blog.templatetags.blog_article_page_filters import shorten_text
 from blog.tests.test_helpers import BlogTestHelpers
 from company_website.factories import BossFactory
@@ -187,6 +190,27 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
         blog_article = self._create_blog_article_page(body=body)
 
         self.assertEqual(blog_article.intro, expected_string + INTRO_ELLIPSIS)
+
+    def test_that_image_caption_should_be_displayed_when_provided(self):
+        caption_text = "Test caption"
+        body_block = StreamBlock([("image", CaptionedImageBlock())])
+        block_value = StructValue(CaptionedImageBlock, [("image", ImageFactory()), ("caption", caption_text)])
+        body = StreamValue(body_block, [("image", block_value)])
+        blog_article_page = self._create_blog_article_page(body=body)
+
+        response = self.client.get(path=blog_article_page.get_absolute_url())
+
+        self.assertContains(response, caption_text)
+
+    def test_that_article_should_be_properly_rendered_if_image_has_no_caption(self):
+        body_block = StreamBlock([("image", CaptionedImageBlock())])
+        block_value = StructValue(CaptionedImageBlock, [("image", ImageFactory()), ("caption", "")])
+        body = StreamValue(body_block, [("image", block_value)])
+        blog_article_page = self._create_blog_article_page(body=body)
+
+        response = self.client.get(path=blog_article_page.get_absolute_url())
+
+        self.assertEqual(response.status_code, 200)
 
 
 class TestBlogArticleTableOfContents(TestCase, BlogTestHelpers):
