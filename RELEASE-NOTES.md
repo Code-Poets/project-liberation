@@ -1,3 +1,12 @@
+### v1.20.0
+
+##### Features
+- Feature improve nginx configuration ([#287](https://github.com/Code-Poets/project-liberation/pull/287))
+
+##### Bugfixes
+- Bugfix add <!doctype html> on the top of base haml file ([#288](https://github.com/Code-Poets/project-liberation/pull/288))
+
+
 ### v1.19.0
 
 ##### Features
