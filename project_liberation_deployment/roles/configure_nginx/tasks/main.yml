@@ -18,7 +18,6 @@
         - "{{ django_static_files_dir }}"
         - "{{ nginx_static_files_dir }}"
         - "{{ media_files_dir }}"
-        - "{{ certificates_dir }}"
 
 - become: yes
   become_user: "{{ ansible_user_id }}"
