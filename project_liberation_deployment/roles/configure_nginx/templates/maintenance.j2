@@ -54,8 +54,8 @@ server {
         alias {{ nginx_static_files_dir }}/;
     }
 
-	listen [::]:443 ssl ipv6only=on;
-	listen 443 ssl;
+	listen [::]:443 ssl ipv6only=on default_server;
+	listen 443 ssl default_server;
 
 	ssl_certificate {{ certificates_dir }}/ssl_certificate.pem;
 	ssl_certificate_key {{ certificates_dir }}/certificate-privkey.pem;
