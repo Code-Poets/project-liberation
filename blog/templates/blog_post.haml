@@ -12,7 +12,7 @@
     %meta{:property => "og:image:height", :content => "{{ photo.height }}"}
     %meta{:property => "og:description", :content => "{{ page.specific.meta_description }}"}
     %meta{:property => "twitter:card", :content => "summary"}
-    %meta{:property => "twitter:title", :content => "{{ page.specific.meta_description }}"}
+    %meta{:property => "twitter:title", :content => "{{ page.specific.title }}"}
     %meta{:property => "twitter:image", :content => "{{ URL_PREFIX }}://{{ request.META.HTTP_HOST }}{{ photo.url }}"}
 {% endblock %}
 
