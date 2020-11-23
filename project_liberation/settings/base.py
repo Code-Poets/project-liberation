@@ -424,3 +424,7 @@ SITE_ID = 1
 DATE_FORMAT = "M. d, Y"
 
 URL_PREFIX = "http"
+
+# Setting for default email recipients for email sent from application
+# DEFAULT_EMAIL_RECIPIENTS = ("",)
+# USE_DEFAULT_RECIPIENTS = False

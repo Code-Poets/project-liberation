@@ -19,6 +19,7 @@ wagtail = "*"
 django-google-analytics-app = "*"
 django-robots = "*"
 wagtail-factories = "^2.0.0"
+html2text = "^2020.1.16"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"

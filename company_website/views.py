@@ -6,10 +6,13 @@ from django.urls import reverse_lazy
 from django.views.generic import FormView
 from django.views.generic import ListView
 
+from company_website.constants import ESTIMATE_PROJECT_EMAIL_SUBJECT
+from company_website.constants import ESTIMATE_PROJECT_EMAIL_TEMPLATE_NAME
 from company_website.constants import PageNames
 from company_website.forms import ProjectToEstimateForm
 from company_website.models import Employees
 from company_website.models import Testimonial
+from company_website.send_emails_utils import send_mail_to_management
 from company_website.view_helpers import CustomTemplateView
 from company_website.view_helpers import GoogleAdsMixin
 from company_website.view_helpers import add_meta_tags_to_page_context
@@ -63,6 +66,7 @@ class PrivacyAndPolicyView(CustomTemplateView):
 class EstimateProjectView(FormView, GoogleAdsMixin):
 
     template_name = "estimate_project.haml"
+    email_template_name = ESTIMATE_PROJECT_EMAIL_TEMPLATE_NAME
     form_class = ProjectToEstimateForm
     page_name = PageNames.ESTIMATE_PROJECT.name
 
@@ -74,6 +78,14 @@ class EstimateProjectView(FormView, GoogleAdsMixin):
     def form_valid(self, form: ProjectToEstimateForm) -> bool:
         messages.success(self.request, "Profile details updated.")
         form.save()
+
+        if form.is_valid():
+            send_mail_to_management(
+                email_data=form.cleaned_data,
+                email_subject=ESTIMATE_PROJECT_EMAIL_SUBJECT,
+                template=self.email_template_name,
+            )
+
         return super().form_valid(form)
 
     def get_success_url(self) -> str:

@@ -6,6 +6,7 @@ from django.conf import settings
 from django.db import models
 from django.db.models import BooleanField
 from django.db.models import CharField
+from django.db.models import EmailField
 from django.db.models import PositiveSmallIntegerField
 from django.db.models import QuerySet
 from sorl.thumbnail import ImageField
@@ -123,3 +124,14 @@ class PageSeo(models.Model):
     class Meta:
         verbose_name = "Page SEO"
         verbose_name_plural = "Pages SEO"
+
+
+class EstimateProjectEmailRecipients(models.Model):
+    class Meta:
+        verbose_name = "Estimate Project Email Recipients"
+        verbose_name_plural = "Estimate Project Email Recipients"
+
+    def __str__(self) -> str:
+        return str(self.name)
+
+    name = EmailField()

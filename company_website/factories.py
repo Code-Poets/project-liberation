@@ -3,6 +3,7 @@ from factory import DjangoModelFactory
 from faker import Faker
 
 from company_website.models import Employees
+from company_website.models import EstimateProjectEmailRecipients
 
 
 class EmployeeFactory(DjangoModelFactory):
@@ -16,3 +17,10 @@ class EmployeeFactory(DjangoModelFactory):
 
 class BossFactory(EmployeeFactory):
     boss = True
+
+
+class EstimateProjectEmailRecipientsFactory(DjangoModelFactory):
+    class Meta:
+        model = EstimateProjectEmailRecipients
+
+    name = factory.Faker("email")

@@ -1,6 +1,6 @@
 from .production import *
 from .secrets.secrets import (
-    EMAIL_PASSWORD,
+    SENDGRID_API_KEY,
     GOOGLE_API_KEY,
     SENTRY_DATA_SOURCE_NAME,
     SECRET_KEY,
@@ -18,7 +18,7 @@ RAVEN_CONFIG = {
 EMAIL_HOST = "smtp.sendgrid.net"
 EMAIL_PORT = 2525
 EMAIL_HOST_USER = "apikey"
-EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "no-reply@codepoets.it"
 SERVER_EMAIL = "no-reply@codepoets.it"
