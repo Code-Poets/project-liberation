@@ -1,30 +1,35 @@
 <!doctype html>
-{% block title %}{% endblock %}
-{% block meta_tags %}{% endblock %}
-{% block properties %}{% endblock %}
 
-{% include "common_partials/head.haml" %}
-{% load google_analytics_tags %}
-{% load pipeline %}
-{% stylesheet 'common' %}
+%html{:lang=>"en-US", :prefix=>"og: https://ogp.me/ns#"}
 
-{% block extra_head %}
-{% endblock %}
+    %head
+        {% block title %}{% endblock %}
+        {% block meta_tags %}{% endblock %}
+        {% block properties %}{% endblock %}
 
-.google-analytics
-    %img.google-analytics-image{:src => "{% google_analytics %}", :alt => "Google Analytics"}
-.overlay
+        {% include "common_partials/head.haml" %}
+        {% load google_analytics_tags %}
+        {% load pipeline %}
+        {% stylesheet 'common' %}
 
-.project-highlight
-    .project-highlight-background
+        {% block extra_head %}
+        {% endblock %}
 
-{% include "common_partials/menu.haml" %}
+    %body
+        .google-analytics
+            %img.google-analytics-image{:src => "{% google_analytics %}", :alt => "Google Analytics"}
+        .overlay
 
-{% block content %}
-{% endblock %}
+        .project-highlight
+            .project-highlight-background
 
-{% include "common_partials/footer.haml" %}
-{% include "common_partials/scripts.haml" %}
+        {% include "common_partials/menu.haml" %}
 
-{% block extra_script %}
-{% endblock %}
+        {% block content %}
+        {% endblock %}
+
+        {% include "common_partials/footer.haml" %}
+        {% include "common_partials/scripts.haml" %}
+
+        {% block extra_script %}
+        {% endblock %}
