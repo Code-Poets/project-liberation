@@ -1,3 +1,9 @@
+### v1.21.1
+
+##### Bugfixes
+- Bugfix add default email recipients to local_settings ([#292](https://github.com/Code-Poets/project-liberation/pull/292))
+
+
 ### v1.21.0
 
 ##### Features
