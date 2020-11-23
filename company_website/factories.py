@@ -1,5 +1,5 @@
 import factory
-from factory import DjangoModelFactory
+from factory.django import DjangoModelFactory
 from faker import Faker
 
 from company_website.models import Employees
