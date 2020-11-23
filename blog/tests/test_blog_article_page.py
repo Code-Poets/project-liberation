@@ -15,6 +15,7 @@ from blog.constants import INTRO_ELLIPSIS
 from blog.constants import ArticleBodyBlockNames
 from blog.models import MAX_BLOG_ARTICLE_TITLE_LENGTH
 from blog.models import BlogArticlePage
+from blog.templatetags.blog_article_page_filters import shorten_text
 from blog.tests.test_helpers import BlogTestHelpers
 from company_website.factories import BossFactory
 
@@ -286,3 +287,35 @@ class TestBlogArticlePageMainArticleIntegrity(TestCase, BlogTestHelpers):
     def test_that_removing_main_article_should_be_possible_if_there_are_no_other_articles(self):
         self.article.delete()
         self.assertEqual(BlogArticlePage.objects.all().count(), 0)
+
+
+class TestBlogPageFilters(TestCase):
+    def test_that_shorten_text_filter_should_return_empty_string_when_text_argument_is_empty(self):
+        returned_text = shorten_text("", 100)
+        expected_result = ""
+
+        self.assertEqual(returned_text, expected_result)
+
+    @parameterized.expand([("Hello World!", 100), ("Hello World!", 8)])
+    def test_that_length_of_returned_string_by_shorten_text_filter_should_be_less_or_equal_to_specified_length(
+        self, text, max_length_of_string
+    ):
+        length_of_returned_text = len(shorten_text(text, max_length_of_string))
+
+        self.assertLessEqual(length_of_returned_text, max_length_of_string)
+
+    @parameterized.expand([("Hello World!", 8, "Hello..."), ("Hello World!", 4, "...")])
+    def test_that_returned_string_by_shorten_text_filter_should_not_contain_cut_words(
+        self, text, max_length_of_string, expected_result
+    ):
+        returned_text = shorten_text(text, max_length_of_string)
+
+        self.assertEqual(returned_text, expected_result)
+
+    @parameterized.expand([("Hello World!", 100), ("Hello World!", 12)])
+    def test_that_shorten_text_filter_should_return_same_string_when_length_of_string_is_less_than_or_equal_to_max(
+        self, text, max_length_of_string
+    ):
+        returned_text = shorten_text(text, max_length_of_string)
+
+        self.assertEqual(returned_text, text)
