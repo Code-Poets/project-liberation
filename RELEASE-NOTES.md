@@ -1,3 +1,15 @@
+### v1.21.0
+
+##### Features
+- Feature add sending email to estimate project ([#284](https://github.com/Code-Poets/project-liberation/pull/284))
+- Feature add links to clutch profile in logos on main page ([#290](https://github.com/Code-Poets/project-liberation/pull/290))
+- Feature change year in footer ([#283](https://github.com/Code-Poets/project-liberation/pull/283))
+
+##### Bugfixes
+- Bugfix new tab opening on calendly ([#286](https://github.com/Code-Poets/project-liberation/pull/286))
+- Bugfix linkedin share link ([#291](https://github.com/Code-Poets/project-liberation/pull/291))
+
+
 ### v1.20.0
 
 ##### Features
