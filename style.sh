@@ -19,7 +19,7 @@ if [ -z $VIRTUAL_ENV ]; then
 fi
 
 printf "[ISORT: project-liberation]\n"
-${BASH_SOURCE%/*}/find-files-to-check.sh | xargs isort -sl -l 120
+${BASH_SOURCE%/*}/find-files-to-check.sh | xargs isort --sl -l 120
 printf "\n"
 
 printf "[BLACK: project-liberation]\n"
