@@ -16,11 +16,9 @@
 {% endblock %}
 
 {% block content %}
-    {% include "common_partials/section_header.haml" with title="Estimate your project." subtext="﻿Please fill out this simple form.</br>﻿We will contact you soon to discuss your needs." %}
     {% include "estimate_project/estimate_project_form.haml" %}
 {% endblock %}
 
 {% block extra_script %}
     {% javascript 'estimate_project' %}
 {% endblock %}
-

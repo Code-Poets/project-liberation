@@ -1,20 +1,19 @@
 {% load static %}
 
-{% with privacy_and_policy_link="/" %}
+.estimate-project-section-header
+  {% include "common_partials/section_header.haml" with title="Estimate your project" subtext="We’ll get to back to you within 24 hours with the next steps" %}
 
 .container.estimate-form
-  %form{:method => "post", :id => "formABC"}
+  %form{:method => "post", :id => "estimate-project-form"}
     {% csrf_token %}
     .row
       .col-md-6.col-12.custom-col-padding
         .input-fields-container
-
           .input-field
             {{form.name}}
             .label-container
               .estimate-triangle-left-label
                 Name *
-
 
           .input-field
             {{form.email}}
@@ -22,149 +21,21 @@
               .estimate-triangle-left-label
                 E-mail *
 
-          .input-field
-            {{form.country}}
-            .label-container
-              .estimate-triangle-left-label
-                Country
-
-          .nda
-            Do you need an NDA?
-            .switch-field
-              {% for field in form.nda_required %}
-                .select-box{:id => "nda_#{forloop.counter}"}
-                  {{ field }}
-                {% endfor %}
-          .desktop-display
-            .additional-questions
-              .label
-                Do you need a very precise estimation?
-              .add-button
-                Show additional questions
-
-
       .col-md-6.col-12.custom-col-padding
-        .text-input
+        .describe-idea-box-input
           .top-label
             Describe your idea *
-          .contener
+          .describe-idea
             {{form.idea_description}}
             %img.feather-background.lazyload{:src => "{% static 'estimate_project/images/feather_horizontal_299x150.png' %}", :alt => "Feather", :title => "Feather"}
 
-        .mobile-display
-          .additional-questions
-            .add-button
-              Show additional questions
-
-        .submit-container
-          .privacy-check-box
-            .
-              {{form.privacy_policy_accepted}}
-              I have read and accepted our
-              %a{:href => "{% url 'privacy_and_policy' %}"}  Privacy Policy
-            {% url "thank_you" as thank_you_url %}
-            %input.custom-button{:type => "submit", :value => "Estimate Project", :class => "estimate-button", :id => "btnSubmit", :onclick => 'return gtagReportConversion("{{ URL_PREFIX }}://{{ request.get_host }}{{ thank_you_url }}")'}
+      .col-md-6.col-12.custom-col-padding
+        .privacy-policy-form
+          {{form.privacy_policy_accepted}}
+          I have read and accepted
+          %a.privacy-policy-link{:href => "{% url 'privacy_and_policy' %}"}
+            Privacy Policy
 
     .row
-      .hide-add-questions
-        .hide-button{:id => "hide_questions"}
-          Hide questions
-
-    .row
-      .col-md-6.col-12.custom-col-padding
-        .bottom-containers
-          .single-container
-            .select-container.i-want-to
-              You want to
-              .switch-field
-                {% for field in form.project_development %}
-                  .select-box{:id => "project_development_#{forloop.counter}"}
-                    {{ field }}
-                  {% endfor %}
-
-            .select-container.what-is-budget
-              What is your monthly budget?
-              .switch-field
-                {% for field in form.monthly_bugdet %}
-                  {% if not forloop.counter|divisibleby:2 %}
-                  <span class="button-pair">
-                    .monthly-budget{:id => "monthly_bugdet_#{forloop.counter}"}
-                      {{ field }}
-                    {% if forloop.last %}
-                  </span>
-                    {% endif %}
-                  {% else %}
-                    .monthly-budget{:id => "monthly_bugdet_#{forloop.counter}"}
-                      {{ field }}
-                  </span>
-                  {% endif %}
-                {% endfor %}
-
-
-            .select-container.how-much-time
-              How much time do you have?
-              .switch-field
-                {% for field in form.project_duration %}
-                  {% if not forloop.counter|divisibleby:2 %}
-                  <span class="button-pair">
-                    .monthly-budget{:id => "project_duration_#{forloop.counter}"}
-                      {{ field }}
-                    {% if forloop.last %}
-                  </span>
-                    {% endif %}
-                  {% else %}
-                    .monthly-budget{:id => "project_duration_#{forloop.counter}"}
-                      {{ field }}
-                  </span>
-                  {% endif %}
-                {% endfor %}
-
-
-      .col-md-6.col-12.custom-col-padding
-        .bottom-containers
-          .single-container
-            .select-container.do-you-want-design
-              Do you want us to design your product?
-              .switch-field
-                {% for field in form.design_product %}
-                  {% if not forloop.counter|divisibleby:2 %}
-                  <span class="button-pair">
-                    .monthly-budget{:id => "design_product_#{forloop.counter}"}
-                      {{ field }}
-                    {% if forloop.last %}
-                  </span>
-                    {% endif %}
-                  {% else %}
-                    .monthly-budget{:id => "design_product_#{forloop.counter}"}
-                      {{ field }}
-                  </span>
-                  {% endif %}
-                {% endfor %}
-
-            .select-container.how-did-you-find
-              How did you find us?
-              .switch-field
-                {% for field in form.company_info_origin %}
-                  {% if not forloop.counter|divisibleby:2 %}
-                  <span class="button-pair">
-                    .monthly-budget{:id => "company_info_origin_#{forloop.counter}"}
-                      {{ field }}
-                    {% if forloop.last %}
-                  </span>
-                    {% endif %}
-                  {% else %}
-                    .monthly-budget{:id => "company_info_origin_#{forloop.counter}"}
-                      {{ field }}
-                  </span>
-                  {% endif %}
-                {% endfor %}
-
-          .submit-container-bottom
-            .privacy-check-box-bottom
-              .
-                {{form.privacy_policy_accepted}}
-                I have read and accepted our
-                %a{:href => "{% url 'privacy_and_policy' %}"}  Privacy Policy
-              %input.custom-button{:type => "submit", :value => "Estimate Project", :class => "estimate-button", :id => "btnSubmitbottom"}
-
-{% endwith %}
+      .estimate-project-button
+        %input.custom-button{:id=>"estimate-project", :value => "Estimate Project", :type => "submit"}
