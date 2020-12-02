@@ -11,7 +11,6 @@ from django.db.models import PositiveSmallIntegerField
 from django.db.models import QuerySet
 from sorl.thumbnail import ImageField
 
-from company_website.constants import EstimateConstants
 from company_website.constants import PageNames
 
 
@@ -90,26 +89,10 @@ class EstimateProject(models.Model):
 
     creation_date = models.DateField(auto_now_add=True)
 
-    # Fields to fill in by client
     name = models.CharField(max_length=60)
     email = models.EmailField(max_length=60)
-    country = models.CharField(max_length=60, blank=True)
     idea_description = models.TextField(max_length=10000)
-    nda_required = models.BooleanField(blank=True, null=True)
     privacy_policy_accepted = models.BooleanField(default=False)
-
-    # Optional (hidden) section
-    project_development = models.CharField(
-        max_length=15, choices=EstimateConstants.product_choices, blank=True, null=True
-    )
-    monthly_bugdet = models.CharField(max_length=15, choices=EstimateConstants.budget_choices, blank=True, null=True)
-    project_duration = models.CharField(
-        max_length=15, choices=EstimateConstants.project_duration_choices, blank=True, null=True
-    )
-    design_product = models.BooleanField(choices=EstimateConstants.true_false_choices, blank=True, null=True)
-    company_info_origin = models.CharField(
-        max_length=20, choices=EstimateConstants.company_info_origin_choices, blank=True, null=True
-    )
 
 
 class PageSeo(models.Model):
