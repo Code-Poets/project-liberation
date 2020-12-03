@@ -7,4 +7,4 @@
     j.src = 'https://www.googletagmanager.com/gtm.js?id=' + id + dl;
     f.parentNode.insertBefore(j, f);
 })
-(window, document, 'script', 'dataLayer', 'GTM-TCWZK7N');
+(window, document, 'script', 'dataLayer', window.GOOGLE_TAG_MANAGER_ID);
