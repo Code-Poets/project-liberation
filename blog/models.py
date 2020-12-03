@@ -93,6 +93,7 @@ class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
         context_data["paginated_rest_articles"] = self.get_paginated_articles(self.get_rest_articles(), request)
         context_data["paginated_all_articles"] = self.get_paginated_articles(self.get_all_articles(), request)
         context_data["GOOGLE_ADS_CONVERSION_ID"] = settings.GOOGLE_ADS_CONVERSION_ID
+        context_data["GOOGLE_TAG_MANAGER_ID"] = settings.GOOGLE_TAG_MANAGER_ID
         return context_data
 
 
@@ -224,6 +225,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
         context["URL_PREFIX"] = settings.URL_PREFIX
         context["article_body_block_names"] = ArticleBodyBlockNames
         context["GOOGLE_ADS_CONVERSION_ID"] = settings.GOOGLE_ADS_CONVERSION_ID
+        context["GOOGLE_TAG_MANAGER_ID"] = settings.GOOGLE_TAG_MANAGER_ID
         return context
 
     def _increase_view_counter(self) -> None:

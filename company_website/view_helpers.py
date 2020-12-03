@@ -12,6 +12,7 @@ class GoogleAdsMixin(ContextMixin):
     extra_context = {
         "GOOGLE_ADS_CONVERSION_ID": settings.GOOGLE_ADS_CONVERSION_ID,
         "GOOGLE_ADS_CONVERSION_TARGET_ADDRESS": settings.GOOGLE_ADS_CONVERSION_TARGET_ADDRESS,
+        "GOOGLE_TAG_MANAGER_ID": settings.GOOGLE_TAG_MANAGER_ID,
     }
 
 
