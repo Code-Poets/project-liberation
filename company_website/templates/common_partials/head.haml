@@ -3,8 +3,9 @@
 
 :javascript
   window.GOOGLE_ADS_CONVERSION_ID = "{{ GOOGLE_ADS_CONVERSION_ID }}"
+  window.GOOGLE_TAG_MANAGER_ID = "{{ GOOGLE_TAG_MANAGER_ID }}"
 
-%script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id={{ google_ads_conversion_id }}"}
+%script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id={{ GOOGLE_ADS_CONVERSION_ID }}"}
 
 {% javascript 'common_head' %}
 
