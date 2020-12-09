@@ -15,7 +15,7 @@ class EmployeesAdmin(AdminImageMixin, admin.ModelAdmin):
 
 class EstimateAdmin(admin.ModelAdmin):
     model = EstimateProject
-    list_display = ("name", "creation_date", "email", "nda_required", "idea_description")
+    list_display = ("name", "creation_date", "email", "idea_description")
 
 
 class TestimonialAdmin(admin.ModelAdmin):

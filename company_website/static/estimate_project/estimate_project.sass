@@ -1,159 +1,74 @@
 @import "../common/partials/set_initials"
 @import "../main_page/section_separator"
 @import "../common/partials/constants"
+@import "../common/partials/section_header"
 
-$button-font-color: #868686
 $border-color: #d7d7d7
 $grey-background-color: #f8f8f8
 $row-breakpoint: 767px
-$button-breakpoint: 380px
+$xxs-breakpoint: 363px
+$yellow-highlight: #ffc854
 
 $section-description-total-height: 171px
 $section-description-content-height: 131px
 $section-description-text-offset: 12.5px
 
-@import "../common/partials/section_header"
 
-.section-header
-    margin-top: 96px
-    @media only screen and (min-width: $menu-max-size)
-        margin-top: 60px
-
-.section-header
-    .content-wrapper
-        .section-description-contents
-            .section-description-bar
-                top: unset
-                bottom: calc(#{$section-description-content-height} + #{$section-description-text-offset} - #{$section-description-total-height})
-            .section-description-text
-                .title
-                    font-size: 3.1rem
-                .subtext
-                    font-size: 1.3rem
-
-input, textarea
-    &:focus
-        outline: none
+.estimate-project-section-header
+    .section-header
+        margin-top: 96px
+        @media only screen and (min-width: $menu-max-size)
+            margin-top: 60px
+        min-height: unset
+        padding: 20px 0
+        .content-wrapper
+            .section-description-contents
+                display: block
+                min-height: 6rem
+                .section-description-bar
+                    top: unset
+                    bottom: calc(#{$section-description-content-height} + #{$section-description-text-offset} - #{$section-description-total-height})
+                .section-description-text
+                    margin-left: calc(18px + 1.5vw)
+                    .title
+                        font-size: 3.6rem
 
 form
     margin: 102px 0
 
-.container.estimate-container
-    background: $blue-color
-    margin: 0
-    width: 100%
-    max-width: 100%
-
-    .row
-        margin: 0 auto
-        color: $orange-color
-        margin-bottom: 5vw
-        width: 100%
-
-        .section-title
-            text-align: left
-            border-left: solid 20px $orange-color
-            margin-top: 10vh
-
-            .title
-                font-weight: 700
-                font-size: 3vh
-                margin-top: -0.5vw
-                margin-bottom: 1vw
-
-            .estimate-description
-                font-weight: 600
-                font-size: 2vh
-
 .container.estimate-form
     font-size: 18px
     font-weight: 600
-    color: $blue-color
+    color: white
     max-width: 835px
-
-    a
-        text-decoration: underline
-        color: $orange-color
-
-        &:visited
-            color: $orange-color
-
-        &:hover, &:visited:hover
-            color: $orange-hover-color
-
-    .button-pair
-        display: flex
-        justify-content: center
 
     .custom-col-padding
         padding: 0 8.5px
-
-    .select-box
-        position: relative
-        cursor: pointer
-        border: 1px solid $border-color
-        text-align: center
-        margin-left: 12px
-        margin-right: 12px
-        display: inline-block
-        border-radius: 10px
-        height: 33px
-        color: $button-font-color
-        font-weight: 500
-        font-size: 16px
-        line-height: 28px
-
-        label
-            width: 100%
-            z-index: 1
-            cursor: pointer
-            height: 100%
-            margin: auto
-            display: flex
-            justify-content: center
-            align-items: center
-            margin-top: 0
-
-    .custom-button
-        color: white
-        background-color: $blue
-        border-color: $blue
-        font-family: $font-family
-        font-weight: 700
-        font-size: 24px
-        line-height: 2.2
-        vertical-align: middle
-        height: 66px
-        width: 317px
-        max-width: 100%
-        border-radius: .6rem
-        cursor: pointer
-
-        &:hover
-            background-color: $blue-highlight
-            border-color: $blue-highlight
 
     .input-fields-container
         height: auto
 
         .input-field
-            margin: auto
-            margin-bottom: 20px
+            margin-bottom: 30px
             text-align: inherit
             width: 399px
             max-width: 100%
             position: relative
-            height: 33px
+            height: 42px
             overflow: hidden
             border: 1px solid $border-color
             border-radius: 10px
 
-            #id_name, #id_email, #id_country
+            @media only screen and (max-width: $row-breakpoint)
+                margin-left: auto
+                margin-right: auto
+
+            #id_name, #id_email
                 border: 0
                 position: absolute
                 width: 100%
                 height: 100%
-                font-weight: 100
+                font-weight: 200
                 font-size: 14px
                 padding-left: 18px
                 padding-right: 110px
@@ -166,7 +81,7 @@ form
 
                 .estimate-triangle-left-label
                     width: 88px
-                    background-color: $orange-color
+                    background-color: $blue-color
                     text-align: center
                     vertical-align: middle
                     height: inherit
@@ -174,240 +89,142 @@ form
                     display: flex
                     justify-content: center
                     align-items: center
-                    font-size: 15px
+                    font-size: 16px
 
                     &::after
                         content: ""
                         transform: rotate(90deg)
-                        height: 0px
-                        border-top: 26px solid #FFC03C
-                        border-right: 26px solid transparent
-                        border-left: 26px solid transparent
+                        height: 0
+                        border-top: 26px solid $blue-color
+                        border-right: 40px solid transparent
+                        border-left: 40px solid transparent
                         position: absolute
-                        left: -28px
+                        left: -42px
 
-    .nda
-        height: auto
-        margin-bottom: 50px
-        color: $dark-grey
-        text-align: center
-
-        .switch-field
-            margin-top: 12px
-            color: $medium-grey
-            font-weight: 500
-            font-size: 15px
-            display: flex
-            justify-content: center
-
-            .select-box
-                width: 92px
-
-                #id_nda_required_0, #id_nda_required_1[type="radio"]
-                    display: none
-                    position: absolute
-                    width: 100%
-                    height: 100%
-                    background-color: red
-                    z-index: -1
-
-
-    .hide-add-questions
-        alignment: center
-        text-align: center
-        width: 100%
-        display: none
-
-
-        .hide-button
-            @extend .select-box
-            width: 168px
-
-    .additional-questions
-        color: $dark-grey
-        height: auto
-        text-align: center
-
-        .label
-            margin-bottom: 14px
-
-        .add-button
-            @extend .select-box
-            width: 217px
-
-    .text-input
+    .describe-idea-box-input
         width: 396px
         max-width: 100%
         border-radius: 10px
         border: 1px solid $border-color
-        height: 231px
+        height: 168px
         overflow: hidden
         margin: auto
 
         .top-label
-            background-color: $orange-color
-            height: 32px
+            background-color: $blue-color
+            height: 40px
             width: 100%
             text-align: center
             display: flex
             justify-content: center
             align-items: center
-            font-size: 15px
+            font-size: 16px
 
-
-        .contener
-            height: 197px
+        .describe-idea
+            height: 132px
             position: relative
             background-color: $grey-background-color
 
-            .area
-                width: 100%
-                height: 100%
-                object-fit: contain
-                background: none
-                z-index: 2
-
             .feather-background
                 position: absolute
-                top: calc(50% - 75px)
-                left: calc(50% - 149px)
+                top: calc(50% - 60px)
+                left: calc(50% - 120px)
                 display: block
-                width: 298px
-                height: 150px
+                width: 248px
+                height: 120px
                 pointer-events: none
 
         #id_idea_description
             height: inherit
             border: 0
-            color: $dark-grey
             position: relative
             width: 100%
             resize: none
-            font-weight: 100
+            font-weight: 200
             font-size: 14px
             padding: 7px 18px
             background: transparent
 
-    .submit-container
-        text-align: center
-        width: 100%
-        height: auto
-        background: white
+    input[type=checkbox]
+        -webkit-appearance: none
+        -moz-appearance: none
+        appearance: none
+        cursor: pointer
+        width: 16px
+        height: 16px
+        border: 1px solid $border-color
+        border-radius: 3px
+        background-color: $grey-background-color
 
-        .privacy-check-box
-            margin-top: 17px
-            font-weight: 500
-            font-size: 16px
-            color: $medium-grey
+    input[type=checkbox]:checked
+        background-color: $blue-color
 
-    .bottom-containers
-        display: none
-        height: auto
+    .privacy-policy-form
+        color: $dark-grey
+        font-weight: 500
+        font-size: 16px
+        margin-top: -20px
 
-        .single-container
-            height: inherit
-            margin-top: inherit
+        .privacy-policy-link
+            color: $blue-color
+            text-decoration: none
 
-            .select-container
-                font-weight: 600
-                color: #36393d
-                text-align: center
-                height: auto
-                margin-top: 25px
+            &:hover
+                color: $orange-hover-color
 
-                .switch-field
-                    .select-box
-                        width: 221px
-                        margin: 10px 5px 0px
-                        height: 33px
+        @media only screen and (max-width: $row-breakpoint)
+            margin-bottom: 16px
+            margin-top: 30px
 
-                        #id_project_development_0, #id_project_development_1[type="radio"]
-                            position: absolute
-                            width: 100%
-                            height: 100%
-                            left: 400px
-                            z-index: -1
-                            display: none
+    .estimate-project-button
+        margin: auto
 
-                    .monthly-budget
-                        @extend .select-box
-
-                        label
-                            #id_monthly_bugdet_0, #id_monthly_bugdet_1, #id_monthly_bugdet_2, #id_monthly_bugdet_3,
-                            #id_project_duration_0, #id_project_duration_1, #id_project_duration_2, #id_company_info_origin_0, #id_company_info_origin_1,
-                            #id_company_info_origin_2, #id_company_info_origin_3, #id_company_info_origin_4,
-                            #id_company_info_origin_5, #id_design_product_0, #id_design_product_1[type="radio"]
-                                position: absolute
-                                width: 100%
-                                height: 100%
-                                left: 400px
-                                z-index: -1
-                                display: none
-
-            .what-is-budget
-                .switch-field
-                    .monthly-budget
-                        width: 171px
-
-            .how-much-time
-                .switch-field
-                    .monthly-budget
-                        width: 171px
-
-            .do-you-want-design
-                .switch-field
-                    .monthly-budget
-                        width: 91px
-
-            .how-did-you-find
-                .switch-field
-                    .monthly-budget
-                        width: 138px
-
-    @media only screen and (max-width: $button-breakpoint)
-        .select-box
-            font-size: 13px
-
-    .submit-container-bottom
-        text-align: center
-        width: 100%
-        height: auto
-        background: white
-
-        .privacy-check-box-bottom
-            margin-top: 31px
-            font-weight: 500
-            font-size: 16px
-            color: $medium-grey
-
-    .estimate-button
+    .custom-button
+        color: $blue-color
+        background-color: $orange-color
         border: none
-        margin-top: 17px
+        font-family: $font-family
+        font-weight: 700
+        font-size: 24px
+        line-height: 2.2
+        vertical-align: middle
+        height: 66px
+        width: 317px
+        max-width: 100%
+        border-radius: .6rem
+        cursor: pointer
+        margin-top: 70px
 
-    .estimate-button:disabled,
-    .estimate-button.disabled
-        border-color:  $light-grey
-        background-color:  $light-grey
-        cursor: no-drop
+        &:hover
+            background-color: $yellow-highlight
+            border-color: $yellow-highlight
+            color: $blue-highlight
 
-.mobile-display
-    display: none
+        @media only screen and (max-width: $row-breakpoint)
+            height: 66px
+            width: 288px
+            margin-top: 30px
+
+        @media only screen and (max-width: $xxs-breakpoint)
+            height: 66px
+            width: 256px
+            margin-top: 30px
 
 @media only screen and (max-width: $row-breakpoint)
     .mobile-display
-        display: block
+        display: flex
+        flex-flow: column
 
-    .desktop-display
-        display: none
-
-    .container.estimate-form
-        .text-input
-            margin-bottom: 35px
-
-@media only screen and (max-width: $button-breakpoint)
     form
         margin: 51px 0
 
-    .container.estimate-form
-        .select-box
-            font-size: 13px
+input:invalid, textarea:invalid, input:-moz-ui-invalid, textarea:-moz-ui-invalid
+    border: 0
+    outline: none
+    box-shadow: none
+    -moz-box-shadow: none
+    -webkit-box-shadow: none
+
+input, textarea
+    &:focus
+        outline: none

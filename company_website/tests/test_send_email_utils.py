@@ -43,15 +43,8 @@ class SendEmailTestCase(TestCase):
         self.template_context = {
             "name": "John Doe",
             "email": "email@address.com",
-            "country": "France",
             "idea_description": "Some description",
-            "nda_required": "Yes",
             "privacy_policy_accepted": True,
-            "project_development": "Build something new",
-            "company_info_origin": "",
-            "monthly_bugdet": "",
-            "project_duration": "",
-            "design_product": "",
         }
 
         self.expected_mail_body = (
@@ -59,10 +52,7 @@ class SendEmailTestCase(TestCase):
             "Form data:\n\n"
             "Name: John Doe\n\n"
             "Email address: email@address.com\n\n"
-            "Country: France\n\n"
-            "Idea description: Some description\n\n"
-            "Is NDA required: Yes\n\n"
-            "You want to Build something new"
+            "Idea description: Some description"
         )
 
     def test_that_create_messages_to_mail_method_create_proper_email_messages(self):

@@ -4,28 +4,6 @@
     <p>Form data:</p>
     <p>Name: {{ name }}</p>
     <p>Email address: {{ email }}</p>
-    <p>Country: {{ country }}</p>
     <p>Idea description: {{ idea_description }}</p>
-    <p>Is NDA required: {{ nda_required }}</p>
-
-    {% if project_development != "" %}
-        <p>You want to {{ project_development }}</p>
-    {% endif %}
-
-    {% if monthly_bugdet != "" %}
-        <p>What is your monthly budget? {{ monthly_bugdet }}</p>
-    {% endif %}
-
-    {% if project_duration != "" %}
-        <p>How much time do you have? {{ project_duration }}</p>
-    {% endif %}
-
-    {% if design_product != "" %}
-        <p>Do you want us to design your product? {{ design_product }}</p>
-    {% endif %}
-
-    {% if company_info_origin != "" %}
-        <p>How did you find us?: {{ company_info_origin }}</p>
-    {% endif %}
 
 {% endautoescape %}
