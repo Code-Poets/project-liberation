@@ -8,11 +8,8 @@ authors = ["Karol Beker <karol.beker@codepoets.it>"]
 python = "3.7.*"
 django = "<3"
 wagtail-markdown = {git = "https://github.com/kbeker/wagtail-markdown.git"}
-psycopg2 = "2.7.5"
-psycopg2-binary = "2.7.7"
 django-pipeline = "*"
 django-hamlpy = "*"
-sorl-thumbnail = "*"
 pillow = "*"
 raven = "*"
 wagtail = "*"
@@ -20,6 +17,8 @@ django-google-analytics-app = "*"
 django-robots = "*"
 wagtail-factories = "^2.0.0"
 html2text = "^2020.1.16"
+psycopg2-binary = "^2.8.6"
+sorl-thumbnail = "^12.7.0"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
