@@ -73,6 +73,7 @@ class EstimateProjectView(FormView, GoogleAdsMixin):
     def get_context_data(self, *, _object_list: Any = None, **kwargs: Any) -> dict:
         context_data = super().get_context_data(**kwargs)
         context_data["URL_PREFIX"] = settings.URL_PREFIX
+        context_data = add_meta_tags_to_page_context(page_name=self.page_name, context_data=context_data)
         return context_data
 
     def form_valid(self, form: ProjectToEstimateForm) -> bool:
