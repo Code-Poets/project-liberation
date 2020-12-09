@@ -25,6 +25,7 @@ from wagtail.core.blocks import PageChooserBlock
 from wagtail.core.blocks import RichTextBlock
 from wagtail.core.blocks import StreamBlock
 from wagtail.core.blocks import StreamValue
+from wagtail.core.blocks import StructBlock
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.core.query import PageQuerySet
@@ -64,6 +65,16 @@ class MixinPageMethods:
         except EmptyPage:
             paginated_articles = paginator.page(paginator.num_pages)
         return paginated_articles
+
+
+class CaptionedImageBlock(StructBlock):
+    image = ImageChooserBlock()
+    caption = CharBlock(max_length=128, required=False)
+
+    class Meta:
+        template = "blog/blocks/captioned_image.haml"
+        form_classname = "captionedimage"
+        icon = "image"
 
 
 class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
@@ -106,7 +117,7 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
             (ArticleBodyBlockNames.HEADER.value, CharBlock()),
             (ArticleBodyBlockNames.PARAGRAPH.value, RichTextBlock(features=RICH_TEXT_BLOCK_FEATURES)),
             (ArticleBodyBlockNames.TABLE.value, TableBlock()),
-            (ArticleBodyBlockNames.IMAGE.value, ImageChooserBlock()),
+            (ArticleBodyBlockNames.IMAGE.value, CaptionedImageBlock()),
         ],
     )
 

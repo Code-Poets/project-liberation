@@ -12,6 +12,14 @@ $author-image-size: 70px
 $width-to-change-details: 500px
 $article-elements-default-margin: 35px
 
+@mixin main-page-section-before
+    color: $light-grey
+    font-size: 17px
+    font-style: italic
+    text-align: center
+    margin-top: 20px
+    margin-bottom: $article-elements-default-margin
+
 
 .post-container
     @media only screen and (max-width: $menu-max-size)
@@ -50,7 +58,8 @@ $article-elements-default-margin: 35px
         margin-bottom: $article-elements-default-margin
 
         caption
-            text-align: center
+            @include main-page-section-before
+
 
         th
             padding: 10px
@@ -63,10 +72,16 @@ $article-elements-default-margin: 35px
             padding: 10px
 
 
-    img
+    figure
         width: 100%
-        height: auto
         margin-bottom: $article-elements-default-margin
+
+        img
+            width: 100%
+            height: auto
+
+        figcaption
+            @include main-page-section-before
 
     .table-of-contents
         padding-top: 10px
