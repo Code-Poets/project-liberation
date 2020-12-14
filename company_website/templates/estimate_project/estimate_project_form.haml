@@ -13,18 +13,18 @@
             {{form.name}}
             .label-container
               .estimate-triangle-left-label
-                Name *
+                Name
 
           .input-field
             {{form.email}}
             .label-container
               .estimate-triangle-left-label
-                E-mail *
+                E-mail
 
       .col-md-6.col-12.custom-col-padding
         .describe-idea-box-input
           .top-label
-            Describe your idea *
+            Describe your idea
           .describe-idea
             {{form.idea_description}}
             %img.feather-background.lazyload{:src => "{% static 'estimate_project/images/feather_horizontal_299x150.png' %}", :alt => "Feather", :title => "Feather"}
@@ -38,4 +38,4 @@
 
     .row
       .estimate-project-button
-        %input.custom-button{:id=>"estimate-project", :value => "Estimate Project", :type => "submit"}
+        %input.custom-button{:id=>"estimate-project", :value => "Get a free estimation", :type => "submit"}
