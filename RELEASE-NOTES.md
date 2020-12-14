@@ -1,3 +1,19 @@
+### v1.22.0
+
+##### Features
+- Feature redesign projects section ([#246](https://github.com/Code-Poets/project-liberation/pull/246))
+- Feature add playbook to the website ([#289](https://github.com/Code-Poets/project-liberation/pull/289))
+- Feature redesign estimate project form ([#297](https://github.com/Code-Poets/project-liberation/pull/297))
+- Feature add 2 additional email addresses ([#298](https://github.com/Code-Poets/project-liberation/pull/298))
+- Feature add image captions ([#285](https://github.com/Code-Poets/project-liberation/pull/285))
+
+##### Bugfixes
+- Bugfix clutch logos on mobile ([#293](https://github.com/Code-Poets/project-liberation/pull/293))
+- Bugfix mistake in word in team section ([#294](https://github.com/Code-Poets/project-liberation/pull/294))
+- Bugfix google ads and tag manager setup ([#296](https://github.com/Code-Poets/project-liberation/pull/296))
+- Bugfix linkedin share ([#299](https://github.com/Code-Poets/project-liberation/pull/299))
+
+
 ### v1.21.1
 
 ##### Bugfixes
