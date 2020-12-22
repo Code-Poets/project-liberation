@@ -24,7 +24,9 @@
                         .popular-article
                             %a.title{:href => "{% url 'wagtail_serve' article.specific.slug %}"} {{ article.specific.title }}
                             .author by
-                                %strong {{ article.specific.author.full_name }}
+                                %span.author-name{:onClick => 'showBio(this, "{{ article.specific.author.bio }}")'}
+                                    {{ article.specific.author.full_name }}
+                                    {% include 'blog/partials/author_bio.haml' with author=article.specific.author.full_name bio=article.specific.author.bio  author_image=article.specific.author.front_image %}
                             .rest-information.row
                                 .time-and-date.row
                                     .article-read-time {{ article.specific.read_time }} min read

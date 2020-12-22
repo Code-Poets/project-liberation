@@ -18,8 +18,9 @@
                     {% endthumbnail %}
                     .auto-name
                         .container-section
-                            .author-name
+                            .author-name{:onClick => 'showBio(this, "{{ blog_article.specific.author.bio }}")'}
                                 {{ blog_article.specific.author.full_name }}
+                                {% include 'blog/partials/author_bio.haml' with author=blog_article.specific.author.full_name bio=blog_article.specific.author.bio  author_image=blog_article.specific.author.front_image %}
                     .read-time
                         {{ blog_article.specific.read_time }} min read
                     .date

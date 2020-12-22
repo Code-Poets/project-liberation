@@ -22,7 +22,9 @@
                     %img.lazyload.author-image{:data-src => "{{ image.url }}", :alt => "{{ page.specific.author.full_name }}", :title => "{{ page.specific.author.full_name }}"}
                 {% endthumbnail %}
                 .author-details
-                    .author-name {{ page.specific.author.full_name }}
+                    .author-name{:onClick => 'showBio(this, "{{ page.specific.author.bio }}")'}
+                        {{ page.specific.author.full_name }}
+                        {% include 'blog/partials/author_bio.haml' with author=page.specific.author.full_name bio=page.specific.author.bio  author_image=page.specific.author.front_image %}
                     .rest-information-row
                         .author-position {{ page.specific.author.position }}
                         .rest-details.more-details-desktop-look

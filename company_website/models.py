@@ -34,6 +34,7 @@ class Employees(models.Model):
     boss = BooleanField(default=False)
     order = PositiveSmallIntegerField(unique=True, blank=True)
     is_working = BooleanField(default=True)
+    bio = CharField(max_length=300, blank=True)
 
     def __str__(self) -> str:
         return self.full_name
