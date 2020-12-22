@@ -1,0 +1,15 @@
+{% load thumbnail %}
+
+.bio-modal
+    .bio-content
+        %span.close &times
+        .bio-author
+            .bio-img
+                {% thumbnail author_image "400x400" as image %}
+                    %img.bio-img.lazyload{:data-src => "{{ image.url }}", :alt => "{{ author }}"}
+                {% endthumbnail %}
+            .bio-name
+                {{ author }}
+        .bio-text
+            .text
+                {{ bio|urlize }}
