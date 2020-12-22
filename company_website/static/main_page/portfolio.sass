@@ -109,7 +109,12 @@ $project-box-mobile-max-height: 200px
                     font-size: 1.7em
 
 .project-merck-box
-    background-color: #513290
+    .merck-background
+        position: absolute
+        width: 100%
+        height: 100%
+        border-radius: inherit
+        z-index: -1
 
     .merck-left-background
         position: absolute
@@ -120,26 +125,23 @@ $project-box-mobile-max-height: 200px
         border-top-left-radius: inherit
         border-bottom-left-radius: inherit
 
-    .merck-bottom-background
+    .merck-right-background
         position: absolute
-        width: 40%
-        max-width: 280px
-        bottom: -1%
-        right: 5%
+        bottom: 0
+        height: 70%
+        right: 0
         object-fit: contain
         object-position: center
-
-        @media only screen and (max-width: $md-screen-size)
-            width: 55%
-            right: 12%
 
     .merck-background-mobile
         display: none
 
     .project-merck-box-desc
+        margin-right: -25%
+
         .logo-merck
             margin-top: 7%
-            margin-bottom: 5%
+            margin-bottom: 0
             width: 12.5vw
             min-width: 180px
             position: relative
@@ -159,6 +161,16 @@ $project-box-mobile-max-height: 200px
                 left: 0
                 display: block
 
+        .logo-synthia
+            margin-right: -13vw
+            width: 8vw
+            position: relative
+            display: inline-block
+
+        .description
+            width: 70%
+            margin-left: 12.5%
+
     @media only screen and (max-width: 1199px)
         background-size: 55%, 40%
 
@@ -167,29 +179,28 @@ $project-box-mobile-max-height: 200px
             .project-merck-box-desc
                 .logo-merck
                     margin-top: 2%
-                    margin-bottom: 3.5%
-                    width: 16.5vw
+                    width: 21vw
 
 .project-golem-box
-    background-color: #181ea9
-
     .golem-background
         position: absolute
-        width: auto
+        width: 100%
         height: 100%
-        object-position: left
-        border-top-left-radius: inherit
-        border-bottom-left-radius: inherit
-        z-index: 0
+        z-index: -1
+        border-radius: inherit
 
-    .golem-background-mobile
-        display: none
+    .golem-background-element
+        position: absolute
+        width: 40%
+        top: 0
+        right: -5%
+        object-fit: contain
 
     .project-golem-box-desc
 
         .logo-golem
             margin-bottom: 5%
-            width: 12.5vw
+            width: 15vw
             min-width: 180px
             position: relative
             display: inline-block
@@ -219,14 +230,13 @@ $project-box-mobile-max-height: 200px
         border-radius: inherit
 
     .project-polish-lody-box-desc
-
         .logo-polish-lody
-            width: 6.7vw
+            width: 11vw
             margin-bottom: 2%
+            margin-top: -5%
             min-width: 100px
 
 .project-ethereum-foundation-box
-    background: linear-gradient(0deg, rgba(0,50,87,1) 0%, rgba(0,121,191,1) 49%, rgba(102,227,255,1) 100%)
 
     .ethereum-foundation-background
         position: absolute
@@ -235,52 +245,90 @@ $project-box-mobile-max-height: 200px
         border-radius: inherit
         z-index: -1
 
+    .ethereum-foundation-left-background
+        position: absolute
+        height: 50%
+        object-fit: contain
+        object-position: left
+        margin-top: 30px
+        border-top-left-radius: inherit
+        border-bottom-left-radius: inherit
+
+    .ethereum-foundation-right-background
+        position: absolute
+        bottom: -1%
+        height: 41%
+        right: 0
+        object-fit: contain
+        object-position: center
+
     .project-ethereum-foundation-box-desc
-
         .logo-ethereum-foundation
-            width: 14vw
+            width: 18vw
             min-width: 100px
-            margin-bottom: 3%
+            margin-bottom: 2%
 
+        .description
+            color: black
+            width: 80%
+            margin: auto
+
+            @media only screen and (max-width: $md-screen-size)
+                width: 100%
 
 .project-altenberg-box
-    background-image: $portfolio-altenberg-gradient-color
 
     .altenberg-background
-        opacity: 0.6
         position: absolute
         height: 100%
         width: 100%
         border-radius: inherit
 
     .project-altenberg-box-desc
-
         .logo-altenberg
-            width: 7.8vw
+            width: 12vw
             min-width: 110px
             margin-bottom: 0
+            margin-top: -0.8vw
 
 .project-centi-box
-    background: linear-gradient(0deg, rgba(81,138,162,1) 0%, rgba(56,191,176,1) 49%, rgba(89,223,211,1) 100%)
+    .centi-background
+        position: absolute
+        width: 100%
+        height: 100%
+        border-radius: inherit
+        z-index: -1
 
     .project-centi-box-desc
         padding-top: 1.8vw
 
         .logo-centi
-            width: 8vw
-            min-width: 110px
-            margin-bottom: 2%
+            width: 10vw
+            margin-bottom: 6vw
+
+        .description
+            color: black
 
 .project-l7-box
-    background: rgba(39,3,91)
+    .l7-background
+        position: absolute
+        width: 100%
+        height: 100%
+        z-index: -1
+        border-radius: inherit
+
+    .l7-molecule-background
+        position: absolute
+        width: 40%
+        bottom: 0
+        right: 0
+        object-fit: contain
 
     .project-l7-box-desc
         .logo-l7
-            max-width: 300px
-            width: 25vw
-            min-width: 250px
+            width: 20vw
             margin-bottom: 4%
-            margin-top: 2%
+            margin-top: 5%
 
 .project-highlight
     position: fixed
@@ -312,6 +360,7 @@ $project-box-mobile-max-height: 200px
 
     .project-box
         margin: auto
+        opacity: 1
 
         .blur-background
             filter: blur(0px)
@@ -331,6 +380,7 @@ $project-box-mobile-max-height: 200px
         width: 50%
         min-height: 15vw
         height: auto
+        opacity: 1
 
         .blur-background
             filter: blur(5px)
@@ -382,6 +432,8 @@ $project-box-mobile-max-height: 200px
     .project-merck-box
         .merck-left-background
             display: none
+        .merck-right-background
+            display: none
 
         .merck-background-mobile
             display: initial
@@ -392,62 +444,72 @@ $project-box-mobile-max-height: 200px
             border-radius: inherit
 
         .project-merck-box-desc
-
+            margin-right: 0
             .logo-merck
                 width: 44vw
                 max-width: 220px
-                margin-top: 14%
-                margin-bottom: 2vw
+                margin-top: 11%
+
+            .logo-synthia
+                width: 20vw
+                max-width: 90px
+                margin-right: -5%
+
+            .description
+                width: 100%
+                margin-left: 0
 
     .project-golem-box
-        .golem-background
-            display: none
-
-        .golem-background-mobile
-            display: initial
-            position: absolute
-            margin: 5% auto
-            width: 100%
-            z-index: 0
-
         .project-golem-box-desc
-
             .logo-golem
                 margin: 2vw 0
                 max-width: 280px
-                width: 50vw
+                width: 45vw
+                margin-top: 5%
 
     .project-ethereum-foundation-box
         .project-ethereum-foundation-box-desc
-
             .logo-ethereum-foundation
-                margin-top: 5%
-                margin-bottom: 2%
-                width: 50vw
+                margin-top: 8%
+                width: 60vw
                 max-width: 200px
 
     .project-altenberg-box
         .project-altenberg-box-desc
-
             .logo-altenberg
-                width: 26vw
+                width: 20vw
+                margin-top: 5%
                 max-width: 180px
 
     .project-polish-lody-box
         .project-polish-lody-box-desc
-
             .logo-polish-lody
-                width: 22vw
+                width: 25vw
                 max-width: 156px
+                margin-top: 4%
                 min-width: 84px
 
     .project-centi-box
         .project-centi-box-desc
+            .description
+                color: black
 
             .logo-centi
                 width: 20vw
                 min-width: 80px
                 max-width: 138px
+                margin-top: 6vw
+
+    .project-l7-box
+        .l7-molecule-background
+            display: none
+
+        .project-l7-box-desc
+            .logo-l7
+                width: 70vw
+                max-width: 320px
+                margin-top: 8%
+                margin-right: 0
 
     .project-highlight
         width: 100%
@@ -465,7 +527,6 @@ $project-box-mobile-max-height: 200px
             max-width: none
             max-height: none
             opacity: 1
-
 
             .project-box-desc
                 padding-top: 8vw
