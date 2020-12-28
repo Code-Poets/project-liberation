@@ -14,7 +14,7 @@
             .row.info-section
                 .info-section
                     {% thumbnail blog_article.specific.author.front_image "400x400" as image %}
-                        %img.main-img.lazyload{:data-src => "{{ image.url }}", :alt => "{{ blog_article.specific.author.full_name }}", :title => "{{ blog_article.specific.author.full_name }}"}
+                        %img.main-img.lazyload{:data-src => "{{ image.url }}", :alt => "{{ blog_article.specific.author.full_name }}"}
                     {% endthumbnail %}
                     .auto-name
                         .container-section
