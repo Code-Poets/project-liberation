@@ -1,3 +1,9 @@
+### v1.23.1
+
+##### Bugfixes
+- Bugfix author bio not display ([#308](https://github.com/Code-Poets/project-liberation/pull/308))
+
+
 ### v1.23.0
 
 ##### Features

@@ -1,6 +1,6 @@
 const colorOfAuthorName = "#03428c"
 
-function showBio(element, authorBio){
+window.showBio = function(element, authorBio){
     if (authorBio !== "") {
         var currentBioToDisplay = element.children[0];
         currentBioToDisplay.style.display = "block";
