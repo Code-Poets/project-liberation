@@ -48,11 +48,10 @@ class SendEmailTestCase(TestCase):
         }
 
         self.expected_mail_body = (
-            "Project Liberation - New estimate project form has been filled in.\n\n"
-            "Form data:\n\n"
+            "New estimate project form has been filled in.\n\n"
             "Name: John Doe\n\n"
-            "Email address: email@address.com\n\n"
-            "Idea description: Some description"
+            "Email: email@address.com\n\n"
+            "Idea: Some description"
         )
 
     def test_that_create_messages_to_mail_method_create_proper_email_messages(self):
@@ -74,12 +73,14 @@ class SendEmailTestCase(TestCase):
 
         self.assertEqual(returned_value, expected_plain_text_message)
 
-    @mock.patch("company_website.send_emails_utils.send_mail")
+    @mock.patch("company_website.send_emails_utils.EmailMessage")
     def test_that_send_email_to_management_pass_proper_parameters_to_send_email_method(self, mocked_send_mail):
         send_mail_to_management(self.template_context, ESTIMATE_PROJECT_EMAIL_SUBJECT, self.template)
 
-        email_subject = mocked_send_mail.call_args[1]["subject"]
-        passed_message = mocked_send_mail.call_args[1]["message"]
+        arguments_of_called_method = mocked_send_mail.call_args_list[0][1]
+
+        email_subject = arguments_of_called_method["subject"]
+        passed_message = arguments_of_called_method["body"]
 
         self.assertEqual(email_subject, ESTIMATE_PROJECT_EMAIL_SUBJECT)
         self.assertEqual(passed_message, self.expected_mail_body)
