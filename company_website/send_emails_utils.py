@@ -2,7 +2,7 @@ from typing import List
 from typing import Tuple
 
 from django.conf import settings
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from html2text import HTML2Text
 
@@ -10,16 +10,17 @@ from company_website.models import EstimateProjectEmailRecipients
 
 
 def send_mail_to_management(email_data: dict, email_subject: str, template: str) -> None:
-    (html_message, plain_text_message) = _create_messages_to_mail(template, email_data)
+    plain_text_message = _create_messages_to_mail(template, email_data)[1]
     recipient_list = _get_estimate_project_email_recipients()
+    reply_to_email = email_data["email"]
 
-    send_mail(
+    EmailMessage(
         subject=email_subject,
-        message=plain_text_message,
+        body=plain_text_message,
         from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=recipient_list,
-        html_message=html_message,
-    )
+        to=recipient_list,
+        reply_to=[reply_to_email],
+    ).send()
 
 
 def _create_messages_to_mail(template: str, context: dict) -> Tuple[str, str]:
