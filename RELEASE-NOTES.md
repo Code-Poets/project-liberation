@@ -1,3 +1,15 @@
+### v1.23.0
+
+##### Features
+- Feature replace projects graphics ([#302](https://github.com/Code-Poets/project-liberation/pull/302))
+- Feature add bios for blog authors ([#303](https://github.com/Code-Poets/project-liberation/pull/303))
+- Feature remove title property of images ([#306](https://github.com/Code-Poets/project-liberation/pull/306))
+
+##### Bugfixes
+- Bugfix footer at bottom on estimate project page ([#304](https://github.com/Code-Poets/project-liberation/pull/304))
+- Bugfix unify section headers on safari ([#305](https://github.com/Code-Poets/project-liberation/pull/305))
+
+
 ### v1.22.0
 
 ##### Features
