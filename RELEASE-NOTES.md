@@ -1,3 +1,12 @@
+### v1.24.0
+
+##### Features
+- Feature update email notifications ([#310](https://github.com/Code-Poets/project-liberation/pull/310))
+
+##### Bugfixes
+- Bugfix photo in author bio ([#309](https://github.com/Code-Poets/project-liberation/pull/309))
+
+
 ### v1.23.1
 
 ##### Bugfixes
