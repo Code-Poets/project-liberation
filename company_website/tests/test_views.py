@@ -47,7 +47,7 @@ class EstimateProjectViewTests(TestCase):
             "template": ESTIMATE_PROJECT_EMAIL_TEMPLATE_NAME,
         }
 
-    @mock.patch("company_website.send_emails_utils.send_mail")
+    @mock.patch("company_website.send_emails_utils.EmailMessage")
     def test_that_estimate_project_view_should_redirect_to_thank_you_view(self, _):
         response = self.client.post(path=reverse("estimate_project"), data=self.form_data, follow=True)
         self.assertRedirects(response, reverse("thank_you"))
