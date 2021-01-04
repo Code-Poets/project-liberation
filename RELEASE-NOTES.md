@@ -5,6 +5,7 @@
 
 ##### Bugfixes
 - Bugfix photo in author bio ([#309](https://github.com/Code-Poets/project-liberation/pull/309))
+- Bugfix description of synthia project in portfolio([#312](https://github.com/Code-Poets/project-liberation/pull/312))
 
 
 ### v1.23.1
