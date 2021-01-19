@@ -1,25 +1,33 @@
 {% load static %}
+{% load variable_tag %}
+
+{% if request.user_agent.browser.family|is_webp_supported %}
+    {% define_variable ".webp" as extension %}
+{% else %}
+    {% define_variable ".png" as extension %}
+{% endif %}
+
 .industry-focus-container
     {% include "common_partials/section_header.haml" with title="Industry focus" subtext="" %}
     .container
         .row
             .col-md-6.col-lg-3.col-12{:data-aos => "fade-up"}
                 .industry-icon
-                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/blockchain.png' %}",  :alt => "Blockchain"}
+                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/blockchain'|add:extension %}",  :alt => "Blockchain"}
                 %p.industry-name
                     Blockchain
             .col-md-6.col-lg-3.col-12{:data-aos => "fade-up"}
                 .industry-icon
-                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/cheminformatics_n_drug_discovery.png' %}",  :alt => "Cheminformatics"}
+                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/cheminformatics_n_drug_discovery'|add:extension %}",  :alt => "Cheminformatics"}
                 %p.industry-name
                     Cheminformatics
             .col-md-6.col-lg-3.col-12{:data-aos => "fade-up"}
                 .industry-icon
-                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/biotechnology_n_bioinformatics.png' %}",  :alt => "Bioinformatics"}
+                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/biotechnology_n_bioinformatics'|add:extension %}",  :alt => "Bioinformatics"}
                 %p.industry-name
                     Bioinformatics
             .col-md-6.col-lg-3.col-12{:data-aos => "fade-up"}
                 .industry-icon
-                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/healthcare_n_cosmetics.png' %}",  :alt => "Healthcare"}
+                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/healthcare_n_cosmetics'|add:extension %}",  :alt => "Healthcare"}
                 %p.industry-name
                     Healthcare

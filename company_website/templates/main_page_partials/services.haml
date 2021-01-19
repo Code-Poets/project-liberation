@@ -1,7 +1,15 @@
 {% load static %}
+{% load variable_tag %}
+
+{% if request.user_agent.browser.family|is_webp_supported %}
+    {% define_variable ".webp" as extension %}
+{% else %}
+    {% define_variable ".png" as extension %}
+{% endif %}
+
 .services-container{:id => 'services'}
     {% include "common_partials/section_header.haml" with title="Services" subtext="" %}
-    %image.section-feather.lazyload{:data-src => "{% static 'main_page/images/background/feather_yellow_254x752.png' %}", :alt => "Yellow Feather"}
+    %image.section-feather.lazyload{:data-src => "{% static 'main_page/images/background/feather_yellow_254x752'|add:extension %}", :alt => "Yellow Feather"}
     .container
         .row.services-row
             .col-md-6.box{:data-aos => "fade-up"}
@@ -11,7 +19,7 @@
                             %p.text-header.custom-software-header.mobile-devices Custom Software Development
                             .service-box
                                 .service-box-img
-                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/custom_software_development.png' %}",  :alt => "Custom Software Development"}
+                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/custom_software_development'|add:extension %}",  :alt => "Custom Software Development"}
                         .col-sm-10.offset-sm-1.col-md-12.offset-md-0
                             .services-description
                                 %p.text-header.custom-software-header.full-screen Custom Software Development
@@ -23,7 +31,7 @@
                             %p.text-header.webapp-development-header.mobile-devices Web Application Development
                             .service-box
                                 .service-box-img
-                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/web_application_development.png' %}", :alt => "Web Application Development"}
+                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/web_application_development'|add:extension %}", :alt => "Web Application Development"}
                         .col-sm-10.offset-sm-1.col-md-12.offset-md-0
                             .services-description
                                 %p.text-header.webapp-development-header.full-screen Web Application Development
@@ -36,7 +44,7 @@
                             %p.text-header.rapid-mvp-header.mobile-devices Rapid MVP Development
                             .service-box
                                 .service-box-img
-                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/rapid_mvp_development.png' %}",  :alt => "Rapid MVP Development"}
+                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/rapid_mvp_development'|add:extension %}",  :alt => "Rapid MVP Development"}
                         .col-sm-10.offset-sm-1.col-md-12.offset-md-0
                             .services-description
                                 %p.text-header.rapid-mvp-header.full-screen Rapid MVP Development
@@ -48,7 +56,7 @@
                             %p.text-header.team-extension-header.mobile-devices Team extension
                             .service-box
                                 .service-box-img
-                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/project_outsorcing_n_team_extension.png' %}",  :alt => "Project Outsourcing & Team Extension"}
+                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/project_outsorcing_n_team_extension'|add:extension %}",  :alt => "Project Outsourcing & Team Extension"}
                         .col-sm-10.offset-sm-1.col-md-12.offset-md-0
                             .services-description
                                 %p.text-header.team-extension-header.full-screen Project Outsourcing & Team Extension
