@@ -134,6 +134,7 @@ Desktop.ini
 *.png
 *.ico
 *.svg
+*.webp
 
 # Node package manager dependencies
 /node_modules

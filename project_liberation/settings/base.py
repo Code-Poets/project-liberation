@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'wagtailmarkdown',
     'google_analytics',
     'robots',
+    'django_user_agents',
     # project-liberation
     'blog.apps.BlogConfig',
     'company_website.apps.CompanyWebsiteConfig',
@@ -77,6 +78,7 @@ MIDDLEWARE = [
 
     'wagtail.contrib.legacy.sitemiddleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware',
 ]
 
 ROOT_URLCONF = 'project_liberation.urls'
@@ -428,3 +430,5 @@ URL_PREFIX = "http"
 # Setting for default email recipients for email sent from application
 # DEFAULT_EMAIL_RECIPIENTS = ("",)
 # USE_DEFAULT_RECIPIENTS = False
+
+USER_AGENTS_CACHE = None

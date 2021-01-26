@@ -9,10 +9,17 @@
     {% define_variable "background-change" as background_visibility %}
 {% endif %}
 
+{% if request.user_agent.browser.family|is_webp_supported %}
+    {% define_variable ".webp" as extension %}
+{% else %}
+    {% define_variable ".png" as extension %}
+{% endif %}
+
 %nav.navbar.navbar-expand.fixed-top.navbar-dark.navbar-animation{:class => "{{ navbar_visibility_class }}"}
     .navbar-collapse{:class => "{{ background_visibility }}"}
         %a.logo{:href=> "{% url 'main_page' %}#home", :class => "{{ menu_scrolled }}"}
-            %img.codepoets-logo{:src => "{% static 'common/images/menu/code_poets_logo_menu_white_236x66.png' %}", :alt => "Code Poets"}
+            %img.codepoets-logo{:src => "{% static 'common/images/menu/code_poets_logo_menu_white_236x66'|add:extension %}", :alt => "Code Poets"}
+
         %ul.navbar-nav.ml-auto.menu
             %li.nav-item.margin
                 %a.nav-link{:href => "{% url 'main_page' %}#services"} Services
@@ -36,7 +43,8 @@
 .mobile-navbar
     .mobile-logo
         %a{:href => "{% url 'main_page' %}#home"}
-            %img.codepoets-mobile{:alt => "Code Poets", :src => "{% static 'common/images/menu/code_poets_logo_menu_white_236x66.png' %}"}
+            %img.codepoets-mobile{:alt => "Code Poets", :src => "{% static 'common/images/menu/code_poets_logo_menu_white_236x66'|add:extension %}"}
+
     %button.navbar-toggler.hamburger{:type =>"button", :aria-expanded => "false", :aria-controls => "menu"}
         %span.hamburger-box
             %span.hamburger-inner
