@@ -1,3 +1,9 @@
+### v1.24.1
+
+##### Chore
+- Chore change size and format of images ([#313](https://github.com/Code-Poets/project-liberation/pull/313))
+
+
 ### v1.24.0
 
 ##### Features
