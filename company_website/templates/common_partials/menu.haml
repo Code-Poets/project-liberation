@@ -18,7 +18,7 @@
 %nav.navbar.navbar-expand.fixed-top.navbar-dark.navbar-animation{:class => "{{ navbar_visibility_class }}"}
     .navbar-collapse{:class => "{{ background_visibility }}"}
         %a.logo{:href=> "{% url 'main_page' %}#home", :class => "{{ menu_scrolled }}"}
-            %img.codepoets-logo{:src => "{% static 'common/images/menu/code_poets_logo_menu_white_236x66'|add:extension %}", :alt => "Code Poets"}
+            %img.codepoets-logo{:src => "{% static 'common/images/menu/code_poets_logo_menu_white_520x145'|add:extension %}", :alt => "Code Poets"}
 
         %ul.navbar-nav.ml-auto.menu
             %li.nav-item.margin
@@ -33,19 +33,20 @@
                 %a.nav-link{:href => "{% url 'main_page' %}#contact-us"} Contact Us
             %li.nav-item.margin
                 %a.nav-link{:href => "{% url 'wagtail_serve' '' %}"} Blog
-            .estimate-triangle-left.hidden-xs
-            %a.nav-link.estimate-anchor{:href => "{% url 'estimate_project' %}"}
-                %li.nav-item.estimate
-                    %span.estimate-project Estimate Project
-            .estimate-triangle-right.hidden-xs
+            %li.estimate-triangle-left.hidden-xs
+            %li.nav-link.estimate-anchor
+                %a.estimate-link{:href => "{% url 'estimate_project' %}"}
+                    %div.nav-item.estimate
+                        %span.estimate-project Estimate Project
+            %li.estimate-triangle-right.hidden-xs
     %hr.bottom-shadow
 
 .mobile-navbar
     .mobile-logo
         %a{:href => "{% url 'main_page' %}#home"}
-            %img.codepoets-mobile{:alt => "Code Poets", :src => "{% static 'common/images/menu/code_poets_logo_menu_white_236x66'|add:extension %}"}
+            %img.codepoets-mobile{:alt => "Code Poets", :src => "{% static 'common/images/menu/code_poets_logo_menu_white_520x145'|add:extension %}"}
 
-    %button.navbar-toggler.hamburger{:type =>"button", :aria-expanded => "false", :aria-controls => "menu"}
+    %button.navbar-toggler.hamburger{:type =>"button", :aria-expanded => "false", :aria-controls => "menu", :aria-label => "Expand menu"}
         %span.hamburger-box
             %span.hamburger-inner
     %hr.bottom-shadow-mobile
@@ -64,6 +65,7 @@
                     %a.nav-link.mobile-link{:href => "{% url 'main_page' %}#contact-us"} Contact Us
                 %li.nav-item.margin.mobile-nav
                     %a.nav-link.mobile-link{:href => "{% url 'wagtail_serve' '' %}"} Blog
-                %a.nav-link.mobile-link.estimate{:href => "{% url 'estimate_project' %}"}
-                    %li.nav-item.estimate.mobile-nav
-                        %span.mobile.estimate-project Estimate Project
+                %li.nav-link.mobile-link.estimate
+                    %a.estimate-link{:href => "{% url 'estimate_project' %}"}
+                        %div.nav-item.estimate.mobile-nav
+                            %span.mobile.estimate-project Estimate Project
