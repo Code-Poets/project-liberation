@@ -13,7 +13,7 @@
                 .row
                     .info-section
                         {% thumbnail page.get_main_article.specific.author.front_image "400x400" as image %}
-                            %img.main-img.lazyload{:data-src => "{{ image.url }}"}
+                            %img.main-img.lazyload{:data-src => "{{ image.url }}", :alt => "{{ page.get_main_article.specific.author.full_name }}"}
                         {% endthumbnail %}
                         .auto-name
                             .container-section
