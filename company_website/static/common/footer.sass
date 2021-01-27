@@ -34,9 +34,9 @@
             padding: 0
             margin-top: 30px
             overflow: hidden
-            min-width: 187px
+            min-width: 210px
             @media only screen and (max-width: $sm-screen-size)
-                width: 187px
+                width: 210px
                 margin: 30px auto 0
 
             .company-logo
@@ -44,15 +44,22 @@
                 height: 68px
 
             .social-media-container
-                margin-left: 0px
+                margin-left: 0
                 margin-top: 14px
+                @media only screen and (max-width: $sm-screen-size)
+                    width: 240px
 
                 .social-media-link
-                    margin-right: 7px
+                    margin-right: 8px
+                    display: inline-block
+                    @media only screen and (max-width: $sm-screen-size)
+                        width: 48px
+                        height: 48px
 
                 .social-media-logo
                     width: 30px
                     height: 30px
+                    text-align: center
 
             .clutch-frame
                 display: block
