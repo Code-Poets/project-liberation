@@ -26,7 +26,9 @@
                             {{ page.get_main_article.specific.date }}
                 .row.intro-row
                     .intro-container
-                        {{ page.get_main_article.specific.intro }}
+                        {% autoescape off %}
+                            {{ page.get_main_article.specific.intro }}
+                        {% endautoescape %}
                     .read-more
                         %a.read-more-url{:href => "{% url 'wagtail_serve' page.get_main_article.specific.slug %}"}
                             %span.more Read more

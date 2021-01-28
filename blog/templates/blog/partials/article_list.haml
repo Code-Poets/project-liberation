@@ -32,7 +32,9 @@
 
             .row.intro-row
                 .intro-container
-                    {{ blog_article.specific.intro }}
+                    {% autoescape off %}
+                        {{ blog_article.specific.intro }}
+                    {% endautoescape %}
                 .read-more
                     %a.read-more-url{:href => "{% url 'wagtail_serve' blog_article.specific.slug %}"}
                         %span.more Read more
