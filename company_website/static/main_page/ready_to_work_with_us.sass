@@ -32,7 +32,12 @@ $counter-squash-text-change-max-width: 1125px
                     margin-left: calc(18px + 1.5vw)
                     .title
                         font-size: 3.6rem
-
+                    @media only screen and (max-width: 369px)
+                        .title
+                            font-size: 3.2rem
+                    @media only screen and (max-width: 329px)
+                        .title
+                            font-size: 2.66rem
     .row
         .col-lg-6
             .inner-section
