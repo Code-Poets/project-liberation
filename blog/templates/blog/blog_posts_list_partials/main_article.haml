@@ -29,7 +29,7 @@
                         {{ page.get_main_article.specific.intro }}
                     .read-more
                         %a.read-more-url{:href => "{% url 'wagtail_serve' page.get_main_article.specific.slug %}"}
-                            %span.more Read more
+                            %span.more Read the article
             .col-md-6.article-img-container
                 .row
                     %a.image-url{:href => "{% url 'wagtail_serve' page.get_main_article.specific.slug %}"}
