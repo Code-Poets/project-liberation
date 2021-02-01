@@ -37,7 +37,7 @@
                     {% endautoescape %}
                 .read-more
                     %a.read-more-url{:href => "{% url 'wagtail_serve' blog_article.specific.slug %}"}
-                        %span.more Read more
+                        %span.more Read the article
 
         {% if forloop.counter|divisibleby:"2" %}
             .row.separator
