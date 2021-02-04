@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "project-liberation"
-version = "v1.24.1"
+version = "v1.25.0"
 description = "Necessary packages for Project Liberation"
 authors = ["Karol Beker <karol.beker@codepoets.it>"]
 
