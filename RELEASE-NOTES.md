@@ -1,3 +1,15 @@
+### v1.25.0
+
+##### Features
+- Feature change links for seo ([#317](https://github.com/Code-Poets/project-liberation/pull/317))
+
+##### Bugfixes
+- Bugfix text encoding in blog post intro ([#314](https://github.com/Code-Poets/project-liberation/pull/314))
+
+##### Chore
+- Chore accessibility and seo improvement ([#315](https://github.com/Code-Poets/project-liberation/pull/315))
+
+
 ### v1.24.1
 
 ##### Chore
