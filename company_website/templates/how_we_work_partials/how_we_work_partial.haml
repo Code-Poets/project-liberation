@@ -95,11 +95,12 @@
         .col-md-8.mid-section.offset-md-2
             %p.paragraph-description
                 %span.playbook-emphasized-text If you’d like to get an inside look at how Code Poets work internally,
-                %a.playbook-link{:href => "{% static 'how_we_work/files/Playbook.pdf' %}", :download}<
+                %a.playbook-link{:href => "{% url 'display_playbook' %}", :download => "CodePoetsPlaybook"}<
                     download our Playbook
                 %span.playbook-emphasized-text> .
                 %br It’s 22 pages of our history, culture, communication strategies and overall best practices wrapped in an easy-to-read PDF document.
 
     .row.images
         .col-md-8.mid-section.offset-md-2
-            %img#image-playbook-popup.popup.playbook-image.lazyload{:data-src => "{% static 'how_we_work/images/who_are_we_playbook_section'|add:playbook_extension %}", :alt => "Playbook section"}
+            %a{:href => "{% url 'display_playbook' %}", :target => "_blank"}
+                %img#image-playbook-popup.popup.playbook-image.lazyload{:data-src => "{% static 'how_we_work/images/who_are_we_playbook_section'|add:playbook_extension %}", :alt => "Playbook section"}
