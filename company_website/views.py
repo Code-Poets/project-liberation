@@ -1,11 +1,15 @@
+import os
 from typing import Any
 
 from django.conf import settings
 from django.contrib import messages
+from django.http import HttpRequest
+from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import FormView
 from django.views.generic import ListView
 
+from common.helpers import read_file
 from company_website.constants import ESTIMATE_PROJECT_EMAIL_SUBJECT
 from company_website.constants import ESTIMATE_PROJECT_EMAIL_TEMPLATE_NAME
 from company_website.constants import PageNames
@@ -96,3 +100,16 @@ class EstimateProjectView(FormView, GoogleAdsMixin):
 class ThankYouView(CustomTemplateView):
     template_name = "thank_you.haml"
     page_name = PageNames.THANK_YOU.name
+
+
+def display_playbook_view(request: HttpRequest) -> HttpResponse:
+    playbook_file_name = "CodePoetsPlaybook.pdf"
+    playbook_path = os.path.join(settings.STATIC_ROOT, "how_we_work", "files", playbook_file_name)
+
+    if request.method == "GET":
+        if os.path.isfile(playbook_path):
+            response = HttpResponse(read_file(playbook_path), content_type="application/pdf")
+            response["Content-Disposition"] = f"filename={playbook_file_name}"
+            return response
+        return HttpResponse(status=404)
+    return HttpResponse(status=405)
