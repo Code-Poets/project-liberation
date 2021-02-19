@@ -58,3 +58,26 @@ class EstimateProjectViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(mocked_mail.call_count, 1)
         mocked_mail.assert_called_with(**self.expected_mocked_mail_called)
+
+
+class DisplayPlaybookViewTests(TestCase):
+    def setUp(self) -> None:
+        self.url = reverse("display_playbook")
+
+    def test_that_display_playbook_view_should_display_file_on_get(self):
+        response = self.client.get(self.url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("application/pdf", str(response))
+
+    def test_that_display_playbook_view_should_return_method_not_allowed_status_code_on_post(self):
+        response = self.client.post(self.url)
+
+        self.assertEqual(response.status_code, 405)
+
+    @mock.patch("os.path.isfile")
+    def test_that_display_playbook_view_should_return_404_status_code_when_file_does_not_exist(self, mocked_function):
+        mocked_function.return_value = False
+        response = self.client.get(self.url)
+
+        self.assertEqual(response.status_code, 404)
