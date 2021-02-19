@@ -7,57 +7,83 @@
     {% define_variable ".png" as extension %}
 {% endif %}
 
-.services-container{:id => 'services'}
-    {% include "common_partials/section_header.haml" with title="Services" subtext="" %}
+.services-industry-container{:id => 'services'}
+    {% include "common_partials/section_header.haml" with title="Bioinformatics & Blockchain Software Development" subtext="" %}
     %image.section-feather.lazyload{:data-src => "{% static 'main_page/images/background/feather_yellow_254x752'|add:extension %}", :alt => "Yellow Feather"}
-    .container
-        .row.services-row
+    .container-fluid
+        .row.services-industry-row
             .col-md-6.box{:data-aos => "fade-up"}
                 %span
                     .row.right-row
                         .col-sm-10.offset-sm-1.col-md-12.offset-md-0
                             %p.text-header.custom-software-header.mobile-devices Custom Software Development
-                            .service-box
-                                .service-box-img
-                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/custom_software_development'|add:extension %}",  :alt => "Custom Software Development"}
+                            .service-industry-box
+                                .service-industry-box-img
+                                    %img.service-industry-img.lazyload{:data-src => "{% static 'main_page/images/services/custom_software_development'|add:extension %}",  :alt => "Custom Software Development"}
                         .col-sm-10.offset-sm-1.col-md-12.offset-md-0
-                            .services-description
+                            .services-industry-description
                                 %p.text-header.custom-software-header.full-screen Custom Software Development
-                                %p.text-description Tailor-made software that helps you achieve your business goals.
+                                %p.text-description Tailor-made software that helps you achieve your business goals — from rapid MVP prototyping to building complex platforms based on Blockchain and AI.
             .col-md-6.box{:data-aos => "fade-up"}
                 %span
                     .row.left-row
                         .col-sm-10.offset-sm-1.col-md-12.offset-md-0
-                            %p.text-header.webapp-development-header.mobile-devices Web Application Development
-                            .service-box
-                                .service-box-img
-                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/web_application_development'|add:extension %}", :alt => "Web Application Development"}
+                            %p.text-header.custom-software-header.mobile-devices Web Application Development
+                            .service-industry-box
+                                .service-industry-box-img
+                                    %img.service-industry-img.lazyload{:data-src => "{% static 'main_page/images/services/web_application_development'|add:extension %}", :alt => "Web Application Development"}
                         .col-sm-10.offset-sm-1.col-md-12.offset-md-0
-                            .services-description
-                                %p.text-header.webapp-development-header.full-screen Web Application Development
-                                %p.text-description Scalable web application solutions based on frontend and backend technologies.
-        .row.services-row
+                            .services-industry-description
+                                %p.text-header.custom-software-header.full-screen Web Application Development
+                                %p.text-description Scalable web application solutions based on frontend and backend technologies, developed by our specialized teams dedicated to blockchain or bioinformatics.
+        .row.services-industry-row
             .col-md-6.box{:data-aos => "fade-up"}
                 %span
                     .row.right-row
                         .col-sm-10.offset-sm-1.col-md-12.offset-md-0
-                            %p.text-header.rapid-mvp-header.mobile-devices Rapid MVP Development
-                            .service-box
-                                .service-box-img
-                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/rapid_mvp_development'|add:extension %}",  :alt => "Rapid MVP Development"}
+                            %p.text-header.custom-software-header.mobile-devices Rapid MVP Development
+                            .service-industry-box
+                                .service-industry-box-img
+                                    %img.service-industry-img.lazyload{:data-src => "{% static 'main_page/images/services/rapid_mvp_development'|add:extension %}",  :alt => "Rapid MVP Development"}
                         .col-sm-10.offset-sm-1.col-md-12.offset-md-0
-                            .services-description
-                                %p.text-header.rapid-mvp-header.full-screen Rapid MVP Development
-                                %p.text-description Minimum Viable Product — a project set within a limited time frame & budget.
+                            .services-industry-description
+                                %p.text-header.custom-software-header.full-screen Rapid MVP Development
+                                %p.text-description Minimum Viable Product — a project set within a limited time frame & budget. Need a hand with the tech? We can support you with our knowledge, skills and experience.
             .col-md-6.box{:data-aos => "fade-up"}
                 %span
                     .row.left-row
                         .col-sm-10.offset-sm-1.col-md-12.offset-md-0
-                            %p.text-header.team-extension-header.mobile-devices Team extension
-                            .service-box
-                                .service-box-img
-                                    %img.service-img.lazyload{:data-src => "{% static 'main_page/images/services/project_outsorcing_n_team_extension'|add:extension %}",  :alt => "Project Outsourcing & Team Extension"}
+                            %p.text-header.custom-software-header.mobile-devices Team Extension & Project Outsourcing
+                            .service-industry-box
+                                .service-industry-box-img
+                                    %img.service-industry-img.lazyload{:data-src => "{% static 'main_page/images/services/project_outsorcing_n_team_extension'|add:extension %}",  :alt => "Project Outsourcing & Team Extension"}
                         .col-sm-10.offset-sm-1.col-md-12.offset-md-0
-                            .services-description
-                                %p.text-header.team-extension-header.full-screen Project Outsourcing & Team Extension
-                                %p.text-description A full-stack project team or selected specialists at your disposal.
+                            .services-industry-description
+                                %p.text-header.custom-software-header.full-screen Team Extension & Project Outsourcing
+                                %p.text-description You get a full-stack project team or selected specialists at your disposal. We specialize in Python, Django, React, Angular and C++ team augmentation and outsourcing.
+
+        .row.services-industry-row
+            .col-md-6.box{:data-aos => "fade-up"}
+                %span
+                    .row.right-row
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0
+                            %p.text-header.custom-software-header.mobile-devices Bioinformatics and Blockchain IT Consulting
+                            .service-industry-box
+                                .service-industry-box-img
+                                    %img.service-industry-img.lazyload{:data-src => "{% static 'main_page/images/services/bioinformatics_and_blockchain_consulting'|add:extension %}",  :alt => "Bioinformatics and Blockchain IT Consulting"}
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0
+                            .services-industry-description
+                                %p.text-header.custom-software-header.full-screen Bioinformatics and Blockchain IT Consulting
+                                %p.text-description We’re software developers by day and domain experts by night. Need to discuss the details of your cheminformatics, life science, drug discovery or blockchain project? We’re here to help.
+            .col-md-6.box{:data-aos => "fade-up"}
+                %span
+                    .row.left-row
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0
+                            %p.text-header.custom-software-header.mobile-devices Project handover with Python & Django Expertise
+                            .service-industry-box
+                                .service-industry-box-img
+                                    %img.service-industry-img.lazyload{:data-src => "{% static 'main_page/images/services/project_handover'|add:extension %}",  :alt => "Project handover with Python & Django Expertise"}
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0
+                            .services-industry-description
+                                %p.text-header.custom-software-header.full-screen Project handover with Python & Django Expertise
+                                %p.text-description We know how to work with legacy code, create missing documentation and leave you better off in general. Don’t hesitate to engage us to clean up any mess.

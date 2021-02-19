@@ -22,8 +22,17 @@ $services-text-breakpoint: 1794px
                 margin-left: calc(18px + 1.5vw)
                 .title
                     font-size: 3.6rem
+                @media only screen and (max-width: 420px)
+                     .title
+                        font-size: 2.8rem
+                @media only screen and (max-width: 361px)
+                    .title
+                        font-size: 2.3rem
+                @media only screen and (max-width: 281px)
+                    .title
+                        font-size: 1.9rem
 
-.services-container
+.services-industry-container
     position: relative
     margin-top: 38px
 
@@ -41,7 +50,7 @@ $services-text-breakpoint: 1794px
         @media only screen and (max-width: $md-screen-size)
             display: None
 
-    .container
+    .container-fluid
         .row
             .title
                 margin: $container-title-template-margin auto $container-title-template-margin-bottom
@@ -52,7 +61,7 @@ $services-text-breakpoint: 1794px
                 padding-right: 15px
                 padding-left: 15px
 
-        .row.services-row
+        .row.services-industry-row
             text-align: justify
             line-height: 113%
 
@@ -70,17 +79,8 @@ $services-text-breakpoint: 1794px
                     color: $blue-color
                     margin: 0 auto 18px
 
-                .team-extension-header
-                    color: $teamext-color
-
                 .custom-software-header
                     color: $customsoft-color
-
-                .webapp-development-header
-                    color: $webapp-dev-color
-
-                .rapid-mvp-header
-                    color: $mvp-color
 
                 @media only screen and (max-width: $services-text-breakpoint)
                     .text-description
@@ -89,12 +89,12 @@ $services-text-breakpoint: 1794px
                     .text-header
                         max-width: 307px
 
-                .service-box
+                .service-industry-box
                     border-radius: 8px
                     text-align: center
                     margin: auto
 
-                    .service-box-img
+                    .service-industry-box-img
                         text-align: center
                         border: 1px solid transparent
                         border-radius: 8px
@@ -110,7 +110,7 @@ $services-text-breakpoint: 1794px
                             height: 0
                             padding-bottom: 100%
 
-                        .service-img
+                        .service-industry-img
                             position: absolute
                             top: 0
                             left: 0
@@ -125,7 +125,7 @@ $services-text-breakpoint: 1794px
                             margin-bottom: 10px
 
 
-                .services-description
+                .services-industry-description
                     padding-bottom: 40px
                     
                     @media only screen and (min-width: $extra-large-services-size)
@@ -133,19 +133,18 @@ $services-text-breakpoint: 1794px
 
                     .text-description
                         margin: -8px auto 0
-                        padding: 0 2.8vw
                         font-size: 19px
                         line-height: 1.3
-                        text-align: center
-                        letter-spacing: 0.9
-                        text-align-last: center
+                        padding: 0 3vw
+                        text-align: justify
+                        text-align-last: left
                         font-weight: 600
                         color: $blue-color
 
                         @media only screen and (max-width: $sm-screen-size)
                             margin-top: 0
 
-                .service-box-aos:hover
+                .service-industry-box-aos:hover
                     opacity: 0.8
 
                 a, a:hover

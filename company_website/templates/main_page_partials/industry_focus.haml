@@ -7,27 +7,56 @@
     {% define_variable ".png" as extension %}
 {% endif %}
 
-.industry-focus-container
-    {% include "common_partials/section_header.haml" with title="Industry focus" subtext="" %}
-    .container
-        .row
-            .col-md-6.col-lg-3.col-12{:data-aos => "fade-up"}
-                .industry-icon
-                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/blockchain'|add:extension %}",  :alt => "Blockchain"}
-                %p.industry-name
-                    Blockchain
-            .col-md-6.col-lg-3.col-12{:data-aos => "fade-up"}
-                .industry-icon
-                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/cheminformatics_n_drug_discovery'|add:extension %}",  :alt => "Cheminformatics"}
-                %p.industry-name
-                    Cheminformatics
-            .col-md-6.col-lg-3.col-12{:data-aos => "fade-up"}
-                .industry-icon
-                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/biotechnology_n_bioinformatics'|add:extension %}",  :alt => "Bioinformatics"}
-                %p.industry-name
-                    Bioinformatics
-            .col-md-6.col-lg-3.col-12{:data-aos => "fade-up"}
-                .industry-icon
-                    %img.industry-icon-image.lazyload{:data-src => "{% static 'main_page/images/industry_focus/healthcare_n_cosmetics'|add:extension %}",  :alt => "Healthcare"}
-                %p.industry-name
-                    Healthcare
+.services-industry-container
+    {% include "common_partials/section_header.haml" with title="Bespoke Software Solutions for:" subtext="" %}
+    .container-fluid
+        .row.services-industry-row
+            .col-md-6.box{:data-aos => "fade-up"}
+                %span
+                    .row.right-row
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0
+                            %p.text-header.custom-software-header.mobile-devices Blockchain
+                            .service-industry-box
+                                .service-industry-box-img
+                                    %img.service-industry-img.lazyload{:data-src => "{% static 'main_page/images/industry_focus/blockchain'|add:extension %}",  :alt => "Blockchain"}
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0
+                            .services-industry-description
+                                %p.text-header.custom-software-header.full-screen Blockchain
+                                %p.text-description We have one of the top 20 Ethereum Solidity contributors and plenty of other blockchain specialists on board to serve your fintech needs and run cryptocurrency projects.
+            .col-md-6.box{:data-aos => "fade-up"}
+                %span
+                    .row.left-row
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0
+                            %p.text-header.custom-software-header.mobile-devices Cheminformatics
+                            .service-industry-box
+                                .service-industry-box-img
+                                    %img.service-industry-img.lazyload{:data-src => "{% static 'main_page/images/industry_focus/cheminformatics_n_drug_discovery'|add:extension %}",  :alt => "Cheminformatics"}
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0
+                            .services-industry-description
+                                %p.text-header.custom-software-header.full-screen Cheminformatics
+                                %p.text-description We craft IT solutions for chemical companies. Working with entrepreneurial scientists is our thing.
+        .row.services-industry-row
+            .col-md-6.box{:data-aos => "fade-up"}
+                %span
+                    .row.right-row
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0
+                            %p.text-header.custom-software-header.mobile-devices Bioinformatics
+                            .service-industry-box
+                                .service-industry-box-img
+                                    %img.service-industry-img.lazyload{:data-src => "{% static 'main_page/images/industry_focus/biotechnology_n_bioinformatics'|add:extension %}",  :alt => "Bioinformatics"}
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0
+                            .services-industry-description
+                                %p.text-header.custom-software-header.full-screen Bioinformatics
+                                %p.text-description We build and run life science and biotechnology projects for you. Bioinformatics is the future — let’s go there, now.
+            .col-md-6.box{:data-aos => "fade-up"}
+                %span
+                    .row.left-row
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0
+                            %p.text-header.custom-software-header.mobile-devices Healthcare
+                            .service-industry-box
+                                .service-industry-box-img
+                                    %img.service-industry-img.lazyload{:data-src => "{% static 'main_page/images/industry_focus/healthcare_n_cosmetics'|add:extension %}",  :alt => "Healthcare"}
+                        .col-sm-10.offset-sm-1.col-md-12.offset-md-0
+                            .services-industry-description
+                                %p.text-header.custom-software-header.full-screen Healthcare
+                                %p.text-description We can support you in drug development solutions and create custom lab and biomedical software. These have never been more important issues than in 2021.
