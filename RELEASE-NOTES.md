@@ -1,3 +1,10 @@
+### v1.26.0
+
+##### Features
+- Feature change playbook link ([#319](https://github.com/Code-Poets/project-liberation/pull/319))
+- Feature change content on main page ([#320](https://github.com/Code-Poets/project-liberation/pull/320))
+
+
 ### v1.25.0
 
 ##### Features
