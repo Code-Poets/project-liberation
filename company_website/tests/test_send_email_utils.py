@@ -5,7 +5,7 @@ from django.test import TestCase
 from django.test import override_settings
 from parameterized import parameterized
 
-from company_website.constants import ESTIMATE_PROJECT_EMAIL_SUBJECT
+from company_website.constants import ESTIMATE_PROJECT_EMAIL_SUBJECT_BASE
 from company_website.constants import ESTIMATE_PROJECT_EMAIL_TEMPLATE_NAME
 from company_website.factories import EstimateProjectEmailRecipientsFactory
 from company_website.send_emails_utils import _convert_html_to_plain_text
@@ -75,12 +75,12 @@ class SendEmailTestCase(TestCase):
 
     @mock.patch("company_website.send_emails_utils.EmailMessage")
     def test_that_send_email_to_management_pass_proper_parameters_to_send_email_method(self, mocked_send_mail):
-        send_mail_to_management(self.template_context, ESTIMATE_PROJECT_EMAIL_SUBJECT, self.template)
+        send_mail_to_management(self.template_context, ESTIMATE_PROJECT_EMAIL_SUBJECT_BASE, self.template)
 
         arguments_of_called_method = mocked_send_mail.call_args_list[0][1]
 
         email_subject = arguments_of_called_method["subject"]
         passed_message = arguments_of_called_method["body"]
 
-        self.assertEqual(email_subject, ESTIMATE_PROJECT_EMAIL_SUBJECT)
+        self.assertEqual(email_subject, ESTIMATE_PROJECT_EMAIL_SUBJECT_BASE)
         self.assertEqual(passed_message, self.expected_mail_body)
