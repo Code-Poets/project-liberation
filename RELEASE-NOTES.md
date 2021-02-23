@@ -1,3 +1,9 @@
+### v1.26.1
+
+##### Bugfixes
+- Bugfix playbook view ([#321](https://github.com/Code-Poets/project-liberation/pull/321))
+
+
 ### v1.26.0
 
 ##### Features
