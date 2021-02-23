@@ -8,8 +8,8 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import FormView
 from django.views.generic import ListView
+from django.views.generic import View
 
-from common.helpers import read_file
 from company_website.constants import ESTIMATE_PROJECT_EMAIL_SUBJECT
 from company_website.constants import ESTIMATE_PROJECT_EMAIL_TEMPLATE_NAME
 from company_website.constants import PageNames
@@ -102,14 +102,17 @@ class ThankYouView(CustomTemplateView):
     page_name = PageNames.THANK_YOU.name
 
 
-def display_playbook_view(request: HttpRequest) -> HttpResponse:
-    playbook_file_name = "CodePoetsPlaybook.pdf"
-    playbook_path = os.path.join(settings.STATIC_ROOT, "how_we_work", "files", playbook_file_name)
-
-    if request.method == "GET":
+class PlaybookView(View):
+    def get(self, _request: HttpRequest) -> HttpResponse:
+        playbook_file_name = "CodePoetsPlaybook.pdf"
+        playbook_path = os.path.join(settings.STATIC_ROOT, "how_we_work", "files", playbook_file_name)
         if os.path.isfile(playbook_path):
-            response = HttpResponse(read_file(playbook_path), content_type="application/pdf")
+            response = HttpResponse(self.read_file(playbook_path), content_type="application/pdf")
             response["Content-Disposition"] = f"filename={playbook_file_name}"
             return response
         return HttpResponse(status=404)
-    return HttpResponse(status=405)
+
+    @staticmethod
+    def read_file(path: str) -> bytes:
+        with open(path, "rb") as file:
+            return file.read()

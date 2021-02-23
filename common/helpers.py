@@ -33,8 +33,3 @@ def create_image(
     if return_relative_path:
         return os.path.join(tmp_dir, file_name)
     return file_path
-
-
-def read_file(path: str) -> bytes:
-    with open(path, "rb") as file:
-        return file.read()
