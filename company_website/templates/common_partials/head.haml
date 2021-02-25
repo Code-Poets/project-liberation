@@ -1,5 +1,6 @@
 {% load static %}
 {% load pipeline %}
+{% load blog_article_page_filters %}
 
 :javascript
   window.GOOGLE_ADS_CONVERSION_ID = "{{ GOOGLE_ADS_CONVERSION_ID }}"
@@ -17,6 +18,10 @@
 
 %meta{:name => "viewport",
         :content => "width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"}
+
+{% if request.get_full_path|is_pagination_suffix %}
+    %meta{:name => "robots", :content => "noindex, follow"}
+{% endif %}
 
 %link{:rel => "stylesheet",
 		:type => "text/css",
