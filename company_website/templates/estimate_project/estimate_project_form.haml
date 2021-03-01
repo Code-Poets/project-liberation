@@ -27,7 +27,7 @@
             Describe your idea
           .describe-idea
             {{form.idea_description}}
-            %img.feather-background.lazyload{:src => "{% static 'estimate_project/images/feather_horizontal_299x150.png' %}", :alt => "Feather", :title => "Feather"}
+            %img.feather-background.lazyload{:src => "{% static 'estimate_project/images/feather_horizontal_299x150.png' %}", :alt => ""}
 
       .col-md-6.col-12.custom-col-padding
         .privacy-policy-form
@@ -38,4 +38,4 @@
 
     .row
       .estimate-project-button
-        %input.custom-button{:id=>"estimate-project", :value => "Get a free estimation", :type => "submit"}
+        %input.custom-button{:id=>"estimate-project", :value => "Get a free estimation", :type => "submit", :alt => "Send Form"}
