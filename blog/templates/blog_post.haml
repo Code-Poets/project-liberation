@@ -5,7 +5,7 @@
 {% block properties %}
     {% image page.specific.cover_photo  fill-1200x627 as photo %}
     %link{:rel => "image_src", :href => "{{ URL_PREFIX }}://{{ request.META.HTTP_HOST }}{{ photo.url }}"}
-    %link{:rel => "canonical", :href => "{{ URL_PREFIX }}://{{ request.META.HTTP_HOST }}{{ request.path }}"}
+    %link{:rel => "canonical", :href => "{{ URL_PREFIX }}://{{ request.META.HTTP_HOST }}{{ request.path|add_slash }}"}
     %meta{:property => "og:type", :content => "article"}
     %meta{:property => "og:locale", :content => "en_US"}
     %meta{:property => "article:author", :content => "{{ page.specific.author }}"}

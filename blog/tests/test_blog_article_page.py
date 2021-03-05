@@ -18,6 +18,8 @@ from blog.factories import ImageFactory
 from blog.models import MAX_BLOG_ARTICLE_TITLE_LENGTH
 from blog.models import BlogArticlePage
 from blog.models import CaptionedImageBlock
+from blog.templatetags.blog_article_page_filters import add_slash
+from blog.templatetags.blog_article_page_filters import is_pagination_suffix
 from blog.templatetags.blog_article_page_filters import shorten_text
 from blog.tests.test_helpers import BlogTestHelpers
 from company_website.factories import BossFactory
@@ -343,3 +345,32 @@ class TestBlogPageFilters(TestCase):
         returned_text = shorten_text(text, max_length_of_string)
 
         self.assertEqual(returned_text, text)
+
+    def test_that_add_slash_filter_should_add_slash_at_the_end_of_path_when_missing_one(self):
+        path = "blog/article-name-here"
+        expected_result = f"{path}/"
+
+        returned_path = add_slash(path)
+
+        self.assertEqual(returned_path, expected_result)
+
+    def test_that_add_slash_filter_should_not_add_slash_at_the_end_of_path_when_occur(self):
+        path = "blog/article-name-here/"
+
+        returned_path = add_slash(path)
+
+        self.assertEqual(returned_path, path)
+
+    def test_that_is_pagination_suffix_filter_should_return_true_if_pagination_suffix_occur_in_path(self):
+        path = "blog/?page=1"
+
+        returned_value = is_pagination_suffix(path)
+
+        self.assertTrue(returned_value)
+
+    def test_that_is_pagination_suffix_filter_should_return_false_if_pagination_suffix_does_not_occur_in_path(self):
+        path = "blog/"
+
+        returned_value = is_pagination_suffix(path)
+
+        self.assertFalse(returned_value)
