@@ -10,7 +10,7 @@ from django.views.generic import FormView
 from django.views.generic import ListView
 from django.views.generic import View
 
-from company_website.constants import ESTIMATE_PROJECT_EMAIL_SUBJECT
+from company_website.constants import ESTIMATE_PROJECT_EMAIL_SUBJECT_BASE
 from company_website.constants import ESTIMATE_PROJECT_EMAIL_TEMPLATE_NAME
 from company_website.constants import PageNames
 from company_website.forms import ProjectToEstimateForm
@@ -84,11 +84,12 @@ class EstimateProjectView(FormView, GoogleAdsMixin):
         messages.success(self.request, "Profile details updated.")
         form.save()
 
+        client_name = form.cleaned_data.get("name")
+        email_subject = f"{ESTIMATE_PROJECT_EMAIL_SUBJECT_BASE} {client_name}"
+
         if form.is_valid():
             send_mail_to_management(
-                email_data=form.cleaned_data,
-                email_subject=ESTIMATE_PROJECT_EMAIL_SUBJECT,
-                template=self.email_template_name,
+                email_data=form.cleaned_data, email_subject=email_subject, template=self.email_template_name,
             )
 
         return super().form_valid(form)

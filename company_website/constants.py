@@ -31,5 +31,5 @@ class PageNames(ChoiceEnum):
     THANK_YOU = "Thank You"
 
 
-ESTIMATE_PROJECT_EMAIL_SUBJECT = "Project Estimation"
+ESTIMATE_PROJECT_EMAIL_SUBJECT_BASE = "Code Poets estimation for"
 ESTIMATE_PROJECT_EMAIL_TEMPLATE_NAME = "estimate_project/estimate_project_email.html"

@@ -3,7 +3,7 @@ from unittest import mock
 from django.test import TestCase
 from django.urls import reverse
 
-from company_website.constants import ESTIMATE_PROJECT_EMAIL_SUBJECT
+from company_website.constants import ESTIMATE_PROJECT_EMAIL_SUBJECT_BASE
 from company_website.constants import ESTIMATE_PROJECT_EMAIL_TEMPLATE_NAME
 from company_website.factories import BossFactory
 from company_website.factories import EmployeeFactory
@@ -43,7 +43,7 @@ class EstimateProjectViewTests(TestCase):
                 "idea_description": "Some description",
                 "privacy_policy_accepted": True,
             },
-            "email_subject": ESTIMATE_PROJECT_EMAIL_SUBJECT,
+            "email_subject": f"{ESTIMATE_PROJECT_EMAIL_SUBJECT_BASE} John Doe",
             "template": ESTIMATE_PROJECT_EMAIL_TEMPLATE_NAME,
         }
 
