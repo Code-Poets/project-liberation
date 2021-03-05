@@ -1,3 +1,12 @@
+### v1.27.0
+
+##### Features
+- Feature change estimate project email subject ([#322](https://github.com/Code-Poets/project-liberation/pull/322))
+
+##### Bugfixes
+- Bugfix quote style in blog article ([#323](https://github.com/Code-Poets/project-liberation/pull/323))
+
+
 ### v1.26.1
 
 ##### Bugfixes
