@@ -3,6 +3,7 @@
 {% load wagtailimages_tags %}
 {% load pipeline %}
 {% stylesheet 'blog_posts_list' %}
+{% load blog_article_page_filters %}
 
 
 .container.blog-posts-list
@@ -22,7 +23,7 @@
                     .article-wrapper
                         .popular-article-border
                         .popular-article
-                            %a.title{:href => "{% url 'wagtail_serve' article.specific.slug %}"} {{ article.specific.title }}
+                            %a.title{:href => "{% url 'wagtail_serve' article.specific.slug|add_slash %}"} {{ article.specific.title }}
                             .author by
                                 %span.author-name{:onClick => 'showBio(this, "{{ article.specific.author.bio }}")'}
                                     {{ article.specific.author.full_name }}

@@ -1,3 +1,9 @@
+### v1.27.1
+
+##### Bugfixes
+- Bugfix article link on blog ([#325](https://github.com/Code-Poets/project-liberation/pull/325))
+
+
 ### v1.27.0
 
 ##### Features

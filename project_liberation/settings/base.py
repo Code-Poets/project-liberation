@@ -408,7 +408,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "../storage")
 
 # Wagtail setting variables
 WAGTAIL_SITE_NAME = 'blog'
-WAGTAIL_APPEND_SLASH = False
+WAGTAIL_APPEND_SLASH = True
 
 WAGTAILIMAGES_MAX_UPLOAD_SIZE = 25 * 1024 * 1024
 
