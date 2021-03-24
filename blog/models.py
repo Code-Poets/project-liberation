@@ -139,9 +139,13 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
         "wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
     )
 
+    cover_photo_alt_description = models.CharField(max_length=125, blank=True, default="Open the article")
+
     article_photo = models.ForeignKey(
         "wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
     )
+
+    article_photo_alt_description = models.CharField(max_length=125, blank=True, default="")
 
     is_main_article = models.BooleanField(default=False)
 
@@ -153,7 +157,9 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
         FieldPanel("views"),
         FieldPanel("is_main_article"),
         ImageChooserPanel("cover_photo"),
+        FieldPanel("cover_photo_alt_description"),
         ImageChooserPanel("article_photo"),
+        FieldPanel("article_photo_alt_description"),
         FieldPanel("table_of_contents"),
         StreamFieldPanel("body"),
     ]
