@@ -36,5 +36,5 @@
                             %span.more Read the article
             .col-md-6.article-img-container
                 .row
-                    %a.image-url{:href => "{% url 'wagtail_serve' page.get_main_article.specific.slug|add_slash %}"}
+                    %a.image-url{:href => "{% url 'wagtail_serve' page.get_main_article.specific.slug|add_slash %}", :alt => "{{ page.get_main_article.specific.cover_photo_alt_description }}"}
                         {% image page.get_main_article.specific.cover_photo fill-1200x628 %}
