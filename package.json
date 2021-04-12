@@ -1,6 +1,6 @@
 {
   "name": "project-liberation",
-  "version": "v1.27.1",
+  "version": "v1.28.0",
   "description": "Packages needed for proper application work.",
   "main": "index.js",
   "scripts": {
