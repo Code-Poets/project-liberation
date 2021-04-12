@@ -1,3 +1,9 @@
+### v1.28.0
+
+##### Features
+- Feature change address of company in footer ([#333](https://github.com/Code-Poets/project-liberation/pull/333))
+
+
 ### v1.27.1
 
 ##### Bugfixes
