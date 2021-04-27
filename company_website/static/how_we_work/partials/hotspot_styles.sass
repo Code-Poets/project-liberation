@@ -150,7 +150,13 @@
                 .inner-info
                     width: inherit
                     height: inherit
+                    margin-top: -4px
 
+                    @media only screen and (max-width: $md-screen-size)
+                        margin-top: -9px
+
+                    @media only screen and (max-width: $hotspot-size-breakpoint)
+                        margin-top: -14px
 
     @media only screen and (max-width: $md-screen-size)
         .hotspot-mobile-devices
