@@ -1,3 +1,10 @@
+### v1.28.1
+
+##### Bugfixes
+- Bugfix info icons on how we work page ([#336](https://github.com/Code-Poets/project-liberation/pull/336))
+- Bugfix alt attributes of images on blog ([#330](https://github.com/Code-Poets/project-liberation/pull/330))
+
+
 ### v1.28.0
 
 ##### Features
