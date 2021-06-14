@@ -8,7 +8,7 @@
 .post-container
     .page-photo
         {% image page.specific.article_photo  fill-1920x550 as photo %}
-        %img.article-photo.lazyload{:data-src => "{{ photo.url }}", :width => "{{ photo.width }}", :height => "{{ photo.height }}", :alt => "{{ page.specific.article_photo.title }}"}
+        %img.article-photo.lazyload{:data-src => "{{ photo.url }}", :width => "{{ photo.width }}", :height => "{{ photo.height }}", :alt => "{{ page.specific.article_photo_alt_description }}"}
     .post-body
         .article-details
             %h1.row.post-title

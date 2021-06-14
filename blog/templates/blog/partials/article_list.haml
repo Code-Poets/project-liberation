@@ -28,7 +28,7 @@
                         {{ blog_article.specific.date }}
 
             .row.article-img-container
-                %a.image-url{:href => "{% url 'wagtail_serve' blog_article.specific.slug|add_slash %}"}
+                %a.image-url{:href => "{% url 'wagtail_serve' blog_article.specific.slug|add_slash %}", :alt => "{{ blog_article.specific.cover_photo_alt_description }}"}
                     {% image blog_article.specific.cover_photo fill-1200x628 %}
 
             .row.intro-row
