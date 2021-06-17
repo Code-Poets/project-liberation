@@ -1136,7 +1136,7 @@ ua-parser = ">=0.10.0"
 
 [[package]]
 name = "wagtail"
-version = "2.11.2"
+version = "2.11.8"
 description = "A Django content management system."
 category = "main"
 optional = false
@@ -1149,7 +1149,7 @@ Django = ">=2.2,<3.2"
 django-filter = ">=2.2,<3.0"
 django-modelcluster = ">=5.1,<6.0"
 django-taggit = ">=1.0,<2.0"
-django-treebeard = ">=4.2.0,<5.0"
+django-treebeard = ">=4.2.0,<4.5 || >4.5,<5.0"
 djangorestframework = ">=3.11.1,<4.0"
 draftjs-exporter = ">=2.1.5,<3.0"
 html5lib = ">=0.999,<2"
@@ -1444,6 +1444,7 @@ django-user-agents = [
 ]
 djangorestframework = [
     {file = "djangorestframework-3.12.2-py3-none-any.whl", hash = "sha256:0209bafcb7b5010fdfec784034f059d512256424de2a0f084cb82b096d6dd6a7"},
+    {file = "djangorestframework-3.12.2.tar.gz", hash = "sha256:0898182b4737a7b584a2c73735d89816343369f259fea932d90dc78e35d8ac33"},
 ]
 draftjs-exporter = [
     {file = "draftjs_exporter-2.1.7-py3-none-any.whl", hash = "sha256:d415a9964690a2cddb66a31ef32dd46c277e9b80434b94e39e3043188ed83e33"},
@@ -1931,8 +1932,8 @@ user-agents = [
     {file = "user_agents-2.2.0-py3-none-any.whl", hash = "sha256:a98c4dc72ecbc64812c4534108806fb0a0b3a11ec3fd1eafe807cee5b0a942e7"},
 ]
 wagtail = [
-    {file = "wagtail-2.11.2-py3-none-any.whl", hash = "sha256:ae8e5a1c71070f60ab573f5217225dd6335ee1252ca1c10f25d90b71dff62de9"},
-    {file = "wagtail-2.11.2.tar.gz", hash = "sha256:516a2613ce25d27ca7b431a64540d068389f88400375b99e294531fe2b897c6b"},
+    {file = "wagtail-2.11.8-py3-none-any.whl", hash = "sha256:4b280742a7a97401b4c10dbcf7336dc99e367b5b95c21b9b3560abc697a9a627"},
+    {file = "wagtail-2.11.8.tar.gz", hash = "sha256:460c4da96ecb84f817b80cfb5f9907a5be215df2f271c7569d6f58bd72e3c126"},
 ]
 wagtail-factories = [
     {file = "wagtail_factories-2.0.1-py2.py3-none-any.whl", hash = "sha256:e2bd1a22e67b70e1603fc292e97f6f998ee0169477e1f71b5c53368630f1d088"},
