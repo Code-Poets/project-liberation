@@ -53,6 +53,7 @@ class BlogArticlePageFactory(PageFactory):
     class Meta:
         model = BlogArticlePage
 
+    page_title = factory.LazyAttribute(lambda o: f"{o.title}")
     title = factory.Faker("sentence", nb_words=5)
     date = factory.LazyFunction(datetime.now)
     body = factory.LazyFunction(generate_article_body)

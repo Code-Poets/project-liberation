@@ -39,6 +39,7 @@ from blog.constants import MAX_BLOG_ARTICLE_INTRO_LENGTH
 from blog.constants import MAX_BLOG_ARTICLE_TITLE_LENGTH
 from blog.constants import RICH_TEXT_BLOCK_FEATURES
 from blog.constants import ArticleBodyBlockNames
+from blog.strings import ArticleBlogPageHelpTexts
 from company_website.models import Employees
 from company_website.view_helpers import GoogleAdsMixin
 
@@ -111,6 +112,9 @@ class BlogIndexPage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
 class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
     template = "blog_post.haml"
     date = models.DateField("Post date")
+    page_title = models.CharField(
+        max_length=MAX_BLOG_ARTICLE_TITLE_LENGTH, help_text=ArticleBlogPageHelpTexts.ARTICLE_PAGE_TITLE.value
+    )
     body = StreamField(
         [
             (ArticleBodyBlockNames.MARKDOWN.value, MarkdownBlock(icon="code")),
@@ -149,7 +153,10 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
 
     is_main_article = models.BooleanField(default=False)
 
+    Page._meta.get_field("title").help_text = ArticleBlogPageHelpTexts.PAGE_TITLE.value
+
     content_panels = Page.content_panels + [
+        FieldPanel("page_title", classname="title full"),
         FieldPanel("date"),
         FieldPanel("author"),
         FieldPanel("read_time"),
@@ -271,7 +278,6 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
     def clean(self) -> None:
         super().clean()
         self._clean_recommended_articles()
-        self._validate_title_length()
         self._validate_recommended_articles_uniqueness()
 
     def _clean_recommended_articles(self) -> None:
@@ -287,10 +293,6 @@ class BlogArticlePage(MixinSeoFields, Page, MixinPageMethods, GoogleAdsMixin):
     def _validate_parent_page(self) -> None:
         if not isinstance(self.get_parent().specific, BlogIndexPage):
             raise ValidationError(message=f"{self.title} must be child of BlogIndexPage")
-
-    def _validate_title_length(self) -> None:
-        if self.title is not None and len(self.title) > MAX_BLOG_ARTICLE_TITLE_LENGTH:
-            raise ValidationError({"title": f"Title must be less than {MAX_BLOG_ARTICLE_TITLE_LENGTH} characters."})
 
     def _validate_recommended_articles_uniqueness(self) -> None:
         article_pages_set = set()
