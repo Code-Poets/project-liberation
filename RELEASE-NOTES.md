@@ -1,3 +1,9 @@
+### v1.28.2
+
+##### Other
+- Update mailing list for estimate project form
+
+
 ### v1.28.1
 
 ##### Bugfixes
