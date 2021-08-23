@@ -1,3 +1,13 @@
+### v1.29.0
+
+##### Features
+- Feature add go to brand project description page ([#346](https://github.com/Code-Poets/project-liberation/pull/346))
+- Feature add parp logos on main page ([#344](https://github.com/Code-Poets/project-liberation/pull/344))
+
+##### Bugfixes
+- Bugfix change article page title ([#345](https://github.com/Code-Poets/project-liberation/pull/345))
+
+
 ### v1.28.2
 
 ##### Other
