@@ -1,0 +1,52 @@
+@import "../common/partials/constants"
+@import "../common/partials/section_header"
+
+$section-width: 800px
+$title-margin: 25px auto 30px auto
+
+.container.go-to-brand-project
+    display: flex
+    flex-direction: column
+
+    max-width: 1310px
+    padding: 0 50px
+    margin: 110px auto 0
+
+    .header
+        font-weight: bold
+        font-size: 22px
+        text-align: left
+        margin: $title-margin
+        float: left
+        width: $section-width
+        @media only screen and (max-width: 850px)
+            width: unset
+            font-size: 20x
+            text-align: center
+        @media only screen and (max-width: 450px)
+            font-size: 16x
+
+    .description
+        text-align: left
+        width: $section-width
+        margin: 0 auto 25px auto
+        float: left
+        @media only screen and (max-width: 850px)
+            width: unset
+            text-align: center
+
+
+    .project-name
+        font-weight: lighter
+        font-size: 18px
+        color: $medium-grey
+
+    .project-title
+        font-size: 24px
+        @media only screen and (max-width: 850px)
+            font-size: 22px
+        @media only screen and (max-width: 450px)
+            font-size: 18px
+
+    .last-description
+        margin-bottom: 50px

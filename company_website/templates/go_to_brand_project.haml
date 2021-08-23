@@ -1,0 +1,17 @@
+{% extends "base.haml" %}
+{% block title %}
+    %title {{ title }}
+{% endblock %}
+{% block meta_tags %}
+    %meta{:name => "description", :content => "{{ meta_description }}"}
+    %meta{:name => "keywords", :content => "{{ keywords }}"}
+{% endblock %}
+{% load pipeline %}
+
+{% block extra_head %}
+    {% stylesheet 'go_to_brand_project' %}
+{% endblock %}
+
+{% block content %}
+    {% include "go_to_brand_project_partials/go_to_brand_project_site.haml" %}
+{% endblock %}
