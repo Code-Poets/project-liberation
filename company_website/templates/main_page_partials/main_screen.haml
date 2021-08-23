@@ -2,10 +2,10 @@
 {% load variable_tag %}
 
 {% if request.user_agent.browser.family|is_webp_supported %}
-    {% define_variable ".webp" as clutch_extension %}
+    {% define_variable ".webp" as logo_extension %}
     {% define_variable ".webp" as main_page_extension %}
 {% else %}
-    {% define_variable ".png" as clutch_extension %}
+    {% define_variable ".png" as logo_extension %}
     {% define_variable ".jpg" as main_page_extension %}
 {% endif %}
 
@@ -20,6 +20,12 @@
         .container
             %a{:href => "https://clutch.co/profile/code-poets"}
                 .clutch-container
-                    %img.clutch-reward{:alt => "Code Poets profile on Clutch", :src => "{% static 'main_page/images/main_screen/clutch-2020_400x432'|add:clutch_extension %}"}
-                    %img.clutch-reward{:alt => "Code Poets profile on Clutch", :src => "{% static 'main_page/images/main_screen/clutch-2019_400x432'|add:clutch_extension %}"}
-                    
+                    %img.clutch-reward{:alt => "Code Poets profile on Clutch", :src => "{% static 'main_page/images/main_screen/clutch-2020_400x432'|add:logo_extension %}"}
+                    %img.clutch-reward{:alt => "Code Poets profile on Clutch", :src => "{% static 'main_page/images/main_screen/clutch-2019_400x432'|add:logo_extension %}"}
+
+    .container.parp-logos-container
+        .row.parp-logo
+            .col.flex-wrapp.justify-content-center.nopadding{:data-aos => "zoom-in"}
+                %img.logo-img.lazyload{:alt => "", :src => "{% static 'main_page/images/main_screen/european_funds'|add:logo_extension %}"}
+                %img.logo-img.lazyload{:alt => "", :src => "{% static 'main_page/images/main_screen/republic_of_poland'|add:logo_extension %}"}
+                %img.logo-img.lazyload{:alt => "", :src => "{% static 'main_page/images/main_screen/european_union'|add:logo_extension %}"}

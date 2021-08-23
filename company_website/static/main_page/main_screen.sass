@@ -96,7 +96,7 @@ $clutch-max-height-breakpoint: 745px
                 position: relative
                 top: unset
                 right: unset
-                margin: 9vh -8px 0
+                margin: 4vh -8px 0
                 width: unset
                 flex-direction: row
                 height: 44vw
@@ -107,3 +107,36 @@ $clutch-max-height-breakpoint: 745px
                     height: 100%
                     width: auto
                     margin: 0 8px
+
+    .container.parp-logos-container
+        margin-bottom: 2vh
+        height: 11vh
+        max-width: unset
+        padding: 0 14%
+        position: sticky
+        bottom: 0
+        align-self: flex-end
+        background: white
+        @media only screen and (max-width: $md-screen-size)
+            padding: 0 $container-padding 1% $container-padding
+        @media only screen and (max-width: 575px)
+            padding: 0 5% 5% 5%
+
+        .row.parp-logo
+            margin: 20px auto 0
+
+            .logo-img
+                width: 9vw
+                min-width: 60px
+                margin: auto
+
+                @media only screen and (max-width: $md-screen-size)
+                    width: 120px
+
+            .flex-wrapp
+                display: flex
+                align-items: flex-start
+
+            .nopadding
+                padding: 0
+                margin: 0
