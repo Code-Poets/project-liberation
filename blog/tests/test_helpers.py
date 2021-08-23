@@ -45,6 +45,7 @@ class BlogTestHelpers:
         self,
         blog_index_page=None,
         title="Simple Article Title",
+        page_title="Simple Article Title",
         date=datetime.now(),
         body=None,
         author=None,
@@ -63,6 +64,7 @@ class BlogTestHelpers:
             author = BossFactory()
         blog_article_page = BlogArticlePage(
             title=title,
+            page_title=page_title,
             date=date,
             body=body,
             author=author,

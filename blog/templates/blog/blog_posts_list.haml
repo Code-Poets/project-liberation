@@ -23,7 +23,7 @@
                     .article-wrapper
                         .popular-article-border
                         .popular-article
-                            %a.title{:href => "{% url 'wagtail_serve' article.specific.slug|add_slash %}"} {{ article.specific.title }}
+                            %a.title{:href => "{% url 'wagtail_serve' article.specific.slug|add_slash %}"} {{ article.specific.page_title|shorten_text:70 }}
                             .author by
                                 %span.author-name{:onClick => 'showBio(this, "{{ article.specific.author.bio }}")'}
                                     {{ article.specific.author.full_name }}

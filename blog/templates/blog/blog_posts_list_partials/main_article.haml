@@ -9,7 +9,7 @@
         .row.no-margin-row
             .col-12.title
                 %a.main-article-url{:href => "{% url 'wagtail_serve' page.get_main_article.specific.slug|add_slash %}"}
-                    .main-article-title {{ page.get_main_article.title }}
+                    .main-article-title {{ page.get_main_article.page_title }}
         .row.no-margin-row
             .col-md-6.article-text-container
                 .row

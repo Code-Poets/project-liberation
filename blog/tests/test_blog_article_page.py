@@ -15,7 +15,6 @@ from wagtailmarkdown.blocks import MarkdownBlock
 from blog.constants import INTRO_ELLIPSIS
 from blog.constants import ArticleBodyBlockNames
 from blog.factories import ImageFactory
-from blog.models import MAX_BLOG_ARTICLE_TITLE_LENGTH
 from blog.models import BlogArticlePage
 from blog.models import CaptionedImageBlock
 from blog.templatetags.blog_article_page_filters import add_slash
@@ -36,21 +35,23 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
             self._create_blog_article_page(blog_index_page=blog_article_page)
 
     @parameterized.expand(
-        [("title", None), ("date", None), ("author", None), ("read_time", -1), ("views", -1),]
+        [("title", None), ("page_title", None), ("date", None), ("author", None), ("read_time", -1), ("views", -1)]
     )
     def test_that_new_article_page_should_has_all_mandatory_parameters(self, parameter_name, parameter_value):
         author = BossFactory()
         body_block = StreamBlock([(ArticleBodyBlockNames.PARAGRAPH.value, RichTextBlock())])
         body = StreamValue(body_block, [(ArticleBodyBlockNames.PARAGRAPH.value, RichText("Hello, World"))])
+        test_title = "Simple Article Title"
         blog_article_parameter = {
-            "title": "Simple Article Title",
+            "title": test_title,
+            "page_title": test_title,
             "date": datetime.now(),
             "body": body,
             "author": author,
             "read_time": 7,
             "views": 0,
+            parameter_name: parameter_value,
         }
-        blog_article_parameter[parameter_name] = parameter_value
         with self.assertRaises(ValidationError):
             blog_article_page = BlogArticlePage(**blog_article_parameter)
             self.blog_index_page.add_child(instance=blog_article_page)
@@ -75,11 +76,6 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
         self.assertEqual(blog_article_page_2.is_main_article, True)
         self.assertEqual(BlogArticlePage.objects.get(pk=blog_article_page.pk).is_main_article, False)
 
-    def test_that_title_should_not_be_longer_than_custom_specified_amount_of_characters(self):
-        title_that_is_way_too_long = "f" * (MAX_BLOG_ARTICLE_TITLE_LENGTH + 1)
-        with self.assertRaises(ValidationError):
-            self._create_blog_article_page(title=title_that_is_way_too_long)
-
     def test_that_recommended_articles_should_not_contain_duplicates(self):
         other_article = self._create_blog_article_page()
         articles_block = StreamBlock([("page", PageChooserBlock())])
@@ -102,8 +98,10 @@ class TestBlogArticlePage(TestCase, BlogTestHelpers):
         author = BossFactory()
         body_block = StreamBlock([(ArticleBodyBlockNames.PARAGRAPH.value, RichTextBlock())])
         body = StreamValue(body_block, [(ArticleBodyBlockNames.PARAGRAPH.value, RichText("Hello, World"))])
+        test_title = "Simple Article Title"
         blog_article_parameter = {
-            "title": "Simple Article Title",
+            "title": test_title,
+            "page_title": test_title,
             "date": datetime.now(),
             "body": body,
             "author": author,

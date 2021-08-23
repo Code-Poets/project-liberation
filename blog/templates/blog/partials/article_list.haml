@@ -10,7 +10,7 @@
         .col-md-6.article-text-container{:class => "{% if forloop.counter|divisibleby:'2' %}grey-background{% endif %}"}
             .row.title
                 %a.main-article-url{:href => "{% url 'wagtail_serve' blog_article.specific.slug|add_slash %}"}
-                    .main-article-title {{ blog_article.specific.title }}
+                    .main-article-title {{ blog_article.specific.page_title }}
 
             .row.info-section
                 .info-section
