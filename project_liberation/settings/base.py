@@ -331,6 +331,12 @@ PIPELINE = {
             ),
             'output_filename': 'css/thank_you.css',
         },
+        'go_to_brand_project': {
+            'source_filenames': (
+                'go_to_brand_project/*.sass',
+            ),
+            'output_filename': 'css/go_to_brand_project.css',
+        },
     },
     'JAVASCRIPT': {
         'main': {

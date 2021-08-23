@@ -29,6 +29,7 @@ class PageNames(ChoiceEnum):
     ESTIMATE_PROJECT = "Estimate Project"
     PRIVACY_AND_POLICY = "Privacy and Policy"
     THANK_YOU = "Thank You"
+    GO_TO_BRAND_PROJECT = "Go to Brand"
 
 
 ESTIMATE_PROJECT_EMAIL_SUBJECT_BASE = "Code Poets estimation for"

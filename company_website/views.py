@@ -117,3 +117,8 @@ class PlaybookView(View):
     def read_file(path: str) -> bytes:
         with open(path, "rb") as file:
             return file.read()
+
+
+class GoToBrandProjectView(CustomTemplateView):
+    template_name = "go_to_brand_project.haml"
+    page_name = PageNames.GO_TO_BRAND_PROJECT.name
