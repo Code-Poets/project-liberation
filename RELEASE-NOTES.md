@@ -1,3 +1,9 @@
+### v1.29.1
+
+##### Other
+- Update mailing list for estimate project form
+
+
 ### v1.29.0
 
 ##### Features
