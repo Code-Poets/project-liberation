@@ -57,9 +57,8 @@ server {
 	listen [::]:443 ssl ipv6only=on;
 	listen 443 ssl;
 
-	ssl_certificate {{ certificates_dir }}/ssl_certificate.pem;
+	ssl_certificate {{ certificates_dir }}/certificate-fullchain.pem;
 	ssl_certificate_key {{ certificates_dir }}/certificate-privkey.pem;
-	ssl_trusted_certificate {{ certificates_dir }}/ssl_trusted_certificate.pem;
 
 	ssl_session_cache shared:le_nginx_SSL:1m;
 	ssl_session_timeout 1440m;
