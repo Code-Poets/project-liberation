@@ -26,17 +26,6 @@
             enabled:       yes
             name:          project-liberation-web
 
-        - name: Copy ssl certificate files to server
-          copy:
-            src:  "{{ project_liberation_secret_dir }}/{{ item }}"
-            dest: "{{ certificates_dir }}/{{ item }}"
-            mode:  0644
-            owner: project_liberation
-            group: project_liberation
-          loop:
-            - "certificate-privkey.pem"
-            - "certificate-fullchain.pem"
-            - "ssl-dhparams.pem"
 
         - include_role:
             name: configure_nginx

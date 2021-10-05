@@ -14,4 +14,3 @@ project_liberation_secret_dir:        ../../project-liberation-secret
 project_liberation_virtualenv_dir:    "{{ home_dir }}/virtualenv"
 django_static_files_dir:              "{{ home_dir }}/http_django_static_files"
 unpacked_image_package_name:          "{{ image_package_name[:-4] }}"
-certificates_dir:                     "/etc/ssl/codepoets.it"
