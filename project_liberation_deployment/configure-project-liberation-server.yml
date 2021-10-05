@@ -26,6 +26,19 @@
             enabled:       yes
             name:          project-liberation-web
 
+        - name: Check if nginx is already configured
+          stat:
+            path: /etc/letsencrypt/options-ssl-nginx.conf
+          register: nginx_configuration
+
+        - name: Generate ssl certificate for nginx
+          command: >
+            certbot --nginx
+              -d  codepoets.it
+              -d  www.codepoets.it
+              -m  {{ letsencrypt_email_account }}
+              --agree-tos
+          when: not nginx_configuration.stat.exists
 
         - include_role:
             name: configure_nginx

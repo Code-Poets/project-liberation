@@ -48,6 +48,7 @@
           - postfix
           - postgresql
           - python3
+          - python3-certbot-nginx
           - python3-distutils
           - python3-psycopg2
           - python3-setuptools

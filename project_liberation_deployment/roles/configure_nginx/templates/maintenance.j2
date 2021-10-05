@@ -54,6 +54,13 @@ server {
         alias {{ nginx_static_files_dir }}/;
     }
 
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/codepoets.it/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/codepoets.it/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
     # Enable HSTS header
     add_header Strict-Transport-Security "max-age=31536000";
 
@@ -77,5 +84,6 @@ server {
 
     client_body_timeout   {{ nginx.client_body_timeout }};
     client_header_timeout {{ nginx.client_header_timeout }};
+    return 404; # managed by Certbot
 
 }
