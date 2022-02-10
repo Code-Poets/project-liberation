@@ -234,7 +234,7 @@ python-versions = ">=2.6, !=3.0.*, !=3.1.*"
 
 [[package]]
 name = "django"
-version = "2.2.17"
+version = "2.2.27"
 description = "A high-level Python Web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
 optional = false
@@ -1027,11 +1027,11 @@ tests = ["coverage", "freezegun (>=0.2.8)", "pretend", "pytest (>=3.3.0)", "simp
 
 [[package]]
 name = "tablib"
-version = "3.0.0"
+version = "3.2.0"
 description = "Format agnostic tabular data library (XLS, JSON, YAML, CSV)"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 
 [package.dependencies]
 openpyxl = {version = ">=2.6.0", optional = true, markers = "extra == \"xlsx\""}
@@ -1400,8 +1400,8 @@ decorator = [
     {file = "decorator-4.4.2.tar.gz", hash = "sha256:e3a62f0520172440ca0dcc823749319382e377f37f140a0b99ef45fecb84bfe7"},
 ]
 django = [
-    {file = "Django-2.2.17-py3-none-any.whl", hash = "sha256:558cb27930defd9a6042133258caf797b2d1dee233959f537e3dc475cb49bd7c"},
-    {file = "Django-2.2.17.tar.gz", hash = "sha256:cf5370a4d7765a9dd6d42a7b96b53c74f9446cd38209211304b210fe0404b861"},
+    {file = "Django-2.2.27-py3-none-any.whl", hash = "sha256:90763c764738586b11d7e1f44828032c153366e43ad7f782908193a1bb2d6d92"},
+    {file = "Django-2.2.27.tar.gz", hash = "sha256:1ee37046b0bf2b61e83b3a01d067323516ec3b6f2b17cd49b1326dd4ba9dc913"},
 ]
 django-celery = [
     {file = "django-celery-3.3.1.tar.gz", hash = "sha256:13b0bd73998dd105bc67af89445036b2a55578299fd0292a846a0c082ed959a9"},
@@ -1444,6 +1444,7 @@ django-user-agents = [
 ]
 djangorestframework = [
     {file = "djangorestframework-3.12.2-py3-none-any.whl", hash = "sha256:0209bafcb7b5010fdfec784034f059d512256424de2a0f084cb82b096d6dd6a7"},
+    {file = "djangorestframework-3.12.2.tar.gz", hash = "sha256:0898182b4737a7b584a2c73735d89816343369f259fea932d90dc78e35d8ac33"},
 ]
 draftjs-exporter = [
     {file = "draftjs_exporter-2.1.7-py3-none-any.whl", hash = "sha256:d415a9964690a2cddb66a31ef32dd46c277e9b80434b94e39e3043188ed83e33"},
@@ -1512,6 +1513,7 @@ kombu = [
     {file = "kombu-3.0.37.tar.gz", hash = "sha256:e064a00c66b4d1058cd2b0523fb8d98c82c18450244177b6c0f7913016642650"},
 ]
 l18n = [
+    {file = "l18n-2020.6.1-py3-none-any.whl", hash = "sha256:6906b2041a95b3e05d3cce3654476b6eb917e46617c9aa0de2d0e277621116fb"},
     {file = "l18n-2020.6.1.tar.gz", hash = "sha256:ea7a65b2f0935b14601a3295f2c5e5e8b54126dd1e6a7fef4e44d2b8dd5b695a"},
 ]
 lazy-object-proxy = [
@@ -1862,8 +1864,8 @@ structlog = [
     {file = "structlog-20.1.0.tar.gz", hash = "sha256:7a48375db6274ed1d0ae6123c486472aa1d0890b08d314d2b016f3aa7f35990b"},
 ]
 tablib = [
-    {file = "tablib-3.0.0-py3-none-any.whl", hash = "sha256:41aa40981cddd7ec4d1fabeae7c38d271601b306386bd05b5c3bcae13e5aeb20"},
-    {file = "tablib-3.0.0.tar.gz", hash = "sha256:f83cac08454f225a34a305daa20e2110d5e6335135d505f93bc66583a5f9c10d"},
+    {file = "tablib-3.2.0-py3-none-any.whl", hash = "sha256:1ba12da7b0b17e33f5997fb1bc8ed560aae3535f5892ae5e5c01a056c47d4d78"},
+    {file = "tablib-3.2.0.tar.gz", hash = "sha256:12d8686454c721de88d8ca5adf07e1f419ef6dbcecedf65e8950d4a329daf3a0"},
 ]
 text-unidecode = [
     {file = "text-unidecode-1.3.tar.gz", hash = "sha256:bad6603bb14d279193107714b288be206cac565dfa49aa5b105294dd5c4aab93"},
